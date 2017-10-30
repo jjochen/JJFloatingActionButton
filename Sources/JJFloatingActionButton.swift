@@ -169,11 +169,11 @@ fileprivate extension JJFloatingActionButton {
    
     
     func open() {
-        
+        isOpen = true
     }
     
     func close() {
-        
+        isOpen = false
     }
     
     func executeAction(at index: Int) {
