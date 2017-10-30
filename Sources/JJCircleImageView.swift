@@ -21,10 +21,12 @@ class JJCircleImageView: UIView {
             imageView.tintColor = iconColor
         }
     }
-    
-    
-    open var image: UIImage? = nil
-    
+
+    open var image: UIImage? = nil {
+        didSet {
+            imageView.image = image
+        }
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,7 +78,7 @@ class JJCircleImageView: UIView {
     override func updateConstraints() {
         
         imageView.snp.remakeConstraints { make in
-            let iconSizeFactor = 0.7
+            let iconSizeFactor = 1/sqrt(2)
             make.center.equalTo(self)
             make.width.lessThanOrEqualTo(self.snp.width).multipliedBy(iconSizeFactor)
             make.width.lessThanOrEqualTo(self.snp.height).multipliedBy(iconSizeFactor)
