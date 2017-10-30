@@ -10,14 +10,14 @@ import SnapKit
         }
     }
     
-    @objc public var buttonIconColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000) {
+    @objc public var buttonIconColor = UIColor.white {
         didSet {
             buttonView.iconColor = buttonIconColor
         }
     }
     
     
-    @objc public var itemColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000) {
+    @objc public var itemColor = UIColor.white {
         didSet {
             
         }
@@ -29,9 +29,15 @@ import SnapKit
         }
     }
     
-    @objc public var itemTextColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000) {
+    @objc public var itemTextColor = UIColor.white {
         didSet {
             
+        }
+    }
+    
+    @objc public var overlayColor = UIColor(white: 0, alpha: 0.5) {
+        didSet {
+            overlayView.backgroundColor = overlayColor
         }
     }
     
@@ -39,15 +45,25 @@ import SnapKit
     
     @objc public var items: [JJActionItem] = [] {
         didSet {
-            
+            configure()
         }
     }
     
     fileprivate(set) public var isOpen = false
     
-    
-    fileprivate lazy var buttonView = JJCircleImageView()
-    
+    fileprivate lazy var buttonView: JJCircleImageView = {
+        let view = JJCircleImageView()
+        view.circleColor = self.buttonColor
+        view.iconColor = self.buttonIconColor
+        return view
+    }()
+
+    fileprivate lazy var overlayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = self.overlayColor
+        view.alpha = 0
+        return view
+    }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,34 +74,19 @@ import SnapKit
         super.init(coder: aDecoder)
         setup()
     }
-    
 }
-
-fileprivate extension JJFloatingActionButton {
-    
-    
-    open override func updateConstraints() {
-        buttonView.snp.remakeConstraints { make in
-            make.center.equalTo(self)
-            make.width.equalTo(buttonView.snp.height)
-            make.size.lessThanOrEqualTo(self)
-            make.size.equalTo(self).priority(.high)
-        }
-        
-        super.updateConstraints()
-    }
-}
-    
     
 fileprivate extension JJFloatingActionButton {
 
     // MARK: Touches
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        super.touchesBegan(touches, with: event)
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
         guard touches.count == 1 else {
             return
         }
@@ -93,15 +94,15 @@ fileprivate extension JJFloatingActionButton {
             return
         }
         let point = touch.location(in: self)
-        guard self.bounds.contains(point) else {
+        guard bounds.contains(point) else {
             return
         }
         
         didTap()
     }
     
-    open override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-        
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
     }
     
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -117,6 +118,13 @@ fileprivate extension JJFloatingActionButton {
         clipsToBounds = false
         
         addSubview(buttonView)
+        buttonView.snp.makeConstraints { make in
+            make.center.equalTo(self)
+            make.width.equalTo(buttonView.snp.height)
+            make.size.lessThanOrEqualTo(self)
+            make.size.equalTo(self).priority(.high)
+        }
+        
         configure()
     }
     
@@ -166,15 +174,53 @@ fileprivate extension JJFloatingActionButton {
         }
     }
     
-   
-    
-    func open() {
+    func open(animated: Bool = true) {
+        guard let superview = self.superview else {
+            return
+        }
         isOpen = true
+        
+        insertSubview(overlayView, belowSubview: buttonView)
+        overlayView.snp.makeConstraints { make in
+            make.edges.equalTo(superview)
+        }
+        
+        let animations: () -> Void = {
+            self.overlayView.alpha = 1
+        }
+        
+        animate(animations, animated: animated)
+        
     }
     
-    func close() {
+    func close(animated: Bool = true) {
         isOpen = false
+        
+        let animations: () -> Void = {
+            self.overlayView.alpha = 0
+        }
+        let completion: (Bool) -> Void = { finished in
+            self.overlayView.removeFromSuperview()
+        }
+        
+        animate(animations, completion: completion, animated: animated)
     }
+    
+    func animate(_ animations: @escaping () -> Swift.Void, completion: ((Bool) -> Swift.Void)? = nil, animated: Bool) {
+        if animated {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           options: [.beginFromCurrentState, .curveEaseOut],
+                           animations: animations,
+                           completion: completion)
+        } else {
+            animations()
+            if let completion = completion {
+                completion(true)
+            }
+        }
+    }
+    
     
     func executeAction(at index: Int) {
         guard index >= 0 && index < items.count else {
