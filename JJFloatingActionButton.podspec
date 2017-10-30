@@ -1,14 +1,18 @@
-Pod::Spec.new do |s|
-  s.name         = "JJFloatingActionButton"
-  s.version      = "0.0.1"
-  s.summary      = "Floating Action Button for iOS"
-  s.homepage     = "https://github.com/jjochen/JJFloatingActionButton"
-  s.license      = { :type => 'MIT', :file => 'LICENSE' }
-  s.author       = { "jjochen" => "git@jochen-pfeiffer.com" }
-  s.source       = { :git => "https://github.com/jjochen/JJFloatingActionButton.git", :tag => s.version.to_s }
-  s.platform     = :ios, '9.0'
-  s.source_files = 'Sources/*.{swift}'
-  s.frameworks   = 'UIKit', 'Foundation'
-  s.requires_arc = true
-  s.dependency 'SnapKit'
+Pod::Spec.new do |spec|
+  spec.name     = 'JJFloatingActionButton'
+  spec.version  = '0.0.1'
+  spec.author   = { 'jjochen' => 'pod@jochen-pfeiffer.com' }
+  spec.license  = { :type => 'MIT', :file => 'LICENSE' }
+  spec.homepage = 'https://github.com/jjochen/JJFloatingActionButton'
+  spec.source   = { :git => 'https://github.com/jjochen/JJFloatingActionButton.git', :tag => spec.version.to_s }
+  spec.summary  = 'Floating Action Button for iOS'
+  
+  spec.platform = :ios, '9.0'
+  
+  spec.dependency 'SnapKit'
+  spec.requires_arc = true
+  spec.frameworks   = 'UIKit', 'Foundation'
+  
+  spec.source_files = 'Sources/*.swift'
+  spec.ios.resource_bundle = { 'JJFloatingActionButton' => 'Resources/*.xcassets' }
 end
