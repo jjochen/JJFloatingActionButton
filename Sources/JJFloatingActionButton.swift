@@ -97,8 +97,6 @@ import SnapKit
         }
     }
     
-    @objc public var rotateOnOpen = true
-    
     @objc public var rotationAngle = -CGFloat.pi / 4
     
     @objc public var animationDuration = TimeInterval(0.3)
