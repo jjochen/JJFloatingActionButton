@@ -2,7 +2,16 @@
 import UIKit
 import SnapKit
 
-@objc open class JJFloatingActionButton: UIView {
+
+@objc public protocol JJFloatingActionButtonDelegate {
+    @objc optional func floatingActionButtonWillOpen(_ button: JJFloatingActionButton)
+    @objc optional func floatingActionButtonDidOpen(_ button: JJFloatingActionButton)
+    @objc optional func floatingActionButtonWillClose(_ button: JJFloatingActionButton)
+    @objc optional func floatingActionButtonDidClose(_ button: JJFloatingActionButton)
+}
+
+
+@objc public class JJFloatingActionButton: UIView {
     
     @objc public var buttonColor = UIColor(red: 0.447, green: 0.769, blue: 0.447, alpha: 1.000) {
         didSet {
@@ -16,6 +25,29 @@ import SnapKit
         }
     }
     
+    @objc public var shadowColor = UIColor.black {
+        didSet {
+            self.buttonView.layer.shadowColor = shadowColor.cgColor
+        }
+    }
+    
+    @objc public var shadowOffset = CGSize(width: 0, height: 1) {
+        didSet {
+            self.buttonView.layer.shadowOffset = shadowOffset
+        }
+    }
+    
+    @objc public var shadowOpacity = Float(0.4) {
+        didSet {
+            self.buttonView.layer.shadowOpacity = shadowOpacity
+        }
+    }
+    
+    @objc public var shadowRadius = CGFloat(2) {
+        didSet {
+            self.buttonView.layer.shadowRadius = shadowRadius
+        }
+    }
     
     @objc public var itemColor = UIColor.white {
         didSet {
@@ -35,6 +67,30 @@ import SnapKit
         }
     }
     
+    @objc public var itemShadowColor = UIColor.black {
+        didSet {
+            
+        }
+    }
+    
+    @objc public var itemShadowOffset = CGSize(width: 0, height: 1) {
+        didSet {
+            
+        }
+    }
+    
+    @objc public var itemShadowOpacity = Float(0.4) {
+        didSet {
+            
+        }
+    }
+    
+    @objc public var itemShadowRadius = CGFloat(2) {
+        didSet {
+            
+        }
+    }
+    
     @objc public var overlayColor = UIColor(white: 0, alpha: 0.5) {
         didSet {
             overlayView.backgroundColor = overlayColor
@@ -43,11 +99,18 @@ import SnapKit
     
     @objc public var rotateOnOpen = true
     
+    @objc public var rotationAngle = -CGFloat.pi / 4
+    
+    @objc public var animationDuration = TimeInterval(0.3)
+    
     @objc public var items: [JJActionItem] = [] {
         didSet {
             configure()
         }
     }
+    
+    @objc public var delegate: JJFloatingActionButtonDelegate?
+    
     
     fileprivate(set) public var isOpen = false
     
@@ -55,9 +118,13 @@ import SnapKit
         let view = JJCircleImageView()
         view.circleColor = self.buttonColor
         view.iconColor = self.buttonIconColor
+        view.layer.shadowColor = self.shadowColor.cgColor
+        view.layer.shadowOffset = self.shadowOffset
+        view.layer.shadowOpacity = self.shadowOpacity
+        view.layer.shadowRadius = self.shadowRadius
         return view
     }()
-
+    
     fileprivate lazy var overlayView: UIView = {
         let view = UIView()
         view.backgroundColor = self.overlayColor
@@ -75,10 +142,9 @@ import SnapKit
         setup()
     }
 }
-    
-fileprivate extension JJFloatingActionButton {
 
-    // MARK: Touches
+// MARK: Touches
+fileprivate extension JJFloatingActionButton {
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -178,6 +244,7 @@ fileprivate extension JJFloatingActionButton {
         guard let superview = self.superview else {
             return
         }
+        delegate?.floatingActionButtonWillOpen?(self)
         isOpen = true
         
         insertSubview(overlayView, belowSubview: buttonView)
@@ -187,30 +254,45 @@ fileprivate extension JJFloatingActionButton {
         
         let animations: () -> Void = {
             self.overlayView.alpha = 1
+            self.buttonView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
+        }
+        let completion: (Bool) -> Void = { finished in
+            self.delegate?.floatingActionButtonDidOpen?(self)
         }
         
-        animate(animations, animated: animated)
-        
+        self.animate(usingSpringWithDamping: 0.55,
+                     initialSpringVelocity: 0.3,
+                     animations: animations,
+                     completion: completion,
+                     animated: animated)
     }
     
     func close(animated: Bool = true) {
+        delegate?.floatingActionButtonWillClose?(self)
         isOpen = false
         
         let animations: () -> Void = {
             self.overlayView.alpha = 0
+            self.buttonView.transform = CGAffineTransform(rotationAngle: 0)
         }
         let completion: (Bool) -> Void = { finished in
             self.overlayView.removeFromSuperview()
+            self.delegate?.floatingActionButtonDidClose?(self)
         }
         
-        animate(animations, completion: completion, animated: animated)
+        self.animate(usingSpringWithDamping: 0.6,
+                     initialSpringVelocity: 0.8,
+                     animations: animations,
+                     completion: completion,
+                     animated: animated)
     }
     
-    func animate(_ animations: @escaping () -> Swift.Void, completion: ((Bool) -> Swift.Void)? = nil, animated: Bool) {
+    func animate(usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Swift.Void, completion: ((Bool) -> Swift.Void)? = nil, animated: Bool = true) {
         if animated {
-            UIView.animate(withDuration: 0.3,
+            UIView.animate(withDuration: animationDuration,
                            delay: 0,
-                           options: [.beginFromCurrentState, .curveEaseOut],
+                           usingSpringWithDamping: dampingRatio,
+                           initialSpringVelocity: velocity,
                            animations: animations,
                            completion: completion)
         } else {
