@@ -3,6 +3,13 @@ import UIKit
 import SnapKit
 
 
+public enum JJFloatingActionButtonState {
+    case close
+    case open
+    case opening
+    case closing
+}
+
 @objc public protocol JJFloatingActionButtonDelegate {
     @objc optional func floatingActionButtonWillOpen(_ button: JJFloatingActionButton)
     @objc optional func floatingActionButtonDidOpen(_ button: JJFloatingActionButton)
@@ -61,7 +68,7 @@ import SnapKit
         }
     }
     
-    @objc public var itemTextColor = UIColor.white {
+    @objc public var itemTitleColor = UIColor.white {
         didSet {
             
         }
@@ -109,8 +116,7 @@ import SnapKit
     
     @objc public var delegate: JJFloatingActionButtonDelegate?
     
-    
-    fileprivate(set) public var isOpen = false
+    fileprivate(set) public var state: JJFloatingActionButtonState = .close
     
     fileprivate lazy var buttonView: JJCircleImageView = {
         let view = JJCircleImageView()
@@ -123,9 +129,12 @@ import SnapKit
         return view
     }()
     
-    fileprivate lazy var overlayView: UIView = {
-        let view = UIView()
+    fileprivate lazy var overlayView: UIControl = {
+        let view = UIControl()
         view.backgroundColor = self.overlayColor
+        view.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
+        view.isUserInteractionEnabled = true
+        view.isEnabled = false
         view.alpha = 0
         return view
     }()
@@ -165,14 +174,24 @@ fileprivate extension JJFloatingActionButton {
         didTap()
     }
     
-    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-    }
-    
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if state == .open {
+            for item in items {
+                if item.isHidden || !item.isUserInteractionEnabled {
+                    continue
+                }
+                let pointInItem = item.convert(point, from: self)
+                if item.bounds.contains(pointInItem)  {
+                    return item.hitTest(pointInItem, with: event)
+                }
+            }
+        }
         return super.hitTest(point, with: event)
     }
     
+    @objc func overlayViewWasTapped() {
+        close()
+    }
 }
 
 fileprivate extension JJFloatingActionButton {
@@ -194,6 +213,16 @@ fileprivate extension JJFloatingActionButton {
     
     func configure() {
         buttonView.image = currentButtonIcon
+        items.forEach { item in
+            item.circleView.circleColor = self.itemColor
+            item.circleView.iconColor = self.itemIconColor
+            item.titleLabel.textColor = self.itemTitleColor
+            item.layer.shadowColor = self.itemShadowColor.cgColor
+            item.layer.shadowOpacity = self.itemShadowOpacity
+            item.layer.shadowOffset = self.itemShadowOffset
+            item.layer.shadowRadius = self.itemShadowRadius
+            item.delegate = self
+        }
     }
     
     var currentButtonIcon: UIImage? {
@@ -227,65 +256,104 @@ fileprivate extension JJFloatingActionButton {
         }
         
         if itemsCount == 1 {
-            executeAction(at: 0)
+            let item = items.first
+            item?.action?(item!)
             return
         }
         
-        if isOpen {
-            close()
-        } else {
+        if state == .close {
             open()
+        } else if state == .open {
+            close()
         }
+        
     }
     
-    func open(animated: Bool = true) {
+    func open(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard let superview = self.superview else {
             return
         }
+        state = .opening
         delegate?.floatingActionButtonWillOpen?(self)
-        isOpen = true
+        overlayView.isEnabled = true
         
-        insertSubview(overlayView, belowSubview: buttonView)
+        superview.bringSubview(toFront: self)
+        superview.insertSubview(overlayView, belowSubview: buttonView)
         overlayView.snp.makeConstraints { make in
             make.edges.equalTo(superview)
         }
         
+        var previousItem: JJActionItem?
+        for item in items {
+            if item.isHidden {
+                continue
+            }
+            item.alpha = 0
+            insertSubview(item, belowSubview: buttonView)
+            item.snp.makeConstraints { make in
+                let previousView = previousItem ?? buttonView
+                make.height.equalTo(buttonView).multipliedBy(0.75)
+                make.bottom.equalTo(previousView.snp.top).offset(-12)
+            }
+            item.circleView.snp.makeConstraints { make in
+                make.centerX.equalTo(buttonView)
+            }
+            previousItem = item
+        }
+        
+        setNeedsLayout()
+        layoutIfNeeded()
+        
         let animations: () -> Void = {
             self.overlayView.alpha = 1
             self.buttonView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
+            self.items.forEach { item in
+                item.alpha = 1
+            }
         }
-        let completion: (Bool) -> Void = { finished in
+        let animationCompletion: (Bool) -> Void = { finished in
+            self.state = .open
             self.delegate?.floatingActionButtonDidOpen?(self)
+            completion?()
         }
         
         self.animate(usingSpringWithDamping: 0.55,
                      initialSpringVelocity: 0.3,
                      animations: animations,
-                     completion: completion,
+                     completion: animationCompletion,
                      animated: animated)
     }
     
-    func close(animated: Bool = true) {
+    func close(animated: Bool = true, completion: (() -> Void)? = nil) {
+        state = .closing
         delegate?.floatingActionButtonWillClose?(self)
-        isOpen = false
+        overlayView.isEnabled = false
         
         let animations: () -> Void = {
             self.overlayView.alpha = 0
             self.buttonView.transform = CGAffineTransform(rotationAngle: 0)
+            self.items.forEach { item in
+                item.alpha = 0
+            }
         }
-        let completion: (Bool) -> Void = { finished in
+        let animationCompletion: (Bool) -> Void = { finished in
             self.overlayView.removeFromSuperview()
+            self.items.forEach { item in
+                item.removeFromSuperview()
+            }
+            self.state = .close
             self.delegate?.floatingActionButtonDidClose?(self)
+            completion?()
         }
         
         self.animate(usingSpringWithDamping: 0.6,
                      initialSpringVelocity: 0.8,
                      animations: animations,
-                     completion: completion,
+                     completion: animationCompletion,
                      animated: animated)
     }
     
-    func animate(usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Swift.Void, completion: ((Bool) -> Swift.Void)? = nil, animated: Bool = true) {
+    func animate(usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil, animated: Bool = true) {
         if animated {
             UIView.animate(withDuration: animationDuration,
                            delay: 0,
@@ -300,21 +368,11 @@ fileprivate extension JJFloatingActionButton {
             }
         }
     }
-    
-    
-    func executeAction(at index: Int) {
-        guard index >= 0 && index < items.count else {
-            return
-        }
-        let item = items[index]
-        executeAction(for: item)
-    }
-    
-    func executeAction(for item: JJActionItem) {
-        guard let action = item.action else {
-            return
-        }
-        
-        action(item)
+}
+
+extension JJFloatingActionButton: JJActionItemDelegate {
+    func actionButtonWasTapped(_ item: JJActionItem) {
+        close()
+        item.action?(item)
     }
 }

@@ -8,25 +8,27 @@
 import UIKit
 import SnapKit
 
-class JJCircleImageView: UIView {
+internal class JJCircleImageView: UIView {
     
-    open var circleColor = UIColor(red: 0.447, green: 0.769, blue: 0.447, alpha: 1.000) {
+    internal var circleColor = UIColor(red: 0.447, green: 0.769, blue: 0.447, alpha: 1.000) {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    open var iconColor = UIColor.white {
+    internal var iconColor = UIColor.white {
         didSet {
             imageView.tintColor = iconColor
         }
     }
 
-    open var image: UIImage? = nil {
+    internal var image: UIImage? = nil {
         didSet {
             imageView.image = image
         }
     }
+    
+    internal var isHighlighted = false
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
