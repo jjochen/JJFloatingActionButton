@@ -116,9 +116,7 @@ import SnapKit
     
     fileprivate lazy var overlayView: UIControl = defaultOverlayView()
     
-    fileprivate var visibleItems: [JJActionItem]?
-    
-    fileprivate var isUsingDefaultImage = false
+    fileprivate var openItems: [JJActionItem]?
 }
 
 public extension JJFloatingActionButton {
@@ -175,7 +173,7 @@ public extension JJFloatingActionButton {
             }
             previousItem = item
         }
-        visibleItems = items
+        openItems = items
         
         setNeedsLayout()
         layoutIfNeeded()
@@ -211,16 +209,16 @@ public extension JJFloatingActionButton {
         let animations: () -> Void = {
             self.overlayView.alpha = 0
             self.buttonView.transform = CGAffineTransform(rotationAngle: 0)
-            self.visibleItems?.forEach { item in
+            self.openItems?.forEach { item in
                 item.alpha = 0
             }
         }
         let animationCompletion: (Bool) -> Void = { finished in
             self.overlayView.removeFromSuperview()
-            self.visibleItems?.forEach { item in
+            self.openItems?.forEach { item in
                 item.removeFromSuperview()
             }
-            self.visibleItems = nil
+            self.openItems = nil
             self.state = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
             completion?()
@@ -313,33 +311,6 @@ fileprivate extension JJFloatingActionButton {
         return image
     }
     
-    func buttonTapped() {
-        switch state {
-        case .open:
-            close()
-            break
-            
-        case .closed:
-            switch items.count {
-            case 0:
-                break
-                
-            case 1:
-                let item = items.first
-                item?.action?(item!)
-                break
-                
-            default:
-                open()
-                break
-            }
-            break
-            
-        default:
-            break
-        }
-    }
-    
     func animate(usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil, animated: Bool = true) {
         if animated {
             UIView.animate(withDuration: animationDuration,
@@ -378,13 +349,13 @@ fileprivate extension JJFloatingActionButton {
             return
         }
         
-        buttonTapped()
+        buttonWasTapped()
     }
     
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
-        if state == .open, let visibleItems = visibleItems {
-            for item in visibleItems {
+        if state == .open, let openItems = openItems {
+            for item in openItems {
                 if item.isHidden || !item.isUserInteractionEnabled {
                     continue
                 }
@@ -399,6 +370,33 @@ fileprivate extension JJFloatingActionButton {
     
     @objc func overlayViewWasTapped() {
         close()
+    }
+    
+    func buttonWasTapped() {
+        switch state {
+        case .open:
+            close()
+            break
+            
+        case .closed:
+            switch items.count {
+            case 0:
+                break
+                
+            case 1:
+                let item = items.first
+                item?.action?(item!)
+                break
+                
+            default:
+                open()
+                break
+            }
+            break
+            
+        default:
+            break
+        }
     }
 }
 
