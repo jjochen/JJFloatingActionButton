@@ -30,7 +30,7 @@ import SnapKit
         }
     }
     
-    @objc public var buttonColor = UIColor(red: 0.447, green: 0.769, blue: 0.447, alpha: 1.000) {
+    @objc public var buttonColor = UIColor(hue:0.31, saturation:0.37, brightness:0.76, alpha:1.00) {
         didSet {
             buttonView.circleColor = buttonColor
         }
@@ -78,9 +78,11 @@ import SnapKit
         }
     }
     
+    @objc public var itemTitleFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    
     @objc public var itemButtonColor = UIColor.white
     
-    @objc public var itemImageColor = UIColor(red: 0.447, green: 0.769, blue: 0.447, alpha: 1.000)
+    @objc public var itemImageColor = UIColor(hue:0.31, saturation:0.37, brightness:0.76, alpha:1.00)
     
     @objc public var itemTitleColor = UIColor.white
     
@@ -272,6 +274,7 @@ fileprivate extension JJFloatingActionButton {
     func configureItem(_ item: JJActionItem) {
         item.circleView.circleColor = self.itemButtonColor
         item.circleView.imageColor = self.itemImageColor
+        item.titleLabel.font = self.itemTitleFont
         item.titleLabel.textColor = self.itemTitleColor
         item.layer.shadowColor = self.itemShadowColor.cgColor
         item.layer.shadowOpacity = self.itemShadowOpacity
