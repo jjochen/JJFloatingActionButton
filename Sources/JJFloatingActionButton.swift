@@ -330,28 +330,6 @@ fileprivate extension JJFloatingActionButton {
 
 // MARK: Touches
 fileprivate extension JJFloatingActionButton {
-    
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-    }
-    
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        
-        guard touches.count == 1 else {
-            return
-        }
-        guard let touch = touches.first else {
-            return
-        }
-        let point = touch.location(in: self)
-        guard bounds.contains(point) else {
-            return
-        }
-        
-        buttonWasTapped()
-    }
-    
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
         if state == .open, let openItems = openItems {
@@ -366,6 +344,49 @@ fileprivate extension JJFloatingActionButton {
             }
         }
         return super.hitTest(point, with: event)
+    }
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        updateHighlightedStateForTouches(touches)
+    }
+    
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        updateHighlightedStateForTouches(touches)
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        buttonView.isHighlighted = false
+        if touchesAreTapInside(touches)
+        {
+            buttonWasTapped()
+        }
+    }
+    
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        buttonView.isHighlighted = false
+    }
+    
+    func updateHighlightedStateForTouches(_ touches: Set<UITouch>) {
+        buttonView.isHighlighted = touchesAreTapInside(touches)
+    }
+    
+    func touchesAreTapInside(_ touches: Set<UITouch>) -> Bool {
+        guard touches.count == 1 else {
+            return false
+        }
+        guard let touch = touches.first else {
+            return false
+        }
+        let point = touch.location(in: self)
+        guard bounds.contains(point) else {
+            return false
+        }
+        
+        return true
     }
     
     @objc func overlayViewWasTapped() {

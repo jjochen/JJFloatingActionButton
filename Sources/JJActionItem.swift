@@ -116,9 +116,6 @@ fileprivate extension JJActionItem {
         guard let touch = touches.first else {
             return false
         }
-        guard touch.tapCount == 1 else {
-            return false
-        }
         let point = touch.location(in: self)
         guard bounds.contains(point) else {
             return false

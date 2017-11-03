@@ -10,17 +10,20 @@ import SnapKit
 
 internal class JJCircleImageView: UIView {
     
-    internal var circleColor = UIColor(red: 0.447, green: 0.769, blue: 0.447, alpha: 1.000) {
+    internal var circleColor = UIColor(hue:0.31, saturation:0.37, brightness:0.76, alpha:1.00) {
+        didSet {
+            updateDefaultHighligtedCircleColor()
+            setNeedsDisplay()
+        }
+    }
+    
+    internal var highligtedCircleColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    internal var highligtedCircleColor = UIColor.red {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
+    fileprivate var defaultHighligtedCircleColor: UIColor = UIColor(hue:0.31, saturation:0.37, brightness:0.66, alpha:1.00)
     
     internal var imageColor = UIColor.white {
         didSet {
@@ -80,11 +83,32 @@ internal class JJCircleImageView: UIView {
         circleRect.origin.y = (rect.height - diameter)/2
         
         let circlePath = UIBezierPath(ovalIn: circleRect)
-        let color = isHighlighted ? highligtedCircleColor : circleColor
-        color.setFill()
+        currentCircleColor.setFill()
         circlePath.fill()
         
         context.restoreGState()
+    }
+    
+    var currentCircleColor: UIColor {
+        if !isHighlighted {
+            return circleColor
+        }
+        
+        if let highligtedCircleColor = highligtedCircleColor {
+            return highligtedCircleColor
+        }
+        
+        return defaultHighligtedCircleColor
+    }
+    
+    func updateDefaultHighligtedCircleColor() {
+        var hue = CGFloat(0)
+        var satuaration = CGFloat(0)
+        var brightness = CGFloat(0)
+        var alpha = CGFloat(0)
+        circleColor.getHue(&hue, saturation: &satuaration, brightness: &brightness, alpha: &alpha)
+        var newBrightness = brightness > 0.5 ? brightness - 0.1 : brightness + 0.1
+        defaultHighligtedCircleColor = UIColor(hue: hue, saturation: satuaration, brightness: newBrightness, alpha: alpha)
     }
     
     override func updateConstraints() {
@@ -98,5 +122,5 @@ internal class JJCircleImageView: UIView {
         }
         
         super.updateConstraints()
-    }
+    }    
 }
