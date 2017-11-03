@@ -79,47 +79,51 @@ fileprivate extension JJActionItem {
     }
 }
 
-
 // MARK: Touches
 fileprivate extension JJActionItem {
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        updateTouches(touches)
+        updateHighlightedStateForTouches(touches)
     }
     
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
-        updateTouches(touches)
+        updateHighlightedStateForTouches(touches)
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        circleView.isHighlighted = false
+        if touchesAreTapInside(touches)
+        {
+            delegate?.actionButtonWasTapped(self)
+        }
+    }
+    
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        circleView.isHighlighted = false
+    }
+    
+    func updateHighlightedStateForTouches(_ touches: Set<UITouch>) {
+        circleView.isHighlighted = touchesAreTapInside(touches)
+    }
+    
+    func touchesAreTapInside(_ touches: Set<UITouch>) -> Bool {
         guard touches.count == 1 else {
-            return
+            return false
         }
         guard let touch = touches.first else {
-            return
+            return false
+        }
+        guard touch.tapCount == 1 else {
+            return false
         }
         let point = touch.location(in: self)
         guard bounds.contains(point) else {
-            return
+            return false
         }
         
-        delegate?.actionButtonWasTapped(self)
+        return true
     }
-    
-    func updateTouches(_ touches: Set<UITouch>) {
-        guard touches.count == 1 else {
-            return
-        }
-        guard let touch = touches.first else {
-            return
-        }
-        let point = touch.location(in: self)
-        guard bounds.contains(point) else {
-            return
-        }
-    
-        circleView.isHighlighted = true
-    }
-    
 }

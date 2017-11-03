@@ -16,6 +16,12 @@ internal class JJCircleImageView: UIView {
         }
     }
     
+    internal var highligtedCircleColor = UIColor.red {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
     internal var imageColor = UIColor.white {
         didSet {
             imageView.tintColor = imageColor
@@ -28,7 +34,11 @@ internal class JJCircleImageView: UIView {
         }
     }
     
-    internal var isHighlighted = false
+    internal var isHighlighted = false {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,7 +69,6 @@ internal class JJCircleImageView: UIView {
     }
     
     fileprivate func drawCircle(inRect rect: CGRect) {
-        
         let context = UIGraphicsGetCurrentContext()!
         context.saveGState()
         
@@ -71,14 +80,14 @@ internal class JJCircleImageView: UIView {
         circleRect.origin.y = (rect.height - diameter)/2
         
         let circlePath = UIBezierPath(ovalIn: circleRect)
-        circleColor.setFill()
+        let color = isHighlighted ? highligtedCircleColor : circleColor
+        color.setFill()
         circlePath.fill()
         
         context.restoreGState()
     }
     
     override func updateConstraints() {
-        
         imageView.snp.remakeConstraints { make in
             let imageSizeFactor = 1/sqrt(2)
             make.center.equalTo(self)
