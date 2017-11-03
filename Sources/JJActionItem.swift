@@ -19,9 +19,9 @@ internal protocol JJActionItemDelegate {
         }
     }
     
-    @objc open var icon: UIImage? {
+    @objc open var image: UIImage? {
         didSet {
-            self.circleView.image = icon
+            self.circleView.image = image
         }
     }
     
@@ -36,7 +36,7 @@ internal protocol JJActionItemDelegate {
     
     fileprivate(set) lazy var circleView: JJCircleImageView = {
         let view = JJCircleImageView()
-        view.image = self.icon
+        view.image = self.image
         return view
     }()
     

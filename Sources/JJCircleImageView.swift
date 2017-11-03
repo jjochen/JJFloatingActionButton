@@ -16,9 +16,9 @@ internal class JJCircleImageView: UIView {
         }
     }
     
-    internal var iconColor = UIColor.white {
+    internal var imageColor = UIColor.white {
         didSet {
-            imageView.tintColor = iconColor
+            imageView.tintColor = imageColor
         }
     }
 
@@ -80,12 +80,12 @@ internal class JJCircleImageView: UIView {
     override func updateConstraints() {
         
         imageView.snp.remakeConstraints { make in
-            let iconSizeFactor = 1/sqrt(2)
+            let imageSizeFactor = 1/sqrt(2)
             make.center.equalTo(self)
-            make.width.lessThanOrEqualTo(self.snp.width).multipliedBy(iconSizeFactor)
-            make.width.lessThanOrEqualTo(self.snp.height).multipliedBy(iconSizeFactor)
-            make.height.lessThanOrEqualTo(self.snp.width).multipliedBy(iconSizeFactor)
-            make.height.lessThanOrEqualTo(self.snp.height).multipliedBy(iconSizeFactor)
+            make.width.lessThanOrEqualTo(self.snp.width).multipliedBy(imageSizeFactor)
+            make.width.lessThanOrEqualTo(self.snp.height).multipliedBy(imageSizeFactor)
+            make.height.lessThanOrEqualTo(self.snp.width).multipliedBy(imageSizeFactor)
+            make.height.lessThanOrEqualTo(self.snp.height).multipliedBy(imageSizeFactor)
         }
         
         super.updateConstraints()
