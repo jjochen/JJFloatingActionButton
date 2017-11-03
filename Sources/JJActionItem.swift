@@ -64,13 +64,13 @@ fileprivate extension JJActionItem {
         addSubview(circleView)
         
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(self)
+            make.left.equalTo(self)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
         }
         
         circleView.snp.makeConstraints { make in
-            make.trailing.equalTo(self)
+            make.right.equalTo(self)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
             make.width.equalTo(circleView.snp.height)

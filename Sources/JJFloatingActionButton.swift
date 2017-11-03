@@ -100,8 +100,6 @@ import SnapKit
     
     @objc public var rotationAngle = -CGFloat.pi / 4
     
-    @objc public var animationDuration = TimeInterval(0.3)
-    
     @objc fileprivate(set) public var state: JJFloatingActionButtonState = .closed
     
     public override init(frame: CGRect) {
@@ -180,24 +178,51 @@ public extension JJFloatingActionButton {
         setNeedsLayout()
         layoutIfNeeded()
         
-        let animations: () -> Void = {
+        let animationGroup = DispatchGroup()
+        
+        let buttonAnimation: () -> Void = {
             self.overlayView.alpha = 1
             self.buttonView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
-            self.items.forEach { item in
+        }
+        self.animate(duration: 0.3,
+                     usingSpringWithDamping: 0.55,
+                     initialSpringVelocity: 0.3,
+                     animations: buttonAnimation,
+                     group: animationGroup,
+                     animated: animated)
+        
+        
+
+        var delay = 0.0
+        let scaleFactor = CGFloat(0.4)
+        for item in items {
+            let itemWidth = item.frame.width
+            let itemCircleWidth = item.circleView.frame.width
+            let translationX = (itemWidth - itemCircleWidth) * (1 - scaleFactor)/2
+            let scale = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
+            let translation = CGAffineTransform(translationX: translationX, y: 0)
+            item.transform = scale.concatenating(translation)
+            let itemAnimation: () -> Void = {
+                item.transform = .identity
                 item.alpha = 1
             }
+            
+            self.animate(duration: 0.3,
+                         delay: delay,
+                         usingSpringWithDamping: 0.55,
+                         initialSpringVelocity: 0.3,
+                         animations: itemAnimation,
+                         group: animationGroup,
+                         animated: animated)
+            
+            delay += 0.1
         }
-        let animationCompletion: (Bool) -> Void = { finished in
+        
+        animationGroup.notify(queue: .main) {
             self.state = .open
             self.delegate?.floatingActionButtonDidOpen?(self)
             completion?()
         }
-        
-        self.animate(usingSpringWithDamping: 0.55,
-                     initialSpringVelocity: 0.3,
-                     animations: animations,
-                     completion: animationCompletion,
-                     animated: animated)
     }
     
     @objc public func close(animated: Bool = true, completion: (() -> Void)? = nil) {
@@ -226,7 +251,8 @@ public extension JJFloatingActionButton {
             completion?()
         }
         
-        self.animate(usingSpringWithDamping: 0.6,
+        self.animate(duration: 0.3,
+                     usingSpringWithDamping: 0.6,
                      initialSpringVelocity: 0.8,
                      animations: animations,
                      completion: animationCompletion,
@@ -314,19 +340,27 @@ fileprivate extension JJFloatingActionButton {
         return image
     }
     
-    func animate(usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil, animated: Bool = true) {
+    func animate(duration: TimeInterval, delay: TimeInterval = 0, usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil, group: DispatchGroup? = nil, animated: Bool = true) {
+        
+        let groupedAnimations: () -> Void = {
+            group?.enter()
+            animations()
+        }
+        let groupedCompletion: (Bool) -> Void = { finished in
+            completion?(finished)
+            group?.leave()
+        }
+        
         if animated {
-            UIView.animate(withDuration: animationDuration,
-                           delay: 0,
+            UIView.animate(withDuration: duration,
+                           delay: delay,
                            usingSpringWithDamping: dampingRatio,
                            initialSpringVelocity: velocity,
-                           animations: animations,
-                           completion: completion)
+                           animations: groupedAnimations,
+                           completion: groupedCompletion)
         } else {
-            animations()
-            if let completion = completion {
-                completion(true)
-            }
+            groupedAnimations()
+            groupedCompletion(true)
         }
     }
 }
