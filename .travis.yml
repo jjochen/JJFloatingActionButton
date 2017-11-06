@@ -7,7 +7,6 @@ language: objective-c
 osx_image: xcode9.1
 cache:
   - cocoapods
-  - bundler
 podfile: Example/Podfile
 xcode_workspace: Example/FloatingActionButton.xcworkspace
 xcode_scheme: FloatingActionButton
@@ -20,5 +19,5 @@ install:
   - gem install cocoapods
   - pod install --repo-update --project-directory=Example
 script:
-  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/FloatingActionButton.xcworkspace -scheme FloatingActionButton -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/FloatingActionButton.xcworkspace -scheme FloatingActionButton -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.1' ONLY_ACTIVE_ARCH=NO | xcpretty
   - pod lib lint
