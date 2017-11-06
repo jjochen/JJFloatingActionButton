@@ -107,7 +107,7 @@ internal class JJCircleImageView: UIView {
         var brightness = CGFloat(0)
         var alpha = CGFloat(0)
         circleColor.getHue(&hue, saturation: &satuaration, brightness: &brightness, alpha: &alpha)
-        var newBrightness = brightness > 0.5 ? brightness - 0.1 : brightness + 0.1
+        let newBrightness = brightness > 0.5 ? brightness - 0.1 : brightness + 0.1
         defaultHighligtedCircleColor = UIColor(hue: hue, saturation: satuaration, brightness: newBrightness, alpha: alpha)
     }
     

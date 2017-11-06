@@ -150,8 +150,9 @@ public extension JJFloatingActionButton {
         delegate?.floatingActionButtonWillOpen?(self)
         overlayView.isEnabled = true
         
+        
         superview.bringSubview(toFront: self)
-        superview.insertSubview(overlayView, belowSubview: buttonView)
+        superview.insertSubview(overlayView, belowSubview: self)
         overlayView.snp.makeConstraints { make in
             make.edges.equalTo(superview)
         }
@@ -363,49 +364,6 @@ fileprivate extension JJFloatingActionButton {
             groupedCompletion(true)
         }
     }
-}
-
-// MARK: Touches
-fileprivate extension JJFloatingActionButton {
-    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        
-        if state == .open, let openItems = openItems {
-            for item in openItems {
-                if item.isHidden || !item.isUserInteractionEnabled {
-                    continue
-                }
-                let pointInItem = item.convert(point, from: self)
-                if item.bounds.contains(pointInItem)  {
-                    return item.hitTest(pointInItem, with: event)
-                }
-            }
-        }
-        return super.hitTest(point, with: event)
-    }
-    
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        updateHighlightedStateForTouches(touches)
-    }
-    
-    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        updateHighlightedStateForTouches(touches)
-    }
-    
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        buttonView.isHighlighted = false
-        if touchesAreTapInside(touches)
-        {
-            buttonWasTapped()
-        }
-    }
-    
-    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-        buttonView.isHighlighted = false
-    }
     
     func updateHighlightedStateForTouches(_ touches: Set<UITouch>) {
         buttonView.isHighlighted = touchesAreTapInside(touches)
@@ -458,9 +416,53 @@ fileprivate extension JJFloatingActionButton {
     }
 }
 
+// MARK: Touches
+extension JJFloatingActionButton {
+    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        
+        if state == .open, let openItems = openItems {
+            for item in openItems {
+                if item.isHidden || !item.isUserInteractionEnabled {
+                    continue
+                }
+                let pointInItem = item.convert(point, from: self)
+                if item.bounds.contains(pointInItem)  {
+                    return item.hitTest(pointInItem, with: event)
+                }
+            }
+        }
+        return super.hitTest(point, with: event)
+    }
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        updateHighlightedStateForTouches(touches)
+    }
+    
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        updateHighlightedStateForTouches(touches)
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        buttonView.isHighlighted = false
+        if touchesAreTapInside(touches)
+        {
+            buttonWasTapped()
+        }
+    }
+    
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        buttonView.isHighlighted = false
+    }
+}
+
 extension JJFloatingActionButton: JJActionItemDelegate {
     func actionButtonWasTapped(_ item: JJActionItem) {
-        close()
-        item.action?(item)
+        close() {
+            item.action?(item)
+        }
     }
 }
