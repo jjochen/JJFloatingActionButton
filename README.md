@@ -5,4 +5,4 @@ Floating Action Button for iOS
 
 
 ## Preview
-![Preview](https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif)
+![Preview](./Images/JJFloatingActionButton.gif)
