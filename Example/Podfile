@@ -1,0 +1,24 @@
+project 'FloatingActionButton.xcodeproj'
+
+platform :ios, '9.0'
+
+target 'FloatingActionButton' do
+  use_frameworks!
+
+  pod 'JJFloatingActionButton', :path => '../'
+
+  target 'FloatingActionButtonTests' do
+    inherit! :search_paths
+
+    pod 'Quick'
+    pod 'Nimble'
+    pod 'Nimble-Snapshots'
+
+  end
+
+  target 'FloatingActionButtonUITests' do
+    inherit! :search_paths
+
+  end
+
+end
