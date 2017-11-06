@@ -5,6 +5,4 @@ Floating Action Button for iOS
 
 
 ## Preview
-
-## Preview
-<img src="./Images/JJFloatingActionButton.gif" width='187' alt="Preview">
+<img src="./Images/JJFloatingActionButton.gif" width='250' alt="Preview">
