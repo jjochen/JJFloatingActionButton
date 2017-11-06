@@ -12,44 +12,44 @@ internal protocol JJActionItemDelegate {
 }
 
 @objc open class JJActionItem: UIView {
-    
+
     @objc open var title: String? {
         didSet {
-            self.titleLabel.text = title
+            titleLabel.text = title
         }
     }
-    
+
     @objc open var image: UIImage? {
         didSet {
-            self.circleView.image = image
+            circleView.image = image
         }
     }
-    
-    @objc open var action: ((JJActionItem) -> ())?
-    
+
+    @objc open var action: ((JJActionItem) -> Void)?
+
     fileprivate(set) lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = self.title
         titleLabel.numberOfLines = 1
         return titleLabel
-    } ()
-    
+    }()
+
     fileprivate(set) lazy var circleView: JJCircleImageView = {
         let view = JJCircleImageView()
         view.image = self.image
         return view
     }()
-    
+
     internal var delegate: JJActionItemDelegate?
-    
+
     fileprivate var isSingleTouchInside = false
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-    
-    required public init?(coder aDecoder: NSCoder) {
+
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -59,16 +59,16 @@ fileprivate extension JJActionItem {
     func setup() {
         backgroundColor = UIColor.clear
         isUserInteractionEnabled = true
-        
+
         addSubview(titleLabel)
         addSubview(circleView)
-        
+
         titleLabel.snp.makeConstraints { make in
             make.left.equalTo(self)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
         }
-        
+
         circleView.snp.makeConstraints { make in
             make.right.equalTo(self)
             make.top.equalTo(self)
@@ -77,11 +77,11 @@ fileprivate extension JJActionItem {
             make.leading.equalTo(titleLabel.snp.trailing).offset(12)
         }
     }
-    
+
     func updateHighlightedStateForTouches(_ touches: Set<UITouch>) {
         circleView.isHighlighted = touchesAreTapInside(touches)
     }
-    
+
     func touchesAreTapInside(_ touches: Set<UITouch>) -> Bool {
         guard touches.count == 1 else {
             return false
@@ -93,7 +93,7 @@ fileprivate extension JJActionItem {
         guard bounds.contains(point) else {
             return false
         }
-        
+
         return true
     }
 }
@@ -104,21 +104,20 @@ extension JJActionItem {
         super.touchesBegan(touches, with: event)
         updateHighlightedStateForTouches(touches)
     }
-    
+
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesMoved(touches, with: event)
         updateHighlightedStateForTouches(touches)
     }
-    
-   open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         circleView.isHighlighted = false
-        if touchesAreTapInside(touches)
-        {
+        if touchesAreTapInside(touches) {
             delegate?.actionButtonWasTapped(self)
         }
     }
-    
+
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesCancelled(touches, with: event)
         circleView.isHighlighted = false
