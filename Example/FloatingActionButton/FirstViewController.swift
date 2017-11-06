@@ -11,10 +11,11 @@ import JJFloatingActionButton
 
 class FirstViewController: UIViewController {
 
-    let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let actionButton = JJFloatingActionButton()
 
         actionButton.addItem(title: "item 1", image: UIImage(named: "first")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
