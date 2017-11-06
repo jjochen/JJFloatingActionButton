@@ -21,6 +21,7 @@
 		193EE9BB1FB06FCB00C5FA9E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 193EE9B71FB06FCB00C5FA9E /* README.md */; };
 		193EE9BC1FB06FCB00C5FA9E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 193EE9B81FB06FCB00C5FA9E /* .gitignore */; };
 		193EE9BD1FB06FCB00C5FA9E /* JJFloatingActionButton.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 193EE9B91FB06FCB00C5FA9E /* JJFloatingActionButton.podspec */; };
+		193EE9BF1FB0754A00C5FA9E /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 193EE9BE1FB0754A00C5FA9E /* .travis.yml */; };
 		65DCEA9A0F4B3CC82499F291 /* Pods_FloatingActionButtonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E134FD4A6AF6BA517D8B7B75 /* Pods_FloatingActionButtonTests.framework */; };
 		80B12DF79E2CDF6F9DB350F3 /* Pods_FloatingActionButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E71D62FAC345F9352A599A82 /* Pods_FloatingActionButton.framework */; };
 		B2B5C92E30AE2784D066B7C7 /* Pods_FloatingActionButtonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FD828396FF2AA19E31F4752 /* Pods_FloatingActionButtonUITests.framework */; };
@@ -64,6 +65,7 @@
 		193EE9B71FB06FCB00C5FA9E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		193EE9B81FB06FCB00C5FA9E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		193EE9B91FB06FCB00C5FA9E /* JJFloatingActionButton.podspec */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; name = JJFloatingActionButton.podspec; path = ../JJFloatingActionButton.podspec; sourceTree = "<group>"; tabWidth = 2; };
+		193EE9BE1FB0754A00C5FA9E /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .travis.yml; path = ../.travis.yml; sourceTree = "<group>"; };
 		1FD828396FF2AA19E31F4752 /* Pods_FloatingActionButtonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FloatingActionButtonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56804E4E6763D695507FB5D5 /* Pods-FloatingActionButtonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloatingActionButtonUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FloatingActionButtonUITests/Pods-FloatingActionButtonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5E99D89810BE8408E794ABDB /* Pods-FloatingActionButtonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FloatingActionButtonTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FloatingActionButtonTests/Pods-FloatingActionButtonTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				193EE9B91FB06FCB00C5FA9E /* JJFloatingActionButton.podspec */,
 				193EE9B31FB0630000C5FA9E /* Gemfile */,
 				193EE9B21FB0630000C5FA9E /* Podfile */,
+				193EE9BE1FB0754A00C5FA9E /* .travis.yml */,
 				193EE9B81FB06FCB00C5FA9E /* .gitignore */,
 				193EE9B71FB06FCB00C5FA9E /* README.md */,
 				193EE9B61FB06FCB00C5FA9E /* LICENSE */,
@@ -310,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				193EE9BF1FB0754A00C5FA9E /* .travis.yml in Resources */,
 				193EE9BC1FB06FCB00C5FA9E /* .gitignore in Resources */,
 				193EE9BA1FB06FCB00C5FA9E /* LICENSE in Resources */,
 				193EE98E1FB05B8B00C5FA9E /* LaunchScreen.storyboard in Resources */,
