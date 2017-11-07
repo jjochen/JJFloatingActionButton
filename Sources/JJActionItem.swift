@@ -29,14 +29,14 @@ internal protocol JJActionItemDelegate {
 
     fileprivate(set) lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = self.title
+        titleLabel.text = title
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
 
     fileprivate(set) lazy var circleView: JJCircleImageView = {
         let view = JJCircleImageView()
-        view.image = self.image
+        view.image = image
         return view
     }()
 

@@ -124,7 +124,7 @@ public extension JJFloatingActionButton {
 }
 
 public extension JJFloatingActionButton {
-    @objc @discardableResult public func addItem(title: String?, image: UIImage?, action: ((JJActionItem) -> Void)?) -> JJActionItem {
+    @objc @discardableResult public func addItem(title: String? = nil, image: UIImage? = nil, action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
         let item = JJActionItem()
         item.title = title
         item.image = image
@@ -141,7 +141,7 @@ public extension JJFloatingActionButton {
         guard state == .closed else {
             return
         }
-        guard let superview = self.superview else {
+        guard let superview = superview else {
             return
         }
         state = .opening
@@ -314,14 +314,14 @@ fileprivate extension JJFloatingActionButton {
     }
 
     func configureItem(_ item: JJActionItem) {
-        item.circleView.circleColor = self.itemButtonColor
-        item.circleView.imageColor = self.itemImageColor
-        item.titleLabel.font = self.itemTitleFont
-        item.titleLabel.textColor = self.itemTitleColor
-        item.layer.shadowColor = self.itemShadowColor.cgColor
-        item.layer.shadowOpacity = self.itemShadowOpacity
-        item.layer.shadowOffset = self.itemShadowOffset
-        item.layer.shadowRadius = self.itemShadowRadius
+        item.circleView.circleColor = itemButtonColor
+        item.circleView.imageColor = itemImageColor
+        item.titleLabel.font = itemTitleFont
+        item.titleLabel.textColor = itemTitleColor
+        item.layer.shadowColor = itemShadowColor.cgColor
+        item.layer.shadowOpacity = itemShadowOpacity
+        item.layer.shadowOffset = itemShadowOffset
+        item.layer.shadowRadius = itemShadowRadius
         item.delegate = self
     }
 
@@ -448,9 +448,6 @@ extension JJFloatingActionButton {
 
         if state == .open, let openItems = openItems {
             for item in openItems {
-                if item.isHidden || !item.isUserInteractionEnabled {
-                    continue
-                }
                 let pointInItem = item.convert(point, from: self)
                 if item.bounds.contains(pointInItem) {
                     return item.hitTest(pointInItem, with: event)
