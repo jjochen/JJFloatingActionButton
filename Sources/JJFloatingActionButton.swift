@@ -1,6 +1,5 @@
 
 import UIKit
-import SnapKit
 
 @objc public enum JJFloatingActionButtonState: Int {
     case closed
@@ -151,26 +150,26 @@ public extension JJFloatingActionButton {
 
         superview.bringSubview(toFront: self)
         superview.insertSubview(overlayView, belowSubview: self)
-        overlayView.snp.makeConstraints { make in
-            make.edges.equalTo(superview)
-        }
+        
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        
 
         var previousItem: JJActionItem?
         for item in items {
-            if item.isHidden {
-                continue
-            }
+            let previousView = previousItem ?? buttonView
             item.alpha = 0
             item.transform = .identity
             insertSubview(item, belowSubview: buttonView)
-            item.snp.makeConstraints { make in
-                let previousView = previousItem ?? buttonView
-                make.height.equalTo(buttonView).multipliedBy(itemSizeRatio)
-                make.bottom.equalTo(previousView.snp.top).offset(-interItemSpacing)
-            }
-            item.circleView.snp.makeConstraints { make in
-                make.centerX.equalTo(buttonView)
-            }
+            
+            item.translatesAutoresizingMaskIntoConstraints = false
+            item.heightAnchor.constraint(equalTo: buttonView.heightAnchor, multiplier: itemSizeRatio).isActive = true
+            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
+            item.circleView.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor).isActive = true
+            
             previousItem = item
         }
         openItems = items
@@ -276,30 +275,37 @@ fileprivate extension JJFloatingActionButton {
         clipsToBounds = false
 
         addSubview(buttonView)
-        buttonView.snp.makeConstraints { make in
-            make.center.equalTo(self)
-            make.width.equalTo(buttonView.snp.height)
-            make.size.lessThanOrEqualTo(self)
-            make.size.equalTo(self).priority(.high)
-        }
-
+        
+        buttonView.translatesAutoresizingMaskIntoConstraints = false
+        buttonView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        buttonView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        buttonView.widthAnchor.constraint(equalTo: buttonView.heightAnchor).isActive = true
+        buttonView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor).isActive = true
+        buttonView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor).isActive = true
+        let widthConstraint = buttonView.widthAnchor.constraint(equalTo: widthAnchor)
+        widthConstraint.priority = .defaultHigh
+        widthConstraint.isActive = true
+        let heightConstraint = buttonView.heightAnchor.constraint(equalTo: heightAnchor)
+        heightConstraint.priority = .defaultHigh
+        heightConstraint.isActive = true
+        
         configureButton()
     }
 
     func defaultButtonView() -> JJCircleImageView {
         let view = JJCircleImageView()
-        view.circleColor = self.buttonColor
-        view.imageColor = self.buttonImageColor
-        view.layer.shadowColor = self.shadowColor.cgColor
-        view.layer.shadowOffset = self.shadowOffset
-        view.layer.shadowOpacity = self.shadowOpacity
-        view.layer.shadowRadius = self.shadowRadius
+        view.circleColor = buttonColor
+        view.imageColor = buttonImageColor
+        view.layer.shadowColor = shadowColor.cgColor
+        view.layer.shadowOffset = shadowOffset
+        view.layer.shadowOpacity = shadowOpacity
+        view.layer.shadowRadius = shadowRadius
         return view
     }
 
     func defaultOverlayView() -> UIControl {
         let control = UIControl()
-        control.backgroundColor = self.overlayColor
+        control.backgroundColor = overlayColor
         control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
         control.isUserInteractionEnabled = true
         control.isEnabled = false
