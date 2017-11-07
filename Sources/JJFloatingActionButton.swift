@@ -152,12 +152,11 @@ public extension JJFloatingActionButton {
         superview.insertSubview(overlayView, belowSubview: self)
         
         overlayView.translatesAutoresizingMaskIntoConstraints = false
-        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        overlayView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        overlayView.topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+        overlayView.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
+        overlayView.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
+        overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
         
-
         var previousItem: JJActionItem?
         for item in items {
             let previousView = previousItem ?? buttonView
