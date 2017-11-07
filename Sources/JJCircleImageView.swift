@@ -54,7 +54,7 @@ internal class JJCircleImageView: UIView {
     }
 
     open override func draw(_: CGRect) {
-        drawCircle(inRect: self.bounds)
+        drawCircle(inRect: bounds)
     }
 
     fileprivate lazy var imageView: UIImageView = {
