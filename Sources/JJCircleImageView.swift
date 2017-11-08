@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 internal class JJCircleImageView: UIView {
 
@@ -54,7 +53,7 @@ internal class JJCircleImageView: UIView {
     }
 
     open override func draw(_: CGRect) {
-        drawCircle(inRect: self.bounds)
+        drawCircle(inRect: bounds)
     }
 
     fileprivate lazy var imageView: UIImageView = {
@@ -69,6 +68,15 @@ internal class JJCircleImageView: UIView {
         clipsToBounds = false
 
         addSubview(imageView)
+        
+        let imageSizeMuliplier = CGFloat(1 / sqrt(2))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: imageSizeMuliplier).isActive = true
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: imageSizeMuliplier).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: imageSizeMuliplier).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: imageSizeMuliplier).isActive = true
     }
 
     fileprivate func drawCircle(inRect rect: CGRect) {
@@ -109,18 +117,5 @@ internal class JJCircleImageView: UIView {
         circleColor.getHue(&hue, saturation: &satuaration, brightness: &brightness, alpha: &alpha)
         let newBrightness = brightness > 0.5 ? brightness - 0.1 : brightness + 0.1
         defaultHighligtedCircleColor = UIColor(hue: hue, saturation: satuaration, brightness: newBrightness, alpha: alpha)
-    }
-
-    override func updateConstraints() {
-        imageView.snp.remakeConstraints { make in
-            let imageSizeFactor = 1 / sqrt(2)
-            make.center.equalTo(self)
-            make.width.lessThanOrEqualTo(self.snp.width).multipliedBy(imageSizeFactor)
-            make.width.lessThanOrEqualTo(self.snp.height).multipliedBy(imageSizeFactor)
-            make.height.lessThanOrEqualTo(self.snp.width).multipliedBy(imageSizeFactor)
-            make.height.lessThanOrEqualTo(self.snp.height).multipliedBy(imageSizeFactor)
-        }
-
-        super.updateConstraints()
     }
 }

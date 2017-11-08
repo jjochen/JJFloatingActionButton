@@ -29,14 +29,14 @@ internal protocol JJActionItemDelegate {
 
     fileprivate(set) lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = self.title
+        titleLabel.text = title
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
 
     fileprivate(set) lazy var circleView: JJCircleImageView = {
         let view = JJCircleImageView()
-        view.image = self.image
+        view.image = image
         return view
     }()
 
@@ -63,19 +63,17 @@ fileprivate extension JJActionItem {
         addSubview(titleLabel)
         addSubview(circleView)
 
-        titleLabel.snp.makeConstraints { make in
-            make.left.equalTo(self)
-            make.top.equalTo(self)
-            make.bottom.equalTo(self)
-        }
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
-        circleView.snp.makeConstraints { make in
-            make.right.equalTo(self)
-            make.top.equalTo(self)
-            make.bottom.equalTo(self)
-            make.width.equalTo(circleView.snp.height)
-            make.leading.equalTo(titleLabel.snp.trailing).offset(12)
-        }
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        circleView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        circleView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        circleView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
+        circleView.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 12).isActive = true
     }
 
     func updateHighlightedStateForTouches(_ touches: Set<UITouch>) {

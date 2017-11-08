@@ -32,12 +32,10 @@ actionButton.addItem(title: "item 1", image: UIImage(named: "first")?.withRender
 }
 
 actionButton.addItem(title: "item 2", image: UIImage(named: "second")?.withRenderingMode(.alwaysTemplate)) { item in
-self.showMessage(for: item)
   // do something
 }
 
 actionButton.addItem(title: "item 3", image: nil) { item in
-self.showMessage(for: item)
   // do something
 }
 
