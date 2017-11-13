@@ -17,21 +17,25 @@ Floating Action Button for iOS
 
 ## Installation
 ### CocoaPods
+
+JJFloatingActionButton is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
 ```ruby
-use_frameworks!
 pod 'JJFloatingActionButton'
 ```
+
 
 ## Usage
 ### Swift
 ```swift
 let actionButton = JJFloatingActionButton()
 
-actionButton.addItem(title: "item 1", image: UIImage(named: "first")?.withRenderingMode(.alwaysTemplate)) { item in
+actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
   // do something
 }
 
-actionButton.addItem(title: "item 2", image: UIImage(named: "second")?.withRenderingMode(.alwaysTemplate)) { item in
+actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
   // do something
 }
 
@@ -44,7 +48,14 @@ actionButton.translatesAutoresizingMaskIntoConstraints = false
 actionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
 actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
 ```
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Author
+
+Jochen Pfeiffer, pod@jochen-pfeiffer.com
 
 ## License
 
-Photo Stickers is available under the MIT license. See the LICENSE file for more info.
+JJFloatingActionButton is available under the MIT license. See the LICENSE file for more info.

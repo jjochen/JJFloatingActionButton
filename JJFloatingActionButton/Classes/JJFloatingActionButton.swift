@@ -150,25 +150,25 @@ public extension JJFloatingActionButton {
 
         superview.bringSubview(toFront: self)
         superview.insertSubview(overlayView, belowSubview: self)
-        
+
         overlayView.translatesAutoresizingMaskIntoConstraints = false
         overlayView.topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
         overlayView.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
         overlayView.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
         overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-        
+
         var previousItem: JJActionItem?
         for item in items {
             let previousView = previousItem ?? buttonView
             item.alpha = 0
             item.transform = .identity
             insertSubview(item, belowSubview: buttonView)
-            
+
             item.translatesAutoresizingMaskIntoConstraints = false
             item.heightAnchor.constraint(equalTo: buttonView.heightAnchor, multiplier: itemSizeRatio).isActive = true
             item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
             item.circleView.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor).isActive = true
-            
+
             previousItem = item
         }
         openItems = items
@@ -274,7 +274,7 @@ fileprivate extension JJFloatingActionButton {
         clipsToBounds = false
 
         addSubview(buttonView)
-        
+
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         buttonView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -287,7 +287,7 @@ fileprivate extension JJFloatingActionButton {
         let heightConstraint = buttonView.heightAnchor.constraint(equalTo: heightAnchor)
         heightConstraint.priority = .defaultHigh
         heightConstraint.isActive = true
-        
+
         configureButton()
     }
 
