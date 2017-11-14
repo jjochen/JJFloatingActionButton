@@ -13,10 +13,12 @@ cache:
   - bundler
   - cocoapods
 podfile: Example/Podfile
-before_install:
+install:
   - gem install bundler
   - bundle install
   - bundle exec pod install --repo-update --project-directory=Example
 script:
-  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/JJFloatingActionButton.xcworkspace -scheme JJFloatingActionButton-Example -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.1' ONLY_ACTIVE_ARCH=NO | xcpretty
+  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/JJFloatingActionButton.xcworkspace -scheme JJFloatingActionButton_Example -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.1' ONLY_ACTIVE_ARCH=NO | bundle exec xcpretty
   - bundle exec pod lib lint
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
