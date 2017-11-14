@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "193EE97D1FB05B8B00C5FA9E"
-               BuildableName = "FloatingActionButton.app"
-               BlueprintName = "FloatingActionButton"
-               ReferencedContainer = "container:FloatingActionButton.xcodeproj">
+               BlueprintIdentifier = "198B65FC1FBAE904009A17F2"
+               BuildableName = "JJFloatingActionButton_Example.app"
+               BlueprintName = "JJFloatingActionButton_Example"
+               ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,36 +27,27 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "193EE9931FB05B8B00C5FA9E"
-               BuildableName = "FloatingActionButtonTests.xctest"
-               BlueprintName = "FloatingActionButtonTests"
-               ReferencedContainer = "container:FloatingActionButton.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "193EE99E1FB05B8B00C5FA9E"
-               BuildableName = "FloatingActionButtonUITests.xctest"
-               BlueprintName = "FloatingActionButtonUITests"
-               ReferencedContainer = "container:FloatingActionButton.xcodeproj">
+               BlueprintIdentifier = "198B66121FBAE904009A17F2"
+               BuildableName = "JJFloatingActionButton_Tests.xctest"
+               BlueprintName = "JJFloatingActionButton_Tests"
+               ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "193EE97D1FB05B8B00C5FA9E"
-            BuildableName = "FloatingActionButton.app"
-            BlueprintName = "FloatingActionButton"
-            ReferencedContainer = "container:FloatingActionButton.xcodeproj">
+            BlueprintIdentifier = "198B65FC1FBAE904009A17F2"
+            BuildableName = "JJFloatingActionButton_Example.app"
+            BlueprintName = "JJFloatingActionButton_Example"
+            ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -77,10 +68,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "193EE97D1FB05B8B00C5FA9E"
-            BuildableName = "FloatingActionButton.app"
-            BlueprintName = "FloatingActionButton"
-            ReferencedContainer = "container:FloatingActionButton.xcodeproj">
+            BlueprintIdentifier = "198B65FC1FBAE904009A17F2"
+            BuildableName = "JJFloatingActionButton_Example.app"
+            BlueprintName = "JJFloatingActionButton_Example"
+            ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,10 +87,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "193EE97D1FB05B8B00C5FA9E"
-            BuildableName = "FloatingActionButton.app"
-            BlueprintName = "FloatingActionButton"
-            ReferencedContainer = "container:FloatingActionButton.xcodeproj">
+            BlueprintIdentifier = "198B65FC1FBAE904009A17F2"
+            BuildableName = "JJFloatingActionButton_Example.app"
+            BlueprintName = "JJFloatingActionButton_Example"
+            ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

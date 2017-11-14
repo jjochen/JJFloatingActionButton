@@ -68,7 +68,7 @@ internal class JJCircleImageView: UIView {
         clipsToBounds = false
 
         addSubview(imageView)
-        
+
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

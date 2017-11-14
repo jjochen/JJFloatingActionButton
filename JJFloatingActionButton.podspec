@@ -6,12 +6,15 @@ Pod::Spec.new do |spec|
   spec.homepage = 'https://github.com/jjochen/JJFloatingActionButton'
   spec.source   = { :git => 'https://github.com/jjochen/JJFloatingActionButton.git', :tag => spec.version.to_s }
   spec.summary  = 'Floating Action Button for iOS'
-  
-  spec.platform = :ios, '9.0'
-  
+
+  spec.platform = :ios
+  spec.ios.deployment_target = '9.0'
+
   spec.requires_arc = true
-  spec.frameworks   = 'UIKit', 'Foundation'
-  
-  spec.source_files = 'Sources/*.swift'
-  spec.ios.resource_bundle = { 'JJFloatingActionButton' => 'Resources/*.xcassets' }
+  spec.frameworks   = 'UIKit'
+
+  spec.source_files = 'JJFloatingActionButton/Classes/**/*'
+  spec.resource_bundles = {
+    'JJFloatingActionButton' => ['JJFloatingActionButton/Assets/*.xcassets']
+  }
 end

@@ -9,8 +9,7 @@
 import Quick
 import Nimble
 import Nimble_Snapshots
-
-@testable import JJFloatingActionButton
+import JJFloatingActionButton
 
 class FloatingActionButtonTests: QuickSpec {
 

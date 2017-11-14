@@ -1,6 +1,6 @@
 //
 //  FirstViewController.swift
-//  FloatingActionButton
+//  JJFloatingActionButton
 //
 //  Created by Jochen on 06.11.17.
 //  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
@@ -16,11 +16,11 @@ class FirstViewController: UIViewController {
 
         let actionButton = JJFloatingActionButton()
 
-        actionButton.addItem(title: "item 1", image: UIImage(named: "first")?.withRenderingMode(.alwaysTemplate)) { item in
+        actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
 
-        actionButton.addItem(title: "item 2", image: UIImage(named: "second")?.withRenderingMode(.alwaysTemplate)) { item in
+        actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
 
@@ -30,8 +30,13 @@ class FirstViewController: UIViewController {
 
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        actionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
-        actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        if #available(iOS 11.0, *) {
+            actionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
+            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        } else {
+            actionButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
+            actionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
+        }
     }
 }
 
