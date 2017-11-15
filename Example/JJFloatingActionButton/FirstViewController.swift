@@ -16,6 +16,26 @@ class FirstViewController: UIViewController {
 
         let actionButton = JJFloatingActionButton()
 
+        actionButton.buttonColor = UIColor.red
+        actionButton.defaultButtonImage = UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate)
+        actionButton.buttonImageColor = UIColor.white
+        actionButton.shadowColor = UIColor.black
+        actionButton.shadowOffset = CGSize(width: 0, height: 1)
+        actionButton.shadowOpacity = Float(0.5)
+        actionButton.shadowRadius = CGFloat(2)
+        actionButton.overlayColor = UIColor(white: 0, alpha: 0.5)
+        actionButton.itemTitleFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        actionButton.itemButtonColor = UIColor.white
+        actionButton.itemImageColor = UIColor.red
+        actionButton.itemTitleColor = UIColor.white
+        actionButton.itemShadowColor = UIColor.black
+        actionButton.itemShadowOffset = CGSize(width: 0, height: 1)
+        actionButton.itemShadowOpacity = Float(0.4)
+        actionButton.itemShadowRadius = CGFloat(2)
+        actionButton.itemSizeRatio = CGFloat(0.75)
+        actionButton.interItemSpacing = CGFloat(12)
+        actionButton.rotationAngle = -CGFloat.pi / 4
+
         actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
