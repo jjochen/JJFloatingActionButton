@@ -76,21 +76,69 @@ import UIKit
         }
     }
 
-    @objc public var itemTitleFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+    @objc public var itemTitleFont = UIFont.systemFont(ofSize: UIFont.systemFontSize) {
+        didSet {
+            items.forEach { item in
+                item.titleLabel.font = itemTitleFont
+            }
+        }
+    }
 
-    @objc public var itemButtonColor = UIColor.white
+    @objc public var itemButtonColor = UIColor.white {
+        didSet {
+            items.forEach { item in
+                item.circleView.circleColor = itemButtonColor
+            }
+        }
+    }
 
-    @objc public var itemImageColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
+    @objc public var itemImageColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00) {
+        didSet {
+            items.forEach { item in
+                item.circleView.imageColor = itemImageColor
+            }
+        }
+    }
 
-    @objc public var itemTitleColor = UIColor.white
+    @objc public var itemTitleColor = UIColor.white {
+        didSet {
+            items.forEach { item in
+                item.titleLabel.textColor = itemTitleColor
+            }
+        }
+    }
 
-    @objc public var itemShadowColor = UIColor.black
+    @objc public var itemShadowColor = UIColor.black {
+        didSet {
+            items.forEach { item in
+                item.layer.shadowColor = itemShadowColor.cgColor
+            }
+        }
+    }
 
-    @objc public var itemShadowOffset = CGSize(width: 0, height: 1)
+    @objc public var itemShadowOffset = CGSize(width: 0, height: 1) {
+        didSet {
+            items.forEach { item in
+                item.layer.shadowOffset = itemShadowOffset
+            }
+        }
+    }
 
-    @objc public var itemShadowOpacity = Float(0.4)
+    @objc public var itemShadowOpacity = Float(0.4) {
+        didSet {
+            items.forEach { item in
+                item.layer.shadowOpacity = itemShadowOpacity
+            }
+        }
+    }
 
-    @objc public var itemShadowRadius = CGFloat(2)
+    @objc public var itemShadowRadius = CGFloat(2) {
+        didSet {
+            items.forEach { item in
+                item.layer.shadowRadius = itemShadowRadius
+            }
+        }
+    }
 
     @objc public var itemSizeRatio = CGFloat(0.75)
 
@@ -144,6 +192,9 @@ public extension JJFloatingActionButton {
         guard let superview = superview else {
             return
         }
+        guard items.count > 1 else {
+            return
+        }
         state = .opening
         delegate?.floatingActionButtonWillOpen?(self)
         overlayView.isEnabled = true
@@ -180,7 +231,7 @@ public extension JJFloatingActionButton {
 
         let buttonAnimation: () -> Void = {
             self.overlayView.alpha = 1
-            self.buttonView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
+            self.buttonView.imageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
         }
         animate(duration: 0.3,
                 usingSpringWithDamping: 0.55,
@@ -207,10 +258,15 @@ public extension JJFloatingActionButton {
             delay += 0.1
         }
 
-        animationGroup.notify(queue: .main) {
+        let groupCompletion: () -> Void = {
             self.state = .open
             self.delegate?.floatingActionButtonDidOpen?(self)
             completion?()
+        }
+        if (animated) {
+            animationGroup.notify(queue: .main, execute: groupCompletion)
+        } else {
+            groupCompletion()
         }
     }
 
@@ -226,7 +282,7 @@ public extension JJFloatingActionButton {
 
         let buttonAnimations: () -> Void = {
             self.overlayView.alpha = 0
-            self.buttonView.transform = CGAffineTransform(rotationAngle: 0)
+            self.buttonView.imageView.transform = CGAffineTransform(rotationAngle: 0)
         }
         let buttonAnimationCompletion: (Bool) -> Void = { _ in
             self.overlayView.removeFromSuperview()
@@ -236,6 +292,7 @@ public extension JJFloatingActionButton {
                 initialSpringVelocity: 0.8,
                 animations: buttonAnimations,
                 completion: buttonAnimationCompletion,
+                group: animationGroup,
                 animated: animated)
 
         var delay = 0.0
@@ -258,12 +315,17 @@ public extension JJFloatingActionButton {
 
             delay += 0.1
         }
-
-        animationGroup.notify(queue: .main) {
+        
+        let groupCompletion: () -> Void = {
             self.openItems = nil
             self.state = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
             completion?()
+        }
+        if (animated) {
+            animationGroup.notify(queue: .main, execute: groupCompletion)
+        } else {
+            groupCompletion()
         }
     }
 }
