@@ -30,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		0BB37FAB0B0023FC171E7401 /* Pods-JJFloatingActionButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		193808CF1FBCA063002EF4C0 /* .codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .codecov.yml; path = ../../.codecov.yml; sourceTree = "<group>"; };
 		198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJFloatingActionButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B66001FBAE904009A17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		198B66021FBAE904009A17F2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 		198B66221FBAED9E009A17F2 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				193808CF1FBCA063002EF4C0 /* .codecov.yml */,
 				198B662D1FBAEE16009A17F2 /* .gitignore */,
 				198B662E1FBAEE16009A17F2 /* .swift-version */,
 				198B662F1FBAEE16009A17F2 /* .travis.yml */,
