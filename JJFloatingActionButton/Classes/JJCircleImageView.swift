@@ -56,7 +56,7 @@ internal class JJCircleImageView: UIView {
         drawCircle(inRect: bounds)
     }
 
-    fileprivate lazy var imageView: UIImageView = {
+    fileprivate(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = UIColor.clear
