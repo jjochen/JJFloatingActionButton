@@ -11,11 +11,11 @@ env:
     - LANG=en_US.UTF-8
     - WORKSPACE="Example/JJFloatingActionButton.xcworkspace"
     - SCHEME="JJFloatingActionButton_Example"
-    - SDK="iphonesimulator"
+    - SDK="iphonesimulator11.0"
   matrix:
     - DESTINATION="OS=11.0,name=iPhone X"        POD_LINT="YES" TEST_COVERAGE="YES"
     - DESTINATION="OS=10.3.1,name=iPhone 7 Plus" POD_LINT="NO"  TEST_COVERAGE="NO"
-    - DESTINATION="OS=9.0,name=iPhone 6"         POD_LINT="NO"  TEST_COVERAGE="NO"
+    - DESTINATION="OS=9.3,name=iPhone 6"         POD_LINT="NO"  TEST_COVERAGE="NO"
 cache:
   - cocoapods
 podfile: Example/Podfile

@@ -55,7 +55,7 @@ class FirstViewController: UIViewController {
             actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
         } else {
             actionButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
+            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
         }
     }
 }
