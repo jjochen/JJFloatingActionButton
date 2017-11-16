@@ -44,7 +44,6 @@
 		198B66191FBAE904009A17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		198B66231FBAEDD6009A17F2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = LICENSE; path = ../LICENSE; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B66241FBAEDD6009A17F2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; tabWidth = 2; };
-		198B66251FBAEDD6009A17F2 /* Gemfile.lock */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; lineEnding = 0; name = Gemfile.lock; path = ../Gemfile.lock; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B66261FBAEDD6009A17F2 /* Gemfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; lineEnding = 0; name = Gemfile; path = ../Gemfile; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B66271FBAEDD7009A17F2 /* JJFloatingActionButton.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; lineEnding = 0; name = JJFloatingActionButton.podspec; path = ../JJFloatingActionButton.podspec; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B662D1FBAEE16009A17F2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = .gitignore; path = ../.gitignore; sourceTree = SOURCE_ROOT; tabWidth = 2; };
@@ -130,7 +129,6 @@
 				198B662E1FBAEE16009A17F2 /* .swift-version */,
 				198B662F1FBAEE16009A17F2 /* .travis.yml */,
 				198B66261FBAEDD6009A17F2 /* Gemfile */,
-				198B66251FBAEDD6009A17F2 /* Gemfile.lock */,
 				198B66271FBAEDD7009A17F2 /* JJFloatingActionButton.podspec */,
 				198B66231FBAEDD6009A17F2 /* LICENSE */,
 				198B66241FBAEDD6009A17F2 /* README.md */,
