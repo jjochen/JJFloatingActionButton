@@ -8,7 +8,7 @@
 import UIKit
 
 internal protocol JJActionItemDelegate {
-    func actionButtonWasTapped(_ item: JJActionItem)
+    func actionItemWasTapped(_ item: JJActionItem)
 }
 
 @objc open class JJActionItem: UIView {
@@ -112,7 +112,7 @@ extension JJActionItem {
         super.touchesEnded(touches, with: event)
         circleView.isHighlighted = false
         if touchesAreTapInside(touches) {
-            delegate?.actionButtonWasTapped(self)
+            delegate?.actionItemWasTapped(self)
         }
     }
 

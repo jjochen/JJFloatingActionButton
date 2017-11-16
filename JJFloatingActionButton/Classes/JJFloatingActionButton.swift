@@ -543,7 +543,7 @@ extension JJFloatingActionButton {
 }
 
 extension JJFloatingActionButton: JJActionItemDelegate {
-    func actionButtonWasTapped(_ item: JJActionItem) {
+    func actionItemWasTapped(_ item: JJActionItem) {
         close {
             item.action?(item)
         }
