@@ -40,6 +40,16 @@
                ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "19037EFD1FBE2D2200138594"
+               BuildableName = "JJFloatingActionButton_UITests.xctest"
+               BlueprintName = "JJFloatingActionButton_UITests"
+               ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

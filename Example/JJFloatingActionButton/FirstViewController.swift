@@ -15,6 +15,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
 
         let actionButton = JJFloatingActionButton()
+        actionButton.accessibilityIdentifier = "FloatingActionButton"
 
         actionButton.buttonColor = UIColor.red
         actionButton.defaultButtonImage = UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate)
@@ -36,17 +37,20 @@ class FirstViewController: UIViewController {
         actionButton.interItemSpacing = CGFloat(12)
         actionButton.rotationAngle = -CGFloat.pi / 4
 
-        actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
+        let item1 = actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
+        item1.accessibilityIdentifier = "Item1"
 
-        actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
+        let item2 = actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
+        item2.accessibilityIdentifier = "Item2"
 
-        actionButton.addItem(title: "item 3") { item in
+        let item3 = actionButton.addItem(title: "item 3") { item in
             self.showMessage(for: item)
         }
+        item3.accessibilityIdentifier = "Item3"
 
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false

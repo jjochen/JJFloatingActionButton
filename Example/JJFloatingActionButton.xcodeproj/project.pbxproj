@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19037EF91FBE24BE00138594 /* JJCircleImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19037EF81FBE24BE00138594 /* JJCircleImageViewTests.swift */; };
+		19037F011FBE2D2200138594 /* JJFloatingActionButton_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19037F001FBE2D2200138594 /* JJFloatingActionButton_UITests.swift */; };
 		198B66011FBAE904009A17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66001FBAE904009A17F2 /* AppDelegate.swift */; };
 		198B66031FBAE904009A17F2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66021FBAE904009A17F2 /* FirstViewController.swift */; };
 		198B66051FBAE904009A17F2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66041FBAE904009A17F2 /* SecondViewController.swift */; };
@@ -20,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		19037F031FBE2D2200138594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 198B65F51FBAE904009A17F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 198B65FC1FBAE904009A17F2;
+			remoteInfo = JJFloatingActionButton_Example;
+		};
 		198B66141FBAE904009A17F2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 198B65F51FBAE904009A17F2 /* Project object */;
@@ -32,6 +40,9 @@
 /* Begin PBXFileReference section */
 		0BB37FAB0B0023FC171E7401 /* Pods-JJFloatingActionButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		19037EF81FBE24BE00138594 /* JJCircleImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCircleImageViewTests.swift; sourceTree = "<group>"; };
+		19037EFE1FBE2D2200138594 /* JJFloatingActionButton_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJFloatingActionButton_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19037F001FBE2D2200138594 /* JJFloatingActionButton_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButton_UITests.swift; sourceTree = "<group>"; };
+		19037F021FBE2D2200138594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		193808CF1FBCA063002EF4C0 /* .codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .codecov.yml; path = ../../.codecov.yml; sourceTree = "<group>"; };
 		198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJFloatingActionButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B66001FBAE904009A17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +70,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		19037EFB1FBE2D2200138594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		198B65FA1FBAE904009A17F2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,12 +96,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19037EFF1FBE2D2200138594 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				19037F001FBE2D2200138594 /* JJFloatingActionButton_UITests.swift */,
+				19037F021FBE2D2200138594 /* Info.plist */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
 		198B65F41FBAE904009A17F2 = {
 			isa = PBXGroup;
 			children = (
 				198B66221FBAED9E009A17F2 /* Metadata */,
 				198B65FF1FBAE904009A17F2 /* Example */,
 				198B66161FBAE904009A17F2 /* Tests */,
+				19037EFF1FBE2D2200138594 /* UITests */,
 				198B65FE1FBAE904009A17F2 /* Products */,
 				E856BC1F0187074E2AE323D2 /* Pods */,
 				98997F76DCA7BC500318C59A /* Frameworks */,
@@ -95,6 +123,7 @@
 			children = (
 				198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */,
 				198B66131FBAE904009A17F2 /* JJFloatingActionButton_Tests.xctest */,
+				19037EFE1FBE2D2200138594 /* JJFloatingActionButton_UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +192,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		19037EFD1FBE2D2200138594 /* JJFloatingActionButton_UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19037F051FBE2D2200138594 /* Build configuration list for PBXNativeTarget "JJFloatingActionButton_UITests" */;
+			buildPhases = (
+				19037EFA1FBE2D2200138594 /* Sources */,
+				19037EFB1FBE2D2200138594 /* Frameworks */,
+				19037EFC1FBE2D2200138594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19037F041FBE2D2200138594 /* PBXTargetDependency */,
+			);
+			name = JJFloatingActionButton_UITests;
+			productName = JJFloatingActionButton_UITests;
+			productReference = 19037EFE1FBE2D2200138594 /* JJFloatingActionButton_UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		198B65FC1FBAE904009A17F2 /* JJFloatingActionButton_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 198B661C1FBAE904009A17F2 /* Build configuration list for PBXNativeTarget "JJFloatingActionButton_Example" */;
@@ -214,6 +261,11 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Jochen Pfeiffer";
 				TargetAttributes = {
+					19037EFD1FBE2D2200138594 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 198B65FC1FBAE904009A17F2;
+					};
 					198B65FC1FBAE904009A17F2 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -240,11 +292,19 @@
 			targets = (
 				198B65FC1FBAE904009A17F2 /* JJFloatingActionButton_Example */,
 				198B66121FBAE904009A17F2 /* JJFloatingActionButton_Tests */,
+				19037EFD1FBE2D2200138594 /* JJFloatingActionButton_UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		19037EFC1FBE2D2200138594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		198B65FB1FBAE904009A17F2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +436,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		19037EFA1FBE2D2200138594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19037F011FBE2D2200138594 /* JJFloatingActionButton_UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		198B65F91FBAE904009A17F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +466,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		19037F041FBE2D2200138594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 198B65FC1FBAE904009A17F2 /* JJFloatingActionButton_Example */;
+			targetProxy = 19037F031FBE2D2200138594 /* PBXContainerItemProxy */;
+		};
 		198B66151FBAE904009A17F2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 198B65FC1FBAE904009A17F2 /* JJFloatingActionButton_Example */;
@@ -425,6 +498,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		19037F061FBE2D2200138594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.JJFloatingActionButton-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JJFloatingActionButton_Example;
+			};
+			name = Debug;
+		};
+		19037F071FBE2D2200138594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.JJFloatingActionButton-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JJFloatingActionButton_Example;
+			};
+			name = Release;
+		};
 		198B661A1FBAE904009A17F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -603,6 +706,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		19037F051FBE2D2200138594 /* Build configuration list for PBXNativeTarget "JJFloatingActionButton_UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19037F061FBE2D2200138594 /* Debug */,
+				19037F071FBE2D2200138594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		198B65F81FBAE904009A17F2 /* Build configuration list for PBXProject "JJFloatingActionButton" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
