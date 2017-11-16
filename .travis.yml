@@ -28,7 +28,7 @@ script:
   - xcodebuild -showsdks
 
   - if [ $TEST_COVERAGE == "YES" ]; then
-      xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug -enableCodeCoverage YES ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES CODE_SIGNING_REQUIRED=NO;
+      xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug -enableCodeCoverage YES ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGNING_REQUIRED=NO;
     else
       xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug -enableCodeCoverage NO ONLY_ACTIVE_ARCH=NO ENABLE_TESTABILITY=YES CODE_SIGNING_REQUIRED=NO | xcpretty;
     fi
