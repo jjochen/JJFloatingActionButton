@@ -15,7 +15,7 @@ class JJFloatingActionButtonTests: QuickSpec {
 
     override func spec() {
 
-        describe("FloatingActionButton") {
+        describe("JJFloatingActionButton") {
 
             let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
             let actionButtonFrame = CGRect(origin: CGPoint(x: 130, y: 230), size: CGSize(width: 56, height: 56))
@@ -27,8 +27,9 @@ class JJFloatingActionButtonTests: QuickSpec {
                 superview.backgroundColor = .white
 
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
-
                 superview.addSubview(actionButton)
+
+                setNimbleTolerance(1)
             }
 
             it("looks correct by default") {
