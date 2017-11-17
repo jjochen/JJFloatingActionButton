@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19037EF91FBE24BE00138594 /* JJCircleImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19037EF81FBE24BE00138594 /* JJCircleImageViewTests.swift */; };
+		19037EF91FBE24BE00138594 /* JJCircleImageView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19037EF81FBE24BE00138594 /* JJCircleImageView_Tests.swift */; };
 		19037F011FBE2D2200138594 /* JJFloatingActionButton_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19037F001FBE2D2200138594 /* JJFloatingActionButton_UITests.swift */; };
 		198B66011FBAE904009A17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66001FBAE904009A17F2 /* AppDelegate.swift */; };
 		198B66031FBAE904009A17F2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66021FBAE904009A17F2 /* FirstViewController.swift */; };
@@ -15,7 +15,7 @@
 		198B66081FBAE904009A17F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B66061FBAE904009A17F2 /* Main.storyboard */; };
 		198B660A1FBAE904009A17F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
 		198B660D1FBAE904009A17F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B660B1FBAE904009A17F2 /* LaunchScreen.storyboard */; };
-		198B66181FBAE904009A17F2 /* JJFloatingActionButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66171FBAE904009A17F2 /* JJFloatingActionButtonTests.swift */; };
+		198B66181FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */; };
 		670545CDCCEB3A802A4365BA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6B211035FF29C8540AA171 /* Pods_JJFloatingActionButton_Example.framework */; };
 		9D81F5228E5A5C73C92D4676 /* Pods_JJFloatingActionButton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B45E946DEDA5B5171860DB /* Pods_JJFloatingActionButton_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0BB37FAB0B0023FC171E7401 /* Pods-JJFloatingActionButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		19037EF81FBE24BE00138594 /* JJCircleImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCircleImageViewTests.swift; sourceTree = "<group>"; };
+		19037EF81FBE24BE00138594 /* JJCircleImageView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCircleImageView_Tests.swift; sourceTree = "<group>"; };
 		19037EFE1FBE2D2200138594 /* JJFloatingActionButton_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJFloatingActionButton_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19037F001FBE2D2200138594 /* JJFloatingActionButton_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButton_UITests.swift; sourceTree = "<group>"; };
 		19037F021FBE2D2200138594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		198B660C1FBAE904009A17F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		198B660E1FBAE904009A17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		198B66131FBAE904009A17F2 /* JJFloatingActionButton_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJFloatingActionButton_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		198B66171FBAE904009A17F2 /* JJFloatingActionButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonTests.swift; sourceTree = "<group>"; };
+		198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButton_Tests.swift; sourceTree = "<group>"; };
 		198B66191FBAE904009A17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		198B66231FBAEDD6009A17F2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = LICENSE; path = ../LICENSE; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B66241FBAEDD6009A17F2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; tabWidth = 2; };
@@ -146,8 +146,8 @@
 		198B66161FBAE904009A17F2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				198B66171FBAE904009A17F2 /* JJFloatingActionButtonTests.swift */,
-				19037EF81FBE24BE00138594 /* JJCircleImageViewTests.swift */,
+				198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */,
+				19037EF81FBE24BE00138594 /* JJCircleImageView_Tests.swift */,
 				198B66191FBAE904009A17F2 /* Info.plist */,
 			);
 			path = Tests;
@@ -458,8 +458,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19037EF91FBE24BE00138594 /* JJCircleImageViewTests.swift in Sources */,
-				198B66181FBAE904009A17F2 /* JJFloatingActionButtonTests.swift in Sources */,
+				19037EF91FBE24BE00138594 /* JJCircleImageView_Tests.swift in Sources */,
+				198B66181FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

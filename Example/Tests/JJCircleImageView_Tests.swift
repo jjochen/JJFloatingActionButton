@@ -11,7 +11,7 @@ import Nimble
 import Nimble_Snapshots
 @testable import JJFloatingActionButton
 
-class JJCircleImageViewTests: QuickSpec {
+class JJCircleImageView_Tests: QuickSpec {
 
     override func spec() {
 
