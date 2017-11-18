@@ -30,4 +30,4 @@ script:
   - pod lib lint
   
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -J 'JJFloatingActionButton'
+  - bash <(curl -s https://codecov.io/bash)
