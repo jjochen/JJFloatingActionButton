@@ -43,6 +43,7 @@
 		19037EFE1FBE2D2200138594 /* JJFloatingActionButton_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJFloatingActionButton_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19037F001FBE2D2200138594 /* JJFloatingActionButton_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButton_UITests.swift; sourceTree = "<group>"; };
 		19037F021FBE2D2200138594 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19037F0D1FC2ED7B00138594 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		193808CF1FBCA063002EF4C0 /* .codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .codecov.yml; path = ../../.codecov.yml; sourceTree = "<group>"; };
 		198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJFloatingActionButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B66001FBAE904009A17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +165,7 @@
 				198B66271FBAEDD7009A17F2 /* JJFloatingActionButton.podspec */,
 				198B66231FBAEDD6009A17F2 /* LICENSE */,
 				198B66241FBAEDD6009A17F2 /* README.md */,
+				19037F0D1FC2ED7B00138594 /* CHANGELOG.md */,
 			);
 			name = Metadata;
 			path = JJFloatingActionButton;

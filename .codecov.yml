@@ -6,8 +6,8 @@ coverage:
   round: nearest
   range: "60...100"
   ignore:
-  - *_Tests.*
-  - *_UITests.*
+  - "*_Tests.*"
+  - "*_UITests.*"
 
 status:
   project:
