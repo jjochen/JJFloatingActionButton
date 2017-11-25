@@ -64,7 +64,7 @@ internal class JJCircleImageView: UIView {
         return circleView
     }()
 
-    fileprivate var highligtedCircleColorFallback: UIColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.66, alpha: 1.00)
+    fileprivate var highligtedCircleColorFallback = UIColor.defaultHighlightedButtonColor
 }
 
 fileprivate extension JJCircleImageView {
@@ -114,12 +114,6 @@ fileprivate extension JJCircleImageView {
     }
     
     func updateHighligtedCircleColorFallback() {
-        var hue = CGFloat(0)
-        var satuaration = CGFloat(0)
-        var brightness = CGFloat(0)
-        var alpha = CGFloat(0)
-        circleColor.getHue(&hue, saturation: &satuaration, brightness: &brightness, alpha: &alpha)
-        let newBrightness = brightness > 0.5 ? brightness - 0.1 : brightness + 0.1
-        highligtedCircleColorFallback = UIColor(hue: hue, saturation: satuaration, brightness: newBrightness, alpha: alpha)
+        highligtedCircleColorFallback = circleColor.highlightedVersion
     }
 }
