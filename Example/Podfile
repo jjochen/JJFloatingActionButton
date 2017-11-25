@@ -15,9 +15,5 @@ target 'JJFloatingActionButton_Example' do
     pod 'Nimble-Snapshots'
 
   end
-
-  target 'JJFloatingActionButton_UITests' do
-    inherit! :search_paths
-    
-  end
+  
 end

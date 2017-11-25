@@ -16,11 +16,8 @@
 		198B660A1FBAE904009A17F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
 		198B660D1FBAE904009A17F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B660B1FBAE904009A17F2 /* LaunchScreen.storyboard */; };
 		198B66181FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */; };
-		4E127D03EAFA1245152D141C /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B19AF17CF5CEC7F6D41C441 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_UITests.framework */; };
-		670545CDCCEB3A802A4365BA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6B211035FF29C8540AA171 /* Pods_JJFloatingActionButton_Example.framework */; };
-		79D03B173A610A41D4D6CFC8 /* Pods_JJFloatingActionButton_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6920D8D5BDF4ECC605ADF6F3 /* Pods_JJFloatingActionButton_UITests.framework */; };
-		9D81F5228E5A5C73C92D4676 /* Pods_JJFloatingActionButton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B45E946DEDA5B5171860DB /* Pods_JJFloatingActionButton_Tests.framework */; };
-		EDEACBACBB8F73B892908668 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A02E2D4700E20923D8F61D3 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_Tests.framework */; };
+		2239EB8C92AD42AB79A037CA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75526023A5E4A843EAE2F986 /* Pods_JJFloatingActionButton_Example.framework */; };
+		D9B3C9FC35FD2B2E58308A4C /* Pods_JJFloatingActionButton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47ADD51D359629C3321DB781 /* Pods_JJFloatingActionButton_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03049A1F6F513BF22D6AAD86 /* Pods-JJFloatingActionButton_UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_UITests/Pods-JJFloatingActionButton_UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0BB37FAB0B0023FC171E7401 /* Pods-JJFloatingActionButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		19037EF81FBE24BE00138594 /* JJCircleImageView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCircleImageView_Tests.swift; sourceTree = "<group>"; };
 		19037EFE1FBE2D2200138594 /* JJFloatingActionButton_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJFloatingActionButton_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,15 +63,11 @@
 		198B662D1FBAEE16009A17F2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = .gitignore; path = ../.gitignore; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B662E1FBAEE16009A17F2 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = ".swift-version"; path = "../.swift-version"; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B662F1FBAEE16009A17F2 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = .travis.yml; path = ../.travis.yml; sourceTree = SOURCE_ROOT; tabWidth = 2; };
-		1A02E2D4700E20923D8F61D3 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Example_JJFloatingActionButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		20B45E946DEDA5B5171860DB /* Pods_JJFloatingActionButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47ADD51D359629C3321DB781 /* Pods_JJFloatingActionButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6332F06691AC394EF8E25D29 /* Pods-JJFloatingActionButton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		6920D8D5BDF4ECC605ADF6F3 /* Pods_JJFloatingActionButton_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B19AF17CF5CEC7F6D41C441 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Example_JJFloatingActionButton_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75526023A5E4A843EAE2F986 /* Pods_JJFloatingActionButton_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC05B8AED72AB27DCD3079AB /* Pods-JJFloatingActionButton_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Example/Pods-JJFloatingActionButton_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F94946A1BDF4FA24817A62E6 /* Pods-JJFloatingActionButton_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Example/Pods-JJFloatingActionButton_Example.release.xcconfig"; sourceTree = "<group>"; };
-		FD0B542E9B934C34BFE94627 /* Pods-JJFloatingActionButton_UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_UITests/Pods-JJFloatingActionButton_UITests.release.xcconfig"; sourceTree = "<group>"; };
-		FD6B211035FF29C8540AA171 /* Pods_JJFloatingActionButton_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +75,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E127D03EAFA1245152D141C /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_UITests.framework in Frameworks */,
-				79D03B173A610A41D4D6CFC8 /* Pods_JJFloatingActionButton_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670545CDCCEB3A802A4365BA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */,
+				2239EB8C92AD42AB79A037CA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D81F5228E5A5C73C92D4676 /* Pods_JJFloatingActionButton_Tests.framework in Frameworks */,
-				EDEACBACBB8F73B892908668 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_Tests.framework in Frameworks */,
+				D9B3C9FC35FD2B2E58308A4C /* Pods_JJFloatingActionButton_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,11 +174,8 @@
 		98997F76DCA7BC500318C59A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FD6B211035FF29C8540AA171 /* Pods_JJFloatingActionButton_Example.framework */,
-				20B45E946DEDA5B5171860DB /* Pods_JJFloatingActionButton_Tests.framework */,
-				1A02E2D4700E20923D8F61D3 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_Tests.framework */,
-				9B19AF17CF5CEC7F6D41C441 /* Pods_JJFloatingActionButton_Example_JJFloatingActionButton_UITests.framework */,
-				6920D8D5BDF4ECC605ADF6F3 /* Pods_JJFloatingActionButton_UITests.framework */,
+				75526023A5E4A843EAE2F986 /* Pods_JJFloatingActionButton_Example.framework */,
+				47ADD51D359629C3321DB781 /* Pods_JJFloatingActionButton_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,8 +187,6 @@
 				F94946A1BDF4FA24817A62E6 /* Pods-JJFloatingActionButton_Example.release.xcconfig */,
 				0BB37FAB0B0023FC171E7401 /* Pods-JJFloatingActionButton_Tests.debug.xcconfig */,
 				6332F06691AC394EF8E25D29 /* Pods-JJFloatingActionButton_Tests.release.xcconfig */,
-				03049A1F6F513BF22D6AAD86 /* Pods-JJFloatingActionButton_UITests.debug.xcconfig */,
-				FD0B542E9B934C34BFE94627 /* Pods-JJFloatingActionButton_UITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -214,12 +198,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19037F051FBE2D2200138594 /* Build configuration list for PBXNativeTarget "JJFloatingActionButton_UITests" */;
 			buildPhases = (
-				A8F7E9764329786015CDDE1E /* [CP] Check Pods Manifest.lock */,
 				19037EFA1FBE2D2200138594 /* Sources */,
 				19037EFB1FBE2D2200138594 /* Frameworks */,
 				19037EFC1FBE2D2200138594 /* Resources */,
-				CBE6B5B357EA37CD6D56079E /* [CP] Embed Pods Frameworks */,
-				CD17C41BBDC56AF484BA2BF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -421,24 +402,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A8F7E9764329786015CDDE1E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JJFloatingActionButton_UITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		ACF272DCB18A3D59F39E371C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -452,39 +415,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJFloatingActionButton_Example/Pods-JJFloatingActionButton_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CBE6B5B357EA37CD6D56079E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-JJFloatingActionButton_Example-JJFloatingActionButton_UITests/Pods-JJFloatingActionButton_Example-JJFloatingActionButton_UITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/JJFloatingActionButton/JJFloatingActionButton.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JJFloatingActionButton.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJFloatingActionButton_UITests/Pods-JJFloatingActionButton_UITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD17C41BBDC56AF484BA2BF4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JJFloatingActionButton_UITests/Pods-JJFloatingActionButton_UITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F5FE33781E460C681F777EF6 /* [CP] Check Pods Manifest.lock */ = {
@@ -572,7 +502,6 @@
 /* Begin XCBuildConfiguration section */
 		19037F061FBE2D2200138594 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03049A1F6F513BF22D6AAD86 /* Pods-JJFloatingActionButton_UITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = UITests/Info.plist;
@@ -588,7 +517,6 @@
 		};
 		19037F071FBE2D2200138594 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD0B542E9B934C34BFE94627 /* Pods-JJFloatingActionButton_UITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = UITests/Info.plist;
