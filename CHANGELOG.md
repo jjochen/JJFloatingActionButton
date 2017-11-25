@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.2.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.2.1) (2017-11-25)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.2.0...0.2.1)
+
+**Bugfixes:**
+
+-  Fix snapshot tests
+
 ## [0.2.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.2.0) (2017-11-16)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.1.2...0.2.0)
 
