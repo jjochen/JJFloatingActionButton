@@ -29,7 +29,7 @@ class JJFloatingActionButton_Tests: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(0.01)
+                setNimbleTolerance(0.005)
             }
 
             it("does not open when tapped") {
@@ -49,7 +49,8 @@ class JJFloatingActionButton_Tests: QuickSpec {
 
             it("looks correct configured") {
                 actionButton.buttonColor = UIColor.blue
-                actionButton.defaultButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
+                actionButton.defaultButtonImage = UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)
+                actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
                 actionButton.shadowColor = UIColor.orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -81,7 +82,8 @@ class JJFloatingActionButton_Tests: QuickSpec {
                 actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = UIColor.blue
-                actionButton.defaultButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
+                actionButton.defaultButtonImage = UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)
+                actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
                 actionButton.shadowColor = UIColor.orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
