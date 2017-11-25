@@ -15,5 +15,5 @@ target 'JJFloatingActionButton_Example' do
     pod 'Nimble-Snapshots'
 
   end
-
+  
 end

@@ -11,7 +11,7 @@ internal protocol JJActionItemDelegate {
     func actionItemWasTapped(_ item: JJActionItem)
 }
 
-@objc open class JJActionItem: UIView {
+@objc open class JJActionItem: UIControl {
 
     @objc open var title: String? {
         didSet {
@@ -42,8 +42,6 @@ internal protocol JJActionItemDelegate {
 
     internal var delegate: JJActionItemDelegate?
 
-    fileprivate var isSingleTouchInside = false
-
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -55,10 +53,23 @@ internal protocol JJActionItemDelegate {
     }
 }
 
+extension JJActionItem {
+    open override var isHighlighted: Bool {
+        set {
+            super.isHighlighted = newValue
+            self.circleView.isHighlighted = newValue
+        }
+        get {
+            return super.isHighlighted
+        }
+    }
+}
+
 fileprivate extension JJActionItem {
     func setup() {
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         isUserInteractionEnabled = true
+        addTarget(self, action: #selector(itemWasTapped), for: .touchUpInside)
 
         addSubview(titleLabel)
         addSubview(circleView)
@@ -75,49 +86,8 @@ fileprivate extension JJActionItem {
         circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
         circleView.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 12).isActive = true
     }
-
-    func updateHighlightedStateForTouches(_ touches: Set<UITouch>) {
-        circleView.isHighlighted = touchesAreTapInside(touches)
-    }
-
-    func touchesAreTapInside(_ touches: Set<UITouch>) -> Bool {
-        guard touches.count == 1 else {
-            return false
-        }
-        guard let touch = touches.first else {
-            return false
-        }
-        let point = touch.location(in: self)
-        guard bounds.contains(point) else {
-            return false
-        }
-
-        return true
-    }
-}
-
-// MARK: Touches
-extension JJActionItem {
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        updateHighlightedStateForTouches(touches)
-    }
-
-    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        updateHighlightedStateForTouches(touches)
-    }
-
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        circleView.isHighlighted = false
-        if touchesAreTapInside(touches) {
-            delegate?.actionItemWasTapped(self)
-        }
-    }
-
-    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-        circleView.isHighlighted = false
+    
+    @objc func itemWasTapped() {
+        delegate?.actionItemWasTapped(self)
     }
 }
