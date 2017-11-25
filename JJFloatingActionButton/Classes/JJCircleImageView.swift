@@ -22,7 +22,6 @@ internal class JJCircleImageView: UIView {
         }
     }
 
-
     internal var imageColor = UIColor.white {
         didSet {
             imageView.tintColor = imageColor
@@ -50,7 +49,7 @@ internal class JJCircleImageView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     fileprivate(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -68,15 +67,15 @@ internal class JJCircleImageView: UIView {
 }
 
 fileprivate extension JJCircleImageView {
-    
+
     func setup() {
         backgroundColor = .clear
         clipsToBounds = false
         isUserInteractionEnabled = false
-        
+
         addSubview(circleView)
         addSubview(imageView)
-        
+
         circleView.translatesAutoresizingMaskIntoConstraints = false
         circleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         circleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -88,7 +87,7 @@ fileprivate extension JJCircleImageView {
         let circleHeight = circleView.heightAnchor.constraint(equalTo: heightAnchor)
         circleHeight.priority = .defaultHigh
         circleHeight.isActive = true
-        
+
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
@@ -96,23 +95,23 @@ fileprivate extension JJCircleImageView {
         imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
         imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
     }
-    
+
     func configureCircleView() {
         circleView.color = currentCircleColor
     }
-    
+
     var currentCircleColor: UIColor {
         if !isHighlighted {
             return circleColor
         }
-        
+
         if let highligtedCircleColor = highligtedCircleColor {
             return highligtedCircleColor
         }
-        
+
         return highligtedCircleColorFallback
     }
-    
+
     func updateHighligtedCircleColorFallback() {
         highligtedCircleColorFallback = circleColor.highlightedVersion
     }

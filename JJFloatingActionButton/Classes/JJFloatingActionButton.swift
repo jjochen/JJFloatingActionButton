@@ -257,7 +257,7 @@ public extension JJFloatingActionButton {
             self.delegate?.floatingActionButtonDidOpen?(self)
             completion?()
         }
-        if (animated) {
+        if animated {
             animationGroup.notify(queue: .main, execute: groupCompletion)
         } else {
             groupCompletion()
@@ -309,14 +309,14 @@ public extension JJFloatingActionButton {
 
             delay += 0.1
         }
-        
+
         let groupCompletion: () -> Void = {
             self.openItems = nil
             self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
             completion?()
         }
-        if (animated) {
+        if animated {
             animationGroup.notify(queue: .main, execute: groupCompletion)
         } else {
             groupCompletion()
@@ -488,7 +488,7 @@ fileprivate extension JJFloatingActionButton {
             break
         }
     }
-    
+
     @objc func overlayViewWasTapped() {
         close()
     }

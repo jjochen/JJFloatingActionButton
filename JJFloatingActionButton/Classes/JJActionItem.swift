@@ -86,7 +86,7 @@ fileprivate extension JJActionItem {
         circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
         circleView.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 12).isActive = true
     }
-    
+
     @objc func itemWasTapped() {
         delegate?.actionItemWasTapped(self)
     }
