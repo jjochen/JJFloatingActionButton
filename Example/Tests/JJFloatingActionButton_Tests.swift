@@ -29,7 +29,7 @@ class JJFloatingActionButton_Tests: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(1)
+                setNimbleTolerance(0.01)
             }
 
             it("looks correct by default") {

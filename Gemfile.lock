@@ -78,7 +78,7 @@ GEM
     public_suffix (3.0.1)
     rainbow (2.2.2)
       rake
-    rake (12.2.1)
+    rake (12.3.0)
     retriable (2.1.0)
     rouge (2.0.7)
     ruby-macho (1.1.0)
