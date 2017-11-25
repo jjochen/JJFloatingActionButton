@@ -53,7 +53,7 @@ internal protocol JJActionItemDelegate {
     }
 }
 
-public extension JJActionItem {
+extension JJActionItem {
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue

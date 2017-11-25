@@ -166,24 +166,6 @@ import UIKit
 }
 
 public extension JJFloatingActionButton {
-    open override var isHighlighted: Bool {
-        set {
-            super.isHighlighted = newValue
-            self.buttonView.isHighlighted = newValue
-        }
-        get {
-            return super.isHighlighted
-        }
-    }
-}
-
-public extension JJFloatingActionButton {
-    public override var intrinsicContentSize: CGSize {
-        return CGSize(width: 56, height: 56)
-    }
-}
-
-public extension JJFloatingActionButton {
     @objc @discardableResult public func addItem(title: String? = nil, image: UIImage? = nil, action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
         let item = JJActionItem()
         item.title = title
@@ -339,6 +321,24 @@ public extension JJFloatingActionButton {
         } else {
             groupCompletion()
         }
+    }
+}
+
+extension JJFloatingActionButton {
+    open override var isHighlighted: Bool {
+        set {
+            super.isHighlighted = newValue
+            self.buttonView.isHighlighted = newValue
+        }
+        get {
+            return super.isHighlighted
+        }
+    }
+}
+
+extension JJFloatingActionButton {
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 56, height: 56)
     }
 }
 
