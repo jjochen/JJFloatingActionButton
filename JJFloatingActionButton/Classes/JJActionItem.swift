@@ -57,7 +57,7 @@ internal protocol JJActionItemDelegate {
 
 fileprivate extension JJActionItem {
     func setup() {
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         isUserInteractionEnabled = true
 
         addSubview(titleLabel)

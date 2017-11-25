@@ -20,7 +20,7 @@ class JJCircleImageView_Tests: QuickSpec {
             var circleView: JJCircleImageView!
             beforeEach {
                 circleView = JJCircleImageView(frame: CGRect(origin: .zero, size: CGSize(width: 30, height: 30)))
-                setNimbleTolerance(1)
+                setNimbleTolerance(0.03)
             }
 
             it("looks correct by default") {

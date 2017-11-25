@@ -16,4 +16,8 @@ target 'JJFloatingActionButton_Example' do
 
   end
 
+  target 'JJFloatingActionButton_UITests' do
+    inherit! :search_paths
+    
+  end
 end

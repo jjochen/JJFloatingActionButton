@@ -112,6 +112,11 @@ class JJFloatingActionButton_Tests: QuickSpec {
                     it("items look correct") {
                         expect(superview) == snapshot()
                     }
+                    
+                    it("can't be opened again") {
+                        actionButton.open(animated: true)
+                        expect(actionButton.state) != JJFloatingActionButtonState.opening
+                    }
                 }
 
                 context("and is opened and closed") {
@@ -122,6 +127,11 @@ class JJFloatingActionButton_Tests: QuickSpec {
 
                     it("looks correct") {
                         expect(superview) == snapshot()
+                    }
+                    
+                    it("can't be closed again") {
+                        actionButton.open(animated: true)
+                        expect(actionButton.state) != JJFloatingActionButtonState.closing
                     }
                 }
 

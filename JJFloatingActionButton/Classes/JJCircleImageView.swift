@@ -9,20 +9,19 @@ import UIKit
 
 internal class JJCircleImageView: UIView {
 
-    internal var circleColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00) {
+    internal var circleColor = UIColor.defaultButtonColor {
         didSet {
-            updateDefaultHighligtedCircleColor()
-            setNeedsDisplay()
+            updateHighligtedCircleColorFallback()
+            configureCircleView()
         }
     }
 
     internal var highligtedCircleColor: UIColor? {
         didSet {
-            setNeedsDisplay()
+            configureCircleView()
         }
     }
 
-    fileprivate var defaultHighligtedCircleColor: UIColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.66, alpha: 1.00)
 
     internal var imageColor = UIColor.white {
         didSet {
@@ -38,7 +37,7 @@ internal class JJCircleImageView: UIView {
 
     internal var isHighlighted = false {
         didSet {
-            setNeedsDisplay()
+            configureCircleView()
         }
     }
 
@@ -51,71 +50,75 @@ internal class JJCircleImageView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-
-    open override func draw(_: CGRect) {
-        drawCircle(inRect: bounds)
-    }
-
+    
     fileprivate(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = UIColor.clear
+        imageView.backgroundColor = .clear
         return imageView
     }()
 
-    fileprivate func setup() {
+    fileprivate lazy var circleView: JJCircleView = {
+        let circleView = JJCircleView()
+        circleView.color = currentCircleColor
+        return circleView
+    }()
+
+    fileprivate var highligtedCircleColorFallback: UIColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.66, alpha: 1.00)
+}
+
+fileprivate extension JJCircleImageView {
+    
+    func setup() {
         backgroundColor = UIColor.clear
         clipsToBounds = false
-
+        
+        addSubview(circleView)
         addSubview(imageView)
-
+        
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        circleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        circleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        circleView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor).isActive = true
+        circleView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor).isActive = true
+        let circleWidth = circleView.widthAnchor.constraint(equalTo: widthAnchor)
+        circleWidth.priority = .defaultHigh
+        circleWidth.isActive = true
+        let circleHeight = circleView.heightAnchor.constraint(equalTo: heightAnchor)
+        circleHeight.priority = .defaultHigh
+        circleHeight.isActive = true
+        
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        imageView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: imageSizeMuliplier).isActive = true
-        imageView.widthAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: imageSizeMuliplier).isActive = true
-        imageView.heightAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: imageSizeMuliplier).isActive = true
-        imageView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: imageSizeMuliplier).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
     }
-
-    fileprivate func drawCircle(inRect rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()!
-        context.saveGState()
-
-        let diameter = min(rect.width, rect.height)
-        var circleRect = CGRect()
-        circleRect.size.width = diameter
-        circleRect.size.height = diameter
-        circleRect.origin.x = (rect.width - diameter) / 2
-        circleRect.origin.y = (rect.height - diameter) / 2
-
-        let circlePath = UIBezierPath(ovalIn: circleRect)
-        currentCircleColor.setFill()
-        circlePath.fill()
-
-        context.restoreGState()
+    
+    func configureCircleView() {
+        circleView.color = currentCircleColor
     }
-
+    
     var currentCircleColor: UIColor {
         if !isHighlighted {
             return circleColor
         }
-
+        
         if let highligtedCircleColor = highligtedCircleColor {
             return highligtedCircleColor
         }
-
-        return defaultHighligtedCircleColor
+        
+        return highligtedCircleColorFallback
     }
-
-    func updateDefaultHighligtedCircleColor() {
+    
+    func updateHighligtedCircleColorFallback() {
         var hue = CGFloat(0)
         var satuaration = CGFloat(0)
         var brightness = CGFloat(0)
         var alpha = CGFloat(0)
         circleColor.getHue(&hue, saturation: &satuaration, brightness: &brightness, alpha: &alpha)
         let newBrightness = brightness > 0.5 ? brightness - 0.1 : brightness + 0.1
-        defaultHighligtedCircleColor = UIColor(hue: hue, saturation: satuaration, brightness: newBrightness, alpha: alpha)
+        highligtedCircleColorFallback = UIColor(hue: hue, saturation: satuaration, brightness: newBrightness, alpha: alpha)
     }
 }

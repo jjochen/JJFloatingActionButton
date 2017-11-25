@@ -28,7 +28,7 @@ import UIKit
         }
     }
 
-    @objc public var buttonColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00) {
+    @objc public var buttonColor = UIColor.defaultButtonColor {
         didSet {
             buttonView.circleColor = buttonColor
         }
@@ -92,7 +92,7 @@ import UIKit
         }
     }
 
-    @objc public var itemImageColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00) {
+    @objc public var itemImageColor = UIColor.defaultButtonColor {
         didSet {
             items.forEach { item in
                 item.circleView.imageColor = itemImageColor
