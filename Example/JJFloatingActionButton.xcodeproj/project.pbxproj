@@ -161,11 +161,11 @@
 				198B662D1FBAEE16009A17F2 /* .gitignore */,
 				198B662E1FBAEE16009A17F2 /* .swift-version */,
 				198B662F1FBAEE16009A17F2 /* .travis.yml */,
+				19037F0D1FC2ED7B00138594 /* CHANGELOG.md */,
 				198B66261FBAEDD6009A17F2 /* Gemfile */,
 				198B66271FBAEDD7009A17F2 /* JJFloatingActionButton.podspec */,
 				198B66231FBAEDD6009A17F2 /* LICENSE */,
 				198B66241FBAEDD6009A17F2 /* README.md */,
-				19037F0D1FC2ED7B00138594 /* CHANGELOG.md */,
 			);
 			name = Metadata;
 			path = JJFloatingActionButton;
