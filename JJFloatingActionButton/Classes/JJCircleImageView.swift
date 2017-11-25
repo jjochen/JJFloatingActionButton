@@ -70,8 +70,9 @@ internal class JJCircleImageView: UIView {
 fileprivate extension JJCircleImageView {
     
     func setup() {
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         clipsToBounds = false
+        isUserInteractionEnabled = false
         
         addSubview(circleView)
         addSubview(imageView)
