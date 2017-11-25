@@ -56,6 +56,7 @@ actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnc
 ```swift
 var buttonColor: UIColor
 var defaultButtonImage: UIImage?
+var openButtonImage: UIImage?
 var buttonImageColor: UIColor
 var shadowColor: UIColor
 var shadowOffset: CGSize
