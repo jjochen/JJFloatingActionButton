@@ -1,9 +1,23 @@
 # Change Log
 
+## [0.3.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.3.0) (2017-11-26)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.2.1...0.3.0)
+
+**Implemented enhancements:**
+
+- Button should have configurable image for open state [\#18](https://github.com/jjochen/JJFloatingActionButton/issues/18)
+
+**Merged pull requests:**
+
+- add optional open button image [\#21](https://github.com/jjochen/JJFloatingActionButton/pull/21) ([jjochen](https://github.com/jjochen))
+- recreated gif, absolute url in readme [\#20](https://github.com/jjochen/JJFloatingActionButton/pull/20) ([jjochen](https://github.com/jjochen))
+- handle touches with uicontrol [\#19](https://github.com/jjochen/JJFloatingActionButton/pull/19) ([jjochen](https://github.com/jjochen))
+- Feature/improve test coverage [\#16](https://github.com/jjochen/JJFloatingActionButton/pull/16) ([jjochen](https://github.com/jjochen))
+
 ## [0.2.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.2.1) (2017-11-25)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.2.0...0.2.1)
 
-**Bugfixes:**
+**Fixed bugs:**
 
 -  Fix snapshot tests
 
