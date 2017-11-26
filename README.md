@@ -11,7 +11,7 @@ Floating Action Button for iOS
 
 
 ## Preview
-<img src="https://github.com/jjochen/JJFloatingActionButton/raw/develop/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
+<img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
 
 ## Requirements
 * iOS 9.0+
