@@ -40,6 +40,12 @@ import UIKit
         }
     }
 
+    @objc public var openButtonImage: UIImage? {
+        didSet {
+            configureButton()
+        }
+    }
+
     @objc public var buttonImageColor = UIColor.white {
         didSet {
             buttonView.imageColor = buttonImageColor
@@ -193,6 +199,8 @@ public extension JJFloatingActionButton {
         delegate?.floatingActionButtonWillOpen?(self)
         overlayView.isEnabled = true
 
+        configureButton()
+
         superview.bringSubview(toFront: self)
         superview.insertSubview(overlayView, belowSubview: self)
 
@@ -271,6 +279,8 @@ public extension JJFloatingActionButton {
         buttonState = .closing
         delegate?.floatingActionButtonWillClose?(self)
         overlayView.isEnabled = false
+
+        configureButton()
 
         let animationGroup = DispatchGroup()
 
@@ -405,20 +415,20 @@ fileprivate extension JJFloatingActionButton {
     }
 
     var currentButtonImage: UIImage? {
-        var image: UIImage?
-
-        if items.count == 1 {
-            image = items.first?.image
+        let useFirstItemImage = (items.count == 1)
+        if useFirstItemImage, let image = items.first?.image {
+            return image
         }
 
-        if image == nil {
-            if defaultButtonImage == nil {
-                defaultButtonImage = defaultButtonImageResource
-            }
-            image = defaultButtonImage
+        let useOpenButtonImage = (buttonState == .opening || buttonState == .open)
+        if useOpenButtonImage, let image = openButtonImage {
+            return image
         }
 
-        return image
+        if defaultButtonImage == nil {
+            defaultButtonImage = defaultButtonImageResource
+        }
+        return defaultButtonImage
     }
 
     var defaultButtonImageResource: UIImage? {
