@@ -11,7 +11,7 @@ import Nimble
 import Nimble_Snapshots
 @testable import JJFloatingActionButton
 
-class JJFloatingActionButtonTests: QuickSpec {
+class JJFloatingActionButton_Tests: QuickSpec {
 
     override func spec() {
 
@@ -29,16 +29,28 @@ class JJFloatingActionButtonTests: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(0.01)
+                setNimbleTolerance(0.005)
+            }
+
+            it("does not open when tapped") {
+                actionButton.sendActions(for: .touchUpInside)
+                expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
             }
 
             it("looks correct by default") {
                 expect(superview) == snapshot()
             }
 
+            it("looks correct highlighted") {
+                actionButton.isHighlighted = true
+                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(superview) == snapshot()
+            }
+
             it("looks correct configured") {
                 actionButton.buttonColor = UIColor.blue
-                actionButton.defaultButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
+                actionButton.defaultButtonImage = UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)
+                actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
                 actionButton.shadowColor = UIColor.orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -70,7 +82,8 @@ class JJFloatingActionButtonTests: QuickSpec {
                 actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = UIColor.blue
-                actionButton.defaultButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
+                actionButton.defaultButtonImage = UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)
+                actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
                 actionButton.shadowColor = UIColor.orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -95,9 +108,17 @@ class JJFloatingActionButtonTests: QuickSpec {
             }
 
             context("when multiple items are added") {
+                var action = "not done"
                 beforeEach {
-                    actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { _ in
+                        action = "done!"
+                    }
                     actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
+                }
+
+                it("opens when tapped") {
+                    actionButton.sendActions(for: .touchUpInside)
+                    expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.open))
                 }
 
                 context("and is opened") {
@@ -106,11 +127,62 @@ class JJFloatingActionButtonTests: QuickSpec {
                     }
 
                     it("has state open") {
-                        expect(actionButton.state) == JJFloatingActionButtonState.open
+                        expect(actionButton.buttonState) == JJFloatingActionButtonState.open
                     }
 
                     it("items look correct") {
                         expect(superview) == snapshot()
+                    }
+
+                    it("items look correct highlighted") {
+                        let item = actionButton.openItems![0]
+                        item.isHighlighted = true
+                        expect(item.isHighlighted).to(beTruthy())
+                        expect(superview) == snapshot()
+                    }
+
+                    it("can't be opened again") {
+                        actionButton.open(animated: true)
+                        expect(actionButton.buttonState) != JJFloatingActionButtonState.opening
+                    }
+
+                    context("and overlay is tapped") {
+                        beforeEach {
+                            actionButton.overlayView.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.closed))
+                        }
+                    }
+
+                    context("and button is tapped") {
+                        beforeEach {
+                            actionButton.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.closed))
+                        }
+
+                        it("does not perform action") {
+                            expect(action).toNotEventually(equal("done!"))
+                        }
+                    }
+
+                    context("and item is tapped") {
+                        beforeEach {
+                            let item = actionButton.openItems![0]
+                            item.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.closed))
+                        }
+
+                        it("performs action") {
+                            expect(action).toEventually(equal("done!"))
+                        }
                     }
                 }
 
@@ -123,6 +195,11 @@ class JJFloatingActionButtonTests: QuickSpec {
                     it("looks correct") {
                         expect(superview) == snapshot()
                     }
+
+                    it("can't be closed again") {
+                        actionButton.close(animated: true)
+                        expect(actionButton.buttonState) != JJFloatingActionButtonState.closing
+                    }
                 }
 
                 context("and is opened animated") {
@@ -131,11 +208,11 @@ class JJFloatingActionButtonTests: QuickSpec {
                     }
 
                     it("has state opening") {
-                        expect(actionButton.state) == JJFloatingActionButtonState.opening
+                        expect(actionButton.buttonState) == JJFloatingActionButtonState.opening
                     }
 
                     it("has eventually state open") {
-                        expect(actionButton.state).toEventually(equal(JJFloatingActionButtonState.open))
+                        expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.open))
                     }
                 }
 
@@ -146,18 +223,35 @@ class JJFloatingActionButtonTests: QuickSpec {
                     }
 
                     it("has state closing") {
-                        expect(actionButton.state) == JJFloatingActionButtonState.closing
+                        expect(actionButton.buttonState) == JJFloatingActionButtonState.closing
                     }
 
                     it("has eventually state closed") {
-                        expect(actionButton.state).toEventually(equal(JJFloatingActionButtonState.closed))
+                        expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
                     }
                 }
             }
 
             context("when 1 item is added") {
+                var action = "not done"
                 beforeEach {
-                    actionButton.addItem(title: "item", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { _ in
+                        action = "done!"
+                    }
+                }
+
+                context("and button is tapped") {
+                    beforeEach {
+                        actionButton.sendActions(for: .touchUpInside)
+                    }
+
+                    it("does not open") {
+                        expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
+                    }
+
+                    it("performs action") {
+                        expect(action).toEventually(equal("done!"))
+                    }
                 }
 
                 it("looks correct") {
@@ -170,7 +264,7 @@ class JJFloatingActionButtonTests: QuickSpec {
                     }
 
                     it("has state closed") {
-                        expect(actionButton.state) == JJFloatingActionButtonState.closed
+                        expect(actionButton.buttonState) == JJFloatingActionButtonState.closed
                     }
 
                     it("looks correct") {

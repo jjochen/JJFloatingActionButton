@@ -135,4 +135,9 @@ playground.xcworkspace
 
 fastlane/screenshots
 
+### Other Stuff ###
+
+# Only commit gif versions
+*.mov
+
 # End of https://www.gitignore.io/api/swift,cocoapods,ruby,fastlane

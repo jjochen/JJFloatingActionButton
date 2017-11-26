@@ -15,7 +15,7 @@ import UIKit
     @objc optional func floatingActionButtonDidClose(_ button: JJFloatingActionButton)
 }
 
-@objc public class JJFloatingActionButton: UIView {
+@objc public class JJFloatingActionButton: UIControl {
 
     @objc public var delegate: JJFloatingActionButtonDelegate?
 
@@ -28,13 +28,19 @@ import UIKit
         }
     }
 
-    @objc public var buttonColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00) {
+    @objc public var buttonColor = UIColor.defaultButtonColor {
         didSet {
             buttonView.circleColor = buttonColor
         }
     }
 
     @objc public var defaultButtonImage: UIImage? {
+        didSet {
+            configureButton()
+        }
+    }
+
+    @objc public var openButtonImage: UIImage? {
         didSet {
             configureButton()
         }
@@ -92,7 +98,7 @@ import UIKit
         }
     }
 
-    @objc public var itemImageColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00) {
+    @objc public var itemImageColor = UIColor.defaultButtonColor {
         didSet {
             items.forEach { item in
                 item.circleView.imageColor = itemImageColor
@@ -146,7 +152,7 @@ import UIKit
 
     @objc public var rotationAngle = -CGFloat.pi / 4
 
-    @objc public fileprivate(set) var state: JJFloatingActionButtonState = .closed
+    @objc public fileprivate(set) var buttonState: JJFloatingActionButtonState = .closed
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -158,17 +164,11 @@ import UIKit
         setup()
     }
 
-    fileprivate lazy var buttonView: JJCircleImageView = defaultButtonView()
+    internal lazy var buttonView: JJCircleImageView = defaultButtonView()
 
-    fileprivate lazy var overlayView: UIControl = defaultOverlayView()
+    internal lazy var overlayView: UIControl = defaultOverlayView()
 
-    fileprivate var openItems: [JJActionItem]?
-}
-
-public extension JJFloatingActionButton {
-    public override var intrinsicContentSize: CGSize {
-        return CGSize(width: 56, height: 56)
-    }
+    internal var openItems: [JJActionItem]?
 }
 
 public extension JJFloatingActionButton {
@@ -186,7 +186,7 @@ public extension JJFloatingActionButton {
     }
 
     @objc public func open(animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard state == .closed else {
+        guard buttonState == .closed else {
             return
         }
         guard let superview = superview else {
@@ -195,9 +195,11 @@ public extension JJFloatingActionButton {
         guard items.count > 1 else {
             return
         }
-        state = .opening
+        buttonState = .opening
         delegate?.floatingActionButtonWillOpen?(self)
         overlayView.isEnabled = true
+
+        configureButton()
 
         superview.bringSubview(toFront: self)
         superview.insertSubview(overlayView, belowSubview: self)
@@ -213,7 +215,7 @@ public extension JJFloatingActionButton {
             let previousView = previousItem ?? buttonView
             item.alpha = 0
             item.transform = .identity
-            insertSubview(item, belowSubview: buttonView)
+            superview.insertSubview(item, belowSubview: self)
 
             item.translatesAutoresizingMaskIntoConstraints = false
             item.heightAnchor.constraint(equalTo: buttonView.heightAnchor, multiplier: itemSizeRatio).isActive = true
@@ -259,11 +261,11 @@ public extension JJFloatingActionButton {
         }
 
         let groupCompletion: () -> Void = {
-            self.state = .open
+            self.buttonState = .open
             self.delegate?.floatingActionButtonDidOpen?(self)
             completion?()
         }
-        if (animated) {
+        if animated {
             animationGroup.notify(queue: .main, execute: groupCompletion)
         } else {
             groupCompletion()
@@ -271,12 +273,14 @@ public extension JJFloatingActionButton {
     }
 
     @objc public func close(animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard state == .open else {
+        guard buttonState == .open else {
             return
         }
-        state = .closing
+        buttonState = .closing
         delegate?.floatingActionButtonWillClose?(self)
         overlayView.isEnabled = false
+
+        configureButton()
 
         let animationGroup = DispatchGroup()
 
@@ -315,14 +319,14 @@ public extension JJFloatingActionButton {
 
             delay += 0.1
         }
-        
+
         let groupCompletion: () -> Void = {
             self.openItems = nil
-            self.state = .closed
+            self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
             completion?()
         }
-        if (animated) {
+        if animated {
             animationGroup.notify(queue: .main, execute: groupCompletion)
         } else {
             groupCompletion()
@@ -330,10 +334,30 @@ public extension JJFloatingActionButton {
     }
 }
 
+extension JJFloatingActionButton {
+    open override var isHighlighted: Bool {
+        set {
+            super.isHighlighted = newValue
+            self.buttonView.isHighlighted = newValue
+        }
+        get {
+            return super.isHighlighted
+        }
+    }
+}
+
+extension JJFloatingActionButton {
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: 56, height: 56)
+    }
+}
+
 fileprivate extension JJFloatingActionButton {
     func setup() {
         backgroundColor = UIColor.clear
         clipsToBounds = false
+        isUserInteractionEnabled = true
+        addTarget(self, action: #selector(buttonWasTapped), for: .touchUpInside)
 
         addSubview(buttonView)
 
@@ -391,20 +415,20 @@ fileprivate extension JJFloatingActionButton {
     }
 
     var currentButtonImage: UIImage? {
-        var image: UIImage?
-
-        if items.count == 1 {
-            image = items.first?.image
+        let useFirstItemImage = (items.count == 1)
+        if useFirstItemImage, let image = items.first?.image {
+            return image
         }
 
-        if image == nil {
-            if defaultButtonImage == nil {
-                defaultButtonImage = defaultButtonImageResource
-            }
-            image = defaultButtonImage
+        let useOpenButtonImage = (buttonState == .opening || buttonState == .open)
+        if useOpenButtonImage, let image = openButtonImage {
+            return image
         }
 
-        return image
+        if defaultButtonImage == nil {
+            defaultButtonImage = defaultButtonImageResource
+        }
+        return defaultButtonImage
     }
 
     var defaultButtonImageResource: UIImage? {
@@ -452,34 +476,10 @@ fileprivate extension JJFloatingActionButton {
         item.transform = transform
     }
 
-    func updateHighlightedStateForTouches(_ touches: Set<UITouch>) {
-        buttonView.isHighlighted = touchesAreTapInside(touches)
-    }
-
-    func touchesAreTapInside(_ touches: Set<UITouch>) -> Bool {
-        guard touches.count == 1 else {
-            return false
-        }
-        guard let touch = touches.first else {
-            return false
-        }
-        let point = touch.location(in: self)
-        guard bounds.contains(point) else {
-            return false
-        }
-
-        return true
-    }
-
-    @objc func overlayViewWasTapped() {
-        close()
-    }
-
-    func buttonWasTapped() {
-        switch state {
+    @objc func buttonWasTapped() {
+        switch buttonState {
         case .open:
             close()
-            break
 
         case .closed:
             switch items.count {
@@ -489,56 +489,18 @@ fileprivate extension JJFloatingActionButton {
             case 1:
                 let item = items.first
                 item?.action?(item!)
-                break
 
             default:
                 open()
-                break
             }
-            break
 
         default:
             break
         }
     }
-}
 
-// MARK: Touches
-extension JJFloatingActionButton {
-    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-
-        if state == .open, let openItems = openItems {
-            for item in openItems {
-                let pointInItem = item.convert(point, from: self)
-                if item.bounds.contains(pointInItem) {
-                    return item.hitTest(pointInItem, with: event)
-                }
-            }
-        }
-        return super.hitTest(point, with: event)
-    }
-
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        updateHighlightedStateForTouches(touches)
-    }
-
-    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        updateHighlightedStateForTouches(touches)
-    }
-
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        buttonView.isHighlighted = false
-        if touchesAreTapInside(touches) {
-            buttonWasTapped()
-        }
-    }
-
-    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-        buttonView.isHighlighted = false
+    @objc func overlayViewWasTapped() {
+        close()
     }
 }
 

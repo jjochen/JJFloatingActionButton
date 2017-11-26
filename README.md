@@ -11,7 +11,7 @@ Floating Action Button for iOS
 
 
 ## Preview
-<img src="./Images/JJFloatingActionButton.gif" width='250' alt="Preview">
+<img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
 
 ## Requirements
 * iOS 9.0+
@@ -21,8 +21,8 @@ Floating Action Button for iOS
 ## Installation
 ### CocoaPods
 
-JJFloatingActionButton is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+JJFloatingActionButton is available through [CocoaPods](http://cocoapods.org).
+To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'JJFloatingActionButton'
@@ -56,6 +56,7 @@ actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnc
 ```swift
 var buttonColor: UIColor
 var defaultButtonImage: UIImage?
+var openButtonImage: UIImage?
 var buttonImageColor: UIColor
 var shadowColor: UIColor
 var shadowOffset: CGSize
