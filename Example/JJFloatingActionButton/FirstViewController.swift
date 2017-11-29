@@ -12,7 +12,7 @@ import JJFloatingActionButton
 internal class FirstViewController: UIViewController {
 
     internal let actionButton = JJFloatingActionButton()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
