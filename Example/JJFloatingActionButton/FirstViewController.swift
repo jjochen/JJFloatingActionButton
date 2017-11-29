@@ -9,12 +9,13 @@
 import UIKit
 import JJFloatingActionButton
 
-class FirstViewController: UIViewController {
+internal class FirstViewController: UIViewController {
 
+    internal let actionButton = JJFloatingActionButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let actionButton = JJFloatingActionButton()
         actionButton.accessibilityIdentifier = "FloatingActionButton"
 
         actionButton.buttonColor = UIColor.red
@@ -64,7 +65,7 @@ class FirstViewController: UIViewController {
     }
 }
 
-fileprivate extension FirstViewController {
+extension FirstViewController {
     func showMessage(for item: JJActionItem) {
         let alertController = UIAlertController(title: item.title, message: "button tapped!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
