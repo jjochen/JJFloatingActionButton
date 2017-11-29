@@ -121,6 +121,13 @@ class JJFloatingActionButton_Tests: QuickSpec {
                     expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.open))
                 }
 
+                it("opens when tapped twice") {
+                    actionButton.sendActions(for: .touchUpInside)
+                    actionButton.sendActions(for: .touchUpInside)
+                    expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.opening))
+                    expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.open))
+                }
+
                 context("and is opened") {
                     beforeEach {
                         actionButton.open(animated: false)
@@ -270,6 +277,29 @@ class JJFloatingActionButton_Tests: QuickSpec {
                     it("looks correct") {
                         expect(superview) == snapshot()
                     }
+                }
+            }
+        }
+
+        describe("JJFloatingActionButton without superview") {
+
+            let actionButtonFrame = CGRect(origin: .zero, size: CGSize(width: 56, height: 56))
+            var actionButton: JJFloatingActionButton!
+
+            beforeEach {
+                actionButton = JJFloatingActionButton(frame: actionButtonFrame)
+            }
+
+            context("when multiple items are added") {
+
+                beforeEach {
+                    actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
+                }
+
+                it("does not open when tapped") {
+                    actionButton.sendActions(for: .touchUpInside)
+                    expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
                 }
             }
         }

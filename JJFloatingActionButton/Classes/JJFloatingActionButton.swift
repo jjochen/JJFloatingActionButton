@@ -164,9 +164,32 @@ import UIKit
         setup()
     }
 
-    internal lazy var buttonView: JJCircleImageView = defaultButtonView()
+    internal lazy var buttonView: JJCircleImageView = {
+        let view = JJCircleImageView()
+        view.circleColor = buttonColor
+        view.imageColor = buttonImageColor
+        view.layer.shadowColor = shadowColor.cgColor
+        view.layer.shadowOffset = shadowOffset
+        view.layer.shadowOpacity = shadowOpacity
+        view.layer.shadowRadius = shadowRadius
+        return view
+    }()
 
-    internal lazy var overlayView: UIControl = defaultOverlayView()
+    internal lazy var overlayView: UIControl = {
+        let control = UIControl()
+        control.backgroundColor = overlayColor
+        control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
+        control.isUserInteractionEnabled = true
+        control.isEnabled = false
+        control.alpha = 0
+        return control
+    }()
+
+    internal lazy var itemContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
 
     internal var openItems: [JJActionItem]?
 }
@@ -210,24 +233,30 @@ public extension JJFloatingActionButton {
         overlayView.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
         overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
 
+        superview.insertSubview(itemContainerView, belowSubview: self)
+        itemContainerView.translatesAutoresizingMaskIntoConstraints = false
         var previousItem: JJActionItem?
         for item in items {
             let previousView = previousItem ?? buttonView
             item.alpha = 0
             item.transform = .identity
-            superview.insertSubview(item, belowSubview: self)
+            itemContainerView.addSubview(item)
 
             item.translatesAutoresizingMaskIntoConstraints = false
             item.heightAnchor.constraint(equalTo: buttonView.heightAnchor, multiplier: itemSizeRatio).isActive = true
             item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
             item.circleView.centerXAnchor.constraint(equalTo: buttonView.centerXAnchor).isActive = true
+            item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
+            item.leftAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leftAnchor).isActive = true
+            item.rightAnchor.constraint(lessThanOrEqualTo: itemContainerView.rightAnchor).isActive = true
+            item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
 
             previousItem = item
         }
         openItems = items
 
-        setNeedsLayout()
-        layoutIfNeeded()
+        itemContainerView.setNeedsLayout()
+        itemContainerView.layoutIfNeeded()
 
         let animationGroup = DispatchGroup()
 
@@ -321,6 +350,7 @@ public extension JJFloatingActionButton {
         }
 
         let groupCompletion: () -> Void = {
+            self.itemContainerView.removeFromSuperview()
             self.openItems = nil
             self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
@@ -375,27 +405,6 @@ fileprivate extension JJFloatingActionButton {
         heightConstraint.isActive = true
 
         configureButton()
-    }
-
-    func defaultButtonView() -> JJCircleImageView {
-        let view = JJCircleImageView()
-        view.circleColor = buttonColor
-        view.imageColor = buttonImageColor
-        view.layer.shadowColor = shadowColor.cgColor
-        view.layer.shadowOffset = shadowOffset
-        view.layer.shadowOpacity = shadowOpacity
-        view.layer.shadowRadius = shadowRadius
-        return view
-    }
-
-    func defaultOverlayView() -> UIControl {
-        let control = UIControl()
-        control.backgroundColor = overlayColor
-        control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
-        control.isUserInteractionEnabled = true
-        control.isEnabled = false
-        control.alpha = 0
-        return control
     }
 
     func configureItem(_ item: JJActionItem) {
