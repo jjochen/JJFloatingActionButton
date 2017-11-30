@@ -4,8 +4,6 @@ branches:
   only:
     - develop
     - master
-    - /^release.*$/
-    - /^hotfix.*$/
 env:
   global:
     - LC_CTYPE=en_US.UTF-8

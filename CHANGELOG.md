@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.3.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.3.1) (2017-11-29)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.3.0...0.3.1)
+
+**Fixed bugs:**
+
+- wrong item position during first open animation [\#23](https://github.com/jjochen/JJFloatingActionButton/issues/23)
+
 ## [0.3.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.3.0) (2017-11-26)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.2.1...0.3.0)
 
