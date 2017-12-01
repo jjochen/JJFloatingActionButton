@@ -4,26 +4,6 @@ codecov:
 coverage:
   precision: 2
   round: nearest
-  range: "60...100"
+  range: 60...100
   ignore:
-  - "*_Tests.*"
-
-status:
-  project:
-    default:
-      target: auto
-      threshold: 2.0
-      branches:
-      - master
-
-    patch:
-      default:
-        target: auto
-        branches:
-        - master
-
-comment:
-  layout: "header, diff, changes, sunburst, uncovered"
-  branches:
-  - master
-  behavior: default
+    - "Example/Tests/**/*"
