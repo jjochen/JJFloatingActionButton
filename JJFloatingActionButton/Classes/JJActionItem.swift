@@ -7,41 +7,31 @@
 
 import UIKit
 
-internal protocol JJActionItemDelegate {
-    func actionItemWasTapped(_ item: JJActionItem)
-}
-
 @objc open class JJActionItem: UIControl {
-
-    @objc open var title: String? {
-        didSet {
-            titleLabel.text = title
-        }
-    }
-
-    @objc open var image: UIImage? {
-        didSet {
-            circleView.image = image
-        }
-    }
-
+    
     @objc open var action: ((JJActionItem) -> Void)?
-
-    fileprivate(set) lazy var titleLabel: UILabel = {
+    
+    @objc open fileprivate(set) lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = title
+        titleLabel.isUserInteractionEnabled = false
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
-
-    fileprivate(set) lazy var circleView: JJCircleImageView = {
-        let view = JJCircleImageView()
-        view.image = image
+    
+    @objc open fileprivate(set) lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .clear
+        return imageView
+    }()
+    
+    @objc open fileprivate(set) lazy var circleView: JJCircleView = {
+        let view = JJCircleView()
+        view.isUserInteractionEnabled = false
         return view
     }()
-
-    internal var delegate: JJActionItemDelegate?
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -54,6 +44,7 @@ internal protocol JJActionItemDelegate {
 }
 
 extension JJActionItem {
+    
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue
@@ -66,13 +57,14 @@ extension JJActionItem {
 }
 
 fileprivate extension JJActionItem {
+    
     func setup() {
         backgroundColor = .clear
         isUserInteractionEnabled = true
-        addTarget(self, action: #selector(itemWasTapped), for: .touchUpInside)
 
         addSubview(titleLabel)
         addSubview(circleView)
+        addSubview(imageView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
@@ -85,9 +77,12 @@ fileprivate extension JJActionItem {
         circleView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
         circleView.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 12).isActive = true
-    }
-
-    @objc func itemWasTapped() {
-        delegate?.actionItemWasTapped(self)
+        
+        let imageSizeMuliplier = CGFloat(1 / sqrt(2))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+        imageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
+        imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
     }
 }

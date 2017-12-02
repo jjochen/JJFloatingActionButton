@@ -7,33 +7,33 @@
 
 import UIKit
 
-internal class JJCircleView: UIView {
+@objc open class JJCircleView: UIView {
 
-    internal var color = UIColor.defaultButtonColor {
+    open var color = UIColor.defaultButtonColor {
         didSet {
             updateHighligtedColorFallback()
             setNeedsDisplay()
         }
     }
    
-    internal var highligtedColor: UIColor? {
+    open var highligtedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    internal var isHighlighted = false {
+    open var isHighlighted = false {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }

@@ -67,7 +67,7 @@ internal class FirstViewController: UIViewController {
 
 extension FirstViewController {
     func showMessage(for item: JJActionItem) {
-        let alertController = UIAlertController(title: item.title, message: "button tapped!", preferredStyle: .alert)
+        let alertController = UIAlertController(title: item.titleLabel.text, message: "button tapped!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }

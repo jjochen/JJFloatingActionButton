@@ -93,7 +93,7 @@ import UIKit
     @objc public var itemButtonColor = UIColor.white {
         didSet {
             items.forEach { item in
-                item.circleView.circleColor = itemButtonColor
+                item.circleView.color = itemButtonColor
             }
         }
     }
@@ -101,7 +101,7 @@ import UIKit
     @objc public var itemImageColor = UIColor.defaultButtonColor {
         didSet {
             items.forEach { item in
-                item.circleView.imageColor = itemImageColor
+                item.imageView.tintColor = itemImageColor
             }
         }
     }
@@ -197,8 +197,8 @@ import UIKit
 public extension JJFloatingActionButton {
     @objc @discardableResult public func addItem(title: String? = nil, image: UIImage? = nil, action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
         let item = JJActionItem()
-        item.title = title
-        item.image = image
+        item.titleLabel.text = title
+        item.imageView.image = image
         item.action = action
 
         items.append(item)
@@ -408,15 +408,15 @@ fileprivate extension JJFloatingActionButton {
     }
 
     func configureItem(_ item: JJActionItem) {
-        item.circleView.circleColor = itemButtonColor
-        item.circleView.imageColor = itemImageColor
+        item.circleView.color = itemButtonColor
+        item.imageView.tintColor = itemImageColor
         item.titleLabel.font = itemTitleFont
         item.titleLabel.textColor = itemTitleColor
         item.layer.shadowColor = itemShadowColor.cgColor
         item.layer.shadowOpacity = itemShadowOpacity
         item.layer.shadowOffset = itemShadowOffset
         item.layer.shadowRadius = itemShadowRadius
-        item.delegate = self
+        item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
 
     func configureButton() {
@@ -425,7 +425,7 @@ fileprivate extension JJFloatingActionButton {
 
     var currentButtonImage: UIImage? {
         let useFirstItemImage = (items.count == 1)
-        if useFirstItemImage, let image = items.first?.image {
+        if useFirstItemImage, let image = items.first?.imageView.image {
             return image
         }
 
@@ -507,16 +507,15 @@ fileprivate extension JJFloatingActionButton {
             break
         }
     }
+    
+    @objc func itemWasTapped(sender: JJActionItem) {
+        close {
+            sender.action?(sender)
+        }
+    }
 
     @objc func overlayViewWasTapped() {
         close()
     }
 }
 
-extension JJFloatingActionButton: JJActionItemDelegate {
-    func actionItemWasTapped(_ item: JJActionItem) {
-        close {
-            item.action?(item)
-        }
-    }
-}
