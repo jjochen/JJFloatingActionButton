@@ -11,14 +11,13 @@ internal class JJCircleImageView: UIView {
 
     internal var circleColor = UIColor.defaultButtonColor {
         didSet {
-            updateHighligtedCircleColorFallback()
-            configureCircleView()
+            circleView.color = circleColor
         }
     }
 
     internal var highligtedCircleColor: UIColor? {
         didSet {
-            configureCircleView()
+            circleView.highligtedColor = highligtedCircleColor
         }
     }
 
@@ -36,7 +35,7 @@ internal class JJCircleImageView: UIView {
 
     internal var isHighlighted = false {
         didSet {
-            configureCircleView()
+            circleView.isHighlighted = isHighlighted
         }
     }
 
@@ -59,7 +58,8 @@ internal class JJCircleImageView: UIView {
 
     fileprivate lazy var circleView: JJCircleView = {
         let circleView = JJCircleView()
-        circleView.color = currentCircleColor
+        circleView.color = circleColor
+        circleView.highligtedColor = highligtedCircleColor
         return circleView
     }()
 
@@ -94,25 +94,5 @@ fileprivate extension JJCircleImageView {
         imageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
         imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
         imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
-    }
-
-    func configureCircleView() {
-        circleView.color = currentCircleColor
-    }
-
-    var currentCircleColor: UIColor {
-        if !isHighlighted {
-            return circleColor
-        }
-
-        if let highligtedCircleColor = highligtedCircleColor {
-            return highligtedCircleColor
-        }
-
-        return highligtedCircleColorFallback
-    }
-
-    func updateHighligtedCircleColorFallback() {
-        highligtedCircleColorFallback = circleColor.highlightedVersion
     }
 }

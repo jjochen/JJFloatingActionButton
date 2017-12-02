@@ -16,8 +16,11 @@ internal extension UIColor {
     class var defaultHighlightedButtonColor: UIColor {
         return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.66, alpha: 1.00)
     }
+}
 
-    var highlightedVersion: UIColor {
+internal extension UIColor {
+    
+    var highlighted: UIColor {
         var hue = CGFloat(0)
         var satuaration = CGFloat(0)
         var brightness = CGFloat(0)
