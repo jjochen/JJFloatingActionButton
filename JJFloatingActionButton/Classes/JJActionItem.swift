@@ -8,16 +8,16 @@
 import UIKit
 
 @objc open class JJActionItem: UIControl {
-    
+
     @objc open var action: ((JJActionItem) -> Void)?
-    
+
     @objc open fileprivate(set) lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.isUserInteractionEnabled = false
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
-    
+
     @objc open fileprivate(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = false
@@ -25,13 +25,13 @@ import UIKit
         imageView.backgroundColor = .clear
         return imageView
     }()
-    
+
     @objc open fileprivate(set) lazy var circleView: JJCircleView = {
         let view = JJCircleView()
         view.isUserInteractionEnabled = false
         return view
     }()
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -44,11 +44,11 @@ import UIKit
 }
 
 extension JJActionItem {
-    
+
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue
-            self.circleView.isHighlighted = newValue
+            circleView.isHighlighted = newValue
         }
         get {
             return super.isHighlighted
@@ -57,7 +57,7 @@ extension JJActionItem {
 }
 
 fileprivate extension JJActionItem {
-    
+
     func setup() {
         backgroundColor = .clear
         isUserInteractionEnabled = true
@@ -77,7 +77,7 @@ fileprivate extension JJActionItem {
         circleView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
         circleView.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 12).isActive = true
-        
+
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true

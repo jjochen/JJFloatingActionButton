@@ -19,7 +19,7 @@ internal extension UIColor {
 }
 
 internal extension UIColor {
-    
+
     var highlighted: UIColor {
         var hue = CGFloat(0)
         var satuaration = CGFloat(0)

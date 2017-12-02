@@ -6,8 +6,8 @@
 //  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
 //
 
-import UIKit
 import JJFloatingActionButton
+import UIKit
 
 internal class FirstViewController: UIViewController {
 

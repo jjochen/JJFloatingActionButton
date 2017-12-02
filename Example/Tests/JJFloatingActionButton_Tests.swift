@@ -6,10 +6,10 @@
 //  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
 //
 
-import Quick
+@testable import JJFloatingActionButton
 import Nimble
 import Nimble_Snapshots
-@testable import JJFloatingActionButton
+import Quick
 
 class JJFloatingActionButton_Tests: QuickSpec {
 
