@@ -33,6 +33,12 @@ import UIKit
             circleView.color = buttonColor
         }
     }
+    
+    @objc public var highlightedButtonColor: UIColor? {
+        didSet {
+            circleView.highlightedColor = highlightedButtonColor
+        }
+    }
 
     @objc public var defaultButtonImage: UIImage? {
         didSet {
@@ -94,6 +100,14 @@ import UIKit
         didSet {
             items.forEach { item in
                 item.circleView.color = itemButtonColor
+            }
+        }
+    }
+    
+    @objc public var highlightedItemButtonColor: UIColor? {
+        didSet {
+            items.forEach { item in
+                item.circleView.highlightedColor = highlightedItemButtonColor
             }
         }
     }
@@ -168,6 +182,7 @@ import UIKit
         let view = JJCircleView()
         view.isUserInteractionEnabled = false
         view.color = buttonColor
+        view.highlightedColor = highlightedButtonColor
         view.layer.shadowColor = shadowColor.cgColor
         view.layer.shadowOffset = shadowOffset
         view.layer.shadowOpacity = shadowOpacity
@@ -432,6 +447,7 @@ fileprivate extension JJFloatingActionButton {
 
     func configureItem(_ item: JJActionItem) {
         item.circleView.color = itemButtonColor
+        item.circleView.highlightedColor = highlightedItemButtonColor
         item.imageView.tintColor = itemImageColor
         item.titleLabel.font = itemTitleFont
         item.titleLabel.textColor = itemTitleColor

@@ -46,9 +46,17 @@ class JJFloatingActionButton_Tests: QuickSpec {
                 expect(actionButton.isHighlighted).to(beTruthy())
                 expect(superview) == snapshot()
             }
+            
+            it("looks correct highlighted with custom color") {
+                actionButton.highlightedButtonColor = UIColor.orange
+                actionButton.isHighlighted = true
+                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(superview) == snapshot()
+            }
 
             it("looks correct configured") {
                 actionButton.buttonColor = UIColor.blue
+                actionButton.highlightedButtonColor = UIColor.orange
                 actionButton.defaultButtonImage = UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)
                 actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
@@ -59,6 +67,7 @@ class JJFloatingActionButton_Tests: QuickSpec {
                 actionButton.overlayColor = UIColor.brown.withAlphaComponent(0.3)
                 actionButton.itemTitleFont = UIFont.boldSystemFont(ofSize: 5)
                 actionButton.itemButtonColor = UIColor.magenta
+                actionButton.highlightedItemButtonColor = UIColor.red
                 actionButton.itemImageColor = UIColor.cyan
                 actionButton.itemTitleColor = UIColor.blue
                 actionButton.itemShadowColor = UIColor.yellow
@@ -142,6 +151,14 @@ class JJFloatingActionButton_Tests: QuickSpec {
                     }
 
                     it("items look correct highlighted") {
+                        let item = actionButton.openItems![0]
+                        item.isHighlighted = true
+                        expect(item.isHighlighted).to(beTruthy())
+                        expect(superview) == snapshot()
+                    }
+                    
+                    it("items look correct highlighted with custom highligted color") {
+                        actionButton.highlightedItemButtonColor = UIColor.purple
                         let item = actionButton.openItems![0]
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTruthy())

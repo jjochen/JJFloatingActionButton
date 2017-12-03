@@ -11,12 +11,12 @@ import UIKit
 
     open var color = UIColor.defaultButtonColor {
         didSet {
-            updateHighligtedColorFallback()
+            updateHighlightedColorFallback()
             setNeedsDisplay()
         }
     }
 
-    open var highligtedColor: UIColor? {
+    open var highlightedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
@@ -42,7 +42,7 @@ import UIKit
         drawCircle(inRect: bounds)
     }
 
-    fileprivate var highligtedColorFallback = UIColor.defaultHighlightedButtonColor
+    fileprivate var highlightedColorFallback = UIColor.defaultHighlightedButtonColor
 }
 
 fileprivate extension JJCircleView {
@@ -74,14 +74,14 @@ fileprivate extension JJCircleView {
             return color
         }
 
-        if let highligtedColor = highligtedColor {
-            return highligtedColor
+        if let highlightedColor = highlightedColor {
+            return highlightedColor
         }
 
-        return highligtedColorFallback
+        return highlightedColorFallback
     }
 
-    func updateHighligtedColorFallback() {
-        highligtedColorFallback = color.highlighted
+    func updateHighlightedColorFallback() {
+        highlightedColorFallback = color.highlighted
     }
 }
