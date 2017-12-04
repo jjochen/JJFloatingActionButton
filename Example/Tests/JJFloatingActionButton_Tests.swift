@@ -46,7 +46,7 @@ class JJFloatingActionButton_Tests: QuickSpec {
                 expect(actionButton.isHighlighted).to(beTruthy())
                 expect(superview) == snapshot()
             }
-            
+
             it("looks correct highlighted with custom color") {
                 actionButton.highlightedButtonColor = UIColor.orange
                 actionButton.isHighlighted = true
@@ -156,7 +156,7 @@ class JJFloatingActionButton_Tests: QuickSpec {
                         expect(item.isHighlighted).to(beTruthy())
                         expect(superview) == snapshot()
                     }
-                    
+
                     it("items look correct highlighted with custom highligted color") {
                         actionButton.highlightedItemButtonColor = UIColor.purple
                         let item = actionButton.openItems![0]

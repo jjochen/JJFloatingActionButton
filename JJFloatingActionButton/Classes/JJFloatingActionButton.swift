@@ -24,7 +24,7 @@ import UIKit
             items.forEach { item in
                 configureItem(item)
             }
-            configureImage()
+            configureButton()
         }
     }
 
@@ -33,7 +33,7 @@ import UIKit
             circleView.color = buttonColor
         }
     }
-    
+
     @objc public var highlightedButtonColor: UIColor? {
         didSet {
             circleView.highlightedColor = highlightedButtonColor
@@ -42,13 +42,13 @@ import UIKit
 
     @objc public var defaultButtonImage: UIImage? {
         didSet {
-            configureImage()
+            configureButton()
         }
     }
 
     @objc public var openButtonImage: UIImage? {
         didSet {
-            configureImage()
+            configureButton()
         }
     }
 
@@ -103,7 +103,7 @@ import UIKit
             }
         }
     }
-    
+
     @objc public var highlightedItemButtonColor: UIColor? {
         didSet {
             items.forEach { item in
@@ -178,7 +178,7 @@ import UIKit
         setup()
     }
 
-    internal lazy var circleView: JJCircleView = {
+    @objc open fileprivate(set) lazy var circleView: JJCircleView = {
         let view = JJCircleView()
         view.isUserInteractionEnabled = false
         view.color = buttonColor
@@ -235,7 +235,7 @@ public extension JJFloatingActionButton {
     @objc public func addItem(_ item: JJActionItem) {
         items.append(item)
         configureItem(item)
-        configureImage()
+        configureButton()
     }
 
     @objc public func open(animated: Bool = true, completion: (() -> Void)? = nil) {
@@ -248,45 +248,15 @@ public extension JJFloatingActionButton {
         guard items.count > 1 else {
             return
         }
+
         buttonState = .opening
         delegate?.floatingActionButtonWillOpen?(self)
-        overlayView.isEnabled = true
 
-        configureImage()
+        configureButton()
 
         superview.bringSubview(toFront: self)
-        superview.insertSubview(overlayView, belowSubview: self)
-
-        overlayView.translatesAutoresizingMaskIntoConstraints = false
-        overlayView.topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
-        overlayView.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
-        overlayView.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
-        overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-
-        superview.insertSubview(itemContainerView, belowSubview: self)
-        itemContainerView.translatesAutoresizingMaskIntoConstraints = false
-        var previousItem: JJActionItem?
-        for item in items {
-            let previousView = previousItem ?? circleView
-            item.alpha = 0
-            item.transform = .identity
-            itemContainerView.addSubview(item)
-
-            item.translatesAutoresizingMaskIntoConstraints = false
-            item.heightAnchor.constraint(equalTo: circleView.heightAnchor, multiplier: itemSizeRatio).isActive = true
-            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
-            item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
-            item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
-            item.leftAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leftAnchor).isActive = true
-            item.rightAnchor.constraint(lessThanOrEqualTo: itemContainerView.rightAnchor).isActive = true
-            item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
-
-            previousItem = item
-        }
-        openItems = items
-
-        itemContainerView.setNeedsLayout()
-        itemContainerView.layoutIfNeeded()
+        addOvelayViewToSuperview()
+        addItemsToSuperview()
 
         let animationGroup = DispatchGroup()
 
@@ -339,7 +309,7 @@ public extension JJFloatingActionButton {
         delegate?.floatingActionButtonWillClose?(self)
         overlayView.isEnabled = false
 
-        configureImage()
+        configureButton()
 
         let animationGroup = DispatchGroup()
 
@@ -442,7 +412,7 @@ fileprivate extension JJFloatingActionButton {
         imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
         imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
 
-        configureImage()
+        configureButton()
     }
 
     func configureItem(_ item: JJActionItem) {
@@ -458,7 +428,7 @@ fileprivate extension JJFloatingActionButton {
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
 
-    func configureImage() {
+    func configureButton() {
         imageView.image = currentButtonImage
     }
 
@@ -487,6 +457,49 @@ fileprivate extension JJFloatingActionButton {
         let resourceBundle = Bundle(url: resourceBundleURL)
         let image = UIImage(named: "Plus", in: resourceBundle, compatibleWith: nil)
         return image
+    }
+
+    func addOvelayViewToSuperview() {
+        guard let superview = superview else {
+            return
+        }
+        overlayView.isEnabled = true
+        superview.insertSubview(overlayView, belowSubview: self)
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        overlayView.topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+        overlayView.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
+        overlayView.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
+        overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+    }
+
+    func addItemsToSuperview() {
+        guard let superview = superview else {
+            return
+        }
+        superview.insertSubview(itemContainerView, belowSubview: self)
+        itemContainerView.translatesAutoresizingMaskIntoConstraints = false
+        var previousItem: JJActionItem?
+        for item in items {
+            let previousView = previousItem ?? circleView
+            item.alpha = 0
+            item.transform = .identity
+            itemContainerView.addSubview(item)
+
+            item.translatesAutoresizingMaskIntoConstraints = false
+            item.heightAnchor.constraint(equalTo: circleView.heightAnchor, multiplier: itemSizeRatio).isActive = true
+            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
+            item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+            item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
+            item.leftAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leftAnchor).isActive = true
+            item.rightAnchor.constraint(lessThanOrEqualTo: itemContainerView.rightAnchor).isActive = true
+            item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
+
+            previousItem = item
+        }
+        openItems = items
+
+        itemContainerView.setNeedsLayout()
+        itemContainerView.layoutIfNeeded()
     }
 
     func animate(duration: TimeInterval, delay: TimeInterval = 0, usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options _: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil, group: DispatchGroup? = nil, animated: Bool = true) {
