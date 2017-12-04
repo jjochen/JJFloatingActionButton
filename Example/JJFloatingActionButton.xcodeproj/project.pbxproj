@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19037EF91FBE24BE00138594 /* JJCircleImageView_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19037EF81FBE24BE00138594 /* JJCircleImageView_Tests.swift */; };
 		198B66011FBAE904009A17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66001FBAE904009A17F2 /* AppDelegate.swift */; };
 		198B66031FBAE904009A17F2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66021FBAE904009A17F2 /* FirstViewController.swift */; };
 		198B66051FBAE904009A17F2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66041FBAE904009A17F2 /* SecondViewController.swift */; };
@@ -32,7 +31,6 @@
 
 /* Begin PBXFileReference section */
 		0BB37FAB0B0023FC171E7401 /* Pods-JJFloatingActionButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		19037EF81FBE24BE00138594 /* JJCircleImageView_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCircleImageView_Tests.swift; sourceTree = "<group>"; };
 		19037F0D1FC2ED7B00138594 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		193808CF1FBCA063002EF4C0 /* .codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .codecov.yml; path = ../../.codecov.yml; sourceTree = "<group>"; };
 		198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJFloatingActionButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +120,6 @@
 			children = (
 				19F3A6E01FCC038200BFF4C7 /* FirstViewController_Tests.swift */,
 				198B66191FBAE904009A17F2 /* Info.plist */,
-				19037EF81FBE24BE00138594 /* JJCircleImageView_Tests.swift */,
 				198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */,
 			);
 			path = Tests;
@@ -395,7 +392,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19037EF91FBE24BE00138594 /* JJCircleImageView_Tests.swift in Sources */,
 				198B66181FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift in Sources */,
 				19F3A6E11FCC038200BFF4C7 /* FirstViewController_Tests.swift in Sources */,
 			);

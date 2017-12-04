@@ -6,10 +6,10 @@
 //  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
 //
 
-import Quick
-import Nimble
 import JJFloatingActionButton
 @testable import JJFloatingActionButton_Example
+import Nimble
+import Quick
 
 class FirstViewController_Tests: QuickSpec {
 

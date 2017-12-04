@@ -7,20 +7,33 @@
 
 import UIKit
 
-internal class JJCircleView: UIView {
+@objc open class JJCircleView: UIView {
 
-    internal var color = UIColor.defaultButtonColor {
+    open var color = UIColor.defaultButtonColor {
+        didSet {
+            updateHighlightedColorFallback()
+            setNeedsDisplay()
+        }
+    }
+
+    open var highlightedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    override init(frame: CGRect) {
+    open var isHighlighted = false {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
@@ -29,11 +42,16 @@ internal class JJCircleView: UIView {
         drawCircle(inRect: bounds)
     }
 
+    fileprivate var highlightedColorFallback = UIColor.defaultHighlightedButtonColor
+}
+
+fileprivate extension JJCircleView {
+
     fileprivate func setup() {
         backgroundColor = .clear
     }
 
-    fileprivate func drawCircle(inRect rect: CGRect) {
+    func drawCircle(inRect rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         context.saveGState()
 
@@ -45,9 +63,25 @@ internal class JJCircleView: UIView {
         circleRect.origin.y = (rect.height - diameter) / 2
 
         let circlePath = UIBezierPath(ovalIn: circleRect)
-        color.setFill()
+        currentColor.setFill()
         circlePath.fill()
 
         context.restoreGState()
+    }
+
+    var currentColor: UIColor {
+        if !isHighlighted {
+            return color
+        }
+
+        if let highlightedColor = highlightedColor {
+            return highlightedColor
+        }
+
+        return highlightedColorFallback
+    }
+
+    func updateHighlightedColorFallback() {
+        highlightedColorFallback = color.highlighted
     }
 }
