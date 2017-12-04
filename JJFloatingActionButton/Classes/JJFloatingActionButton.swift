@@ -255,8 +255,8 @@ public extension JJFloatingActionButton {
         configureButton()
 
         superview.bringSubview(toFront: self)
-        addOvelayViewToSuperview()
-        addItemsToSuperview()
+        addOverlayView(to: superview)
+        addItems(to: superview)
 
         let animationGroup = DispatchGroup()
 
@@ -459,10 +459,7 @@ fileprivate extension JJFloatingActionButton {
         return image
     }
 
-    func addOvelayViewToSuperview() {
-        guard let superview = superview else {
-            return
-        }
+    func addOverlayView(to superview: UIView) {
         overlayView.isEnabled = true
         superview.insertSubview(overlayView, belowSubview: self)
         overlayView.translatesAutoresizingMaskIntoConstraints = false
@@ -472,10 +469,7 @@ fileprivate extension JJFloatingActionButton {
         overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
     }
 
-    func addItemsToSuperview() {
-        guard let superview = superview else {
-            return
-        }
+    func addItems(to superview: UIView) {
         superview.insertSubview(itemContainerView, belowSubview: self)
         itemContainerView.translatesAutoresizingMaskIntoConstraints = false
         var previousItem: JJActionItem?

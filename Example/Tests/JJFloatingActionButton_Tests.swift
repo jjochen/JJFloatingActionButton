@@ -47,6 +47,22 @@ class JJFloatingActionButton_Tests: QuickSpec {
                 expect(superview) == snapshot()
             }
 
+            it("looks correct highlighted with dark color") {
+                actionButton.buttonColor = UIColor(hue: 0.6, saturation: 0.9, brightness: 0.3, alpha: 1)
+                actionButton.highlightedItemButtonColor = nil
+                actionButton.isHighlighted = true
+                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(superview) == snapshot()
+            }
+
+            it("looks correct highlighted with light color") {
+                actionButton.buttonColor = UIColor(hue: 0.4, saturation: 0.9, brightness: 0.7, alpha: 1)
+                actionButton.highlightedItemButtonColor = nil
+                actionButton.isHighlighted = true
+                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(superview) == snapshot()
+            }
+
             it("looks correct highlighted with custom color") {
                 actionButton.highlightedButtonColor = UIColor.orange
                 actionButton.isHighlighted = true
