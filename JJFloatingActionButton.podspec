@@ -15,6 +15,6 @@ Pod::Spec.new do |spec|
 
   spec.source_files = 'JJFloatingActionButton/Classes/**/*'
   spec.resource_bundles = {
-    'JJFloatingActionButton' => ['JJFloatingActionButton/Assets/*.xcassets']
+    'Assets' => ['JJFloatingActionButton/Assets/*.xcassets']
   }
 end

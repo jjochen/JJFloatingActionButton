@@ -11,7 +11,7 @@ import Nimble
 import Nimble_Snapshots
 import Quick
 
-class JJFloatingActionButton_Tests: QuickSpec {
+class JJFloatingActionButtonSpec: QuickSpec {
 
     override func spec() {
 

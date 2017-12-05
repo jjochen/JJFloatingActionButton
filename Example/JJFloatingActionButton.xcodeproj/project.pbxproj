@@ -13,8 +13,9 @@
 		198B66081FBAE904009A17F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B66061FBAE904009A17F2 /* Main.storyboard */; };
 		198B660A1FBAE904009A17F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
 		198B660D1FBAE904009A17F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B660B1FBAE904009A17F2 /* LaunchScreen.storyboard */; };
-		198B66181FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */; };
-		19F3A6E11FCC038200BFF4C7 /* FirstViewController_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F3A6E01FCC038200BFF4C7 /* FirstViewController_Tests.swift */; };
+		198B66181FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */; };
+		199592A91FD739FA0058BEFC /* BundleExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199592A81FD739FA0058BEFC /* BundleExtensionsSpec.swift */; };
+		19F3A6E11FCC038200BFF4C7 /* FirstViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F3A6E01FCC038200BFF4C7 /* FirstViewControllerSpec.swift */; };
 		2239EB8C92AD42AB79A037CA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75526023A5E4A843EAE2F986 /* Pods_JJFloatingActionButton_Example.framework */; };
 		D9B3C9FC35FD2B2E58308A4C /* Pods_JJFloatingActionButton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47ADD51D359629C3321DB781 /* Pods_JJFloatingActionButton_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -42,7 +43,7 @@
 		198B660C1FBAE904009A17F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		198B660E1FBAE904009A17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		198B66131FBAE904009A17F2 /* JJFloatingActionButton_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJFloatingActionButton_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButton_Tests.swift; sourceTree = "<group>"; };
+		198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonSpec.swift; sourceTree = "<group>"; };
 		198B66191FBAE904009A17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		198B66231FBAEDD6009A17F2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = LICENSE; path = ../LICENSE; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B66241FBAEDD6009A17F2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = net.daringfireball.markdown; lineEnding = 0; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; tabWidth = 2; };
@@ -51,7 +52,8 @@
 		198B662D1FBAEE16009A17F2 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = .gitignore; path = ../.gitignore; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B662E1FBAEE16009A17F2 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = ".swift-version"; path = "../.swift-version"; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198B662F1FBAEE16009A17F2 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = .travis.yml; path = ../.travis.yml; sourceTree = SOURCE_ROOT; tabWidth = 2; };
-		19F3A6E01FCC038200BFF4C7 /* FirstViewController_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController_Tests.swift; sourceTree = "<group>"; };
+		199592A81FD739FA0058BEFC /* BundleExtensionsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensionsSpec.swift; sourceTree = "<group>"; };
+		19F3A6E01FCC038200BFF4C7 /* FirstViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewControllerSpec.swift; sourceTree = "<group>"; };
 		47ADD51D359629C3321DB781 /* Pods_JJFloatingActionButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6332F06691AC394EF8E25D29 /* Pods-JJFloatingActionButton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		75526023A5E4A843EAE2F986 /* Pods_JJFloatingActionButton_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,9 +120,10 @@
 		198B66161FBAE904009A17F2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				19F3A6E01FCC038200BFF4C7 /* FirstViewController_Tests.swift */,
+				19F3A6E01FCC038200BFF4C7 /* FirstViewControllerSpec.swift */,
 				198B66191FBAE904009A17F2 /* Info.plist */,
-				198B66171FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift */,
+				198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */,
+				199592A81FD739FA0058BEFC /* BundleExtensionsSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -392,8 +395,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				198B66181FBAE904009A17F2 /* JJFloatingActionButton_Tests.swift in Sources */,
-				19F3A6E11FCC038200BFF4C7 /* FirstViewController_Tests.swift in Sources */,
+				198B66181FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift in Sources */,
+				199592A91FD739FA0058BEFC /* BundleExtensionsSpec.swift in Sources */,
+				19F3A6E11FCC038200BFF4C7 /* FirstViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
