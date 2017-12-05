@@ -22,6 +22,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             var actionButton: JJFloatingActionButton!
             var superview: UIView!
+
             beforeEach {
                 superview = UIView(frame: superviewFrame)
                 superview.backgroundColor = .white
@@ -30,6 +31,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 superview.addSubview(actionButton)
 
                 setNimbleTolerance(0.005)
+            }
+
+            it("looks correct when loaded from xib") {
+                let bundle = Bundle(for: type(of: self))
+                let view = bundle.loadNibNamed("JJFloatingActionButton", owner: nil)?.first as? JJFloatingActionButton
+                expect(view) == snapshot()
             }
 
             it("does not open when tapped") {
