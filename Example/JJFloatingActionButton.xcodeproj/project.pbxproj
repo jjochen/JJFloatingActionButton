@@ -65,6 +65,7 @@
 		199592A81FD739FA0058BEFC /* BundleExtensionsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensionsSpec.swift; sourceTree = "<group>"; };
 		199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JJFloatingActionButton.xib; sourceTree = "<group>"; };
 		19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JJActionItem.xib; sourceTree = "<group>"; };
+		19E247E91FD854B1009A7BA1 /* .github_changelog_generator */ = {isa = PBXFileReference; lastKnownFileType = text; name = .github_changelog_generator; path = ../../.github_changelog_generator; sourceTree = "<group>"; };
 		19F3A6E01FCC038200BFF4C7 /* FirstViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewControllerSpec.swift; sourceTree = "<group>"; };
 		47ADD51D359629C3321DB781 /* Pods_JJFloatingActionButton_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JJFloatingActionButton_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6332F06691AC394EF8E25D29 /* Pods-JJFloatingActionButton_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				193808CF1FBCA063002EF4C0 /* .codecov.yml */,
+				19E247E91FD854B1009A7BA1 /* .github_changelog_generator */,
 				198B662D1FBAEE16009A17F2 /* .gitignore */,
 				198B662E1FBAEE16009A17F2 /* .swift-version */,
 				198B662F1FBAEE16009A17F2 /* .travis.yml */,
