@@ -76,8 +76,7 @@ GEM
     octokit (4.7.0)
       sawyer (~> 0.8.0, >= 0.5.3)
     public_suffix (3.0.1)
-    rainbow (2.2.2)
-      rake
+    rainbow (3.0.0)
     rake (12.3.0)
     retriable (2.1.0)
     rouge (2.0.7)
