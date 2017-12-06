@@ -337,15 +337,15 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 }
             }
         }
-        
+
         describe("JJFloatingActionButton loaded from xib") {
             var actionButton: JJFloatingActionButton?
-            
+
             beforeEach {
                 let bundle = Bundle(for: type(of: self))
                 actionButton = bundle.loadNibNamed("JJFloatingActionButton", owner: nil)?.first as? JJFloatingActionButton
             }
-            
+
             it("looks correct") {
                 expect(actionButton) == snapshot()
             }

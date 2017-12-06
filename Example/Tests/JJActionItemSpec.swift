@@ -12,17 +12,17 @@ import Nimble_Snapshots
 import Quick
 
 class JJActionItemSpec: QuickSpec {
-    
+
     override func spec() {
-        
+
         describe("JJActionItem loaded from xib") {
             var actionItem: JJActionItem?
-            
+
             beforeEach {
                 let bundle = Bundle(for: type(of: self))
                 actionItem = bundle.loadNibNamed("JJActionItem", owner: nil)?.first as? JJActionItem
             }
-            
+
             it("looks correct") {
                 expect(actionItem) == snapshot()
             }
