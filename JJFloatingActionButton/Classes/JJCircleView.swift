@@ -7,22 +7,22 @@
 
 import UIKit
 
-@objc open class JJCircleView: UIView {
+@objc @IBDesignable open class JJCircleView: UIView {
 
-    open var color = UIColor.defaultButtonColor {
+    @objc @IBInspectable open var color: UIColor = .defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
             setNeedsDisplay()
         }
     }
 
-    open var highlightedColor: UIColor? {
+    @objc @IBInspectable open var highlightedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
     }
 
-    open var isHighlighted = false {
+    @objc open var isHighlighted = false {
         didSet {
             setNeedsDisplay()
         }

@@ -15,9 +15,9 @@ import UIKit
     @objc optional func floatingActionButtonDidClose(_ button: JJFloatingActionButton)
 }
 
-@objc public class JJFloatingActionButton: UIControl {
+@objc @IBDesignable public class JJFloatingActionButton: UIControl {
 
-    @objc public var delegate: JJFloatingActionButtonDelegate?
+    @objc @IBOutlet public var delegate: JJFloatingActionButtonDelegate?
 
     @objc public var items: [JJActionItem] = [] {
         didSet {
@@ -28,67 +28,67 @@ import UIKit
         }
     }
 
-    @objc public var buttonColor = UIColor.defaultButtonColor {
+    @objc @IBInspectable public var buttonColor: UIColor = .defaultButtonColor {
         didSet {
             circleView.color = buttonColor
         }
     }
 
-    @objc public var highlightedButtonColor: UIColor? {
+    @objc @IBInspectable public var highlightedButtonColor: UIColor? {
         didSet {
             circleView.highlightedColor = highlightedButtonColor
         }
     }
 
-    @objc public var defaultButtonImage: UIImage? {
+    @objc @IBInspectable public var defaultButtonImage: UIImage? {
         didSet {
             configureButton()
         }
     }
 
-    @objc public var openButtonImage: UIImage? {
+    @objc @IBInspectable public var openButtonImage: UIImage? {
         didSet {
             configureButton()
         }
     }
 
-    @objc public var buttonImageColor = UIColor.white {
+    @objc @IBInspectable public var buttonImageColor: UIColor = .white {
         didSet {
             imageView.tintColor = buttonImageColor
         }
     }
 
-    @objc public var shadowColor = UIColor.black {
+    @objc @IBInspectable public var shadowColor: UIColor = .black {
         didSet {
             circleView.layer.shadowColor = shadowColor.cgColor
         }
     }
 
-    @objc public var shadowOffset = CGSize(width: 0, height: 1) {
+    @objc @IBInspectable public var shadowOffset: CGSize = CGSize(width: 0, height: 1) {
         didSet {
             circleView.layer.shadowOffset = shadowOffset
         }
     }
 
-    @objc public var shadowOpacity = Float(0.4) {
+    @objc @IBInspectable public var shadowOpacity: Float = 0.4 {
         didSet {
             circleView.layer.shadowOpacity = shadowOpacity
         }
     }
 
-    @objc public var shadowRadius = CGFloat(2) {
+    @objc @IBInspectable public var shadowRadius: CGFloat = 2 {
         didSet {
             circleView.layer.shadowRadius = shadowRadius
         }
     }
 
-    @objc public var overlayColor = UIColor(white: 0, alpha: 0.5) {
+    @objc @IBInspectable public var overlayColor: UIColor = UIColor(white: 0, alpha: 0.5) {
         didSet {
             overlayView.backgroundColor = overlayColor
         }
     }
 
-    @objc public var itemTitleFont = UIFont.systemFont(ofSize: UIFont.systemFontSize) {
+    @objc @IBInspectable public var itemTitleFont: UIFont = .systemFont(ofSize: UIFont.systemFontSize) {
         didSet {
             items.forEach { item in
                 item.titleLabel.font = itemTitleFont
@@ -96,7 +96,7 @@ import UIKit
         }
     }
 
-    @objc public var itemButtonColor = UIColor.white {
+    @objc @IBInspectable public var itemButtonColor: UIColor = .white {
         didSet {
             items.forEach { item in
                 item.circleView.color = itemButtonColor
@@ -104,7 +104,7 @@ import UIKit
         }
     }
 
-    @objc public var highlightedItemButtonColor: UIColor? {
+    @objc @IBInspectable public var highlightedItemButtonColor: UIColor? {
         didSet {
             items.forEach { item in
                 item.circleView.highlightedColor = highlightedItemButtonColor
@@ -112,7 +112,7 @@ import UIKit
         }
     }
 
-    @objc public var itemImageColor = UIColor.defaultButtonColor {
+    @objc @IBInspectable public var itemImageColor: UIColor = .defaultButtonColor {
         didSet {
             items.forEach { item in
                 item.imageView.tintColor = itemImageColor
@@ -120,7 +120,7 @@ import UIKit
         }
     }
 
-    @objc public var itemTitleColor = UIColor.white {
+    @objc @IBInspectable public var itemTitleColor: UIColor = .white {
         didSet {
             items.forEach { item in
                 item.titleLabel.textColor = itemTitleColor
@@ -128,7 +128,7 @@ import UIKit
         }
     }
 
-    @objc public var itemShadowColor = UIColor.black {
+    @objc @IBInspectable public var itemShadowColor: UIColor = .black {
         didSet {
             items.forEach { item in
                 item.layer.shadowColor = itemShadowColor.cgColor
@@ -136,7 +136,7 @@ import UIKit
         }
     }
 
-    @objc public var itemShadowOffset = CGSize(width: 0, height: 1) {
+    @objc @IBInspectable public var itemShadowOffset: CGSize = CGSize(width: 0, height: 1) {
         didSet {
             items.forEach { item in
                 item.layer.shadowOffset = itemShadowOffset
@@ -144,7 +144,7 @@ import UIKit
         }
     }
 
-    @objc public var itemShadowOpacity = Float(0.4) {
+    @objc @IBInspectable public var itemShadowOpacity: Float = 0.4 {
         didSet {
             items.forEach { item in
                 item.layer.shadowOpacity = itemShadowOpacity
@@ -152,7 +152,7 @@ import UIKit
         }
     }
 
-    @objc public var itemShadowRadius = CGFloat(2) {
+    @objc @IBInspectable public var itemShadowRadius: CGFloat = 2 {
         didSet {
             items.forEach { item in
                 item.layer.shadowRadius = itemShadowRadius
@@ -160,11 +160,11 @@ import UIKit
         }
     }
 
-    @objc public var itemSizeRatio = CGFloat(0.75)
+    @objc @IBInspectable public var itemSizeRatio: CGFloat = 0.75
 
-    @objc public var interItemSpacing = CGFloat(12)
+    @objc @IBInspectable public var interItemSpacing: CGFloat = 12
 
-    @objc public var rotationAngle = -CGFloat.pi / 4
+    @objc @IBInspectable public var rotationAngle: CGFloat = -.pi / 4
 
     @objc public fileprivate(set) var buttonState: JJFloatingActionButtonState = .closed
 

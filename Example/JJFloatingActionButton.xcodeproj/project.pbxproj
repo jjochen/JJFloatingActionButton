@@ -21,6 +21,7 @@
 		199592A91FD739FA0058BEFC /* BundleExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199592A81FD739FA0058BEFC /* BundleExtensionsSpec.swift */; };
 		199592AC1FD73F070058BEFC /* JJFloatingActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */; };
 		19E247E61FD7E6F6009A7BA1 /* JJActionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */; };
+		19E247E81FD83CA7009A7BA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
 		19F3A6E11FCC038200BFF4C7 /* FirstViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F3A6E01FCC038200BFF4C7 /* FirstViewControllerSpec.swift */; };
 		2239EB8C92AD42AB79A037CA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75526023A5E4A843EAE2F986 /* Pods_JJFloatingActionButton_Example.framework */; };
 		D9B3C9FC35FD2B2E58308A4C /* Pods_JJFloatingActionButton_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47ADD51D359629C3321DB781 /* Pods_JJFloatingActionButton_Tests.framework */; };
@@ -292,6 +293,7 @@
 			files = (
 				198EA7E41FD73F6D00F7DA3E /* JJCircleView.xib in Resources */,
 				19E247E61FD7E6F6009A7BA1 /* JJActionItem.xib in Resources */,
+				19E247E81FD83CA7009A7BA1 /* Assets.xcassets in Resources */,
 				199592AC1FD73F070058BEFC /* JJFloatingActionButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
