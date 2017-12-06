@@ -2,7 +2,6 @@ language: objective-c
 osx_image: xcode9.1
 branches:
   only:
-    - develop
     - master
 env:
   global:

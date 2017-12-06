@@ -11,7 +11,7 @@ import Nimble
 import Nimble_Snapshots
 import Quick
 
-class JJFloatingActionButton_Tests: QuickSpec {
+class JJFloatingActionButtonSpec: QuickSpec {
 
     override func spec() {
 
@@ -22,6 +22,7 @@ class JJFloatingActionButton_Tests: QuickSpec {
 
             var actionButton: JJFloatingActionButton!
             var superview: UIView!
+
             beforeEach {
                 superview = UIView(frame: superviewFrame)
                 superview.backgroundColor = .white
@@ -334,6 +335,19 @@ class JJFloatingActionButton_Tests: QuickSpec {
                     actionButton.sendActions(for: .touchUpInside)
                     expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
                 }
+            }
+        }
+
+        describe("JJFloatingActionButton loaded from xib") {
+            var actionButton: JJFloatingActionButton?
+
+            beforeEach {
+                let bundle = Bundle(for: type(of: self))
+                actionButton = bundle.loadNibNamed("JJFloatingActionButton", owner: nil)?.first as? JJFloatingActionButton
+            }
+
+            it("looks correct") {
+                expect(actionButton) == snapshot()
             }
         }
     }

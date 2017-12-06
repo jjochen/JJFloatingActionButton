@@ -450,11 +450,7 @@ fileprivate extension JJFloatingActionButton {
     }
 
     var defaultButtonImageResource: UIImage? {
-        let frameworkBundle = Bundle(for: JJFloatingActionButton.self)
-        guard let resourceBundleURL = frameworkBundle.url(forResource: "JJFloatingActionButton", withExtension: "bundle") else {
-            return nil
-        }
-        let resourceBundle = Bundle(url: resourceBundleURL)
+        let resourceBundle = Bundle.assetsBundle()
         let image = UIImage(named: "Plus", in: resourceBundle, compatibleWith: nil)
         return image
     }

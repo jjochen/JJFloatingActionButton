@@ -11,7 +11,7 @@ import JJFloatingActionButton
 import Nimble
 import Quick
 
-class FirstViewController_Tests: QuickSpec {
+class FirstViewControllerSpec: QuickSpec {
 
     override func spec() {
 
