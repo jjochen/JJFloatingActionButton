@@ -33,12 +33,6 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 setNimbleTolerance(0.005)
             }
 
-            it("looks correct when loaded from xib") {
-                let bundle = Bundle(for: type(of: self))
-                let view = bundle.loadNibNamed("JJFloatingActionButton", owner: nil)?.first as? JJFloatingActionButton
-                expect(view) == snapshot()
-            }
-
             it("does not open when tapped") {
                 actionButton.sendActions(for: .touchUpInside)
                 expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
@@ -341,6 +335,19 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     actionButton.sendActions(for: .touchUpInside)
                     expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
                 }
+            }
+        }
+        
+        describe("JJFloatingActionButton loaded from xib") {
+            var actionButton: JJFloatingActionButton?
+            
+            beforeEach {
+                let bundle = Bundle(for: type(of: self))
+                actionButton = bundle.loadNibNamed("JJFloatingActionButton", owner: nil)?.first as? JJFloatingActionButton
+            }
+            
+            it("looks correct") {
+                expect(actionButton) == snapshot()
             }
         }
     }
