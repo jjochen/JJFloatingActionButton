@@ -10,10 +10,6 @@ jobs:
       - checkout
 
       - run:
-          name: Install Gems
-          command: gem install cocoapods --no-rdoc --no-ri --no-document
-
-      - run:
           name: Install CocoaPods
           command: pod install --repo-update --project-directory=Example
 
