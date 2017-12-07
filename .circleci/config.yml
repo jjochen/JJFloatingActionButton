@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - checkout
-			
+
       - run:
           name: Install Gems
           command: gem install cocoapods --no-rdoc --no-ri --no-document
@@ -20,15 +20,15 @@ jobs:
       - run:
           name: Build and run tests
           command: codebuild clean build test -workspace "Example/JJFloatingActionButton.xcworkspace" -scheme "JJFloatingActionButton_Example" -sdk "iphonesimulator11.1" -destination "OS=11.1,name=iPhone X" -configuration Debug -enableCodeCoverage YES ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGNING_REQUIRED=NO
-					
-			- run: 
-				  name: Codecov
-					command: bash <(curl -s https://codecov.io/bash)
+
+      - run: 
+          name: Codecov
+          command: bash <(curl -s https://codecov.io/bash)
 
       - run:
           name: Lint Podspec
           command: pod lib lint
-				
+        
 
 workflows:
   version: 2
