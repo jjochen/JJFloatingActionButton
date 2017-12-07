@@ -19,7 +19,7 @@ jobs:
 
       - run:
           name: Build and run tests
-          command: ./Scripts/test_iOS11.0.1_iPhoneX.sh
+          command: ./Scripts/test_iOS11_iPhoneX.sh
 
       - run: 
           name: Codecov
