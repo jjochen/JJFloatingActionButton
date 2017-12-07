@@ -14,16 +14,8 @@ jobs:
           command: pod install --repo-update --project-directory=Example
 
       - run:
-          name: Print xcode version
-          command: xcodebuild -version
-
-      - run:
-          name: Print xcode SDKs
-          command: xcodebuild -showsdks
-	
-      - run:
           name: Build and run tests
-          command: xcodebuild clean build test -workspace "Example/JJFloatingActionButton.xcworkspace" -scheme "JJFloatingActionButton_Example" -sdk "iphonesimulator11.0" -destination "OS=11.0,name=iPhone X" -configuration Debug -enableCodeCoverage YES ONLY_ACTIVE_ARCH=YES ENABLE_TESTABILITY=YES CODE_SIGNING_REQUIRED=NO
+          command: ./Scripts/test_iOS11.0.1_iPhoneX.sh
 
       - run: 
           name: Codecov
@@ -32,7 +24,8 @@ jobs:
       - run:
           name: Lint Podspec
           command: pod lib lint
-        
+
+
 
 workflows:
   version: 2
