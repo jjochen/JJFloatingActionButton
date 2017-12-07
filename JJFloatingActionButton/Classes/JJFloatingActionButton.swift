@@ -1,23 +1,16 @@
+//
+//  JJFloatingActionButton.swift
+//  JJFloatingActionButton
+//
+//  Created by Jochen on 30.10.17.
+//  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
+//
 
 import UIKit
 
-@objc public enum JJFloatingActionButtonState: Int {
-    case closed
-    case open
-    case opening
-    case closing
-}
-
-@objc public protocol JJFloatingActionButtonDelegate {
-    @objc optional func floatingActionButtonWillOpen(_ button: JJFloatingActionButton)
-    @objc optional func floatingActionButtonDidOpen(_ button: JJFloatingActionButton)
-    @objc optional func floatingActionButtonWillClose(_ button: JJFloatingActionButton)
-    @objc optional func floatingActionButtonDidClose(_ button: JJFloatingActionButton)
-}
-
 @objc @IBDesignable public class JJFloatingActionButton: UIControl {
 
-    @objc @IBOutlet public var delegate: JJFloatingActionButtonDelegate?
+    @objc public weak var delegate: JJFloatingActionButtonDelegate?
 
     @objc public var items: [JJActionItem] = [] {
         didSet {
@@ -88,7 +81,7 @@ import UIKit
         }
     }
 
-    @objc @IBInspectable public var itemTitleFont: UIFont = .systemFont(ofSize: UIFont.systemFontSize) {
+    @objc public var itemTitleFont: UIFont = .systemFont(ofSize: UIFont.systemFontSize) {
         didSet {
             items.forEach { item in
                 item.titleLabel.font = itemTitleFont
@@ -219,9 +212,13 @@ import UIKit
     internal var openItems: [JJActionItem]?
 }
 
+// MARK: - Public Methods
+
 public extension JJFloatingActionButton {
 
-    @objc @discardableResult public func addItem(title: String? = nil, image: UIImage? = nil, action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
+    @objc @discardableResult func addItem(title: String? = nil,
+                                          image: UIImage? = nil,
+                                          action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
         let item = JJActionItem()
         item.titleLabel.text = title
         item.imageView.image = image
@@ -232,13 +229,13 @@ public extension JJFloatingActionButton {
         return item
     }
 
-    @objc public func addItem(_ item: JJActionItem) {
+    @objc func addItem(_ item: JJActionItem) {
         items.append(item)
         configureItem(item)
         configureButton()
     }
 
-    @objc public func open(animated: Bool = true, completion: (() -> Void)? = nil) {
+    @objc func open(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard buttonState == .closed else {
             return
         }
@@ -260,34 +257,8 @@ public extension JJFloatingActionButton {
 
         let animationGroup = DispatchGroup()
 
-        let buttonAnimation: () -> Void = {
-            self.overlayView.alpha = 1
-            self.imageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
-        }
-        animate(duration: 0.3,
-                usingSpringWithDamping: 0.55,
-                initialSpringVelocity: 0.3,
-                animations: buttonAnimation,
-                group: animationGroup,
-                animated: animated)
-
-        var delay = 0.0
-        for item in items {
-            shrink(item)
-            let itemAnimation: () -> Void = {
-                item.transform = .identity
-                item.alpha = 1
-            }
-            animate(duration: 0.3,
-                    delay: delay,
-                    usingSpringWithDamping: 0.55,
-                    initialSpringVelocity: 0.3,
-                    animations: itemAnimation,
-                    group: animationGroup,
-                    animated: animated)
-
-            delay += 0.1
-        }
+        openButton(animated: animated, group: animationGroup)
+        openItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
             self.buttonState = .open
@@ -301,7 +272,7 @@ public extension JJFloatingActionButton {
         }
     }
 
-    @objc public func close(animated: Bool = true, completion: (() -> Void)? = nil) {
+    @objc func close(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard buttonState == .open else {
             return
         }
@@ -313,41 +284,8 @@ public extension JJFloatingActionButton {
 
         let animationGroup = DispatchGroup()
 
-        let buttonAnimations: () -> Void = {
-            self.overlayView.alpha = 0
-            self.imageView.transform = CGAffineTransform(rotationAngle: 0)
-        }
-        let buttonAnimationCompletion: (Bool) -> Void = { _ in
-            self.overlayView.removeFromSuperview()
-        }
-        animate(duration: 0.3,
-                usingSpringWithDamping: 0.6,
-                initialSpringVelocity: 0.8,
-                animations: buttonAnimations,
-                completion: buttonAnimationCompletion,
-                group: animationGroup,
-                animated: animated)
-
-        var delay = 0.0
-        for item in items.reversed() {
-            let itemAnimation: () -> Void = {
-                self.shrink(item)
-                item.alpha = 0
-            }
-            let itemAnimationCompletion: (Bool) -> Void = { _ in
-                item.removeFromSuperview()
-            }
-            animate(duration: 0.15,
-                    delay: delay,
-                    usingSpringWithDamping: 0.6,
-                    initialSpringVelocity: 0.8,
-                    animations: itemAnimation,
-                    completion: itemAnimationCompletion,
-                    group: animationGroup,
-                    animated: animated)
-
-            delay += 0.1
-        }
+        closeButton(animated: animated, group: animationGroup)
+        closeItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
             self.itemContainerView.removeFromSuperview()
@@ -364,6 +302,8 @@ public extension JJFloatingActionButton {
     }
 }
 
+// MARK: - UIControl
+
 extension JJFloatingActionButton {
     open override var isHighlighted: Bool {
         set {
@@ -376,11 +316,15 @@ extension JJFloatingActionButton {
     }
 }
 
+// MARK: - UIView
+
 extension JJFloatingActionButton {
-    public override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         return CGSize(width: 56, height: 56)
     }
 }
+
+// MARK: - Configuration
 
 fileprivate extension JJFloatingActionButton {
     func setup() {
@@ -454,6 +398,11 @@ fileprivate extension JJFloatingActionButton {
         let image = UIImage(named: "Plus", in: resourceBundle, compatibleWith: nil)
         return image
     }
+}
+
+// MARK: - Animation
+
+fileprivate extension JJFloatingActionButton {
 
     func addOverlayView(to superview: UIView) {
         overlayView.isEnabled = true
@@ -492,40 +441,83 @@ fileprivate extension JJFloatingActionButton {
         itemContainerView.layoutIfNeeded()
     }
 
-    func animate(duration: TimeInterval, delay: TimeInterval = 0, usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options _: UIViewAnimationOptions = [.beginFromCurrentState], animations: @escaping () -> Void, completion: ((Bool) -> Void)? = nil, group: DispatchGroup? = nil, animated: Bool = true) {
-
-        let groupedAnimations: () -> Void = {
-            group?.enter()
-            animations()
+    func openButton(animated: Bool, group: DispatchGroup) {
+        let buttonAnimation: () -> Void = {
+            self.overlayView.alpha = 1
+            self.imageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
         }
-        let groupedCompletion: (Bool) -> Void = { finished in
-            completion?(finished)
-            group?.leave()
-        }
+        UIView.animate(duration: 0.3,
+                       usingSpringWithDamping: 0.55,
+                       initialSpringVelocity: 0.3,
+                       animations: buttonAnimation,
+                       group: group,
+                       animated: animated)
+    }
 
-        if animated {
-            UIView.animate(withDuration: duration,
+    func openItems(animated: Bool, group: DispatchGroup) {
+        var delay = 0.0
+        for item in items {
+            item.shrink()
+            let itemAnimation: () -> Void = {
+                item.transform = .identity
+                item.alpha = 1
+            }
+            UIView.animate(duration: 0.3,
                            delay: delay,
-                           usingSpringWithDamping: dampingRatio,
-                           initialSpringVelocity: velocity,
-                           animations: groupedAnimations,
-                           completion: groupedCompletion)
-        } else {
-            groupedAnimations()
-            groupedCompletion(true)
+                           usingSpringWithDamping: 0.55,
+                           initialSpringVelocity: 0.3,
+                           animations: itemAnimation,
+                           group: group,
+                           animated: animated)
+
+            delay += 0.1
         }
     }
 
-    func shrink(_ item: JJActionItem) {
-        let scaleFactor = CGFloat(0.4)
-        let itemWidth = item.frame.width
-        let itemCircleWidth = item.circleView.frame.width
-        let translationX = (itemWidth - itemCircleWidth) * (1 - scaleFactor) / 2
-        let scale = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
-        let translation = CGAffineTransform(translationX: translationX, y: 0)
-        let transform = scale.concatenating(translation)
-        item.transform = transform
+    func closeButton(animated: Bool, group: DispatchGroup) {
+        let buttonAnimations: () -> Void = {
+            self.overlayView.alpha = 0
+            self.imageView.transform = CGAffineTransform(rotationAngle: 0)
+        }
+        let buttonAnimationCompletion: (Bool) -> Void = { _ in
+            self.overlayView.removeFromSuperview()
+        }
+        UIView.animate(duration: 0.3,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.8,
+                       animations: buttonAnimations,
+                       completion: buttonAnimationCompletion,
+                       group: group,
+                       animated: animated)
     }
+
+    func closeItems(animated: Bool, group: DispatchGroup) {
+        var delay = 0.0
+        for item in items.reversed() {
+            let itemAnimation: () -> Void = {
+                item.shrink()
+                item.alpha = 0
+            }
+            let itemAnimationCompletion: (Bool) -> Void = { _ in
+                item.removeFromSuperview()
+            }
+            UIView.animate(duration: 0.15,
+                           delay: delay,
+                           usingSpringWithDamping: 0.6,
+                           initialSpringVelocity: 0.8,
+                           animations: itemAnimation,
+                           completion: itemAnimationCompletion,
+                           group: group,
+                           animated: animated)
+
+            delay += 0.1
+        }
+    }
+}
+
+// MARK: - Actions
+
+fileprivate extension JJFloatingActionButton {
 
     @objc func buttonWasTapped() {
         switch buttonState {
