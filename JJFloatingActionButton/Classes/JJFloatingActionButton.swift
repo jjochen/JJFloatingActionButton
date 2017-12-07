@@ -304,8 +304,7 @@ public extension JJFloatingActionButton {
 
 // MARK: - UIControl
 
-fileprivate extension JJFloatingActionButton {
-
+extension JJFloatingActionButton {
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue
@@ -319,8 +318,7 @@ fileprivate extension JJFloatingActionButton {
 
 // MARK: - UIView
 
-fileprivate extension JJFloatingActionButton {
-
+extension JJFloatingActionButton {
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 56, height: 56)
     }
@@ -329,7 +327,6 @@ fileprivate extension JJFloatingActionButton {
 // MARK: - Configuration
 
 fileprivate extension JJFloatingActionButton {
-
     func setup() {
         backgroundColor = UIColor.clear
         clipsToBounds = false

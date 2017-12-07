@@ -46,7 +46,7 @@ import UIKit
 
 // MARK: - UIControl
 
-fileprivate extension JJActionItem {
+extension JJActionItem {
 
     open override var isHighlighted: Bool {
         set {
