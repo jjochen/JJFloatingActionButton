@@ -7,7 +7,7 @@
 
 import UIKit
 
-@objc open class JJActionItem: UIControl {
+@objc @IBDesignable open class JJActionItem: UIControl {
 
     @objc open var action: ((JJActionItem) -> Void)?
 
