@@ -48,6 +48,7 @@ import UIKit
     @objc @IBInspectable public var buttonImageColor: UIColor = .white {
         didSet {
             imageView.tintColor = buttonImageColor
+            openImageView.tintColor = buttonImageColor
         }
     }
 
@@ -171,7 +172,24 @@ import UIKit
         setup()
     }
 
-    @objc open fileprivate(set) lazy var circleView: JJCircleView = {
+    @objc open fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
+
+    @objc open fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
+
+    @objc open fileprivate(set) lazy var openImageView: UIImageView = lazyImageView()
+
+    internal lazy var overlayView: UIControl = lazyOverlayView()
+
+    internal lazy var itemContainerView: UIView = lazyItemContainer()
+
+    internal var openItems: [JJActionItem]?
+}
+
+// MARK: - Lazy UI Elements
+
+fileprivate extension JJFloatingActionButton {
+
+    func lazyCircleView() -> JJCircleView {
         let view = JJCircleView()
         view.isUserInteractionEnabled = false
         view.color = buttonColor
@@ -181,18 +199,18 @@ import UIKit
         view.layer.shadowOpacity = shadowOpacity
         view.layer.shadowRadius = shadowRadius
         return view
-    }()
+    }
 
-    @objc open fileprivate(set) lazy var imageView: UIImageView = {
+    func lazyImageView() -> UIImageView {
         let imageView = UIImageView()
         imageView.tintColor = buttonImageColor
         imageView.isUserInteractionEnabled = false
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .clear
         return imageView
-    }()
+    }
 
-    internal lazy var overlayView: UIControl = {
+    func lazyOverlayView() -> UIControl {
         let control = UIControl()
         control.isUserInteractionEnabled = true
         control.backgroundColor = overlayColor
@@ -200,16 +218,14 @@ import UIKit
         control.isEnabled = false
         control.alpha = 0
         return control
-    }()
+    }
 
-    internal lazy var itemContainerView: UIView = {
+    func lazyItemContainer() -> UIView {
         let view = UIView()
         view.isUserInteractionEnabled = true
         view.backgroundColor = .clear
         return view
-    }()
-
-    internal var openItems: [JJActionItem]?
+    }
 }
 
 // MARK: - Public Methods
@@ -249,8 +265,6 @@ public extension JJFloatingActionButton {
         buttonState = .opening
         delegate?.floatingActionButtonWillOpen?(self)
 
-        configureButton()
-
         superview.bringSubview(toFront: self)
         addOverlayView(to: superview)
         addItems(to: superview)
@@ -279,8 +293,6 @@ public extension JJFloatingActionButton {
         buttonState = .closing
         delegate?.floatingActionButtonWillClose?(self)
         overlayView.isEnabled = false
-
-        configureButton()
 
         let animationGroup = DispatchGroup()
 
@@ -338,6 +350,7 @@ fileprivate extension JJFloatingActionButton {
 
         addSubview(circleView)
         addSubview(imageView)
+        addSubview(openImageView)
 
         circleView.translatesAutoresizingMaskIntoConstraints = false
         circleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -359,6 +372,12 @@ fileprivate extension JJFloatingActionButton {
         imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
         imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
 
+        openImageView.translatesAutoresizingMaskIntoConstraints = false
+        openImageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+        openImageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
+        openImageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
+        openImageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
+
         configureButton()
     }
 
@@ -377,6 +396,17 @@ fileprivate extension JJFloatingActionButton {
 
     func configureButton() {
         imageView.image = currentButtonImage
+        openImageView.image = openButtonImage
+        configureImageAlpha()
+    }
+
+    func configureImageAlpha() {
+        imageView.alpha = shouldShowOpenButtonImage ? 0 : 1
+        openImageView.alpha = shouldShowOpenButtonImage ? 1 : 0
+    }
+
+    var shouldShowOpenButtonImage: Bool {
+        return (buttonState == .opening || buttonState == .open) && openImageView.image != nil
     }
 
     var currentButtonImage: UIImage? {
@@ -385,14 +415,10 @@ fileprivate extension JJFloatingActionButton {
             return image
         }
 
-        let useOpenButtonImage = (buttonState == .opening || buttonState == .open)
-        if useOpenButtonImage, let image = openButtonImage {
-            return image
-        }
-
         if defaultButtonImage == nil {
             defaultButtonImage = defaultButtonImageResource
         }
+
         return defaultButtonImage
     }
 
@@ -446,8 +472,10 @@ fileprivate extension JJFloatingActionButton {
 
     func openButton(animated: Bool, group: DispatchGroup) {
         let buttonAnimation: () -> Void = {
+            self.configureImageAlpha()
             self.overlayView.alpha = 1
             self.imageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
+            self.openImageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
         }
         UIView.animate(duration: 0.3,
                        usingSpringWithDamping: 0.55,
@@ -479,8 +507,10 @@ fileprivate extension JJFloatingActionButton {
 
     func closeButton(animated: Bool, group: DispatchGroup) {
         let buttonAnimations: () -> Void = {
+            self.configureImageAlpha()
             self.overlayView.alpha = 0
             self.imageView.transform = CGAffineTransform(rotationAngle: 0)
+            self.openImageView.transform = CGAffineTransform(rotationAngle: 0)
         }
         let buttonAnimationCompletion: (Bool) -> Void = { _ in
             self.overlayView.removeFromSuperview()
