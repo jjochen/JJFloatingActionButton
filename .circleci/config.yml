@@ -2,7 +2,7 @@ version: 2
 
 jobs:
 
-  build-and-test-ios11-iphonex:"
+  build-and-test-ios11-iphonex:
     
     environment:
       DESTINATION: platform=iOS Simulator,OS=11.0,name=iPhone X
