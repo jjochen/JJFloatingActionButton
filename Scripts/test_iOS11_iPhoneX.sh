@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 xcodebuild -version
 
 xcodebuild -showsdks
@@ -14,3 +16,4 @@ xcodebuild clean build test  \
   ONLY_ACTIVE_ARCH=YES \
   ENABLE_TESTABILITY=YES \
   CODE_SIGNING_REQUIRED=NO
+
