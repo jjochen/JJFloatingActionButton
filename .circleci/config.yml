@@ -19,19 +19,9 @@ jobs:
 
       - run:
           name: Build and run tests
-          command: set -o pipefail &&
-                      xcodebuild
-                      CODE_SIGNING_REQUIRED=NO
-                      CODE_SIGN_IDENTITY=
-                      PROVISIONING_PROFILE=
-                      -sdk iphonesimulator
-                      -destination 'platform=iOS Simulator,OS=11.0,name=iPhone X'
-                      -workspace Example/JJFloatingActionButton.xcworkspace
-                      -scheme JJFloatingActionButton_Example
-                      -enableCodeCoverage YES
-                      clean build test |
-                      tee $CIRCLE_ARTIFACTS/xcode_raw.log |
-                      xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/results.xml
+          command: ./scripts/build_and_test.sh
+          environment:
+            DESTINATION: platform=iOS Simulator,OS=11.0,name=iPhone X
 
       - run: 
           name: Update Codecov
