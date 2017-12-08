@@ -153,11 +153,11 @@
 				198B662E1FBAEE16009A17F2 /* .swift-version */,
 				19E247EA1FD93525009A7BA1 /* .swiftlint.yml */,
 				19037F0D1FC2ED7B00138594 /* CHANGELOG.md */,
+				195637221FDA9EFB0003B8FF /* config.yml */,
 				198B66261FBAEDD6009A17F2 /* Gemfile */,
 				198B66271FBAEDD7009A17F2 /* JJFloatingActionButton.podspec */,
 				198B66231FBAEDD6009A17F2 /* LICENSE */,
 				198B66241FBAEDD6009A17F2 /* README.md */,
-				195637221FDA9EFB0003B8FF /* config.yml */,
 			);
 			name = Metadata;
 			path = JJFloatingActionButton;
