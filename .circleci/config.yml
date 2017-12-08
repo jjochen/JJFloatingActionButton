@@ -1,6 +1,7 @@
 version: 2
 
 jobs:
+  
   build-and-test-ios11-iphonex:
 
     macos:
@@ -8,7 +9,11 @@ jobs:
 
     steps:
       - checkout
-
+      
+      - run:
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone X (11.0) [" || true
+          
       - run:
           name: Fetch CocoaPods Specs
           command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
@@ -22,6 +27,36 @@ jobs:
           command: ./scripts/build_and_test.sh
           environment:
             DESTINATION: platform=iOS Simulator,OS=11.0,name=iPhone X
+
+      - run: 
+          name: Update Codecov
+          command: bash <(curl -s https://codecov.io/bash)
+  
+  build-and-test-ios10-iphone7plus:
+
+    macos:
+      xcode: "9.0"
+
+    steps:
+      - checkout
+      
+      - run:
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone 7 Plus (11.3.1) [" || true
+          
+      - run:
+          name: Fetch CocoaPods Specs
+          command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+
+      - run:
+          name: Install CocoaPods
+          command: pod install --project-directory=Example
+
+      - run:
+          name: Build and run tests
+          command: ./scripts/build_and_test.sh
+          environment:
+            DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7 Plus
 
       - run: 
           name: Update Codecov
@@ -45,4 +80,5 @@ workflows:
   test:
     jobs:
       - build-and-test-ios11-iphonex
+      - build-and-test-ios10-iphone7plus
       - lint-podspec

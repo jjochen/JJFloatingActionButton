@@ -6,6 +6,8 @@ xcodebuild -version
 
 xcodebuild -showsdks
 
+instruments -s devices
+
 xcodebuild clean build test \
   -workspace Example/JJFloatingActionButton.xcworkspace \
   -scheme JJFloatingActionButton_Example \
