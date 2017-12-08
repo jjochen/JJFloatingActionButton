@@ -37,7 +37,6 @@ jobs:
           name: Update Codecov
           command: bash <(curl -s https://codecov.io/bash)
 
-jobs:
   lint-podspec:
 
     macos:
