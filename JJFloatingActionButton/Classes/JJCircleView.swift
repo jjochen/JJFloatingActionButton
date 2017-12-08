@@ -3,6 +3,7 @@
 //  JJFloatingActionButton
 //
 //  Created by Jochen on 21.11.17.
+//  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
 //
 
 import UIKit
@@ -45,9 +46,11 @@ import UIKit
     fileprivate var highlightedColorFallback = UIColor.defaultHighlightedButtonColor
 }
 
+// MARK: - Private Methods
+
 fileprivate extension JJCircleView {
 
-    fileprivate func setup() {
+    func setup() {
         backgroundColor = .clear
     }
 

@@ -11,9 +11,11 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
-    @IBOutlet var actionButton: JJFloatingActionButton!
+    @IBOutlet fileprivate var actionButton: JJFloatingActionButton!
 
     override func viewDidLoad() {
+
+        super.viewDidLoad()
 
         actionButton.addItem(title: "item", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
 
