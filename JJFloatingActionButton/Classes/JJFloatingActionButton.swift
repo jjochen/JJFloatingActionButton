@@ -10,8 +10,10 @@ import UIKit
 
 @objc @IBDesignable public class JJFloatingActionButton: UIControl {
 
+    /// The delegate object for the floating action button
     @objc public weak var delegate: JJFloatingActionButtonDelegate?
 
+    /// The list of action items
     @objc public var items: [JJActionItem] = [] {
         didSet {
             items.forEach { item in
@@ -21,12 +23,14 @@ import UIKit
         }
     }
 
+    /// The background color of the floating action button
     @objc @IBInspectable public var buttonColor: UIColor = .defaultButtonColor {
         didSet {
             circleView.color = buttonColor
         }
     }
 
+    /// The background color of the floating action button with highlighted state
     @objc @IBInspectable public var highlightedButtonColor: UIColor? {
         didSet {
             circleView.highlightedColor = highlightedButtonColor
@@ -178,6 +182,7 @@ import UIKit
         setup()
     }
 
+    /// The round background view of the floating action button (read only)
     @objc open fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
 
     @objc open fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
@@ -238,6 +243,16 @@ fileprivate extension JJFloatingActionButton {
 
 public extension JJFloatingActionButton {
 
+
+
+    /// Add an action item with title, image and action to the list of items. The item will be configured with the default values.
+    ///
+    /// - Parameter title: ...
+    /// - Parameter image: ...
+    /// - Parameter action: ...
+
+    /// - Returns: The item that was add.
+    ///
     @objc @discardableResult func addItem(title: String? = nil,
                                           image: UIImage? = nil,
                                           action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
