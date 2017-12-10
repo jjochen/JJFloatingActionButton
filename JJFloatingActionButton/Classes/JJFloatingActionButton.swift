@@ -160,6 +160,12 @@ import UIKit
 
     @objc @IBInspectable public var rotationAngle: CGFloat = -.pi / 4
 
+    @objc @IBInspectable public var handleSingleActionDirectly: Bool = true {
+        didSet {
+            configureButton()
+        }
+    }
+
     @objc public fileprivate(set) var buttonState: JJFloatingActionButtonState = .closed
 
     public override init(frame: CGRect) {
@@ -258,7 +264,10 @@ public extension JJFloatingActionButton {
         guard let superview = superview else {
             return
         }
-        guard items.count > 1 else {
+        guard !items.isEmpty else {
+            return
+        }
+        guard !isSingleActionButton else {
             return
         }
 
@@ -406,9 +415,12 @@ fileprivate extension JJFloatingActionButton {
         return (buttonState == .opening || buttonState == .open) && openImageView.image != nil
     }
 
+    var isSingleActionButton: Bool {
+        return handleSingleActionDirectly && items.count == 1
+    }
+
     var currentButtonImage: UIImage? {
-        let useFirstItemImage = (items.count == 1)
-        if useFirstItemImage, let image = items.first?.imageView.image {
+        if isSingleActionButton, let image = items.first?.imageView.image {
             return image
         }
 
@@ -555,17 +567,7 @@ fileprivate extension JJFloatingActionButton {
             close()
 
         case .closed:
-            switch items.count {
-            case 0:
-                break
-
-            case 1:
-                let item = items.first
-                item?.action?(item!)
-
-            default:
-                open()
-            }
+            handleSingleActionOrOpen()
 
         default:
             break
@@ -580,5 +582,18 @@ fileprivate extension JJFloatingActionButton {
 
     @objc func overlayViewWasTapped() {
         close()
+    }
+
+    func handleSingleActionOrOpen() {
+        guard !items.isEmpty else {
+            return
+        }
+
+        if isSingleActionButton {
+            let item = items.first
+            item?.action?(item!)
+        } else {
+            open()
+        }
     }
 }
