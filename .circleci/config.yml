@@ -68,6 +68,25 @@ jobs:
           command: bash <(curl -s https://codecov.io/bash)
 
 
+  swiftlint:
+
+    docker:
+      - image: dantoml/swiftlint:latest
+
+    steps:
+      - checkout
+
+      - run:
+          name: Swiftlint
+          command: swiftlint lint --reporter junit | tee result.xml
+
+      - store_artifacts:
+          path: result.xml
+
+      - store_test_results:
+          path: result.xml
+
+
   lint-podspec:
     
     macos:
@@ -88,5 +107,6 @@ workflows:
   build-and-test:
     jobs:
       - lint-podspec
+      - swiftlint
       - build-and-test-ios11-iphonex
       - build-and-test-ios10-iphone7plus
