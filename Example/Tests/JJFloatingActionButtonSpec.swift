@@ -33,6 +33,11 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 setNimbleTolerance(0.005)
             }
 
+            it("does not open") {
+                actionButton.open(animated: false)
+                expect(actionButton.buttonState).to(equal(JJFloatingActionButtonState.closed))
+            }
+
             it("does not open when tapped") {
                 actionButton.sendActions(for: .touchUpInside)
                 expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
@@ -281,6 +286,10 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
                 }
 
+                it("looks correct") {
+                    expect(superview) == snapshot()
+                }
+
                 context("and button is tapped") {
                     beforeEach {
                         actionButton.sendActions(for: .touchUpInside)
@@ -295,10 +304,6 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
                 }
 
-                it("looks correct") {
-                    expect(superview) == snapshot()
-                }
-
                 context("and is opened") {
                     beforeEach {
                         actionButton.open(animated: false)
@@ -306,6 +311,21 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("has state closed") {
                         expect(actionButton.buttonState) == JJFloatingActionButtonState.closed
+                    }
+
+                    it("looks correct") {
+                        expect(superview) == snapshot()
+                    }
+                }
+
+                context("and is opened with handle single action direclty disabled") {
+                    beforeEach {
+                        actionButton.handleSingleActionDirectly = false
+                        actionButton.open(animated: false)
+                    }
+
+                    it("opens") {
+                        expect(actionButton.buttonState) == JJFloatingActionButtonState.open
                     }
 
                     it("looks correct") {
