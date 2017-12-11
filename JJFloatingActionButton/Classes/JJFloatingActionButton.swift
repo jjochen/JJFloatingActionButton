@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A floating action button.
 @objc @IBDesignable public class JJFloatingActionButton: UIControl {
 
     /// The delegate object for the floating action button
@@ -243,15 +244,13 @@ fileprivate extension JJFloatingActionButton {
 
 public extension JJFloatingActionButton {
 
-
-
-    /// Add an action item with title, image and action to the list of items. The item will be configured with the default values.
+    /// Add an action item with title, image and action to the list of items. The item will be pre configured with the default values.
     ///
-    /// - Parameter title: ...
-    /// - Parameter image: ...
-    /// - Parameter action: ...
-
-    /// - Returns: The item that was add.
+    /// - Parameter title: The title of the action item. nil by default.
+    /// - Parameter image: The image of the action item. nil by default.
+    /// - Parameter action: The action handler of the action item. nil by default.
+    ///
+    /// - Returns: The item that was add. This can be configured after it has been added.
     ///
     @objc @discardableResult func addItem(title: String? = nil,
                                           image: UIImage? = nil,
@@ -266,6 +265,12 @@ public extension JJFloatingActionButton {
         return item
     }
 
+    /// Add an action item to the list of items. The item will be updated with the default configuration values.
+    ///
+    /// - Parameter item: The action item.
+    ///
+    /// - Returns: The item that was add. Its configuration can be changed after it has been added.
+    ///
     @objc func addItem(_ item: JJActionItem) {
         items.append(item)
         configureItem(item)
