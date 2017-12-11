@@ -9,12 +9,15 @@
 import UIKit
 
 /// A floating action button.
+///
 @objc @IBDesignable public class JJFloatingActionButton: UIControl {
 
-    /// The delegate object for the floating action button
+    /// The delegate object for the floating action button.
+    ///
     @objc public weak var delegate: JJFloatingActionButtonDelegate?
 
-    /// The list of action items
+    /// The list of action items.
+    ///
     @objc public var items: [JJActionItem] = [] {
         didSet {
             items.forEach { item in
@@ -24,32 +27,45 @@ import UIKit
         }
     }
 
-    /// The background color of the floating action button
+    /// The background color of the floating action button.
+    ///
     @objc @IBInspectable public var buttonColor: UIColor = .defaultButtonColor {
         didSet {
             circleView.color = buttonColor
         }
     }
 
-    /// The background color of the floating action button with highlighted state
+    /// The background color of the floating action button with highlighted state.
+    ///
     @objc @IBInspectable public var highlightedButtonColor: UIColor? {
         didSet {
             circleView.highlightedColor = highlightedButtonColor
         }
     }
 
+    /// The image displayed on the button by default.
+    /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
+    /// the image from the item is shown istead.
+    /// When an `openButtonImage` is given this is shwon when the button is opened.
+    ///
     @objc @IBInspectable public var defaultButtonImage: UIImage? {
         didSet {
             configureButton()
         }
     }
 
+    /// The image that is displayed when the button is opened.
+    ///
     @objc @IBInspectable public var openButtonImage: UIImage? {
         didSet {
             configureButton()
         }
     }
 
+    /// The tint color of the image view.
+    ///
+    /// - Warning: Only template images are colored.
+    ///
     @objc @IBInspectable public var buttonImageColor: UIColor = .white {
         didSet {
             imageView.tintColor = buttonImageColor
@@ -244,7 +260,8 @@ fileprivate extension JJFloatingActionButton {
 
 public extension JJFloatingActionButton {
 
-    /// Add an action item with title, image and action to the list of items. The item will be pre configured with the default values.
+    /// Add an action item with title, image and action to the list of items.
+    /// The item will be pre configured with the default values.
     ///
     /// - Parameter title: The title of the action item. nil by default.
     /// - Parameter image: The image of the action item. nil by default.
@@ -265,7 +282,8 @@ public extension JJFloatingActionButton {
         return item
     }
 
-    /// Add an action item to the list of items. The item will be updated with the default configuration values.
+    /// Add an action item to the list of items.
+    /// The item will be updated with the default configuration values.
     ///
     /// - Parameter item: The action item.
     ///
