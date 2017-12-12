@@ -48,7 +48,6 @@ import UIKit
     @objc @IBInspectable public var buttonImageColor: UIColor = .white {
         didSet {
             imageView.tintColor = buttonImageColor
-            openImageView.tintColor = buttonImageColor
         }
     }
 
@@ -181,8 +180,6 @@ import UIKit
     @objc open fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
 
     @objc open fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
-
-    @objc open fileprivate(set) lazy var openImageView: UIImageView = lazyImageView()
 
     internal lazy var overlayView: UIControl = lazyOverlayView()
 
@@ -356,7 +353,6 @@ fileprivate extension JJFloatingActionButton {
 
         addSubview(circleView)
         addSubview(imageView)
-        addSubview(openImageView)
 
         circleView.translatesAutoresizingMaskIntoConstraints = false
         circleView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -378,12 +374,6 @@ fileprivate extension JJFloatingActionButton {
         imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
         imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
 
-        openImageView.translatesAutoresizingMaskIntoConstraints = false
-        openImageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
-        openImageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
-        openImageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
-        openImageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
-
         configureButton()
     }
 
@@ -400,27 +390,38 @@ fileprivate extension JJFloatingActionButton {
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
 
-    func configureButton() {
-        imageView.image = currentButtonImage
-        openImageView.image = openButtonImage
-        configureImageAlpha()
+    func configureButton(_ animated: Bool = false) {
+
+        let transition: () -> Void = {
+            self.imageView.image = self.currentButtonImage
+            self.imageView.transform = CGAffineTransform(rotationAngle: self.currentButtonRotation)
+        }
+
+        if (animated)
+        {
+            UIView.transition(with: imageView,
+                          duration: 0.2,
+                          options: .transitionCrossDissolve,
+                          animations: transition,
+                          completion: nil)
+        } else {
+            transition()
+        }
     }
 
-    func configureImageAlpha() {
-        imageView.alpha = shouldShowOpenButtonImage ? 0 : 1
-        openImageView.alpha = shouldShowOpenButtonImage ? 1 : 0
-    }
-
-    var shouldShowOpenButtonImage: Bool {
-        return (buttonState == .opening || buttonState == .open) && openImageView.image != nil
-    }
-
-    var isSingleActionButton: Bool {
-        return handleSingleActionDirectly && items.count == 1
+    var currentButtonRotation: CGFloat {
+        if buttonState == .opening || buttonState == .open {
+            return self.rotationAngle
+        }
+        return 0
     }
 
     var currentButtonImage: UIImage? {
         if isSingleActionButton, let image = items.first?.imageView.image {
+            return image
+        }
+
+        if (buttonState == .open || buttonState == .opening), let image = openButtonImage {
             return image
         }
 
@@ -435,6 +436,10 @@ fileprivate extension JJFloatingActionButton {
         let resourceBundle = Bundle.assetsBundle()
         let image = UIImage(named: "Plus", in: resourceBundle, compatibleWith: nil)
         return image
+    }
+
+    var isSingleActionButton: Bool {
+        return handleSingleActionDirectly && items.count == 1
     }
 }
 
@@ -481,10 +486,8 @@ fileprivate extension JJFloatingActionButton {
 
     func openButton(animated: Bool, group: DispatchGroup) {
         let buttonAnimation: () -> Void = {
-            self.configureImageAlpha()
             self.overlayView.alpha = 1
-            self.imageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
-            self.openImageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
+            self.configureButton(animated)
         }
         UIView.animate(duration: 0.3,
                        usingSpringWithDamping: 0.55,
@@ -516,10 +519,8 @@ fileprivate extension JJFloatingActionButton {
 
     func closeButton(animated: Bool, group: DispatchGroup) {
         let buttonAnimations: () -> Void = {
-            self.configureImageAlpha()
             self.overlayView.alpha = 0
-            self.imageView.transform = CGAffineTransform(rotationAngle: 0)
-            self.openImageView.transform = CGAffineTransform(rotationAngle: 0)
+            self.configureButton(animated)
         }
         let buttonAnimationCompletion: (Bool) -> Void = { _ in
             self.overlayView.removeFromSuperview()

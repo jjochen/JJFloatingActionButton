@@ -20,6 +20,7 @@ internal class FirstViewController: UIViewController {
 
         actionButton.buttonColor = UIColor.red
         actionButton.defaultButtonImage = UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate)
+        actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
         actionButton.buttonImageColor = UIColor.white
         actionButton.shadowColor = UIColor.black
         actionButton.shadowOffset = CGSize(width: 0, height: 1)
