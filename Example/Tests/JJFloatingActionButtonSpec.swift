@@ -275,6 +275,29 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
                     }
                 }
+
+                context("and is opened animated with open image") {
+                    beforeEach {
+                        actionButton.openButtonImage = #imageLiteral(resourceName: "Dots")
+                        actionButton.open(animated: true)
+                    }
+
+                    it("eventually shows open image") {
+                        expect(actionButton.imageView.image).toEventually(equal(actionButton.openButtonImage))
+                    }
+                }
+
+                context("and is closed animated with open image") {
+                    beforeEach {
+                        actionButton.openButtonImage = #imageLiteral(resourceName: "Dots")
+                        actionButton.open(animated: false)
+                        actionButton.close(animated: true)
+                    }
+
+                    it("eventually shows default image") {
+                        expect(actionButton.imageView.image).toEventually(equal(actionButton.defaultButtonImage))
+                    }
+                }
             }
 
             context("when 1 item is added") {

@@ -401,10 +401,6 @@ fileprivate extension JJFloatingActionButton {
             return image
         }
 
-        if buttonState == .open || buttonState == .opening, let image = openButtonImage {
-            return image
-        }
-
         if defaultButtonImage == nil {
             defaultButtonImage = defaultButtonImageResource
         }
