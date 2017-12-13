@@ -113,8 +113,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = UIColor.blue
-                actionButton.defaultButtonImage = UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)
-                actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
+                actionButton.defaultButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
                 actionButton.shadowColor = UIColor.orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)

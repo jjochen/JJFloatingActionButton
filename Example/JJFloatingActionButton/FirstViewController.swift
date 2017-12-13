@@ -16,11 +16,8 @@ internal class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        actionButton.accessibilityIdentifier = "FloatingActionButton"
-
         actionButton.buttonColor = UIColor.red
         actionButton.defaultButtonImage = UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate)
-        actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
         actionButton.buttonImageColor = UIColor.white
         actionButton.shadowColor = UIColor.black
         actionButton.shadowOffset = CGSize(width: 0, height: 1)
@@ -39,20 +36,18 @@ internal class FirstViewController: UIViewController {
         actionButton.interItemSpacing = CGFloat(12)
         actionButton.rotationAngle = -CGFloat.pi / 4
 
-        let item1 = actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
+        actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
-        item1.accessibilityIdentifier = "Item1"
 
-        let item2 = actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
+        actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
-        item2.accessibilityIdentifier = "Item2"
 
         let item3 = actionButton.addItem(title: "item 3") { item in
             self.showMessage(for: item)
         }
-        item3.accessibilityIdentifier = "Item3"
+        item3.circleView.color = .black
 
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
