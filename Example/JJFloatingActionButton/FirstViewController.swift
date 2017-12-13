@@ -36,18 +36,22 @@ internal class FirstViewController: UIViewController {
         actionButton.interItemSpacing = CGFloat(12)
         actionButton.rotationAngle = -CGFloat.pi / 4
 
-        actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { item in
+        actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
 
-        actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
+        actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
         }
 
-        let item3 = actionButton.addItem(title: "item 3") { item in
-            self.showMessage(for: item)
-        }
+        let item3 = actionButton.addItem()
         item3.circleView.color = .black
+        item3.imageView.image = #imageLiteral(resourceName: "Owl").withRenderingMode(.alwaysTemplate)
+        item3.imageView.tintColor = .white
+        item3.titleLabel.text = "item 3"
+        item3.action = { item in
+            self.showMessage(for: item)
+        }
 
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false

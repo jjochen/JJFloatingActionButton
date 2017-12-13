@@ -79,8 +79,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
             it("looks correct configured") {
                 actionButton.buttonColor = UIColor.blue
                 actionButton.highlightedButtonColor = UIColor.orange
-                actionButton.defaultButtonImage = UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)
-                actionButton.openButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
+                actionButton.defaultButtonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
+                actionButton.openButtonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
                 actionButton.shadowColor = UIColor.orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -100,8 +100,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.interItemSpacing = CGFloat(7)
                 actionButton.rotationAngle = -CGFloat.pi / 5
 
-                actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate))
-                actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.open(animated: false)
 
@@ -109,11 +109,11 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             it("looks correct configured after adding the items") {
-                actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate))
-                actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = UIColor.blue
-                actionButton.defaultButtonImage = UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)
+                actionButton.defaultButtonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonImageColor = UIColor.red
                 actionButton.shadowColor = UIColor.orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -140,10 +140,10 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when multiple items are added") {
                 var action = "not done"
                 beforeEach {
-                    actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate)) { _ in
+                    actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { _ in
                         action = "done!"
                     }
-                    actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
                 }
 
                 it("opens when tapped") {
@@ -280,7 +280,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when 1 item is added") {
                 var action = "not done"
                 beforeEach {
-                    actionButton.addItem(title: "item", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { _ in
+                    actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { _ in
                         action = "done!"
                     }
                 }
@@ -346,8 +346,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when multiple items are added") {
 
                 beforeEach {
-                    actionButton.addItem(title: "item 1", image: UIImage(named: "First")?.withRenderingMode(.alwaysTemplate))
-                    actionButton.addItem(title: "item 2", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
                 }
 
                 it("does not open when tapped") {
