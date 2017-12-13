@@ -30,7 +30,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(0)
+                setNimbleTolerance(0.004)
             }
 
             it("does not open") {
