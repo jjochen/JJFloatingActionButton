@@ -54,7 +54,10 @@ import UIKit
         }
     }
 
-    /// The image that is displayed when the button is opened.
+    /// The image that is displayed when the button is opened. Default is `nil`.
+    ///
+    /// - Warning: When `openButtonImage` is set, `rotationAngle` is ignored
+    ///            and the button will not rotate when opening.
     ///
     @objc @IBInspectable public var openButtonImage: UIImage? {
         didSet {
@@ -178,6 +181,10 @@ import UIKit
 
     @objc @IBInspectable public var interItemSpacing: CGFloat = 12
 
+    /// The angle in radians the button should rotate when opening. Default is `-CGFloat.pi / 4`.
+    ///
+    /// - Warning: When `openButtonImage` is set, `rotationAngle` is ignored and the button will not rotate when opening.
+    ///
     @objc @IBInspectable public var rotationAngle: CGFloat = -.pi / 4
 
     @objc @IBInspectable public var handleSingleActionDirectly: Bool = true {
@@ -198,7 +205,8 @@ import UIKit
         setup()
     }
 
-    /// The round background view of the floating action button (read only)
+    /// The round background view of the floating action button (read only).
+    ///
     @objc open fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
 
     @objc open fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
@@ -260,11 +268,11 @@ public extension JJFloatingActionButton {
     /// Add an action item with title, image and action to the list of items.
     /// The item will be pre configured with the default values.
     ///
-    /// - Parameter title: The title of the action item. nil by default.
-    /// - Parameter image: The image of the action item. nil by default.
-    /// - Parameter action: The action handler of the action item. nil by default.
+    /// - Parameter title: The title of the action item. Default is `nil`.
+    /// - Parameter image: The image of the action item. Default is `nil`.
+    /// - Parameter action: The action handler of the action item. Default is `nil`.
     ///
-    /// - Returns: The item that was add. This can be configured after it has been added.
+    /// - Returns: The item that was added. This can be configured after it has been added.
     ///
     @objc @discardableResult func addItem(title: String? = nil,
                                           image: UIImage? = nil,
