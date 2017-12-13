@@ -17,7 +17,7 @@ class SecondViewController: UIViewController {
 
         super.viewDidLoad()
 
-        actionButton.addItem(title: "item", image: UIImage(named: "Second")?.withRenderingMode(.alwaysTemplate)) { item in
+        actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Favourite")) { item in
 
             let alertController = UIAlertController(title: item.titleLabel.text, message: "button tapped!", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
