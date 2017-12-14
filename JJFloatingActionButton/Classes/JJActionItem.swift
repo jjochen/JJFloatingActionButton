@@ -15,7 +15,8 @@ import UIKit
     ///
     @objc open var action: ((JJActionItem) -> Void)?
 
-    /// The title label of the item. Can be configured as needed. Read only.
+    /// The title label of the item. Can be configured as needed.
+    /// Read only.
     ///
     @objc open fileprivate(set) lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -24,7 +25,8 @@ import UIKit
         return titleLabel
     }()
 
-    /// The image view of the item. Can be configured as needed. Read only.
+    /// The image view of the item. Can be configured as needed.
+    /// Read only.
     ///
     @objc open fileprivate(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -34,7 +36,8 @@ import UIKit
         return imageView
     }()
 
-    /// The background circle of the item. Can be configured as needed. Read only.
+    /// The background circle of the item. Can be configured as needed.
+    /// Read only.
     ///
     @objc open fileprivate(set) lazy var circleView: JJCircleView = {
         let view = JJCircleView()
