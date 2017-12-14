@@ -8,7 +8,8 @@
 
 import UIKit
 
-/// ...
+/// The item view representing an action.
+///
 @objc @IBDesignable open class JJActionItem: UIControl {
 
     /// The action that is executen when the item is pressed. Default is `nil`.

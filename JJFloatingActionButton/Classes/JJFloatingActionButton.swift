@@ -10,6 +10,21 @@ import UIKit
 
 /// A floating action button.
 ///
+/// ### Example ###
+///   ````
+///   let actionButton = JJFloatingActionButton()
+///
+///   actionButton.addItem(title: "item 1", image: image1) { item in
+///       // do something
+///   }
+///
+///   actionButton.addItem(title: "item 2", image: image2) { item in
+///       // do something
+///   }
+///
+///   view.addSubview(actionButton)
+///   ````
+///
 @objc @IBDesignable public class JJFloatingActionButton: UIControl {
 
     /// The delegate object for the floating action button.
