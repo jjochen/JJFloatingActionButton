@@ -8,8 +8,12 @@
 
 import UIKit
 
+/// A colored circle with an highlighted state
+///
 @objc @IBDesignable open class JJCircleView: UIView {
 
+    /// The color of the circle.
+    ///
     @objc @IBInspectable open var color: UIColor = .defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
@@ -17,12 +21,16 @@ import UIKit
         }
     }
 
+    /// The color of the circle when highlighted. Default is `nil`.
+    ///
     @objc @IBInspectable open var highlightedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
     }
 
+    /// Highlighted state. Default is `false`.
+    ///
     @objc open var isHighlighted = false {
         didSet {
             setNeedsDisplay()

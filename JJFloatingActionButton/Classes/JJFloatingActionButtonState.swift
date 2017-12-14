@@ -8,6 +8,13 @@
 
 import Foundation
 
+/// Button state.
+///
+///   - closed: no items are visible
+///   - open: items are fully visible
+///   - opening: during opening animation
+///   - closing: during closing animation
+///
 @objc public enum JJFloatingActionButtonState: Int {
     case closed
     case open

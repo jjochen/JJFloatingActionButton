@@ -8,10 +8,17 @@
 
 import UIKit
 
+/// The item view representing an action.
+///
 @objc @IBDesignable open class JJActionItem: UIControl {
 
+    /// The action that is executen when the item is pressed. Default is `nil`.
+    ///
     @objc open var action: ((JJActionItem) -> Void)?
 
+    /// The title label of the item. Can be configured as needed.
+    /// Read only.
+    ///
     @objc open fileprivate(set) lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.isUserInteractionEnabled = false
@@ -19,6 +26,9 @@ import UIKit
         return titleLabel
     }()
 
+    /// The image view of the item. Can be configured as needed.
+    /// Read only.
+    ///
     @objc open fileprivate(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = false
@@ -27,6 +37,9 @@ import UIKit
         return imageView
     }()
 
+    /// The background circle of the item. Can be configured as needed.
+    /// Read only.
+    ///
     @objc open fileprivate(set) lazy var circleView: JJCircleView = {
         let view = JJCircleView()
         view.isUserInteractionEnabled = false
