@@ -1,5 +1,24 @@
 # Change Log
 
+## [0.5.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.5.0) (2017-12-15)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.4.0...0.5.0)
+
+**Implemented enhancements:**
+
+- Improve Documentation [\#4](https://github.com/jjochen/JJFloatingActionButton/issues/4)
+
+**Closed issues:**
+
+- Check if imageView and openImageView can be merged into one [\#45](https://github.com/jjochen/JJFloatingActionButton/issues/45)
+- Make single action configurable [\#39](https://github.com/jjochen/JJFloatingActionButton/issues/39)
+
+**Merged pull requests:**
+
+- Add documentation [\#47](https://github.com/jjochen/JJFloatingActionButton/pull/47) ([jjochen](https://github.com/jjochen))
+- Add image transition when button opens/closes [\#46](https://github.com/jjochen/JJFloatingActionButton/pull/46) ([jjochen](https://github.com/jjochen))
+- Make single action handling configurable [\#44](https://github.com/jjochen/JJFloatingActionButton/pull/44) ([jjochen](https://github.com/jjochen))
+- Add swiftlint to CircleCi workflow [\#43](https://github.com/jjochen/JJFloatingActionButton/pull/43) ([jjochen](https://github.com/jjochen))
+
 ## [0.4.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.4.0) (2017-12-08)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.3.1...0.4.0)
 
