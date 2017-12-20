@@ -90,7 +90,7 @@ function release_version
 function build_documentation
 {
   fancy_echo "Build Documentation"
-  jazzy --podspec JJFloatingActionButton.podspec
+  bundle exec jazzy --podspec JJFloatingActionButton.podspec
 }
 
 function update_change_log

@@ -13,7 +13,25 @@ jobs:
 
     steps:
       - checkout
+      
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
 
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache
+            
+      - run: 
+          name: Bundle install
+          command: bundle install --path vendor/bundle
+      
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+            
       - run:
           name: Start simulator
           command: xcrun instruments -w "$SIMULATOR" || true
@@ -24,7 +42,7 @@ jobs:
 
       - run:
           name: Install CocoaPods
-          command: pod install --project-directory=Example
+          command: bundle exec pod install --project-directory=Example
 
       - run:
           name: Build and run tests
@@ -46,7 +64,25 @@ jobs:
 
     steps:
       - checkout
+      
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
 
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache
+            
+      - run: 
+          name: Bundle install
+          command: bundle install --path vendor/bundle
+      
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+            
       - run:
           name: Start simulator
           command: xcrun instruments -w "$SIMULATOR" || true
@@ -57,7 +93,7 @@ jobs:
 
       - run:
           name: Install CocoaPods
-          command: pod install --project-directory=Example
+          command: bundle exec pod install --project-directory=Example
 
       - run:
           name: Build and run tests
@@ -76,6 +112,24 @@ jobs:
     steps:
       - checkout
       
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache
+            
+      - run: 
+          name: Bundle install
+          command: bundle install --path vendor/bundle
+      
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
       - run:
           name: Build Documentation
           command: ./scripts/run.sh documentation
@@ -107,10 +161,28 @@ jobs:
 
     steps:
       - checkout
+      
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
+
+      - restore_cache:
+          keys:
+            - gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache
+            
+      - run: 
+          name: Bundle install
+          command: bundle install --path vendor/bundle
+      
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
       - run:
           name: Lint Podspec
-          command: pod lib lint
+          command: bundle exec pod lib lint
 
 
 
