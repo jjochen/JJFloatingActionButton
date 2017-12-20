@@ -117,9 +117,10 @@ jobs:
 workflows:
   version: 2
 
-  build-and-test:
+  run-tests:
     jobs:
       - lint-podspec
       - swiftlint
       - build-and-test-ios11-iphonex
       - build-and-test-ios10-iphone7plus
+      - build-documentation
