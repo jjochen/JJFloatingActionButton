@@ -16,14 +16,14 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Update Bunder
+          command: gem install bundler
+
       - restore_cache:
           keys:
             - gem-cache-{{ arch }}-{{ checksum "Gemfile.lock" }}
             - gem-cache
-
-      - run:
-          name: Update Bunder
-          command: gem install bundler
             
       - run: 
           name: Bundle install
@@ -71,7 +71,7 @@ jobs:
 
       - run:
           name: Update Bunder
-          command: sudo gem install bundler
+          command: gem install bundler
 
       - restore_cache:
           keys:
@@ -117,6 +117,10 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Update Bunder
+          command: gem install bundler
 
       - restore_cache:
           keys:
@@ -165,6 +169,10 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Update Bunder
+          command: gem install bundler
 
       - restore_cache:
           keys:
