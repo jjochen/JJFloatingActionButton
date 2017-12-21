@@ -37,9 +37,19 @@ aliases:
     name: Fetch CocoaPods Specs
     command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
 
+  - &restore-pods-cache
+    keys:
+      - v1-pods-cache-{{ checksum "Example/Podfile.lock" }}
+      - v1-pods-cache
+
   - &install-cocoapods
     name: Install CocoaPods
     command: bundle exec pod install --project-directory=Example
+
+  - &save-pods-cache
+    key: v1-pods-cache-{{ checksum "Example/Podfile.lock" }}
+    paths:
+      - Example/Pods
   
   - &run-tests
     name: Build and run tests
@@ -68,7 +78,9 @@ jobs:
       - save_cache: *save-gem-cache
       - run: *start-simulator
       - run: *fetch-cocoapods-specs
+      - run: *restore-pods-cache
       - run: *install-cocoapods
+      - run: *save-pods-cache
       - run: *run-tests
       - run: *update-codecov
 
@@ -88,7 +100,9 @@ jobs:
       - save_cache: *save-gem-cache
       - run: *start-simulator
       - run: *fetch-cocoapods-specs
+      - run: *restore-pods-cache
       - run: *install-cocoapods
+      - run: *save-pods-cache
       - run: *run-tests
       - run: *update-codecov
 
@@ -118,7 +132,9 @@ jobs:
       - run: *bundle-install
       - save_cache: *save-gem-cache
       - run: *fetch-cocoapods-specs
+      - run: *restore-pods-cache
       - run: *install-cocoapods
+      - run: *save-pods-cache
 
       - run:
           name: Build Documentation
