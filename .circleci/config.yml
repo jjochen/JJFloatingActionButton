@@ -23,7 +23,7 @@ jobs:
 
       - run:
           name: Update Bunder
-          command: gem install bundler --path vendor/bundle
+          command: gem install bundler
             
       - run: 
           name: Bundle install
@@ -68,6 +68,10 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+          name: Update Bunder
+          command: sudo gem install bundler
 
       - restore_cache:
           keys:
