@@ -104,8 +104,8 @@ jobs:
       - save_cache: *save-gem-cache
 
       - run:
-        name: Lint Podspec
-        command: bundle exec pod lib lint
+          name: Lint Podspec
+          command: bundle exec pod lib lint
 
 
   build-documentation:
@@ -119,8 +119,8 @@ jobs:
       - save_cache: *save-gem-cache
 
       - run:
-        name: Build Documentation
-        command: ./scripts/run.sh documentation
+          name: Build Documentation
+          command: ./scripts/run.sh documentation
 
 
   swiftlint:
