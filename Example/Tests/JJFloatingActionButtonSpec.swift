@@ -298,6 +298,23 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         expect(actionButton.imageView.image).toEventually(equal(actionButton.defaultButtonImage))
                     }
                 }
+
+                context("plus one hidden item") {
+                    var hiddenItem: JJActionItem!
+                    beforeEach {
+                        hiddenItem = actionButton.addItem(title: "hidden item", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
+                        hiddenItem.isHidden = true
+                    }
+
+                    it("it will not be added") {
+                        expect(actionButton.enabledItems).toNot(contain(hiddenItem))
+                    }
+
+                    it("looks correct when opened") {
+                        actionButton.open(animated: false)
+                        expect(superview) == snapshot()
+                    }
+                }
             }
 
             context("when 1 item is added") {
