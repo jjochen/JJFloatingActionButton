@@ -661,11 +661,17 @@ fileprivate extension JJFloatingActionButton {
     var currentItemAnimation: JJItemAnimation {
         let itemAnimation: JJItemAnimation
         itemAnimation = JJItemPopAnimation(actionButton: self,
-                                           items: items,
+                                           items: enabledItems,
                                            itemSizeRatio: itemSizeRatio,
                                            interItemSpacing: interItemSpacing)
 
         return itemAnimation
+    }
+
+    var enabledItems: [JJActionItem] {
+        return items.filter { item -> Bool in
+            return !item.isHidden && item.isUserInteractionEnabled
+        }
     }
 }
 
