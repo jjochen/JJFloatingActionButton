@@ -24,7 +24,7 @@ internal class JJButtonTransitionAnimation {
 extension JJButtonTransitionAnimation: JJButtonAnimation {
 
     func open(animated: Bool, group: DispatchGroup) {
-        let imageView = self.actionButton.imageView;
+        let imageView = actionButton.imageView
         let transition: () -> Void = {
             imageView.image = self.openImage
         }
@@ -36,7 +36,7 @@ extension JJButtonTransitionAnimation: JJButtonAnimation {
     }
 
     func close(animated: Bool, group: DispatchGroup) {
-        let imageView = self.actionButton.imageView;
+        let imageView = actionButton.imageView
         let transition: () -> Void = {
             imageView.image = self.closeImage
         }

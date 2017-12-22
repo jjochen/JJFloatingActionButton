@@ -327,9 +327,9 @@ import UIKit
 
     internal lazy var itemContainerView: UIView = lazyItemContainer()
 
-    internal var openItems: [JJActionItem]?
-
     fileprivate var buttonAnimation: JJButtonAnimation?
+
+    fileprivate var itemAnimation: JJItemAnimation?
 }
 
 // MARK: - Lazy UI Elements
@@ -371,6 +371,7 @@ fileprivate extension JJFloatingActionButton {
         let view = UIView()
         view.isUserInteractionEnabled = true
         view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }
 }
@@ -436,16 +437,21 @@ public extension JJFloatingActionButton {
         buttonState = .opening
         delegate?.floatingActionButtonWillOpen?(self)
 
+        buttonAnimation = currentButtonAnimation
+        itemAnimation = currentItemAnimation
+
         superview.bringSubview(toFront: self)
         addOverlayView(to: superview)
-        addItems(to: superview)
+        superview.insertSubview(itemContainerView, belowSubview: self)
+        itemAnimation?.addItems(to: itemContainerView)
+        itemContainerView.setNeedsLayout()
+        itemContainerView.layoutIfNeeded()
 
         let animationGroup = DispatchGroup()
-        buttonAnimation = currentButtonAnimation
 
         showOverlay(animated: animated, group: animationGroup)
         buttonAnimation?.open(animated: animated, group: animationGroup)
-        openItems(animated: animated, group: animationGroup)
+        itemAnimation?.open(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
             self.buttonState = .open
@@ -476,11 +482,12 @@ public extension JJFloatingActionButton {
 
         hideOverlay(animated: animated, group: animationGroup)
         buttonAnimation?.close(animated: animated, group: animationGroup)
-        closeItems(animated: animated, group: animationGroup)
+        itemAnimation?.close(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
+            self.itemAnimation?.removeItems()
+            self.itemAnimation = nil
             self.itemContainerView.removeFromSuperview()
-            self.openItems = nil
             self.buttonAnimation = nil
             self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
@@ -637,86 +644,28 @@ fileprivate extension JJFloatingActionButton {
                        animated: animated)
     }
 
-
-
-    func addItems(to superview: UIView) {
-        superview.insertSubview(itemContainerView, belowSubview: self)
-        itemContainerView.translatesAutoresizingMaskIntoConstraints = false
-        var previousItem: JJActionItem?
-        for item in items {
-            let previousView = previousItem ?? circleView
-            item.alpha = 0
-            item.transform = .identity
-            itemContainerView.addSubview(item)
-
-            item.translatesAutoresizingMaskIntoConstraints = false
-            item.heightAnchor.constraint(equalTo: circleView.heightAnchor, multiplier: itemSizeRatio).isActive = true
-            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
-            item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
-            item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
-            item.leftAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leftAnchor).isActive = true
-            item.rightAnchor.constraint(lessThanOrEqualTo: itemContainerView.rightAnchor).isActive = true
-            item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
-
-            previousItem = item
-        }
-        openItems = items
-
-        itemContainerView.setNeedsLayout()
-        itemContainerView.layoutIfNeeded()
-    }
-
     var currentButtonAnimation: JJButtonAnimation {
         let buttonAnimation: JJButtonAnimation
         if let openImage = openButtonImage {
-            buttonAnimation = JJButtonTransitionAnimation(actionButton: self, openImage: openImage, closeImage: currentButtonImage)
+            buttonAnimation = JJButtonTransitionAnimation(actionButton: self,
+                                                          openImage: openImage,
+                                                          closeImage: currentButtonImage)
         } else {
-            buttonAnimation = JJButtonRotationAnimation(actionButton: self, angle: self.rotationAngle)
+            buttonAnimation = JJButtonRotationAnimation(actionButton: self,
+                                                        angle: rotationAngle)
         }
+
         return buttonAnimation
     }
 
-    func openItems(animated: Bool, group: DispatchGroup) {
-        var delay = 0.0
-        for item in items {
-            item.shrink()
-            let itemAnimation: () -> Void = {
-                item.transform = .identity
-                item.alpha = 1
-            }
-            UIView.animate(duration: 0.3,
-                           delay: delay,
-                           usingSpringWithDamping: 0.55,
-                           initialSpringVelocity: 0.3,
-                           animations: itemAnimation,
-                           group: group,
-                           animated: animated)
+    var currentItemAnimation: JJItemAnimation {
+        let itemAnimation: JJItemAnimation
+        itemAnimation = JJItemPopAnimation(actionButton: self,
+                                           items: items,
+                                           itemSizeRatio: itemSizeRatio,
+                                           interItemSpacing: interItemSpacing)
 
-            delay += 0.1
-        }
-    }
-
-    func closeItems(animated: Bool, group: DispatchGroup) {
-        var delay = 0.0
-        for item in items.reversed() {
-            let itemAnimation: () -> Void = {
-                item.shrink()
-                item.alpha = 0
-            }
-            let itemAnimationCompletion: (Bool) -> Void = { _ in
-                item.removeFromSuperview()
-            }
-            UIView.animate(duration: 0.15,
-                           delay: delay,
-                           usingSpringWithDamping: 0.6,
-                           initialSpringVelocity: 0.8,
-                           animations: itemAnimation,
-                           completion: itemAnimationCompletion,
-                           group: group,
-                           animated: animated)
-
-            delay += 0.1
-        }
+        return itemAnimation
     }
 }
 

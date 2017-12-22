@@ -1,5 +1,5 @@
 //
-//  JJButtonAnimation.swift
+//  JJItemAnimation.swift
 //  JJFloatingActionButton
 //
 //  Created by Jochen on 22.12.17.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-internal protocol JJButtonAnimation {
+internal protocol JJItemAnimation {
 
+    func addItems(to containerView: UIView)
     func open(animated: Bool, group: DispatchGroup)
     func close(animated: Bool, group: DispatchGroup)
+    func removeItems()
 }

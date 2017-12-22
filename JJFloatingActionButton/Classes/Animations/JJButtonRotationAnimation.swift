@@ -3,9 +3,10 @@
 //  JJFloatingActionButton
 //
 //  Created by Jochen on 22.12.17.
+//  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 internal class JJButtonRotationAnimation {
 
@@ -21,7 +22,7 @@ internal class JJButtonRotationAnimation {
 extension JJButtonRotationAnimation: JJButtonAnimation {
 
     func open(animated: Bool, group: DispatchGroup) {
-        let imageView = self.actionButton.imageView;
+        let imageView = actionButton.imageView
         let buttonAnimation: () -> Void = {
             imageView.transform = CGAffineTransform(rotationAngle: self.angle)
         }
@@ -34,7 +35,7 @@ extension JJButtonRotationAnimation: JJButtonAnimation {
     }
 
     func close(animated: Bool, group: DispatchGroup) {
-        let imageView = self.actionButton.imageView;
+        let imageView = actionButton.imageView
         let buttonAnimations: () -> Void = {
             imageView.transform = CGAffineTransform(rotationAngle: 0)
         }
