@@ -328,6 +328,8 @@ import UIKit
     internal lazy var itemContainerView: UIView = lazyItemContainer()
 
     internal var openItems: [JJActionItem]?
+
+    fileprivate var buttonAnimation: JJButtonAnimation?
 }
 
 // MARK: - Lazy UI Elements
@@ -439,9 +441,10 @@ public extension JJFloatingActionButton {
         addItems(to: superview)
 
         let animationGroup = DispatchGroup()
+        buttonAnimation = currentButtonAnimation
 
         showOverlay(animated: animated, group: animationGroup)
-        openButton(animated: animated, group: animationGroup)
+        buttonAnimation?.open(animated: animated, group: animationGroup)
         openItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
@@ -472,12 +475,13 @@ public extension JJFloatingActionButton {
         let animationGroup = DispatchGroup()
 
         hideOverlay(animated: animated, group: animationGroup)
-        closeButton(animated: animated, group: animationGroup)
+        buttonAnimation?.close(animated: animated, group: animationGroup)
         closeItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
             self.itemContainerView.removeFromSuperview()
             self.openItems = nil
+            self.buttonAnimation = nil
             self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
             completion?()
@@ -605,33 +609,6 @@ fileprivate extension JJFloatingActionButton {
         overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
     }
 
-    func addItems(to superview: UIView) {
-        superview.insertSubview(itemContainerView, belowSubview: self)
-        itemContainerView.translatesAutoresizingMaskIntoConstraints = false
-        var previousItem: JJActionItem?
-        for item in items {
-            let previousView = previousItem ?? circleView
-            item.alpha = 0
-            item.transform = .identity
-            itemContainerView.addSubview(item)
-
-            item.translatesAutoresizingMaskIntoConstraints = false
-            item.heightAnchor.constraint(equalTo: circleView.heightAnchor, multiplier: itemSizeRatio).isActive = true
-            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
-            item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
-            item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
-            item.leftAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leftAnchor).isActive = true
-            item.rightAnchor.constraint(lessThanOrEqualTo: itemContainerView.rightAnchor).isActive = true
-            item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
-
-            previousItem = item
-        }
-        openItems = items
-
-        itemContainerView.setNeedsLayout()
-        itemContainerView.layoutIfNeeded()
-    }
-
     func showOverlay(animated: Bool, group: DispatchGroup) {
         let buttonAnimation: () -> Void = {
             self.overlayView.alpha = 1
@@ -660,67 +637,43 @@ fileprivate extension JJFloatingActionButton {
                        animated: animated)
     }
 
-    func openButton(animated: Bool, group: DispatchGroup) {
-        if openButtonImage == nil {
-            openButtonWithRotation(animated: animated, group: group)
+
+
+    func addItems(to superview: UIView) {
+        superview.insertSubview(itemContainerView, belowSubview: self)
+        itemContainerView.translatesAutoresizingMaskIntoConstraints = false
+        var previousItem: JJActionItem?
+        for item in items {
+            let previousView = previousItem ?? circleView
+            item.alpha = 0
+            item.transform = .identity
+            itemContainerView.addSubview(item)
+
+            item.translatesAutoresizingMaskIntoConstraints = false
+            item.heightAnchor.constraint(equalTo: circleView.heightAnchor, multiplier: itemSizeRatio).isActive = true
+            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
+            item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+            item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
+            item.leftAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leftAnchor).isActive = true
+            item.rightAnchor.constraint(lessThanOrEqualTo: itemContainerView.rightAnchor).isActive = true
+            item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
+
+            previousItem = item
+        }
+        openItems = items
+
+        itemContainerView.setNeedsLayout()
+        itemContainerView.layoutIfNeeded()
+    }
+
+    var currentButtonAnimation: JJButtonAnimation {
+        let buttonAnimation: JJButtonAnimation
+        if let openImage = openButtonImage {
+            buttonAnimation = JJButtonTransitionAnimation(actionButton: self, openImage: openImage, closeImage: currentButtonImage)
         } else {
-            openButtonWithImageTransition(animated: animated, group: group)
+            buttonAnimation = JJButtonRotationAnimation(actionButton: self, angle: self.rotationAngle)
         }
-    }
-
-    func closeButton(animated: Bool, group: DispatchGroup) {
-        if openButtonImage == nil {
-            closeButtonWithRotation(animated: animated, group: group)
-        } else {
-            closeButtonWithImageTransition(animated: animated, group: group)
-        }
-    }
-
-    func openButtonWithRotation(animated: Bool, group: DispatchGroup) {
-        let buttonAnimation: () -> Void = {
-            self.imageView.transform = CGAffineTransform(rotationAngle: self.rotationAngle)
-        }
-        UIView.animate(duration: 0.3,
-                       usingSpringWithDamping: 0.55,
-                       initialSpringVelocity: 0.3,
-                       animations: buttonAnimation,
-                       group: group,
-                       animated: animated)
-    }
-
-    func closeButtonWithRotation(animated: Bool, group: DispatchGroup) {
-        let buttonAnimations: () -> Void = {
-            self.imageView.transform = CGAffineTransform(rotationAngle: 0)
-        }
-        UIView.animate(duration: 0.3,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 0.8,
-                       animations: buttonAnimations,
-                       group: group,
-                       animated: animated)
-    }
-
-    func openButtonWithImageTransition(animated: Bool, group: DispatchGroup) {
-
-        let transition: () -> Void = {
-            self.imageView.image = self.openButtonImage
-        }
-        UIView.transition(with: imageView,
-                          duration: 0.2,
-                          animations: transition,
-                          group: group,
-                          animated: animated)
-    }
-
-    func closeButtonWithImageTransition(animated: Bool, group: DispatchGroup) {
-        let transition: () -> Void = {
-            self.imageView.image = self.currentButtonImage
-        }
-        UIView.transition(with: imageView,
-                          duration: 0.2,
-                          animations: transition,
-                          group: group,
-                          animated: animated)
+        return buttonAnimation
     }
 
     func openItems(animated: Bool, group: DispatchGroup) {
