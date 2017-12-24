@@ -306,12 +306,12 @@ import UIKit
     /// The round background view of the floating action button.
     /// Read only.
     ///
-    @objc open fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
+    @objc public fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
 
     /// The image view of the floating action button.
     /// Read only.
     ///
-    @objc open fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
+    @objc public fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -420,6 +420,8 @@ public extension JJFloatingActionButton {
     /// - Parameter animated: When true, button will be opened with an animation. Default is `true`.
     /// - Parameter completion: Will be handled upon completion. Default is `nil`.
     ///
+    /// - Remark: Hidden items and items that have user interaction disabled are omitted.
+    ///
     @objc func open(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard buttonState == .closed else {
             return
@@ -499,6 +501,15 @@ public extension JJFloatingActionButton {
             groupCompletion()
         }
     }
+
+    /// All items that will be shown when floating action button ist opened.
+    /// This excludes hidden items and items that have user interaction disabled.
+    ///
+    @objc public var enabledItems: [JJActionItem] {
+        return items.filter { item -> Bool in
+            !item.isHidden && item.isUserInteractionEnabled
+        }
+    }
 }
 
 // MARK: - UIControl
@@ -527,7 +538,7 @@ extension JJFloatingActionButton {
 
 fileprivate extension JJFloatingActionButton {
     func setup() {
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         clipsToBounds = false
         isUserInteractionEnabled = true
         addTarget(self, action: #selector(buttonWasTapped), for: .touchUpInside)
@@ -580,7 +591,7 @@ fileprivate extension JJFloatingActionButton {
     }
 
     var currentButtonImage: UIImage? {
-        if isSingleActionButton, let image = items.first?.imageView.image {
+        if isSingleActionButton, let image = enabledItems.first?.imageView.image {
             return image
         }
 
@@ -598,7 +609,7 @@ fileprivate extension JJFloatingActionButton {
     }
 
     var isSingleActionButton: Bool {
-        return handleSingleActionDirectly && items.count == 1
+        return handleSingleActionDirectly && enabledItems.count == 1
     }
 }
 
@@ -661,7 +672,7 @@ fileprivate extension JJFloatingActionButton {
     var currentItemAnimation: JJItemAnimation {
         let itemAnimation: JJItemAnimation
         itemAnimation = JJItemPopAnimation(actionButton: self,
-                                           items: items,
+                                           items: enabledItems,
                                            itemSizeRatio: itemSizeRatio,
                                            interItemSpacing: interItemSpacing)
 
@@ -697,12 +708,12 @@ fileprivate extension JJFloatingActionButton {
     }
 
     func handleSingleActionOrOpen() {
-        guard !items.isEmpty else {
+        guard !enabledItems.isEmpty else {
             return
         }
 
         if isSingleActionButton {
-            let item = items.first
+            let item = enabledItems.first
             item?.action?(item!)
         } else {
             open()
