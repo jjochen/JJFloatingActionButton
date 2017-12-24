@@ -78,9 +78,9 @@ jobs:
       - save_cache: *save-gem-cache
       - run: *start-simulator
       - run: *fetch-cocoapods-specs
-      - run: *restore-pods-cache
+      - restore_cache: *restore-pods-cache
       - run: *install-cocoapods
-      - run: *save-pods-cache
+      - save_cache: *save-pods-cache
       - run: *run-tests
       - run: *update-codecov
 
@@ -100,9 +100,9 @@ jobs:
       - save_cache: *save-gem-cache
       - run: *start-simulator
       - run: *fetch-cocoapods-specs
-      - run: *restore-pods-cache
+      - restore_cache: *restore-pods-cache
       - run: *install-cocoapods
-      - run: *save-pods-cache
+      - save_cache: *save-pods-cache
       - run: *run-tests
       - run: *update-codecov
 
