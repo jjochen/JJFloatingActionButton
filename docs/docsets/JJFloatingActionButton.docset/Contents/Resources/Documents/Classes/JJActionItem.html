@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JJActionItem Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/JJActionItem" class="dashAnchor"></a>
+    <a title="JJActionItem Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JJFloatingActionButton Docs</a> (77% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JJFloatingActionButton Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        JJActionItem Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/JJActionItem.html">JJActionItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JJCircleView.html">JJCircleView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/JJFloatingActionButtonState.html">JJFloatingActionButtonState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/JJFloatingActionButtonDelegate.html">JJFloatingActionButtonDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>JJActionItem</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBDesignable</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">JJActionItem</span><span class="p">:</span> <span class="kt">UIControl</span></code></pre>
+
+                </div>
+              </div>
+            <p>The item view representing an action.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)action"></a>
+                    <a name="//apple_ref/swift/Property/action" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)action">action</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The action that is executen when the item is pressed. Default is <code>nil</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="k">var</span> <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt">JJActionItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)titleLabel"></a>
+                    <a name="//apple_ref/swift/Property/titleLabel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)titleLabel">titleLabel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The title label of the item. Can be configured as needed.
+Read only.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">titleLabel</span><span class="p">:</span> <span class="kt">UILabel</span> <span class="o">=</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)imageView"></a>
+                    <a name="//apple_ref/swift/Property/imageView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)imageView">imageView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The image view of the item. Can be configured as needed.
+Read only.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">imageView</span><span class="p">:</span> <span class="kt">UIImageView</span> <span class="o">=</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)circleView"></a>
+                    <a name="//apple_ref/swift/Property/circleView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)circleView">circleView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The background circle of the item. Can be configured as needed.
+Read only.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">circleView</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJCircleView.html">JJCircleView</a></span> <span class="o">=</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(im)initWithFrame:"></a>
+                    <a name="//apple_ref/swift/Method/init(frame:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(im)initWithFrame:">init(frame:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(im)initWithCoder:"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(im)initWithCoder:">init(coder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJActionItem(py)highlighted"></a>
+                    <a name="//apple_ref/swift/Property/isHighlighted" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJActionItem(py)highlighted">isHighlighted</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">isHighlighted</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/jjochen/JJFloatingActionButton" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2017-12-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

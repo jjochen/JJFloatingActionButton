@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JJFloatingActionButton Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/JJFloatingActionButton" class="dashAnchor"></a>
+    <a title="JJFloatingActionButton Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">JJFloatingActionButton Docs</a> (77% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">JJFloatingActionButton Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        JJFloatingActionButton Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/JJActionItem.html">JJActionItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JJCircleView.html">JJCircleView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/JJFloatingActionButtonState.html">JJFloatingActionButtonState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/JJFloatingActionButtonDelegate.html">JJFloatingActionButtonDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>JJFloatingActionButton</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBDesignable</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">JJFloatingActionButton</span><span class="p">:</span> <span class="kt">UIControl</span></code></pre>
+
+                </div>
+              </div>
+            <p>A floating action button.</p>
+<h3 id='example' class='heading'>Example</h3>
+<pre class="highlight plaintext"><code>  let actionButton = JJFloatingActionButton()
+
+  actionButton.addItem(title: "item 1", image: image1) { item in
+      // do something
+  }
+
+  actionButton.addItem(title: "item 2", image: image2) { item in
+      // do something
+  }
+
+  view.addSubview(actionButton)
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)delegate"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)delegate">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate object for the floating action button.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/JJFloatingActionButtonDelegate.html">JJFloatingActionButtonDelegate</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)items"></a>
+                    <a name="//apple_ref/swift/Property/items" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)items">items</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The list of action items.
+Default is <code>[]</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonColor"></a>
+                    <a name="//apple_ref/swift/Property/buttonColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonColor">buttonColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The background color of the floating action button.
+Default is <code>UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">buttonColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">defaultButtonColor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)highlightedButtonColor"></a>
+                    <a name="//apple_ref/swift/Property/highlightedButtonColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)highlightedButtonColor">highlightedButtonColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The background color of the floating action button with highlighted state.
+Default is <code>nil</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">highlightedButtonColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)defaultButtonImage"></a>
+                    <a name="//apple_ref/swift/Property/defaultButtonImage" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)defaultButtonImage">defaultButtonImage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The image displayed on the button by default.
+When only one <code><a href="../Classes/JJActionItem.html">JJActionItem</a></code> is added and <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)handleSingleActionDirectly">handleSingleActionDirectly</a></code> is enabled,
+the image from the item is shown istead.
+When an <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)openButtonImage">openButtonImage</a></code> is given this is shwon when the button is opened.
+Default is <code>nil</code>.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)openButtonImage">openButtonImage</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">defaultButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)openButtonImage"></a>
+                    <a name="//apple_ref/swift/Property/openButtonImage" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)openButtonImage">openButtonImage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The image that is displayed when the button is opened.
+Default is <code>nil</code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>When <code>openButtonImage</code> is set, <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)rotationAngle">rotationAngle</a></code> is ignored
+       and the button will not rotate when opening.</p>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)rotationAngle">rotationAngle</a></code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">openButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonImageColor"></a>
+                    <a name="//apple_ref/swift/Property/buttonImageColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonImageColor">buttonImageColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The tint color of the image view.
+Default is <code>UIColor.white</code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Only template images are colored.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">buttonImageColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowColor"></a>
+                    <a name="//apple_ref/swift/Property/shadowColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowColor">shadowColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shadow color of the floating action button.
+Default is <code>UIColor.black</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">shadowColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowOffset"></a>
+                    <a name="//apple_ref/swift/Property/shadowOffset" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowOffset">shadowOffset</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shadow offset of the floating action button.
+Default is <code>CGSize(width: 0, height: 1)</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">shadowOffset</span><span class="p">:</span> <span class="kt">CGSize</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowOpacity"></a>
+                    <a name="//apple_ref/swift/Property/shadowOpacity" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowOpacity">shadowOpacity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shadow opacity of the floating action button.
+Default is <code>0.4</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">shadowOpacity</span><span class="p">:</span> <span class="kt">Float</span> <span class="o">=</span> <span class="mf">0.4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowRadius"></a>
+                    <a name="//apple_ref/swift/Property/shadowRadius" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowRadius">shadowRadius</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The shadow radius of the floating action button.
+Default is <code>2</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">shadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)overlayColor"></a>
+                    <a name="//apple_ref/swift/Property/overlayColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)overlayColor">overlayColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color of the overlay.
+Default is <code>UIColor(white: 0, alpha: 0.5)</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">overlayColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemTitleFont"></a>
+                    <a name="//apple_ref/swift/Property/itemTitleFont" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemTitleFont">itemTitleFont</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default title font of an action item.
+Default is <code>UIFont.systemFont(ofSize: UIFont.systemFontSize)</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemTitleFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="o">=</span> <span class="o">.</span><span class="nf">systemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="kt">UIFont</span><span class="o">.</span><span class="n">systemFontSize</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemButtonColor"></a>
+                    <a name="//apple_ref/swift/Property/itemButtonColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemButtonColor">itemButtonColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default color of an action item.
+Default is <code>UIColor.white</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemButtonColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)highlightedItemButtonColor"></a>
+                    <a name="//apple_ref/swift/Property/highlightedItemButtonColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)highlightedItemButtonColor">highlightedItemButtonColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default highlighted color of an action item.
+Default is <code>nil</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">highlightedItemButtonColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemImageColor"></a>
+                    <a name="//apple_ref/swift/Property/itemImageColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemImageColor">itemImageColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default image tint color of an action item.
+If none is given, the color of the floating action button is used.
+Default is <code>nil</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemImageColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemTitleColor"></a>
+                    <a name="//apple_ref/swift/Property/itemTitleColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemTitleColor">itemTitleColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default title color of an action item.
+Default is <code>UIColor.white</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemTitleColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowColor"></a>
+                    <a name="//apple_ref/swift/Property/itemShadowColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowColor">itemShadowColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default shadow color of an action item.
+Default is <code>UIColor.black</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemShadowColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowOffset"></a>
+                    <a name="//apple_ref/swift/Property/itemShadowOffset" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowOffset">itemShadowOffset</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default shadow offset of an action item.
+Default is <code>CGSize(width: 0, height: 1)</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemShadowOffset</span><span class="p">:</span> <span class="kt">CGSize</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowOpacity"></a>
+                    <a name="//apple_ref/swift/Property/itemShadowOpacity" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowOpacity">itemShadowOpacity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default shadow opacity of an action item.
+Default is <code>0.4</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemShadowOpacity</span><span class="p">:</span> <span class="kt">Float</span> <span class="o">=</span> <span class="mf">0.4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowRadius"></a>
+                    <a name="//apple_ref/swift/Property/itemShadowRadius" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemShadowRadius">itemShadowRadius</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default shadow radius of an action item.
+Default is <code>2</code>.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    This can be changed for each action item.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemShadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemSizeRatio"></a>
+                    <a name="//apple_ref/swift/Property/itemSizeRatio" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)itemSizeRatio">itemSizeRatio</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The size of an action item in relation to the floating action button.
+Default is <code>0.75</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">itemSizeRatio</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.75</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)interItemSpacing"></a>
+                    <a name="//apple_ref/swift/Property/interItemSpacing" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)interItemSpacing">interItemSpacing</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The space between two action items in points.
+Default is <code>12</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)rotationAngle"></a>
+                    <a name="//apple_ref/swift/Property/rotationAngle" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)rotationAngle">rotationAngle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The angle in radians the button should rotate when opening.
+Default is <code>-CGFloat.pi / 4</code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>When <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)openButtonImage">openButtonImage</a></code> is set, <code>rotationAngle</code> is ignored and the button will not rotate when opening.</p>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)openButtonImage">openButtonImage</a></code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">rotationAngle</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="o">-.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)handleSingleActionDirectly"></a>
+                    <a name="//apple_ref/swift/Property/handleSingleActionDirectly" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)handleSingleActionDirectly">handleSingleActionDirectly</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When enabled and only one action item is added, the floating action button will not open,
+but the action from the action item will be executed direclty when the button is tapped.
+Also the image of the floating action button will be replaced with the one from the action item.</p>
+
+<p>Default is <code>true</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">handleSingleActionDirectly</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonState"></a>
+                    <a name="//apple_ref/swift/Property/buttonState" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonState">buttonState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current state of the floating action button.
+Possible values are</p>
+
+<ul>
+<li><code>.opening</code></li>
+<li><code>.open</code></li>
+<li><code>.closing</code></li>
+<li><code>.closed</code></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="k">var</span> <span class="nv">buttonState</span><span class="p">:</span> <span class="kt"><a href="../Enums/JJFloatingActionButtonState.html">JJFloatingActionButtonState</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">closed</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)circleView"></a>
+                    <a name="//apple_ref/swift/Property/circleView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)circleView">circleView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The round background view of the floating action button.
+Read only.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">circleView</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJCircleView.html">JJCircleView</a></span> <span class="o">=</span> <span class="nf">lazyCircleView</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)imageView"></a>
+                    <a name="//apple_ref/swift/Property/imageView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)imageView">imageView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The image view of the floating action button.
+Read only.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">imageView</span><span class="p">:</span> <span class="kt">UIImageView</span> <span class="o">=</span> <span class="nf">lazyImageView</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)initWithFrame:"></a>
+                    <a name="//apple_ref/swift/Method/init(frame:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)initWithFrame:">init(frame:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)initWithCoder:"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)initWithCoder:">init(coder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)addItemWithTitle:image:action:"></a>
+                    <a name="//apple_ref/swift/Method/addItem(title:image:action:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)addItemWithTitle:image:action:">addItem(title:image:action:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add an action item with title, image and action to the list of items.
+The item will be pre configured with the default values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@discardableResult</span> <span class="kd">func</span> <span class="nf">addItem</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                                      <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                                      <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>title</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The title of the action item. Default is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>image</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The image of the action item. Default is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>action</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The action handler of the action item. Default is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The item that was added. This can be configured after it has been added.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)addItem:"></a>
+                    <a name="//apple_ref/swift/Method/addItem(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)addItem:">addItem(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Add an action item to the list of items.
+The item will be updated with the default configuration values.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">addItem</span><span class="p">(</span><span class="n">_</span> <span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>item</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The action item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The item that was add. Its configuration can be changed after it has been added.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)openWithAnimated:completion:"></a>
+                    <a name="//apple_ref/swift/Method/open(animated:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)openWithAnimated:completion:">open(animated:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Open the floating action button and show all action items.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    <p>Hidden items and items that have user interaction disabled are omitted.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">open</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>When true, button will be opened with an animation. Default is <code>true</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Will be handled upon completion. Default is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)closeWithAnimated:completion:"></a>
+                    <a name="//apple_ref/swift/Method/close(animated:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)closeWithAnimated:completion:">close(animated:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Close the floating action button and hide all action items.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">close</span><span class="p">(</span><span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>When true, button will be close with an animation. Default is <code>true</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Will be handled upon completion. Default is <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)enabledItems"></a>
+                    <a name="//apple_ref/swift/Property/enabledItems" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)enabledItems">enabledItems</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All items that will be shown when floating action button ist opened.
+This excludes hidden items and items that have user interaction disabled.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">enabledItems</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)highlighted"></a>
+                    <a name="//apple_ref/swift/Property/isHighlighted" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)highlighted">isHighlighted</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">isHighlighted</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)intrinsicContentSize"></a>
+                    <a name="//apple_ref/swift/Property/intrinsicContentSize" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)intrinsicContentSize">intrinsicContentSize</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">intrinsicContentSize</span><span class="p">:</span> <span class="kt">CGSize</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/jjochen/JJFloatingActionButton" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2017-12-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
