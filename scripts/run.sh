@@ -115,11 +115,12 @@ function ensure_git_status_clean
 
 function commit_to_release_branch
 {
+  release_branch = "release/${version}"
   fancy_echo "Commit to release branch"
-  git checkout -b "release/${version}"
+  git checkout -b ${release_branch}
   git add --all
   git commit -v -m "Release ${version}"
-  git push -v
+  git push --set-upstream origin ${release_branch}
 }
 
 function create_pull_request
