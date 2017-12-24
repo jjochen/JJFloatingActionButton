@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JJFloatingActionButton  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="JJFloatingActionButton  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">JJFloatingActionButton Docs</a> (77% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">JJFloatingActionButton Reference</a>
+        <img id="carat" src="img/carat.png" />
+        JJFloatingActionButton  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/JJActionItem.html">JJActionItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/JJCircleView.html">JJCircleView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/JJFloatingActionButton.html">JJFloatingActionButton</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/JJFloatingActionButtonState.html">JJFloatingActionButtonState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/JJFloatingActionButtonDelegate.html">JJFloatingActionButtonDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='jjfloatingactionbutton' class='heading'>JJFloatingActionButton</h1>
+
+<p>Floating Action Button for iOS</p>
+
+<p><img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift 4.0">
+<a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version"></a>
+<a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License"></a>
+<a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform"></a>
+<a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status"></a>
+<a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome"></a></p>
+<h2 id='preview' class='heading'>Preview</h2>
+
+<p><img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview"></p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 9.0+</li>
+<li>Swift 4.0+</li>
+<li>Xcode 9</li>
+</ul>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>JJFloatingActionButton is available through <a href="http://cocoapods.org">CocoaPods</a>.
+To install it, simply add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'JJFloatingActionButton'</span>
+</code></pre>
+<h2 id='usage' class='heading'>Usage</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">actionButton</span> <span class="o">=</span> <span class="kt">JJFloatingActionButton</span><span class="p">()</span>
+
+<span class="n">actionButton</span><span class="o">.</span><span class="nf">addItem</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"item 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"First"</span><span class="p">)?</span><span class="o">.</span><span class="nf">withRenderingMode</span><span class="p">(</span><span class="o">.</span><span class="n">alwaysTemplate</span><span class="p">))</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+  <span class="c1">// do something</span>
+<span class="p">}</span>
+
+<span class="n">actionButton</span><span class="o">.</span><span class="nf">addItem</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"item 2"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Second"</span><span class="p">)?</span><span class="o">.</span><span class="nf">withRenderingMode</span><span class="p">(</span><span class="o">.</span><span class="n">alwaysTemplate</span><span class="p">))</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+  <span class="c1">// do something</span>
+<span class="p">}</span>
+
+<span class="n">actionButton</span><span class="o">.</span><span class="nf">addItem</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"item 3"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+  <span class="c1">// do something</span>
+<span class="p">}</span>
+
+<span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">actionButton</span><span class="p">)</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">translatesAutoresizingMaskIntoConstraints</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">rightAnchor</span><span class="o">.</span><span class="nf">constraint</span><span class="p">(</span><span class="nv">equalTo</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="o">.</span><span class="n">rightAnchor</span><span class="p">,</span> <span class="nv">constant</span><span class="p">:</span> <span class="o">-</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">isActive</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">bottomAnchor</span><span class="o">.</span><span class="nf">constraint</span><span class="p">(</span><span class="nv">equalTo</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="o">.</span><span class="n">bottomAnchor</span><span class="p">,</span> <span class="nv">constant</span><span class="p">:</span> <span class="o">-</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">isActive</span> <span class="o">=</span> <span class="kc">true</span>
+</code></pre>
+<h3 id='configuration' class='heading'>Configuration</h3>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">buttonColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">defaultButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">openButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span>
+<span class="k">var</span> <span class="nv">buttonImageColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">shadowColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">shadowOffset</span><span class="p">:</span> <span class="kt">CGSize</span>
+<span class="k">var</span> <span class="nv">shadowOpacity</span><span class="p">:</span> <span class="kt">Float</span>
+<span class="k">var</span> <span class="nv">shadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">overlayColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">itemTitleFont</span><span class="p">:</span> <span class="kt">UIFont</span>
+<span class="k">var</span> <span class="nv">itemButtonColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">itemImageColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">itemTitleColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">itemShadowColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+<span class="k">var</span> <span class="nv">itemShadowOffset</span><span class="p">:</span> <span class="kt">CGSize</span>
+<span class="k">var</span> <span class="nv">itemShadowOpacity</span><span class="p">:</span> <span class="kt">Float</span>
+<span class="k">var</span> <span class="nv">itemShadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">itemSizeRatio</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">rotationAngle</span><span class="p">:</span> <span class="kt">CGFloat</span>
+</code></pre>
+<h3 id='delegate' class='heading'>Delegate</h3>
+<pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonWillOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
+<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonDidOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
+<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonWillClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
+<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonDidClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
+</code></pre>
+<h2 id='example' class='heading'>Example</h2>
+
+<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first.</p>
+<h2 id='author' class='heading'>Author</h2>
+
+<p>Jochen Pfeiffer, <a href="mailto:pod@jochen-pfeiffer.com">pod@jochen-pfeiffer.com</a></p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>JJFloatingActionButton is available under the MIT license. See the LICENSE file for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/jjochen/JJFloatingActionButton" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2017-12-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
