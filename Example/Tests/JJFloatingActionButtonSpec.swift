@@ -172,7 +172,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("items look correct highlighted") {
-                        let item = actionButton.openItems![0]
+                        let item = actionButton.items[0]
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTruthy())
                         expect(superview) == snapshot()
@@ -180,7 +180,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("items look correct highlighted with custom highligted color") {
                         actionButton.highlightedItemButtonColor = UIColor.purple
-                        let item = actionButton.openItems![0]
+                        let item = actionButton.items[0]
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTruthy())
                         expect(superview) == snapshot()
@@ -217,7 +217,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     context("and item is tapped") {
                         beforeEach {
-                            let item = actionButton.openItems![0]
+                            let item = actionButton.items[0]
                             item.sendActions(for: .touchUpInside)
                         }
 
