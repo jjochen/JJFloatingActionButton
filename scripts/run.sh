@@ -52,9 +52,7 @@ function run_tests
   fancy_echo "Run Tests (${destination})"
   
   xcodebuild -version
-
   xcodebuild -showsdks
-
   instruments -s devices
 
   xcodebuild clean build test \
