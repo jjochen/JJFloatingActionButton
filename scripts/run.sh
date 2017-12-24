@@ -115,8 +115,8 @@ function ensure_git_status_clean
 
 function commit_to_release_branch
 {
-  release_branch = "release/${version}"
   fancy_echo "Commit to release branch"
+  release_branch="release/${version}"
   git checkout -b ${release_branch}
   git add --all
   git commit -v -m "Release ${version}"
