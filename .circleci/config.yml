@@ -132,9 +132,9 @@ jobs:
       - run: *bundle-install
       - save_cache: *save-gem-cache
       - run: *fetch-cocoapods-specs
-      - run: *restore-pods-cache
+      - restore_cache: *restore-pods-cache
       - run: *install-cocoapods
-      - run: *save-pods-cache
+      - save_cache: *save-pods-cache
 
       - run:
           name: Build Documentation
