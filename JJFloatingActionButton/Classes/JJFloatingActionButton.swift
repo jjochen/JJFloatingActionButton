@@ -622,8 +622,8 @@ fileprivate extension JJFloatingActionButton {
         superview.insertSubview(overlayView, belowSubview: self)
         overlayView.translatesAutoresizingMaskIntoConstraints = false
         overlayView.topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
-        overlayView.leftAnchor.constraint(equalTo: superview.leftAnchor).isActive = true
-        overlayView.rightAnchor.constraint(equalTo: superview.rightAnchor).isActive = true
+        overlayView.leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
+        overlayView.trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
         overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
     }
 

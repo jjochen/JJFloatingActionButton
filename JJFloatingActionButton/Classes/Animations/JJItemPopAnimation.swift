@@ -39,8 +39,8 @@ extension JJItemPopAnimation: JJItemAnimation {
             item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
             item.circleView.centerXAnchor.constraint(equalTo: actionButton.circleView.centerXAnchor).isActive = true
             item.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor).isActive = true
-            item.leftAnchor.constraint(greaterThanOrEqualTo: containerView.leftAnchor).isActive = true
-            item.rightAnchor.constraint(lessThanOrEqualTo: containerView.rightAnchor).isActive = true
+            item.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor).isActive = true
+            item.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor).isActive = true
             item.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor).isActive = true
 
             previousItem = item

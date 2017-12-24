@@ -100,16 +100,16 @@ fileprivate extension JJActionItem {
         addSubview(imageView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
         circleView.translatesAutoresizingMaskIntoConstraints = false
-        circleView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        circleView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         circleView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         circleView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
-        circleView.leftAnchor.constraint(equalTo: titleLabel.rightAnchor, constant: 12).isActive = true
+        circleView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 12).isActive = true
 
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         imageView.translatesAutoresizingMaskIntoConstraints = false
