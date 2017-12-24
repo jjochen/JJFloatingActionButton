@@ -1,0 +1,110 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJActionItem.swift",
+      "line": 49,
+      "symbol": "JJActionItem.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJActionItem.swift",
+      "line": 54,
+      "symbol": "JJActionItem.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJActionItem.swift",
+      "line": 64,
+      "symbol": "JJActionItem.isHighlighted",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJCircleView.swift",
+      "line": 40,
+      "symbol": "JJCircleView.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJCircleView.swift",
+      "line": 45,
+      "symbol": "JJCircleView.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJCircleView.swift",
+      "line": 50,
+      "symbol": "JJCircleView.draw(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButton.swift",
+      "line": 316,
+      "symbol": "JJFloatingActionButton.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButton.swift",
+      "line": 321,
+      "symbol": "JJFloatingActionButton.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButton.swift",
+      "line": 518,
+      "symbol": "JJFloatingActionButton.isHighlighted",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButton.swift",
+      "line": 532,
+      "symbol": "JJFloatingActionButton.intrinsicContentSize",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButtonDelegate.swift",
+      "line": 11,
+      "symbol": "JJFloatingActionButtonDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButtonState.swift",
+      "line": 19,
+      "symbol": "JJFloatingActionButtonState.closed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButtonState.swift",
+      "line": 20,
+      "symbol": "JJFloatingActionButtonState.open",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButtonState.swift",
+      "line": 21,
+      "symbol": "JJFloatingActionButtonState.opening",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jochen/coden/esanum/JJFloatingActionButton/JJFloatingActionButton/Classes/JJFloatingActionButtonState.swift",
+      "line": 22,
+      "symbol": "JJFloatingActionButtonState.closing",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/jochen/coden/esanum/JJFloatingActionButton"
+}
