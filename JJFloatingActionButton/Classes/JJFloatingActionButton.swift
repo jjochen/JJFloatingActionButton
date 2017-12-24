@@ -306,12 +306,12 @@ import UIKit
     /// The round background view of the floating action button.
     /// Read only.
     ///
-    @objc open fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
+    @objc public fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
 
     /// The image view of the floating action button.
     /// Read only.
     ///
-    @objc open fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
+    @objc public fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -505,7 +505,7 @@ public extension JJFloatingActionButton {
     /// All items that will be shown when floating action button ist opened.
     /// This excludes hidden items and items that have user interaction disabled.
     ///
-    @objc open var enabledItems: [JJActionItem] {
+    @objc public var enabledItems: [JJActionItem] {
         return items.filter { item -> Bool in
             !item.isHidden && item.isUserInteractionEnabled
         }
