@@ -13,9 +13,9 @@ function usage
 cat << EOF
 usage:
     $0 tests [destination]  Run tests for given destination
-    $0 release [version]   Release new version
-    $0 documentation       Build documentation
-    $0 help                Print this help
+    $0 release [version]    Release new version
+    $0 documentation        Build documentation
+    $0 help                 Print this help
 EOF
 }
 
@@ -78,11 +78,14 @@ function release_version
   
   fancy_echo "Release Version (${version})"
 
+  ensure_git_status_clean
   update_podspec
   update_change_log
   install_example_pods
   update_example_version
   build_documentation
+  commit_to_release_branch
+  create_pull_request
 }
 
 function build_documentation
@@ -95,6 +98,34 @@ function update_change_log
 {
   fancy_echo "Update Change Log"
   github_changelog_generator --future-release ${version}
+}
+
+function ensure_git_status_clean
+{
+  fancy_echo "Ensure git status clean"
+  if test -n "$(git status --porcelain)"
+  then 
+    echo "Uncommited changes. Commit first."
+    git status
+    exit 1
+  else 
+    echo "Clean"
+  fi
+}
+
+function commit_to_release_branch
+{
+  fancy_echo "Commit to release branch"
+  git checkout -b "release/${version}"
+  git add --all
+  git commit -v -m "Release ${version}"
+  git push -v
+}
+
+function create_pull_request
+{
+  fancy_echo "Create Pull Request"
+  open "https://github.com/jjochen/JJFloatingActionButton/compare/release%2F${version}?expand=1"
 }
 
 function update_podspec
