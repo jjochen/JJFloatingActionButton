@@ -374,6 +374,38 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
         }
 
+        describe("JJFloatingActionButton with rtl language") {
+            let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
+            let actionButtonFrame = CGRect(origin: CGPoint(x: 20, y: 230), size: CGSize(width: 56, height: 56))
+
+            var actionButton: JJFloatingActionButton!
+            var superview: UIView!
+
+            beforeEach {
+                superview = UIView(frame: superviewFrame)
+                superview.backgroundColor = .white
+
+                actionButton = JJFloatingActionButton(frame: actionButtonFrame)
+                superview.addSubview(actionButton)
+
+                superview.semanticContentAttribute = .forceRightToLeft
+                actionButton.semanticContentAttribute = .forceRightToLeft
+
+                setNimbleTolerance(0.004)
+            }
+
+            it("looks correct") {
+                let item1 = actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
+                item1.semanticContentAttribute = .forceRightToLeft
+                let item2 = actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                item2.semanticContentAttribute = .forceRightToLeft
+
+                actionButton.open(animated: false)
+
+                expect(superview) == snapshot()
+            }
+        }
+
         describe("JJFloatingActionButton without superview") {
 
             let actionButtonFrame = CGRect(origin: .zero, size: CGSize(width: 56, height: 56))
