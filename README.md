@@ -48,7 +48,7 @@ actionButton.addItem(title: "item 3", image: nil) { item in
 
 view.addSubview(actionButton)
 actionButton.translatesAutoresizingMaskIntoConstraints = false
-actionButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
+actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
 actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
 ```
 
