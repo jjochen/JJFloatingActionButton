@@ -505,7 +505,7 @@ public extension JJFloatingActionButton {
     /// All items that will be shown when floating action button ist opened.
     /// This excludes hidden items and items that have user interaction disabled.
     ///
-    @objc public var enabledItems: [JJActionItem] {
+    @objc var enabledItems: [JJActionItem] {
         return items.filter { item -> Bool in
             !item.isHidden && item.isUserInteractionEnabled
         }

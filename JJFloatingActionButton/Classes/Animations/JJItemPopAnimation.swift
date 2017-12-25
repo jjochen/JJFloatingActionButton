@@ -50,7 +50,7 @@ extension JJItemPopAnimation: JJItemAnimation {
     func open(animated: Bool, group: DispatchGroup) {
         var delay = 0.0
         for item in items {
-            item.shrink()
+            item.scale()
             let animation: () -> Void = {
                 item.transform = .identity
                 item.alpha = 1
@@ -71,7 +71,7 @@ extension JJItemPopAnimation: JJItemAnimation {
         var delay = 0.0
         for item in items.reversed() {
             let animation: () -> Void = {
-                item.shrink()
+                item.scale()
                 item.alpha = 0
             }
             UIView.animate(duration: 0.15,

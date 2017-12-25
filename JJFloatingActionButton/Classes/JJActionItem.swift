@@ -72,21 +72,6 @@ extension JJActionItem {
     }
 }
 
-// MARK: - Animation
-
-internal extension JJActionItem {
-
-    func shrink(scaleFactor: CGFloat = 0.4) {
-        let width = frame.width
-        let circleWidth = circleView.frame.width
-        let translationX = (width - circleWidth) * (1 - scaleFactor) / 2
-        let scale = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor)
-        let translation = CGAffineTransform(translationX: translationX, y: 0)
-        let scaleAndTranslation = scale.concatenating(translation)
-        transform = scaleAndTranslation
-    }
-}
-
 // MARK: - Private Methods
 
 fileprivate extension JJActionItem {
