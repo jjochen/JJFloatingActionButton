@@ -7,6 +7,7 @@ Floating Action Button for iOS
 [![Platform](https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton)
 [![Build Status](https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield)](https://circleci.com/gh/jjochen/JJFloatingActionButton)
 [![codecov](https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg)](https://codecov.io/gh/jjochen/JJFloatingActionButton)
+[![Documentation](./docs/badge.svg)](https://jjochen.github.io/JJFloatingActionButton)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jjochen/JJFloatingActionButton/issues)
 
 
