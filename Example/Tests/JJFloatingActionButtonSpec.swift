@@ -86,7 +86,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
-                actionButton.overlayColor = UIColor.brown.withAlphaComponent(0.3)
+                actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
                 actionButton.itemTitleFont = UIFont.boldSystemFont(ofSize: 5)
                 actionButton.itemButtonColor = UIColor.magenta
                 actionButton.highlightedItemButtonColor = UIColor.red
@@ -119,7 +119,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
-                actionButton.overlayColor = UIColor.brown.withAlphaComponent(0.3)
+                actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
                 actionButton.itemTitleFont = UIFont.boldSystemFont(ofSize: 5)
                 actionButton.itemButtonColor = UIColor.magenta
                 actionButton.itemImageColor = UIColor.cyan
