@@ -136,15 +136,6 @@ import UIKit
         }
     }
 
-    /// The color of the overlay.
-    /// Default is `UIColor(white: 0, alpha: 0.5)`.
-    ///
-    @objc @IBInspectable public var overlayColor: UIColor = UIColor(white: 0, alpha: 0.5) {
-        didSet {
-            overlayView.backgroundColor = overlayColor
-        }
-    }
-
     /// The default title font of an action item.
     /// Default is `UIFont.systemFont(ofSize: UIFont.systemFontSize)`.
     ///
@@ -313,6 +304,12 @@ import UIKit
     ///
     @objc public fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
 
+    /// The overlay view.
+    /// Default background color is `UIColor(white: 0, alpha: 0.5)`.
+    /// Read only.
+    ///
+    @objc public fileprivate(set) lazy var overlayView: UIControl = lazyOverlayView()
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -322,8 +319,6 @@ import UIKit
         super.init(coder: aDecoder)
         setup()
     }
-
-    internal lazy var overlayView: UIControl = lazyOverlayView()
 
     internal lazy var itemContainerView: UIView = lazyItemContainer()
 
@@ -360,7 +355,7 @@ fileprivate extension JJFloatingActionButton {
     func lazyOverlayView() -> UIControl {
         let control = UIControl()
         control.isUserInteractionEnabled = true
-        control.backgroundColor = overlayColor
+        control.backgroundColor = UIColor(white: 0, alpha: 0.5)
         control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
         control.isEnabled = false
         control.alpha = 0

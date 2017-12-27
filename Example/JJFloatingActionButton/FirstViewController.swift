@@ -23,7 +23,6 @@ internal class FirstViewController: UIViewController {
         actionButton.shadowOffset = CGSize(width: 0, height: 1)
         actionButton.shadowOpacity = Float(0.5)
         actionButton.shadowRadius = CGFloat(2)
-        actionButton.overlayColor = UIColor(white: 0, alpha: 0.5)
         actionButton.itemTitleFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         actionButton.itemButtonColor = UIColor.white
         actionButton.itemImageColor = UIColor.red
@@ -35,6 +34,7 @@ internal class FirstViewController: UIViewController {
         actionButton.itemSizeRatio = CGFloat(0.75)
         actionButton.interItemSpacing = CGFloat(12)
         actionButton.rotationAngle = -CGFloat.pi / 4
+        actionButton.overlayView.backgroundColor = UIColor(white: 0, alpha: 0.5)
 
         actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { item in
             self.showMessage(for: item)
