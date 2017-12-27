@@ -103,9 +103,9 @@ import UIKit
     /// The shadow color of the floating action button.
     /// Default is `UIColor.black`.
     ///
-    @objc @IBInspectable public var shadowColor: UIColor = .black {
+    @objc @IBInspectable public var shadowColor: UIColor? = .black {
         didSet {
-            circleView.layer.shadowColor = shadowColor.cgColor
+            circleView.layer.shadowColor = shadowColor?.cgColor
         }
     }
 
