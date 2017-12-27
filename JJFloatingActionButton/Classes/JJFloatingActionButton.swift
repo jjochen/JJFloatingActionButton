@@ -193,7 +193,7 @@ import UIKit
     @objc @IBInspectable public var itemImageColor: UIColor? {
         didSet {
             items.forEach { item in
-                item.imageView.tintColor = currentItemButtonColor
+                item.imageView.tintColor = currentItemImageColor
             }
         }
     }
@@ -341,7 +341,7 @@ fileprivate extension JJFloatingActionButton {
         view.isUserInteractionEnabled = false
         view.color = buttonColor
         view.highlightedColor = highlightedButtonColor
-        view.layer.shadowColor = shadowColor.cgColor
+        view.layer.shadowColor = shadowColor?.cgColor
         view.layer.shadowOffset = shadowOffset
         view.layer.shadowOpacity = shadowOpacity
         view.layer.shadowRadius = shadowRadius
@@ -572,9 +572,10 @@ fileprivate extension JJFloatingActionButton {
     func configureItem(_ item: JJActionItem) {
         item.circleView.color = itemButtonColor
         item.circleView.highlightedColor = highlightedItemButtonColor
-        item.imageView.tintColor = currentItemButtonColor
+        item.imageView.tintColor = currentItemImageColor
         item.titleLabel.font = itemTitleFont
         item.titleLabel.textColor = itemTitleColor
+
         item.layer.shadowColor = itemShadowColor.cgColor
         item.layer.shadowOpacity = itemShadowOpacity
         item.layer.shadowOffset = itemShadowOffset
@@ -582,7 +583,7 @@ fileprivate extension JJFloatingActionButton {
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
 
-    var currentItemButtonColor: UIColor {
+    var currentItemImageColor: UIColor {
         return itemImageColor ?? buttonColor
     }
 
