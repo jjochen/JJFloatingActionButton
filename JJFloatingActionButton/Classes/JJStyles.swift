@@ -8,18 +8,18 @@
 
 import UIKit
 
-internal class JJStyles {
+internal struct JJStyles {
 }
 
 // MARK: - Colors
 
 internal extension JJStyles {
 
-    class var defaultButtonColor: UIColor {
+    static var defaultButtonColor: UIColor {
         return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
     }
 
-    class var defaultHighlightedButtonColor: UIColor {
+    static var defaultHighlightedButtonColor: UIColor {
         return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.66, alpha: 1.00)
     }
 }
@@ -28,34 +28,7 @@ internal extension JJStyles {
 
 internal extension JJStyles {
 
-    class var plusImage: UIImage? {
-        if Cache.plusImage != nil {
-            return Cache.plusImage
-        }
-
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 24, height: 24), false, 0)
-        drawPlus()
-
-        Cache.plusImage = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysTemplate)
-        UIGraphicsEndImageContext()
-
-        return Cache.plusImage
-    }
-}
-
-fileprivate extension JJStyles {
-
-    struct Cache {
-        static var plusImage: UIImage?
-    }
-
-    class func drawPlus() {
-        let context = UIGraphicsGetCurrentContext()
-        context?.saveGState()
-
-        let fillColor = UIColor(red: 0.267, green: 0.267, blue: 0.267, alpha: 1.000)
-
-        //// Bezier Drawing
+    static var plusImage: UIImage? {
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: 22.5, y: 11))
         bezierPath.addLine(to: CGPoint(x: 13, y: 11))
@@ -79,9 +52,37 @@ fileprivate extension JJStyles {
         bezierPath.addLine(to: CGPoint(x: 23, y: 11.5))
         bezierPath.addCurve(to: CGPoint(x: 22.5, y: 11), controlPoint1: CGPoint(x: 23, y: 11.22), controlPoint2: CGPoint(x: 22.78, y: 11))
         bezierPath.close()
-        fillColor.setFill()
-        bezierPath.fill()
 
+        return image(for: bezierPath, size: CGSize(width: 24, height: 24), name: "plus")
+    }
+}
+
+// MARK: - Helper
+
+fileprivate extension JJStyles {
+
+    static var cache = NSCache<NSString, UIImage>()
+
+    static func image(for path: UIBezierPath, size: CGSize, name: NSString) -> UIImage? {
+        var image = cache.object(forKey: name)
+        if image == nil {
+            UIGraphicsBeginImageContextWithOptions(size, false, 0)
+            draw(path)
+            image = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(.alwaysTemplate)
+            UIGraphicsEndImageContext()
+            if let image = image {
+                cache.setObject(image, forKey: name)
+            }
+        }
+        return image
+    }
+
+    static func draw(_ path: UIBezierPath) {
+        let context = UIGraphicsGetCurrentContext()
+        context?.saveGState()
+        let fillColor = UIColor(red: 0.267, green: 0.267, blue: 0.267, alpha: 1.000)
+        fillColor.setFill()
+        path.fill()
         context?.restoreGState()
     }
 }
