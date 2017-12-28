@@ -592,16 +592,10 @@ fileprivate extension JJFloatingActionButton {
         }
 
         if defaultButtonImage == nil {
-            defaultButtonImage = defaultButtonImageResource
+            defaultButtonImage = JJStyles.plusImage
         }
 
         return defaultButtonImage
-    }
-
-    var defaultButtonImageResource: UIImage? {
-        let resourceBundle = Bundle.assetsBundle()
-        let image = UIImage(named: "Plus", in: resourceBundle, compatibleWith: nil)
-        return image
     }
 
     var isSingleActionButton: Bool {
