@@ -22,7 +22,7 @@ Floating Action Button for iOS
 ## Installation
 ### CocoaPods
 
-JJFloatingActionButton is available through [CocoaPods](http://cocoapods.org).
+JJFloatingActionButton is available through [CocoaPods](https://cocoapods.org/pods/JJFloatingActionButton).
 To install it, simply add the following line to your Podfile:
 
 ```ruby
