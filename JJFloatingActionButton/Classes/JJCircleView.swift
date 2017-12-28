@@ -14,7 +14,7 @@ import UIKit
 
     /// The color of the circle.
     ///
-    @objc @IBInspectable open var color: UIColor = .defaultButtonColor {
+    @objc @IBInspectable open var color: UIColor = JJStyles.defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
             setNeedsDisplay()
@@ -51,7 +51,7 @@ import UIKit
         drawCircle(inRect: bounds)
     }
 
-    fileprivate var highlightedColorFallback = UIColor.defaultHighlightedButtonColor
+    fileprivate var highlightedColorFallback = JJStyles.defaultHighlightedButtonColor
 }
 
 // MARK: - Private Methods
