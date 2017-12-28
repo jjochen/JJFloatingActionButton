@@ -63,6 +63,7 @@
 		198B662E1FBAEE16009A17F2 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = ".swift-version"; path = "../.swift-version"; sourceTree = SOURCE_ROOT; tabWidth = 2; };
 		198EA7E31FD73F6D00F7DA3E /* JJCircleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JJCircleView.xib; sourceTree = "<group>"; };
 		199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JJFloatingActionButton.xib; sourceTree = "<group>"; };
+		19DF53B81FF59AE5006E292F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../Package.swift; sourceTree = "<group>"; };
 		19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JJActionItem.xib; sourceTree = "<group>"; };
 		19E247E91FD854B1009A7BA1 /* .github_changelog_generator */ = {isa = PBXFileReference; lastKnownFileType = text; name = .github_changelog_generator; path = ../../.github_changelog_generator; sourceTree = "<group>"; };
 		19E247EA1FD93525009A7BA1 /* .swiftlint.yml */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = text; name = .swiftlint.yml; path = ../../.swiftlint.yml; sourceTree = "<group>"; tabWidth = 2; };
@@ -155,6 +156,7 @@
 				198B66261FBAEDD6009A17F2 /* Gemfile */,
 				198B66271FBAEDD7009A17F2 /* JJFloatingActionButton.podspec */,
 				198B66231FBAEDD6009A17F2 /* LICENSE */,
+				19DF53B81FF59AE5006E292F /* Package.swift */,
 				198B66241FBAEDD6009A17F2 /* README.md */,
 				19746F721FEABAB200C42037 /* run.sh */,
 			);
