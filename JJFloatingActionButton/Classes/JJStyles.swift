@@ -9,6 +9,24 @@
 import UIKit
 
 internal class JJStyles {
+}
+
+// MARK: - Colors
+
+internal extension JJStyles {
+
+    class var defaultButtonColor: UIColor {
+        return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
+    }
+
+    class var defaultHighlightedButtonColor: UIColor {
+        return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.66, alpha: 1.00)
+    }
+}
+
+// MARK: - Images
+
+internal extension JJStyles {
 
     class var plusImage: UIImage? {
         if Cache.plusImage != nil {
@@ -34,7 +52,7 @@ fileprivate extension JJStyles {
     class func drawPlus() {
         let context = UIGraphicsGetCurrentContext()
         context?.saveGState()
-        
+
         let fillColor = UIColor(red: 0.267, green: 0.267, blue: 0.267, alpha: 1.000)
 
         //// Bezier Drawing

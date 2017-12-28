@@ -46,7 +46,7 @@ import UIKit
     /// The background color of the floating action button.
     /// Default is `UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)`.
     ///
-    @objc @IBInspectable public var buttonColor: UIColor = .defaultButtonColor {
+    @objc @IBInspectable public var buttonColor: UIColor = JJStyles.defaultButtonColor {
         didSet {
             circleView.color = buttonColor
         }
