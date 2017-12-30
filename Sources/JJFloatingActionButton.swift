@@ -310,11 +310,27 @@ import UIKit
     ///
     @objc public fileprivate(set) lazy var overlayView: UIControl = lazyOverlayView()
 
+    /// Initializes and returns a newly allocated floating action button object with the specified frame rectangle.
+    ///
+    /// - Parameter frame: The frame rectangle for the floating action button, measured in points.
+    ///                    The origin of the frame is relative to the superview in which you plan to add it.
+    ///                    This method uses the frame rectangle to set the center and bounds properties accordingly.
+    ///
+    /// - Returns: An initialized floating action button object.
+    ///
+    /// - SeeAlso: init?(coder: NSCoder)
+    ///
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
+    /// Returns an object initialized from data in a given unarchiver.
+    ///
+    /// - Parameter aDecoder: An unarchiver object.
+    ///
+    /// - Returns: `self`, initialized using the data in decoder.
+    ///
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -510,6 +526,9 @@ public extension JJFloatingActionButton {
 // MARK: - UIControl
 
 extension JJFloatingActionButton {
+
+    /// A Boolean value indicating whether the action button draws a highlight.
+    ///
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue
@@ -524,6 +543,9 @@ extension JJFloatingActionButton {
 // MARK: - UIView
 
 extension JJFloatingActionButton {
+
+    /// The natural size for the floating action button.
+    ///
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 56, height: 56)
     }

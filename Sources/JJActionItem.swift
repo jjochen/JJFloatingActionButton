@@ -46,11 +46,17 @@ import UIKit
         return view
     }()
 
-    public override init(frame: CGRect) {
+    internal override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
+    /// Returns an object initialized from data in a given unarchiver.
+    ///
+    /// - Parameter aDecoder: An unarchiver object.
+    ///
+    /// - Returns: `self`, initialized using the data in decoder.
+    ///
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -61,6 +67,8 @@ import UIKit
 
 extension JJActionItem {
 
+    /// A Boolean value indicating whether the action item draws a highlight.
+    ///
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue
