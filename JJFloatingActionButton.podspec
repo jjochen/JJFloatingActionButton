@@ -13,8 +13,5 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.frameworks   = 'UIKit'
 
-  spec.source_files = 'JJFloatingActionButton/Classes/**/*'
-  spec.resource_bundles = {
-    'Assets' => ['JJFloatingActionButton/Assets/*.xcassets']
-  }
+  spec.source_files = 'Sources/**/*'
 end

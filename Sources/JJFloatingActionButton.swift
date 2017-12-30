@@ -46,7 +46,7 @@ import UIKit
     /// The background color of the floating action button.
     /// Default is `UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)`.
     ///
-    @objc @IBInspectable public var buttonColor: UIColor = .defaultButtonColor {
+    @objc @IBInspectable public var buttonColor: UIColor = JJStyles.defaultButtonColor {
         didSet {
             circleView.color = buttonColor
         }
@@ -103,9 +103,9 @@ import UIKit
     /// The shadow color of the floating action button.
     /// Default is `UIColor.black`.
     ///
-    @objc @IBInspectable public var shadowColor: UIColor = .black {
+    @objc @IBInspectable public var shadowColor: UIColor? = .black {
         didSet {
-            circleView.layer.shadowColor = shadowColor.cgColor
+            circleView.layer.shadowColor = shadowColor?.cgColor
         }
     }
 
@@ -133,15 +133,6 @@ import UIKit
     @objc @IBInspectable public var shadowRadius: CGFloat = 2 {
         didSet {
             circleView.layer.shadowRadius = shadowRadius
-        }
-    }
-
-    /// The color of the overlay.
-    /// Default is `UIColor(white: 0, alpha: 0.5)`.
-    ///
-    @objc @IBInspectable public var overlayColor: UIColor = UIColor(white: 0, alpha: 0.5) {
-        didSet {
-            overlayView.backgroundColor = overlayColor
         }
     }
 
@@ -193,7 +184,7 @@ import UIKit
     @objc @IBInspectable public var itemImageColor: UIColor? {
         didSet {
             items.forEach { item in
-                item.imageView.tintColor = currentItemButtonColor
+                item.imageView.tintColor = currentItemImageColor
             }
         }
     }
@@ -313,17 +304,37 @@ import UIKit
     ///
     @objc public fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
 
+    /// The overlay view.
+    /// Default background color is `UIColor(white: 0, alpha: 0.5)`.
+    /// Read only.
+    ///
+    @objc public fileprivate(set) lazy var overlayView: UIControl = lazyOverlayView()
+
+    /// Initializes and returns a newly allocated floating action button object with the specified frame rectangle.
+    ///
+    /// - Parameter frame: The frame rectangle for the floating action button, measured in points.
+    ///                    The origin of the frame is relative to the superview in which you plan to add it.
+    ///                    This method uses the frame rectangle to set the center and bounds properties accordingly.
+    ///
+    /// - Returns: An initialized floating action button object.
+    ///
+    /// - SeeAlso: init?(coder: NSCoder)
+    ///
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
+    /// Returns an object initialized from data in a given unarchiver.
+    ///
+    /// - Parameter aDecoder: An unarchiver object.
+    ///
+    /// - Returns: `self`, initialized using the data in decoder.
+    ///
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-
-    internal lazy var overlayView: UIControl = lazyOverlayView()
 
     internal lazy var itemContainerView: UIView = lazyItemContainer()
 
@@ -341,7 +352,7 @@ fileprivate extension JJFloatingActionButton {
         view.isUserInteractionEnabled = false
         view.color = buttonColor
         view.highlightedColor = highlightedButtonColor
-        view.layer.shadowColor = shadowColor.cgColor
+        view.layer.shadowColor = shadowColor?.cgColor
         view.layer.shadowOffset = shadowOffset
         view.layer.shadowOpacity = shadowOpacity
         view.layer.shadowRadius = shadowRadius
@@ -360,7 +371,7 @@ fileprivate extension JJFloatingActionButton {
     func lazyOverlayView() -> UIControl {
         let control = UIControl()
         control.isUserInteractionEnabled = true
-        control.backgroundColor = overlayColor
+        control.backgroundColor = UIColor(white: 0, alpha: 0.5)
         control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
         control.isEnabled = false
         control.alpha = 0
@@ -515,6 +526,9 @@ public extension JJFloatingActionButton {
 // MARK: - UIControl
 
 extension JJFloatingActionButton {
+
+    /// A Boolean value indicating whether the action button draws a highlight.
+    ///
     open override var isHighlighted: Bool {
         set {
             super.isHighlighted = newValue
@@ -529,6 +543,9 @@ extension JJFloatingActionButton {
 // MARK: - UIView
 
 extension JJFloatingActionButton {
+
+    /// The natural size for the floating action button.
+    ///
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 56, height: 56)
     }
@@ -572,9 +589,10 @@ fileprivate extension JJFloatingActionButton {
     func configureItem(_ item: JJActionItem) {
         item.circleView.color = itemButtonColor
         item.circleView.highlightedColor = highlightedItemButtonColor
-        item.imageView.tintColor = currentItemButtonColor
+        item.imageView.tintColor = currentItemImageColor
         item.titleLabel.font = itemTitleFont
         item.titleLabel.textColor = itemTitleColor
+
         item.layer.shadowColor = itemShadowColor.cgColor
         item.layer.shadowOpacity = itemShadowOpacity
         item.layer.shadowOffset = itemShadowOffset
@@ -582,7 +600,7 @@ fileprivate extension JJFloatingActionButton {
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
 
-    var currentItemButtonColor: UIColor {
+    var currentItemImageColor: UIColor {
         return itemImageColor ?? buttonColor
     }
 
@@ -596,16 +614,10 @@ fileprivate extension JJFloatingActionButton {
         }
 
         if defaultButtonImage == nil {
-            defaultButtonImage = defaultButtonImageResource
+            defaultButtonImage = JJStyles.plusImage
         }
 
         return defaultButtonImage
-    }
-
-    var defaultButtonImageResource: UIImage? {
-        let resourceBundle = Bundle.assetsBundle()
-        let image = UIImage(named: "Plus", in: resourceBundle, compatibleWith: nil)
-        return image
     }
 
     var isSingleActionButton: Bool {

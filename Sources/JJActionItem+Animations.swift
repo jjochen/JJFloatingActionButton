@@ -3,6 +3,7 @@
 //  JJFloatingActionButton
 //
 //  Created by Jochen on 25.12.17.
+//  Copyright © 2017 Jochen Pfeiffer. All rights reserved.
 //
 
 import CoreGraphics

@@ -1,5 +1,5 @@
 included:
-  - JJFloatingActionButton
+  - Sources
   - Example
 excluded:
 - Example/Pods

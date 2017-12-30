@@ -14,7 +14,7 @@ import UIKit
 
     /// The color of the circle.
     ///
-    @objc @IBInspectable open var color: UIColor = .defaultButtonColor {
+    @objc @IBInspectable open var color: UIColor = JJStyles.defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
             setNeedsDisplay()
@@ -29,7 +29,8 @@ import UIKit
         }
     }
 
-    /// Highlighted state. Default is `false`.
+    /// A Boolean value indicating whether the circle view draws a highlight.
+    /// Default is `false`.
     ///
     @objc open var isHighlighted = false {
         didSet {
@@ -37,21 +38,30 @@ import UIKit
         }
     }
 
-    public override init(frame: CGRect) {
+    internal override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
+    /// Returns an object initialized from data in a given unarchiver.
+    ///
+    /// - Parameter aDecoder: An unarchiver object.
+    ///
+    /// - Returns: `self`, initialized using the data in decoder.
+    ///
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
 
+    /// Draws the receiver’s image within the passed-in rectangle
+    /// Overrides `draw(rect: CGRect)` from `UIView`.
+    ///
     open override func draw(_: CGRect) {
         drawCircle(inRect: bounds)
     }
 
-    fileprivate var highlightedColorFallback = UIColor.defaultHighlightedButtonColor
+    fileprivate var highlightedColorFallback = JJStyles.defaultHighlightedButtonColor
 }
 
 // MARK: - Private Methods
