@@ -4,64 +4,88 @@
     <title>JJFloatingActionButton Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
+
     <a name="//apple_ref/swift/Class/JJFloatingActionButton" class="dashAnchor"></a>
+
     <a title="JJFloatingActionButton Class Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p><a href="../index.html">JJFloatingActionButton Docs</a> (77% documented)</p>
-      </div>
-    </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="../index.html">JJFloatingActionButton Reference</a>
-        <img id="carat" src="../img/carat.png" />
-        JJFloatingActionButton Class Reference
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          JJFloatingActionButton Docs
+        </a>
+         (100% documented)
       </p>
-    </div>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fjjochen%2Egithub%2Eio%2Fdocsets%2FJJFloatingActionButton%2Exml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">JJFloatingActionButton Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      JJFloatingActionButton Class Reference
+    </p>
+
     <div class="content-wrapper">
-      <nav class="sidebar">
+      <nav class="navigation">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../Classes.html">Classes</a>
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/JJActionItem.html">JJActionItem</a>
+                <a class="nav-group-task-link" href="../Classes/JJActionItem.html">JJActionItem</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/JJCircleView.html">JJCircleView</a>
+                <a class="nav-group-task-link" href="../Classes/JJCircleView.html">JJCircleView</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a>
+                <a class="nav-group-task-link" href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enumerations</a>
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums/JJFloatingActionButtonState.html">JJFloatingActionButtonState</a>
+                <a class="nav-group-task-link" href="../Enums/JJFloatingActionButtonState.html">JJFloatingActionButtonState</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Protocols.html">Protocols</a>
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/JJFloatingActionButtonDelegate.html">JJFloatingActionButtonDelegate</a>
+                <a class="nav-group-task-link" href="../Protocols/JJFloatingActionButtonDelegate.html">JJFloatingActionButtonDelegate</a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
       <article class="main-content">
-        <section>
-          <section class="section">
+
+        <section class="section">
+          <div class="section-content">
             <h1>JJFloatingActionButton</h1>
               <div class="declaration">
                 <div class="language">
@@ -84,10 +108,13 @@
   view.addSubview(actionButton)
 </code></pre>
 
-          </section>
-          <section class="section task-group-section">
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -164,7 +191,7 @@ Default is <code>UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">buttonColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">defaultButtonColor</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">buttonColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">JJStyles</span><span class="o">.</span><span class="n">defaultButtonColor</span></code></pre>
 
                         </div>
                       </div>
@@ -328,7 +355,7 @@ Default is <code>UIColor.black</code>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">shadowColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">shadowColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span></code></pre>
 
                         </div>
                       </div>
@@ -413,34 +440,6 @@ Default is <code>2</code>.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">shadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)overlayColor"></a>
-                    <a name="//apple_ref/swift/Property/overlayColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)overlayColor">overlayColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The color of the overlay.
-Default is <code>UIColor(white: 0, alpha: 0.5)</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">overlayColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -964,6 +963,35 @@ Read only.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)overlayView"></a>
+                    <a name="//apple_ref/swift/Property/overlayView" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)overlayView">overlayView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The overlay view.
+Default background color is <code>UIColor(white: 0, alpha: 0.5)</code>.
+Read only.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">overlayView</span><span class="p">:</span> <span class="kt">UIControl</span> <span class="o">=</span> <span class="nf">lazyOverlayView</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)initWithFrame:"></a>
                     <a name="//apple_ref/swift/Method/init(frame:)" class="dashAnchor"></a>
                     <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)initWithFrame:">init(frame:)</a>
@@ -974,7 +1002,12 @@ Read only.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initializes and returns a newly allocated floating action button object with the specified frame rectangle.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p>init?(coder: NSCoder)</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -984,6 +1017,31 @@ Read only.</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>frame</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The frame rectangle for the floating action button, measured in points.
+               The origin of the frame is relative to the superview in which you plan to add it.
+               This method uses the frame rectangle to set the center and bounds properties accordingly.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An initialized floating action button object.</p>
                       </div>
                     </section>
                   </div>
@@ -1001,7 +1059,7 @@ Read only.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Returns an object initialized from data in a given unarchiver.</p>
 
                       </div>
                       <div class="declaration">
@@ -1012,13 +1070,36 @@ Read only.</p>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>aDecoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An unarchiver object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code>self</code>, initialized using the data in decoder.</p>
+                      </div>
                     </section>
                   </div>
                 </li>
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1289,7 +1370,7 @@ This excludes hidden items and items that have user interaction disabled.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">enabledItems</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="k">var</span> <span class="nv">enabledItems</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
@@ -1299,7 +1380,7 @@ This excludes hidden items and items that have user interaction disabled.</p>
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1313,7 +1394,7 @@ This excludes hidden items and items that have user interaction disabled.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A Boolean value indicating whether the action button draws a highlight.</p>
 
                       </div>
                       <div class="declaration">
@@ -1330,7 +1411,7 @@ This excludes hidden items and items that have user interaction disabled.</p>
               </ul>
             </div>
             <div class="task-group">
-              <ul>
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1344,7 +1425,7 @@ This excludes hidden items and items that have user interaction disabled.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The natural size for the floating action button.</p>
 
                       </div>
                       <div class="declaration">
@@ -1360,14 +1441,15 @@ This excludes hidden items and items that have user interaction disabled.</p>
                 </li>
               </ul>
             </div>
-          </section>
+          </div>
         </section>
-        <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/jjochen/JJFloatingActionButton" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2017-12-24)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
+
       </article>
     </div>
+    <section class="footer">
+      <p>&copy; 2017 <a class="link" href="https://github.com/jjochen" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2017-12-30)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
   </body>
 </div>
 </html>
