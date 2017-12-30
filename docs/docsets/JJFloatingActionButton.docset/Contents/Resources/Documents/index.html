@@ -96,25 +96,59 @@
 <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform"></a>
 <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status"></a>
 <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov"></a>
+<a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation"></a>
 <a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome"></a></p>
+
+<p align="center">
+  <a href="#preview">Preview</a> • <a href="#features">Features</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
+</p>
 <h2 id='preview' class='heading'>Preview</h2>
 
-<p><img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview"></p>
+<p align="center">
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
+</p>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>Easy to use  ✓</li>
+<li>Fully customizable  ✓</li>
+<li>Handles Buttons with single Action  ✓</li>
+<li>Works in Swift and Objective-C Projects  ✓</li>
+<li>Comprehensive Test Coverage  ✓</li>
+<li><a href="https://jjochen.github.io/JJFloatingActionButton">Complete Documentation</a>  ✓</li>
+</ul>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
 <li>iOS 9.0+</li>
+<li>Xcode 9.0+</li>
 <li>Swift 4.0+</li>
-<li>Xcode 9</li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
-<p>JJFloatingActionButton is available through <a href="http://cocoapods.org">CocoaPods</a>.
-To install it, simply add the following line to your Podfile:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'JJFloatingActionButton'</span>
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
 </code></pre>
+
+<p>To integrate JJFloatingActionButton into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'11.0'</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
+    <span class="n">pod</span> <span class="s1">'JJFloatingActionButton'</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Then, run the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+</code></pre>
+<h3 id='manually' class='heading'>Manually</h3>
+
+<p>If you prefer not to use a dependency manager, you can integrate JJFloatingActionButton into your project manually.</p>
 <h2 id='usage' class='heading'>Usage</h2>
+<h3 id='quick-start' class='heading'>Quick Start</h3>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">actionButton</span> <span class="o">=</span> <span class="kt">JJFloatingActionButton</span><span class="p">()</span>
 
 <span class="n">actionButton</span><span class="o">.</span><span class="nf">addItem</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"item 1"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"First"</span><span class="p">)?</span><span class="o">.</span><span class="nf">withRenderingMode</span><span class="p">(</span><span class="o">.</span><span class="n">alwaysTemplate</span><span class="p">))</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
@@ -135,6 +169,8 @@ To install it, simply add the following line to your Podfile:</p>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">bottomAnchor</span><span class="o">.</span><span class="nf">constraint</span><span class="p">(</span><span class="nv">equalTo</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="o">.</span><span class="n">bottomAnchor</span><span class="p">,</span> <span class="nv">constant</span><span class="p">:</span> <span class="o">-</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">isActive</span> <span class="o">=</span> <span class="kc">true</span>
 </code></pre>
 <h3 id='configuration' class='heading'>Configuration</h3>
+
+<p>Button appearance and behavior can be customized:</p>
 <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">buttonColor</span><span class="p">:</span> <span class="kt">UIColor</span>
 <span class="k">var</span> <span class="nv">defaultButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span>
 <span class="k">var</span> <span class="nv">openButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span>
@@ -143,7 +179,10 @@ To install it, simply add the following line to your Podfile:</p>
 <span class="k">var</span> <span class="nv">shadowOffset</span><span class="p">:</span> <span class="kt">CGSize</span>
 <span class="k">var</span> <span class="nv">shadowOpacity</span><span class="p">:</span> <span class="kt">Float</span>
 <span class="k">var</span> <span class="nv">shadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span>
-<span class="k">var</span> <span class="nv">overlayColor</span><span class="p">:</span> <span class="kt">UIColor</span>
+
+<span class="k">var</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="k">var</span> <span class="nv">rotationAngle</span><span class="p">:</span> <span class="kt">CGFloat</span>
+
 <span class="k">var</span> <span class="nv">itemTitleFont</span><span class="p">:</span> <span class="kt">UIFont</span>
 <span class="k">var</span> <span class="nv">itemButtonColor</span><span class="p">:</span> <span class="kt">UIColor</span>
 <span class="k">var</span> <span class="nv">itemImageColor</span><span class="p">:</span> <span class="kt">UIColor</span>
@@ -153,8 +192,6 @@ To install it, simply add the following line to your Podfile:</p>
 <span class="k">var</span> <span class="nv">itemShadowOpacity</span><span class="p">:</span> <span class="kt">Float</span>
 <span class="k">var</span> <span class="nv">itemShadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span>
 <span class="k">var</span> <span class="nv">itemSizeRatio</span><span class="p">:</span> <span class="kt">CGFloat</span>
-<span class="k">var</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span>
-<span class="k">var</span> <span class="nv">rotationAngle</span><span class="p">:</span> <span class="kt">CGFloat</span>
 </code></pre>
 <h3 id='delegate' class='heading'>Delegate</h3>
 <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonWillOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
@@ -162,12 +199,19 @@ To install it, simply add the following line to your Podfile:</p>
 <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonWillClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
 <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonDidClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
 </code></pre>
-<h2 id='example' class='heading'>Example</h2>
+<h3 id='example' class='heading'>Example</h3>
 
-<p>To run the example project, clone the repo, and run <code>pod install</code> from the Example directory first.</p>
+<p>To run the example project, just run the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>pod try JJFloatingActionButton
+</code></pre>
+<h3 id='resources' class='heading'>Resources</h3>
+
+<ul>
+<li><a href="https://jjochen.github.io/JJFloatingActionButton/">Documentation</a></li>
+</ul>
 <h2 id='author' class='heading'>Author</h2>
 
-<p>Jochen Pfeiffer, <a href="mailto:pod@jochen-pfeiffer.com">pod@jochen-pfeiffer.com</a></p>
+<p>Jochen Pfeiffer <a href="https://github.com/jjochen">https://github.com/jjochen</a></p>
 <h2 id='license' class='heading'>License</h2>
 
 <p>JJFloatingActionButton is available under the MIT license. See the LICENSE file for more info.</p>
