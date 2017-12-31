@@ -1,5 +1,36 @@
 # Change Log
 
+## [0.6.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.0) (2017-12-30)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.5.0...0.6.0)
+
+**Implemented enhancements:**
+
+- Handle hidden action items [\#36](https://github.com/jjochen/JJFloatingActionButton/issues/36)
+- Support Swift Package Manager [\#27](https://github.com/jjochen/JJFloatingActionButton/issues/27)
+- Draw default button image [\#17](https://github.com/jjochen/JJFloatingActionButton/issues/17)
+
+**Closed issues:**
+
+- Remove unnecessary properties [\#63](https://github.com/jjochen/JJFloatingActionButton/issues/63)
+- Document functions/properties from superclasses  [\#61](https://github.com/jjochen/JJFloatingActionButton/issues/61)
+- Improve README [\#60](https://github.com/jjochen/JJFloatingActionButton/issues/60)
+- Check RTL Languages [\#55](https://github.com/jjochen/JJFloatingActionButton/issues/55)
+
+**Merged pull requests:**
+
+- Add license to each file [\#69](https://github.com/jjochen/JJFloatingActionButton/pull/69) ([jjochen](https://github.com/jjochen))
+- Improve Readme [\#68](https://github.com/jjochen/JJFloatingActionButton/pull/68) ([jjochen](https://github.com/jjochen))
+- Improve documentation [\#67](https://github.com/jjochen/JJFloatingActionButton/pull/67) ([jjochen](https://github.com/jjochen))
+- Investigate swift package manager support [\#66](https://github.com/jjochen/JJFloatingActionButton/pull/66) ([jjochen](https://github.com/jjochen))
+- Draw assets \(remove assets bundle\) [\#65](https://github.com/jjochen/JJFloatingActionButton/pull/65) ([jjochen](https://github.com/jjochen))
+- Expose overlay view as read only property [\#64](https://github.com/jjochen/JJFloatingActionButton/pull/64) ([jjochen](https://github.com/jjochen))
+- RTL language support [\#58](https://github.com/jjochen/JJFloatingActionButton/pull/58) ([jjochen](https://github.com/jjochen))
+- Add documentation for github pages [\#54](https://github.com/jjochen/JJFloatingActionButton/pull/54) ([jjochen](https://github.com/jjochen))
+- Improve release script [\#53](https://github.com/jjochen/JJFloatingActionButton/pull/53) ([jjochen](https://github.com/jjochen))
+- Handle hidden items [\#52](https://github.com/jjochen/JJFloatingActionButton/pull/52) ([jjochen](https://github.com/jjochen))
+- Handle open/close animations in separate classes [\#51](https://github.com/jjochen/JJFloatingActionButton/pull/51) ([jjochen](https://github.com/jjochen))
+- Continuous integration improvements  [\#50](https://github.com/jjochen/JJFloatingActionButton/pull/50) ([jjochen](https://github.com/jjochen))
+
 ## [0.5.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.5.0) (2017-12-15)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.4.0...0.5.0)
 
@@ -14,8 +45,8 @@
 
 **Merged pull requests:**
 
-- Add documentation [\#47](https://github.com/jjochen/JJFloatingActionButton/pull/47) ([jjochen](https://github.com/jjochen))
 - Add image transition when button opens/closes [\#46](https://github.com/jjochen/JJFloatingActionButton/pull/46) ([jjochen](https://github.com/jjochen))
+- Add documentation [\#47](https://github.com/jjochen/JJFloatingActionButton/pull/47) ([jjochen](https://github.com/jjochen))
 - Make single action handling configurable [\#44](https://github.com/jjochen/JJFloatingActionButton/pull/44) ([jjochen](https://github.com/jjochen))
 - Add swiftlint to CircleCi workflow [\#43](https://github.com/jjochen/JJFloatingActionButton/pull/43) ([jjochen](https://github.com/jjochen))
 
