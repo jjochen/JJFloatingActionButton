@@ -38,6 +38,7 @@ usage:
     $0 tests [destination]  Run tests for given destination
     $0 release [version]    Release new version
     $0 documentation        Build documentation
+    $0 video                Record video
     $0 help                 Print this help
 EOF
 }
@@ -54,6 +55,9 @@ function run_action
     ;;
   documentation)
     build_documentation
+    ;;
+  video)
+    record_video
     ;;
   *)
     usage
@@ -169,5 +173,27 @@ function update_example_version
   fancy_echo "Update Version in Example"
   /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${version}" Example/JJFloatingActionButton/Info.plist
 }
+
+function record_video
+{
+  fancy_echo "Record video"
+  
+  mov_path="./Images/JJFloatingActionButton.mov"
+  gif_path="./Images/JJFloatingActionButton.gif"
+  
+  xcrun simctl io booted recordVideo $mov_path
+
+  fancy_echo "Create gif"
+  
+  palette="./Images/palette.png"
+  filters="fps=30,setpts=1*PTS,scale=250:-1:flags=lanczos"
+
+  ffmpeg -v warning -i $mov_path -vf "$filters,palettegen" -y $palette
+  if [[ -f $palette ]]; then
+    ffmpeg -v warning -i $mov_path -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $gif_path
+    rm $palette
+  fi
+}
+
 
 run_action $*
