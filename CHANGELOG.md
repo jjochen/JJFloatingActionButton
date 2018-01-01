@@ -1,6 +1,17 @@
 # Change Log
 
-## [0.6.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.0) (2017-12-30)
+## [0.6.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.1) (2018-01-01)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.6.0...0.6.1)
+
+**Closed issues:**
+
+- Update preview [\#72](https://github.com/jjochen/JJFloatingActionButton/issues/72)
+
+**Merged pull requests:**
+
+- Update preview [\#73](https://github.com/jjochen/JJFloatingActionButton/pull/73) ([jjochen](https://github.com/jjochen))
+
+## [0.6.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.0) (2017-12-31)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.5.0...0.6.0)
 
 **Implemented enhancements:**
