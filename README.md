@@ -18,7 +18,9 @@ Floating Action Button for iOS
 
 - Easy to use  ✓
 - Fully customizable  ✓
-- Handles Buttons with single Action  ✓
+- Place with auto layout  ✓
+- Design in Interface Builder  ✓
+- Handles Button with single Action  ✓
 - Works in Swift and Objective-C Projects  ✓
 - Comprehensive Test Coverage  ✓
 - [Complete Documentation](https://jjochen.github.io/JJFloatingActionButton)  ✓
