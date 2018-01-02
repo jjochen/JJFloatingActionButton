@@ -7,6 +7,9 @@ Pod::Spec.new do |spec|
   spec.source   = { :git => 'https://github.com/jjochen/JJFloatingActionButton.git', :tag => spec.version.to_s }
   spec.summary  = 'Floating Action Button for iOS'
 
+  spec.screenshot        = 'https://raw.githubusercontent.com/jjochen/JJFloatingActionButton/master/Images/JJFloatingActionButton.gif'
+  spec.documentation_url = 'https://jjochen.github.io/JJFloatingActionButton'
+
   spec.platform = :ios
   spec.ios.deployment_target = '9.0'
 
