@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.6.2](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.2) (2018-01-02)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.6.1...0.6.2)
+
+**Merged pull requests:**
+
+- Push podspec to trunk when version is tagged [\#76](https://github.com/jjochen/JJFloatingActionButton/pull/76) ([jjochen](https://github.com/jjochen))
+- Add more items to feature list in readme [\#75](https://github.com/jjochen/JJFloatingActionButton/pull/75) ([jjochen](https://github.com/jjochen))
+
 ## [0.6.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.1) (2018-01-01)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.6.0...0.6.1)
 
