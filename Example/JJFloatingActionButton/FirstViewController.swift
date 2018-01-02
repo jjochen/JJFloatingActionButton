@@ -27,10 +27,11 @@ import UIKit
 
 internal class FirstViewController: UIViewController {
 
-    internal let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let actionButton = JJFloatingActionButton(in: self)
 
         actionButton.buttonColor = UIColor.red
         actionButton.defaultButtonImage = UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate)
@@ -67,16 +68,6 @@ internal class FirstViewController: UIViewController {
         item3.titleLabel.text = "item 3"
         item3.action = { item in
             self.showMessage(for: item)
-        }
-
-        view.addSubview(actionButton)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
-        } else {
-            actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
         }
     }
 }
