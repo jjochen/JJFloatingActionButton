@@ -26,18 +26,21 @@ import UIKit
 
 public extension JJFloatingActionButton {
 
-    convenience init(in view: UIView) {
-        self.init()
-        display(in: view)
-    }
+    func display(in superview: UIView) {
 
-    convenience init(in controller: UIViewController) {
-        self.init()
-        display(in: controller)
-    }
+        superview.addSubview(self)
+        translatesAutoresizingMaskIntoConstraints = false
 
-    func display(in view: UIView) {
-        
+        let offset = CGFloat(16)
+        if #available(iOS 11.0, *) {
+            let trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -offset)
+            let bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -offset)
+            NSLayoutConstraint.activate([trailing, bottom])
+        } else {
+            let trailing = trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -offset)
+            let bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -offset)
+            NSLayoutConstraint.activate([trailing, bottom])
+        }
     }
 
     func display(in controller: UIViewController) {
@@ -49,12 +52,15 @@ public extension JJFloatingActionButton {
         superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
 
+        let offset = CGFloat(16)
         if #available(iOS 11.0, *) {
-            trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-            bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+            let trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -offset)
+            let bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -offset)
+            NSLayoutConstraint.activate([trailing, bottom])
         } else {
-            trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16).isActive = true
-            bottomAnchor.constraint(equalTo: controller.bottomLayoutGuide.topAnchor, constant: -16).isActive = true
+            let trailing = trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -offset)
+            let bottom = bottomAnchor.constraint(equalTo: controller.bottomLayoutGuide.topAnchor, constant: -offset)
+            NSLayoutConstraint.activate([trailing, bottom])
         }
     }
 }

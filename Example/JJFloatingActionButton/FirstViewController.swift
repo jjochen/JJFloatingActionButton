@@ -27,11 +27,10 @@ import UIKit
 
 internal class FirstViewController: UIViewController {
 
+    fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let actionButton = JJFloatingActionButton(in: self)
 
         actionButton.buttonColor = UIColor.red
         actionButton.defaultButtonImage = UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate)
@@ -69,6 +68,8 @@ internal class FirstViewController: UIViewController {
         item3.action = { item in
             self.showMessage(for: item)
         }
+
+        actionButton.display(in: self)
     }
 }
 
