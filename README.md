@@ -8,13 +8,13 @@ Floating Action Button for iOS
 </p>
 
 
-## Preview
+## <a name="preview"></a>Preview
 
 <p align="center">
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
 </p>
 
-## Features
+## <a name="features"></a>Features
 
 - Easy to use  ✓
 - Fully customizable  ✓
@@ -26,14 +26,14 @@ Floating Action Button for iOS
 - [Complete Documentation](https://jjochen.github.io/JJFloatingActionButton)  ✓
 
 
-## Requirements
+## <a name="requirements"></a>Requirements
 
 - iOS 9.0+
 - Xcode 9.0+
 - Swift 4.0+
 
 
-## Installation
+## <a name="installation"></a>Installation
 
 ### CocoaPods
 
@@ -66,7 +66,7 @@ $ pod install
 If you prefer not to use a dependency manager, you can integrate JJFloatingActionButton into your project manually.
 
 
-## Usage
+## <a name="usage"></a>Usage
 
 ### Quick Start
 
@@ -141,11 +141,11 @@ $ pod try JJFloatingActionButton
 - [Documentation](https://jjochen.github.io/JJFloatingActionButton/)
 
 
-## Author
+## <a name="author"></a>Author
 
 Jochen Pfeiffer [https://github.com/jjochen](https://github.com/jjochen)
 
 
-## License
+## <a name="license"></a>License
 
 JJFloatingActionButton is available under the MIT license. See the LICENSE file for more info.
