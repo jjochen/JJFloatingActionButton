@@ -59,6 +59,12 @@ aliases:
     name: Update Codecov
     command: bash <(curl -s https://codecov.io/bash)
 
+  - &filter-version-tags-only
+    filters:
+      tags:
+        only: /^[0-9]+\.[0-9]+\.[0-9]+$/
+      branches:
+        ignore: /.*/
 
 
 jobs:
@@ -160,6 +166,24 @@ jobs:
           path: result.xml
 
 
+  push-podspec:
+    <<: *defaults
+
+    steps:
+      - checkout
+      - run: *update-bundler
+      - restore_cache: *restore-gem-cache
+      - run: *bundle-install
+      - save_cache: *save-gem-cache
+      - run: *fetch-cocoapods-specs
+      - restore_cache: *restore-pods-cache
+      - run: *install-cocoapods
+      - save_cache: *save-pods-cache
+
+      - run:
+          name: Push Podspec to trunk
+          command: bundle exec pod trunk push
+
 
 workflows:
   version: 2
@@ -171,3 +195,4 @@ workflows:
       - build-and-test-ios11-iphonex
       - build-and-test-ios10-iphone7plus
       - build-documentation
+      - push-podspec: *filter-version-tags-only
