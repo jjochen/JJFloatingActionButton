@@ -457,5 +457,69 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 expect(actionButton) == snapshot()
             }
         }
+
+        describe("JJFloatingActionButton with a delegate") {
+
+            var superview: UIView!
+            var actionButton: JJFloatingActionButton!
+            var delegate: JJFloatingActionButtonDelegateMock!
+
+            beforeEach {
+                superview = UIView()
+                actionButton = JJFloatingActionButton()
+                actionButton.addItem(title: "item 1")
+                actionButton.addItem(title: "item 2")
+                superview.addSubview(actionButton)
+
+                delegate = JJFloatingActionButtonDelegateMock()
+                actionButton.delegate = delegate
+            }
+
+            it("calls delegate when opening animated") {
+                expect(delegate.willOpenCalled).to(beFalse())
+                expect(delegate.didOpenCalled).to(beFalse())
+
+                actionButton.open(animated: true)
+
+                expect(delegate.willOpenCalled).to(beTrue())
+                expect(delegate.didOpenCalled).to(beFalse())
+                expect(delegate.didOpenCalled).toEventually(beTrue())
+            }
+
+            it("calls delegate when closing animated") {
+                actionButton.open(animated: false)
+
+                expect(delegate.willCloseCalled).to(beFalse())
+                expect(delegate.didCloseCalled).to(beFalse())
+
+                actionButton.close(animated: true)
+
+                expect(delegate.willCloseCalled).to(beTrue())
+                expect(delegate.didCloseCalled).to(beFalse())
+                expect(delegate.didCloseCalled).toEventually(beTrue())
+            }
+
+            it("calls delegate when opening and closing without animation") {
+
+                expect(delegate.willOpenCalled).to(beFalse())
+                expect(delegate.didOpenCalled).to(beFalse())
+                expect(delegate.willCloseCalled).to(beFalse())
+                expect(delegate.didCloseCalled).to(beFalse())
+
+                actionButton.open(animated: false)
+
+                expect(delegate.willOpenCalled).to(beTrue())
+                expect(delegate.didOpenCalled).to(beTrue())
+                expect(delegate.willCloseCalled).to(beFalse())
+                expect(delegate.didCloseCalled).to(beFalse())
+
+                actionButton.close(animated: false)
+
+                expect(delegate.willOpenCalled).to(beTrue())
+                expect(delegate.didOpenCalled).to(beTrue())
+                expect(delegate.willCloseCalled).to(beTrue())
+                expect(delegate.didCloseCalled).to(beTrue())
+            }
+        }
     }
 }
