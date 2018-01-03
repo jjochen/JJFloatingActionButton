@@ -79,6 +79,18 @@ import UIKit
     }
 }
 
+// MARK: - UIView
+
+fileprivate extension JJActionItem {
+
+    /// Tells the view that its superview changed.
+    ///
+    open override func didMoveToSuperview() {
+        // reset tintAdjustmentMode
+        imageView.tintColorDidChange()
+    }
+}
+
 // MARK: - UIControl
 
 extension JJActionItem {

@@ -726,9 +726,8 @@ fileprivate extension JJFloatingActionButton {
     }
 
     @objc func itemWasTapped(sender: JJActionItem) {
-        close {
-            sender.action?(sender)
-        }
+        close()
+        sender.action?(sender)
     }
 
     @objc func overlayViewWasTapped() {
