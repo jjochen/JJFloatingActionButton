@@ -81,7 +81,7 @@ import UIKit
 
 // MARK: - UIView
 
-fileprivate extension JJActionItem {
+extension JJActionItem {
 
     /// Tells the view that its superview changed.
     ///
