@@ -4,15 +4,9 @@ Floating Action Button for iOS
 ![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg) [![Version](https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![License](https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![Platform](https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![Build Status](https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield)](https://circleci.com/gh/jjochen/JJFloatingActionButton) [![codecov](https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg)](https://codecov.io/gh/jjochen/JJFloatingActionButton) [![Documentation](https://jjochen.github.io/JJFloatingActionButton/badge.svg)](https://jjochen.github.io/JJFloatingActionButton) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jjochen/JJFloatingActionButton/issues)
 
 <p align="center">
-  <a href="#preview">Preview</a> • <a href="#features">Features</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
+  <a href="#features">Features</a> • <a href="#preview">Preview</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
 </p>
 
-
-## <a name="preview"></a>Preview
-
-<p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
-</p>
 
 ## <a name="features"></a>Features
 
@@ -24,6 +18,13 @@ Floating Action Button for iOS
 - Works in Swift and Objective-C Projects  ✓
 - Comprehensive Test Coverage  ✓
 - [Complete Documentation](https://jjochen.github.io/JJFloatingActionButton)  ✓
+
+
+## <a name="preview"></a>Preview
+
+<p align="center">
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
+</p>
 
 
 ## <a name="requirements"></a>Requirements
