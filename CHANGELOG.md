@@ -1,5 +1,22 @@
 # Change Log
 
+## [0.6.4](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.4) (2018-01-03)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.6.3...0.6.4)
+
+**Merged pull requests:**
+
+- Update readme and changelog [\#83](https://github.com/jjochen/JJFloatingActionButton/pull/83)
+
+## [0.6.3](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.3) (2018-01-02)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.6.2...0.6.3)
+
+**Merged pull requests:**
+
+- Define file header template \(MIT License\) [\#81](https://github.com/jjochen/JJFloatingActionButton/pull/81)
+- Remove author from pull requests in changelog [\#80](https://github.com/jjochen/JJFloatingActionButton/pull/80)
+- Add screenshot and documentation url to podspec [\#79](https://github.com/jjochen/JJFloatingActionButton/pull/79)
+- Explicit anchors in readme [\#78](https://github.com/jjochen/JJFloatingActionButton/pull/78)
+
 ## [0.6.2](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.2) (2018-01-02)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.6.1...0.6.2)
 

@@ -2,5 +2,5 @@ podspec: JJFloatingActionButton.podspec
 output: docs
 theme: fullwidth
 author: Jochen Pfeiffer
-author_url: https://github.com/jjochen
-root_url: https://jjochen.github.io/JJFloatingActionButton
+author_url: https://github.com/jjochen/
+root_url: https://jjochen.github.io/JJFloatingActionButton/
