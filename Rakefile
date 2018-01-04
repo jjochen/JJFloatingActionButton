@@ -49,7 +49,7 @@ begin
   end
   
   desc 'Run tests for destination'
-  task :test, :destination do |task, args|
+  task :test_destination, :destination do |task, args|
     xcodebuild_test args.destination
   end
   
@@ -59,6 +59,45 @@ begin
     sh 'xcodebuild -version'
     sh 'xcodebuild -showsdks'
     sh 'instruments -s devices'
+  end
+
+  desc 'Lint swift'
+  task :lint_swift do
+    unless system('which swiftlint')
+      error_message "Please install swiftlint manually:\n" \
+        '    $ brew install swiftlint'
+      exit 1
+    end
+    
+    title 'Linting swift'
+    sh "swiftlint"
+  end
+  
+  desc 'Lint podspec'
+  task :lint_podspec do
+    title 'Linting podspec'
+    sh "bundle exec pod lib lint"
+  end
+
+
+  #-- Format -----------------------------------------------------------------#
+
+  desc 'Format code'
+  task :format do
+    unless system('which swiftformat')
+      error_message "Please install swiftformat manually:\n" \
+        '    $ brew install swiftformat'
+      exit 1
+    end
+    
+    title 'Formating code'
+    sh "swiftformat Example/Tests Example/JJFloatingActionButton Sources"
+  end
+
+  desc 'Format and lint code'
+  task :format_and_lint do
+    Rake::Task[:format].invoke
+    Rake::Task[:lint_swift].invoke
   end
 
 
@@ -89,7 +128,7 @@ begin
 
   desc 'Generate changelog'
   task :generate_changelog do
-    generate_changelog
+    generate_changelog ""
   end
 
 
