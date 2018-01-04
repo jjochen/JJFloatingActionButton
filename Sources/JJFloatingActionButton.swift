@@ -62,7 +62,7 @@ import UIKit
     /// The background color of the floating action button.
     /// Default is `UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)`.
     ///
-    @objc @IBInspectable public var buttonColor: UIColor = JJStyles.defaultButtonColor {
+    @objc @IBInspectable public dynamic var buttonColor: UIColor = JJStyles.defaultButtonColor {
         didSet {
             circleView.color = buttonColor
         }
@@ -71,7 +71,7 @@ import UIKit
     /// The background color of the floating action button with highlighted state.
     /// Default is `nil`.
     ///
-    @objc @IBInspectable public var highlightedButtonColor: UIColor? {
+    @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
         didSet {
             circleView.highlightedColor = highlightedButtonColor
         }
@@ -80,12 +80,12 @@ import UIKit
     /// The image displayed on the button by default.
     /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
     /// the image from the item is shown istead.
-    /// When an `openButtonImage` is given this is shwon when the button is opened.
+    /// When an `o penButtonImage` is given this is shwon when the button is opened.
     /// Default is `nil`.
     ///
     /// - SeeAlso: `openButtonImage`
     ///
-    @objc @IBInspectable public var defaultButtonImage: UIImage? {
+    @objc @IBInspectable public dynamic var defaultButtonImage: UIImage? {
         didSet {
             configureButtonImage()
         }
@@ -99,7 +99,7 @@ import UIKit
     ///
     /// - SeeAlso: `rotationAngle`
     ///
-    @objc @IBInspectable public var openButtonImage: UIImage? {
+    @objc @IBInspectable public dynamic var openButtonImage: UIImage? {
         didSet {
             configureButtonImage()
         }
@@ -110,7 +110,7 @@ import UIKit
     ///
     /// - Warning: Only template images are colored.
     ///
-    @objc @IBInspectable public var buttonImageColor: UIColor = .white {
+    @objc @IBInspectable public dynamic var buttonImageColor: UIColor = .white {
         didSet {
             imageView.tintColor = buttonImageColor
         }
@@ -119,7 +119,7 @@ import UIKit
     /// The shadow color of the floating action button.
     /// Default is `UIColor.black`.
     ///
-    @objc @IBInspectable public var shadowColor: UIColor? = .black {
+    @objc @IBInspectable public dynamic var shadowColor: UIColor? = .black {
         didSet {
             circleView.layer.shadowColor = shadowColor?.cgColor
         }
@@ -128,7 +128,7 @@ import UIKit
     /// The shadow offset of the floating action button.
     /// Default is `CGSize(width: 0, height: 1)`.
     ///
-    @objc @IBInspectable public var shadowOffset: CGSize = CGSize(width: 0, height: 1) {
+    @objc @IBInspectable public dynamic var shadowOffset: CGSize = CGSize(width: 0, height: 1) {
         didSet {
             circleView.layer.shadowOffset = shadowOffset
         }
@@ -137,7 +137,7 @@ import UIKit
     /// The shadow opacity of the floating action button.
     /// Default is `0.4`.
     ///
-    @objc @IBInspectable public var shadowOpacity: Float = 0.4 {
+    @objc @IBInspectable public dynamic var shadowOpacity: Float = 0.4 {
         didSet {
             circleView.layer.shadowOpacity = shadowOpacity
         }
@@ -146,7 +146,7 @@ import UIKit
     /// The shadow radius of the floating action button.
     /// Default is `2`.
     ///
-    @objc @IBInspectable public var shadowRadius: CGFloat = 2 {
+    @objc @IBInspectable public dynamic var shadowRadius: CGFloat = 2 {
         didSet {
             circleView.layer.shadowRadius = shadowRadius
         }
@@ -157,7 +157,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc public var itemTitleFont: UIFont = .systemFont(ofSize: UIFont.systemFontSize) {
+    @objc public dynamic var itemTitleFont: UIFont = .systemFont(ofSize: UIFont.systemFontSize) {
         didSet {
             items.forEach { item in
                 item.titleLabel.font = itemTitleFont
@@ -170,7 +170,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var itemButtonColor: UIColor = .white {
+    @objc @IBInspectable public dynamic var itemButtonColor: UIColor = .white {
         didSet {
             items.forEach { item in
                 item.circleView.color = itemButtonColor
@@ -183,7 +183,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var highlightedItemButtonColor: UIColor? {
+    @objc @IBInspectable public dynamic var highlightedItemButtonColor: UIColor? {
         didSet {
             items.forEach { item in
                 item.circleView.highlightedColor = highlightedItemButtonColor
@@ -197,7 +197,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var itemImageColor: UIColor? {
+    @objc @IBInspectable public dynamic var itemImageColor: UIColor? {
         didSet {
             items.forEach { item in
                 item.imageView.tintColor = currentItemImageColor
@@ -210,7 +210,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var itemTitleColor: UIColor = .white {
+    @objc @IBInspectable public dynamic var itemTitleColor: UIColor = .white {
         didSet {
             items.forEach { item in
                 item.titleLabel.textColor = itemTitleColor
@@ -223,7 +223,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var itemShadowColor: UIColor = .black {
+    @objc @IBInspectable public dynamic var itemShadowColor: UIColor = .black {
         didSet {
             items.forEach { item in
                 item.layer.shadowColor = itemShadowColor.cgColor
@@ -236,7 +236,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var itemShadowOffset: CGSize = CGSize(width: 0, height: 1) {
+    @objc @IBInspectable public dynamic var itemShadowOffset: CGSize = CGSize(width: 0, height: 1) {
         didSet {
             items.forEach { item in
                 item.layer.shadowOffset = itemShadowOffset
@@ -249,7 +249,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var itemShadowOpacity: Float = 0.4 {
+    @objc @IBInspectable public dynamic var itemShadowOpacity: Float = 0.4 {
         didSet {
             items.forEach { item in
                 item.layer.shadowOpacity = itemShadowOpacity
@@ -262,7 +262,7 @@ import UIKit
     ///
     /// - Remark: This can be changed for each action item.
     ///
-    @objc @IBInspectable public var itemShadowRadius: CGFloat = 2 {
+    @objc @IBInspectable public dynamic var itemShadowRadius: CGFloat = 2 {
         didSet {
             items.forEach { item in
                 item.layer.shadowRadius = itemShadowRadius
@@ -273,12 +273,12 @@ import UIKit
     /// The size of an action item in relation to the floating action button.
     /// Default is `0.75`.
     ///
-    @objc @IBInspectable public var itemSizeRatio: CGFloat = 0.75
+    @objc @IBInspectable public dynamic var itemSizeRatio: CGFloat = 0.75
 
     /// The space between two action items in points.
     /// Default is `12`.
     ///
-    @objc @IBInspectable public var interItemSpacing: CGFloat = 12
+    @objc @IBInspectable public dynamic var interItemSpacing: CGFloat = 12
 
     /// The angle in radians the button should rotate when opening.
     /// Default is `-CGFloat.pi / 4`.
@@ -287,7 +287,7 @@ import UIKit
     ///
     /// - SeeAlso: `openButtonImage`
     ///
-    @objc @IBInspectable public var rotationAngle: CGFloat = -.pi / 4
+    @objc @IBInspectable public dynamic var rotationAngle: CGFloat = -.pi / 4
 
     /// When enabled and only one action item is added, the floating action button will not open,
     /// but the action from the action item will be executed direclty when the button is tapped.
