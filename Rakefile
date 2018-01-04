@@ -291,7 +291,7 @@ def update_version_in_podspec(version)
   File.open(file_name, "w") {|file| file.puts new_contents }
 end
 
-def create_release_branch_and_commit
+def create_release_branch_and_commit(version)
   title "Creating release branch and commit"
   check_parameter(version)
   release_branch = "release/#{version}"
