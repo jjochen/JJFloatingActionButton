@@ -286,7 +286,7 @@ def update_version_in_podspec(version)
   check_parameter(version)
   file_name = 'JJFloatingActionButton.podspec'
   contents = File.read(file_name)
-  new_contents = contents.gsub(/(spec\.version\s*=\s*)'.*'/, "\\1 '#{version}'")
+  new_contents = contents.gsub(/(spec\.version\s*=\s*)'.*'/, "\\1'#{version}'")
   puts new_contents
   File.open(file_name, "w") {|file| file.puts new_contents }
 end
