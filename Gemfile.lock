@@ -54,6 +54,7 @@ GEM
     faraday-http-cache (2.0.0)
       faraday (~> 0.8)
     ffi (1.9.18)
+    fileutils (1.0.2)
     fourflusher (2.0.1)
     fuzzy_match (2.0.4)
     gh_inspector (1.0.3)
@@ -131,8 +132,10 @@ DEPENDENCIES
   cocoapods!
   cocoapods-clean!
   cocoapods-deintegrate!
+  fileutils!
   github_changelog_generator!
   jazzy (>= 0.9.0)!
+  rake!
   synx!
   xcpretty!
 
