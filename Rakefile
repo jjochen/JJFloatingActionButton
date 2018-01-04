@@ -24,12 +24,7 @@
 
 desc 'Initialize your working copy'
 task :bootstrap do
-  unless system('which bundle')
-    error_message "Please install the bundler gem manually:\n" \
-      '    $ [sudo] gem install bundler'
-    exit 1
-  end
-  
+  check_executable('bundler')
   install_gems
   install_cocoapods
 end
@@ -64,13 +59,8 @@ begin
 
   desc 'Lint swift'
   task :lint_swift do
-    unless system('which swiftlint')
-      error_message "Please install swiftlint manually:\n" \
-        '    $ brew install swiftlint'
-      exit 1
-    end
-    
     title 'Linting swift'
+    check_executable('swiftlint')
     sh "swiftlint"
   end
   
@@ -85,13 +75,8 @@ begin
 
   desc 'Format code'
   task :format do
-    unless system('which swiftformat')
-      error_message "Please install swiftformat manually:\n" \
-        '    $ brew install swiftformat'
-      exit 1
-    end
-    
     title 'Formating code'
+    check_executable('swiftformat')
     sh "swiftformat Example/Tests Example/JJFloatingActionButton Sources"
   end
 
@@ -137,14 +122,9 @@ begin
   
   desc 'Record video booted simulator and convert to gif'
   task :record_gif do
-    unless system('which ffmpeg')
-      error_message "Please install ffmpeg manually:\n" \
-        '    $ brew install ffmpeg'
-      exit 1
-    end
-     
     title 'Recording video'
-    
+    check_executable('ffmpeg')
+
     mov_path='./Images/JJFloatingActionButton.mov'
     
     trap('SIGINT') { puts }
@@ -211,6 +191,13 @@ def error_message(message)
   $stderr.puts
   $stderr.puts red_message
   $stderr.puts
+end
+
+def check_executable(executable)
+  unless system("which #{executable}")
+    error_message "Please install '#{executable}' manually."
+    exit 1
+  end
 end
 
 def check_parameter(parameter)

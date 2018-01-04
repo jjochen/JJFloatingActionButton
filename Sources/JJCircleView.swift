@@ -30,7 +30,7 @@ import UIKit
 
     /// The color of the circle.
     ///
-    @objc @IBInspectable open var color: UIColor = JJStyles.defaultButtonColor {
+    @objc @IBInspectable open dynamic var color: UIColor = JJStyles.defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
             setNeedsDisplay()
@@ -39,7 +39,7 @@ import UIKit
 
     /// The color of the circle when highlighted. Default is `nil`.
     ///
-    @objc @IBInspectable open var highlightedColor: UIColor? {
+    @objc @IBInspectable open dynamic var highlightedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
