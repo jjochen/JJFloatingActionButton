@@ -53,7 +53,7 @@ aliases:
   
   - &run-tests
     name: Build and run tests
-    command: bundle exec rake test_destination["$DESTINATION"]
+    command: bundle exec rake test_destination
 
   - &update-codecov
     name: Update Codecov

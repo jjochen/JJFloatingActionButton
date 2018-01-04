@@ -48,10 +48,10 @@ begin
     xcodebuild_test "platform=iOS Simulator,name=iPhone X"
   end
   
-  desc 'Run tests for destination'
-  task :test_destination, :destination do |task, args|
+  desc 'Run tests for DESTINATION env'
+  task :test_destination do
     Rake::Task[:print_debug_info].invoke
-    xcodebuild_test args.destination
+    xcodebuild_test ENV['DESTINATION']
   end
   
   desc 'Print debug info'
