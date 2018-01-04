@@ -50,6 +50,7 @@ begin
   
   desc 'Run tests for destination'
   task :test_destination, :destination do |task, args|
+    Rake::Task[:print_debug_info].invoke
     xcodebuild_test args.destination
   end
   
