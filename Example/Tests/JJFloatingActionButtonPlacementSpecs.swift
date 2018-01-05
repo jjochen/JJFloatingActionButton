@@ -61,6 +61,8 @@ class JJFloatingActionButtonPlacementSpec: QuickSpec {
                 viewController.view.backgroundColor = .white
 
                 actionButton = JJFloatingActionButton()
+
+                setNimbleTolerance(0.004)
             }
 
             it("looks correct when placed in view controller") {

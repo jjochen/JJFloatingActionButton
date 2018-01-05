@@ -65,9 +65,9 @@
 		198EA7E31FD73F6D00F7DA3E /* JJCircleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JJCircleView.xib; sourceTree = "<group>"; };
 		199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JJFloatingActionButton.xib; sourceTree = "<group>"; };
 		19B10AC21FF7BDDD00D70C32 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .jazzy.yaml; path = ../../.jazzy.yaml; sourceTree = "<group>"; };
-		19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JJFloationgActionButtonDelegateMock.swift; path = ReferenceImages/JJFloationgActionButtonDelegateMock.swift; sourceTree = "<group>"; };
-		19B10ADB1FFE692100D70C32 /* Rakefile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; name = Rakefile; path = ../../Rakefile; sourceTree = "<group>"; tabWidth = 2; };
+		19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloationgActionButtonDelegateMock.swift; sourceTree = "<group>"; };
 		19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonPlacementSpecs.swift; sourceTree = "<group>"; };
+		19B10ADB1FFE692100D70C32 /* Rakefile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; name = Rakefile; path = ../../Rakefile; sourceTree = "<group>"; tabWidth = 2; };
 		19DF53B81FF59AE5006E292F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../Package.swift; sourceTree = "<group>"; };
 		19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JJActionItem.xib; sourceTree = "<group>"; };
 		19E247E91FD854B1009A7BA1 /* .github_changelog_generator */ = {isa = PBXFileReference; lastKnownFileType = text; name = .github_changelog_generator; path = ../../.github_changelog_generator; sourceTree = "<group>"; };
@@ -138,13 +138,13 @@
 		198B66161FBAE904009A17F2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */,
-				19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift */,
+				198B66191FBAE904009A17F2 /* Info.plist */,
 				195269441FD7E63B0053C785 /* JJActionItemSpec.swift */,
 				1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */,
+				19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift */,
+				198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */,
 				195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */,
-				19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */,
-				198B66191FBAE904009A17F2 /* Info.plist */,
+				19B10ADD1FFFA83F00D70C32 /* Mocks */,
 				199592AA1FD73ED50058BEFC /* Resources */,
 			);
 			path = Tests;
@@ -180,6 +180,14 @@
 				19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		19B10ADD1FFFA83F00D70C32 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		98997F76DCA7BC500318C59A /* Frameworks */ = {
