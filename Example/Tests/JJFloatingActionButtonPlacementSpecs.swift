@@ -31,6 +31,18 @@ import Quick
 class JJFloatingActionButtonPlacementSpec: QuickSpec {
 
     override func spec() {
+        if #available(iOS 11.0, *) {
+            context("iOS 11") {
+                osAgnosticSpec()
+            }
+        } else {
+            context("iOS 10") {
+                osAgnosticSpec()
+            }
+        }
+    }
+
+    func osAgnosticSpec() {
 
         describe("JJFloatingActionButton") {
 
@@ -52,9 +64,8 @@ class JJFloatingActionButtonPlacementSpec: QuickSpec {
             }
 
             it("looks correct when placed in view controller") {
-                actionButton.display(in: viewController)
-
-                expect(viewController.view).to(haveValidDeviceAgnosticSnapshot())
+                actionButton.add(to: viewController)
+                expect(viewController.view) == snapshot()
             }
         }
     }

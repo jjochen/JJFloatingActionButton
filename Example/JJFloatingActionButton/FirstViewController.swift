@@ -69,7 +69,7 @@ internal class FirstViewController: UIViewController {
             self.showMessage(for: item)
         }
 
-        actionButton.display(in: self)
+        actionButton.add(to: self)
     }
 }
 

@@ -26,41 +26,65 @@ import UIKit
 
 public extension JJFloatingActionButton {
 
-    func display(in superview: UIView) {
-
+    func add(to superview: UIView, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
         superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
 
-        let offset = CGFloat(16)
+        var trailing: NSLayoutConstraint
+
+        trailing = trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -viewInset)
+        trailing.priority = UILayoutPriority(250)
+        trailing.isActive = true
+
+        trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: -viewInset)
+        trailing.priority = .required
+        trailing.isActive = true
+
         if #available(iOS 11.0, *) {
-            let trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -offset)
-            let bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -offset)
-            NSLayoutConstraint.activate([trailing, bottom])
-        } else {
-            let trailing = trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -offset)
-            let bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -offset)
-            NSLayoutConstraint.activate([trailing, bottom])
+            trailing = trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -safeAreaInset)
+            trailing.priority = UILayoutPriority(750)
+            trailing.isActive = true
+
+            trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -safeAreaInset)
+            trailing.priority = .required
+            trailing.isActive = true
+        }
+
+        var bottom: NSLayoutConstraint
+
+        bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -viewInset)
+        bottom.priority = UILayoutPriority(250)
+        bottom.isActive = true
+
+        bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -viewInset)
+        bottom.priority = .required
+        bottom.isActive = true
+
+        if #available(iOS 11.0, *) {
+            bottom = bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -safeAreaInset)
+            bottom.priority = UILayoutPriority(750)
+            bottom.isActive = true
+
+            bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -safeAreaInset)
+            bottom.priority = .required
+            bottom.isActive = true
         }
     }
 
-    func display(in controller: UIViewController) {
+    func add(to viewController: UIViewController, viewInset: CGFloat = 16, safeAreaInset: CGFloat =
+        0) {
+        if let superview = viewController.view {
+            add(to: superview, viewInset: viewInset, safeAreaInset: safeAreaInset)
 
-        guard let superview = controller.view else {
-            return
-        }
+            var bottom: NSLayoutConstraint
 
-        superview.addSubview(self)
-        translatesAutoresizingMaskIntoConstraints = false
+            bottom = bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor, constant: -viewInset)
+            bottom.priority = UILayoutPriority(500)
+            bottom.isActive = true
 
-        let offset = CGFloat(16)
-        if #available(iOS 11.0, *) {
-            let trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -offset)
-            let bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -offset)
-            NSLayoutConstraint.activate([trailing, bottom])
-        } else {
-            let trailing = trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -offset)
-            let bottom = bottomAnchor.constraint(equalTo: controller.bottomLayoutGuide.topAnchor, constant: -offset)
-            NSLayoutConstraint.activate([trailing, bottom])
+            bottom = bottomAnchor.constraint(lessThanOrEqualTo: viewController.bottomLayoutGuide.topAnchor, constant: -viewInset)
+            bottom.priority = .required
+            bottom.isActive = true
         }
     }
 }
