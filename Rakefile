@@ -238,7 +238,8 @@ def xcodebuild_test(destination)
     "  -enableCodeCoverage YES" \
     "  CODE_SIGNING_REQUIRED=NO" \
     "  CODE_SIGN_IDENTITY=" \
-    "  PROVISIONING_PROFILE="
+    "  PROVISIONING_PROFILE=" \
+    " | xcpretty --report junit"
 end
 
 def ensure_clean_git_status
