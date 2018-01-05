@@ -65,7 +65,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct highlighted") {
                 actionButton.isHighlighted = true
-                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
             }
 
@@ -73,7 +73,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.buttonColor = UIColor(hue: 0.6, saturation: 0.9, brightness: 0.3, alpha: 1)
                 actionButton.highlightedItemButtonColor = nil
                 actionButton.isHighlighted = true
-                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
             }
 
@@ -81,14 +81,14 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.buttonColor = UIColor(hue: 0.4, saturation: 0.9, brightness: 0.7, alpha: 1)
                 actionButton.highlightedItemButtonColor = nil
                 actionButton.isHighlighted = true
-                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
             }
 
             it("looks correct highlighted with custom color") {
                 actionButton.highlightedButtonColor = UIColor.orange
                 actionButton.isHighlighted = true
-                expect(actionButton.isHighlighted).to(beTruthy())
+                expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
             }
 
@@ -190,7 +190,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     it("items look correct highlighted") {
                         let item = actionButton.items[0]
                         item.isHighlighted = true
-                        expect(item.isHighlighted).to(beTruthy())
+                        expect(item.isHighlighted).to(beTrue())
                         expect(superview) == snapshot()
                     }
 
@@ -198,7 +198,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         actionButton.highlightedItemButtonColor = UIColor.purple
                         let item = actionButton.items[0]
                         item.isHighlighted = true
-                        expect(item.isHighlighted).to(beTruthy())
+                        expect(item.isHighlighted).to(beTrue())
                         expect(superview) == snapshot()
                     }
 
