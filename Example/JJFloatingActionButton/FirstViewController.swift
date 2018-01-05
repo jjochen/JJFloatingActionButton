@@ -27,7 +27,7 @@ import UIKit
 
 internal class FirstViewController: UIViewController {
 
-    internal let actionButton = JJFloatingActionButton()
+    fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,15 +69,7 @@ internal class FirstViewController: UIViewController {
             self.showMessage(for: item)
         }
 
-        view.addSubview(actionButton)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
-        } else {
-            actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
-        }
+        actionButton.add(to: self)
     }
 }
 
