@@ -239,7 +239,7 @@ def xcodebuild_test(destination)
     "  CODE_SIGNING_REQUIRED=NO" \
     "  CODE_SIGN_IDENTITY=" \
     "  PROVISIONING_PROFILE=" \
-    " | xcpretty --report junit"
+    " | xcpretty --report junit && exit ${PIPESTATUS[0]}"
 end
 
 def ensure_clean_git_status

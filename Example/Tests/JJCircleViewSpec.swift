@@ -32,6 +32,6 @@ class JJCircleViewSpec: QuickSpec {
     override func spec() {
 
        
-        }
+        
     }
 }
