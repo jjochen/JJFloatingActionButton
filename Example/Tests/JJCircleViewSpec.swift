@@ -31,7 +31,17 @@ class JJCircleViewSpec: QuickSpec {
 
     override func spec() {
 
-       
-        
+        describe("JJCircleView loaded from xib") {
+            var circleView: JJCircleView?
+
+            beforeEach {
+                let bundle = Bundle(for: type(of: self))
+                circleView = bundle.loadNibNamed("JJCircleView", owner: nil)?.first as? JJCircleView
+            }
+
+            it("looks correct") {
+                expect(circleView) == snapshot()
+            }
+        }
     }
 }
