@@ -58,6 +58,9 @@ aliases:
   - &update-codecov
     name: Update Codecov
     command: bash <(curl -s https://codecov.io/bash)
+  
+  - &xcpretty-reports
+    path: build/reports/junit.xml
 
   - &filter-version-tags-only
     filters:
@@ -89,6 +92,8 @@ jobs:
       - save_cache: *save-pods-cache
       - run: *run-tests
       - run: *update-codecov
+      - store_artifacts: *xcpretty-reports
+      - store_test_results: *xcpretty-reports
 
 
   build-and-test-ios10-iphone7plus:
@@ -111,6 +116,8 @@ jobs:
       - save_cache: *save-pods-cache
       - run: *run-tests
       - run: *update-codecov
+      - store_artifacts: *xcpretty-reports
+      - store_test_results: *xcpretty-reports
 
 
   lint-podspec:
