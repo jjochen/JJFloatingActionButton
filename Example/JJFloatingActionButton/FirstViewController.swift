@@ -81,33 +81,30 @@ internal class FirstViewController: UIViewController {
     }
 }
 
-
 extension FirstViewController: JJFloatingActionButtonDelegate {
 
     func floatingActionButtonWillOpen(_ button: JJFloatingActionButton) {
-        print("Action button will open")
+        print("Action button will open: \(button.state)")
     }
 
     func floatingActionButtonDidOpen(_ button: JJFloatingActionButton) {
-        print("Action button did open")
+        print("Action button did open: \(button.state)")
     }
 
     func floatingActionButtonWillClose(_ button: JJFloatingActionButton) {
-        print("Action button will close")
+        print("Action button will close: \(button.state)")
     }
 
     func floatingActionButtonDidClose(_ button: JJFloatingActionButton) {
-        print("Action button did close")
+        print("Action button did close: \(button.state)")
     }
 }
 
 extension FirstViewController {
-    
+
     func showMessage(for item: JJActionItem) {
         let alertController = UIAlertController(title: item.titleLabel.text, message: "button tapped!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 }
-
-
