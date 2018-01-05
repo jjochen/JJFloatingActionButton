@@ -37,7 +37,7 @@ class UIColorExtensionsSpec: QuickSpec {
                 var highlightedColor: UIColor!
 
                 beforeEach {
-                    originalColor = UIColor(hue: 0.63, saturation: 0.64, brightness: 0.40, alpha: 1.00)
+                    originalColor = UIColor(hue: 0.63, saturation: 0.64, brightness: 0.70, alpha: 1.00)
                     highlightedColor = originalColor.highlighted
                 }
 
