@@ -31,43 +31,28 @@ import Quick
 class JJFloatingActionButtonPlacementSpec: QuickSpec {
 
     override func spec() {
-        if #available(iOS 11.0, *) {
-            context("iOS 11") {
-                osAgnosticSpec()
-            }
-        } else {
-            context("iOS 10") {
-                osAgnosticSpec()
-            }
-        }
-    }
-
-    func osAgnosticSpec() {
 
         describe("JJFloatingActionButton") {
-
-            let windowFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
 
             var actionButton: JJFloatingActionButton!
             var viewController: UIViewController!
 
             beforeEach {
+
                 viewController = UIViewController()
 
-                let window = UIWindow(frame: windowFrame)
+                let window = UIWindow(frame: UIScreen.main.bounds)
                 window.rootViewController = viewController
                 window.makeKeyAndVisible()
 
                 viewController.view.backgroundColor = .white
 
                 actionButton = JJFloatingActionButton()
-
-                setNimbleTolerance(0.004)
             }
 
             it("looks correct when placed in view controller") {
                 actionButton.add(to: viewController)
-                expect(viewController.view) == snapshot()
+                expect(viewController.view).to(haveValidDeviceAgnosticSnapshot())
             }
         }
     }
