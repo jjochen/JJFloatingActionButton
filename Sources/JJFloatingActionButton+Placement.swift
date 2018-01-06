@@ -26,6 +26,16 @@ import UIKit
 
 public extension JJFloatingActionButton {
 
+    /// Add floating action button to a given superview and place in trailing bottom corner.
+    ///
+    /// - Parameter superview: The view to which the floating action button is added as a subview.
+    /// - Parameter viewInset: The (minimum) spacing in points between button and superview.
+    ///             Default is `16`.
+    /// - Parameter safeAreaInset: The (minimum) spacing in points between button and safe area of the superview.
+    ///             Default is `0`.
+    ///
+    /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
+    ///
     func add(to superview: UIView, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
         superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +81,16 @@ public extension JJFloatingActionButton {
         }
     }
 
+    /// Add floating action button to a view of a given view controller and place in trailing bottom corner.
+    ///
+    /// - Parameter viewController: The view controller to which view the floating action button is added as a subview.
+    /// - Parameter viewInset: The (minimum) spacing in points between button and the view controllers view.
+    ///             Default is `16`.
+    /// - Parameter safeAreaInset: The (minimum) spacing in points between button and safe area of the view controllers view.
+    ///             Default is `0`.
+    ///
+    /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
+    ///
     func add(to viewController: UIViewController, viewInset: CGFloat = 16, safeAreaInset: CGFloat =
         0) {
         if let superview = viewController.view {
