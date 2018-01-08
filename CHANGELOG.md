@@ -7,11 +7,19 @@
 **Implemented enhancements:**
 
 - Handle actions instantly upon tap [\#71](https://github.com/jjochen/JJFloatingActionButton/issues/71)
+- Handle placement in view controller [\#57](https://github.com/jjochen/JJFloatingActionButton/issues/57)
 - Add tests for delegate calls [\#42](https://github.com/jjochen/JJFloatingActionButton/issues/42)
 - Support UIAppearance [\#30](https://github.com/jjochen/JJFloatingActionButton/issues/30)
 
+**Fixed bugs:**
+
+- Documentation for placement missing [\#94](https://github.com/jjochen/JJFloatingActionButton/issues/94)
+
 **Merged pull requests:**
 
+- Add documentation and improve tests for button placement [\#97](https://github.com/jjochen/JJFloatingActionButton/pull/97)
+- User Xcode 9.1 on CircleCI [\#96](https://github.com/jjochen/JJFloatingActionButton/pull/96)
+- Improve labels in change log [\#93](https://github.com/jjochen/JJFloatingActionButton/pull/93)
 - Extension for placing action button in view or view controller [\#92](https://github.com/jjochen/JJFloatingActionButton/pull/92) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
 - Use xcpretty in CI builds [\#91](https://github.com/jjochen/JJFloatingActionButton/pull/91)
 - Better support for UIAppearance [\#90](https://github.com/jjochen/JJFloatingActionButton/pull/90) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
