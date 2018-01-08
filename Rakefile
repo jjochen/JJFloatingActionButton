@@ -277,7 +277,7 @@ def generate_documentation
 end
 
 def test_documentation_coverage
-  title 'Check documentation coverage'
+  title 'Checking documentation coverage'
   file_path = './docs/index.html'
   search_string = '100% documented'
   if File.foreach(file_path).grep(/#{Regexp.escape(search_string)}/).any?
