@@ -135,6 +135,7 @@ DEPENDENCIES
   fileutils!
   github_changelog_generator!
   jazzy (>= 0.9.0)!
+  octokit!
   rake!
   synx!
   xcpretty!
