@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  Helper.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
@@ -22,16 +22,22 @@
 //  THE SOFTWARE.
 //
 
+import JJFloatingActionButton
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+internal struct Helper {
 
-    var window: UIWindow?
+    static func showAlert(for item: JJActionItem) {
+        showAlert(title: item.titleLabel.text, message: "Item tapped!")
+    }
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        window?.tintColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        return true
+    static func showAlert(title: String?, message: String?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+
+    static var rootViewController: UIViewController? {
+        return UIApplication.shared.keyWindow?.rootViewController
     }
 }

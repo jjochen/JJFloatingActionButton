@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  ConfigurationExampleViewController.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
@@ -25,55 +25,56 @@
 import JJFloatingActionButton
 import UIKit
 
-internal class FirstViewController: UIViewController {
+internal class ConfigurationExampleViewController: UIViewController {
 
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        actionButton.buttonColor = UIColor.red
-        actionButton.defaultButtonImage = UIImage(named: "Plus")?.withRenderingMode(.alwaysTemplate)
-        actionButton.buttonImageColor = UIColor.white
-        actionButton.shadowColor = UIColor.black
+        actionButton.buttonColor = .red
+        actionButton.defaultButtonImage = #imageLiteral(resourceName: "Dots")
+        actionButton.openButtonImage = #imageLiteral(resourceName: "X")
+        actionButton.buttonImageColor = .white
+        actionButton.shadowColor = .black
         actionButton.shadowOffset = CGSize(width: 0, height: 1)
         actionButton.shadowOpacity = Float(0.5)
         actionButton.shadowRadius = CGFloat(2)
-        actionButton.itemTitleFont = UIFont.systemFont(ofSize: UIFont.systemFontSize)
-        actionButton.itemButtonColor = UIColor.white
-        actionButton.itemImageColor = UIColor.red
-        actionButton.itemTitleColor = UIColor.white
-        actionButton.itemShadowColor = UIColor.black
+        actionButton.itemTitleFont = .boldSystemFont(ofSize: UIFont.systemFontSize)
+        actionButton.itemButtonColor = .white
+        actionButton.itemImageColor = .red
+        actionButton.itemTitleColor = .white
+        actionButton.itemShadowColor = .black
         actionButton.itemShadowOffset = CGSize(width: 0, height: 1)
         actionButton.itemShadowOpacity = Float(0.4)
         actionButton.itemShadowRadius = CGFloat(2)
         actionButton.itemSizeRatio = CGFloat(0.75)
         actionButton.interItemSpacing = CGFloat(12)
         actionButton.rotationAngle = -CGFloat.pi / 4
-        actionButton.overlayView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
 
-        actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { item in
-            self.showMessage(for: item)
+        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
+            Helper.showAlert(for: item)
         }
 
-        actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { item in
-            self.showMessage(for: item)
+        actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
+            Helper.showAlert(for: item)
         }
 
         let item3 = actionButton.addItem()
         item3.circleView.color = .black
-        item3.imageView.image = #imageLiteral(resourceName: "Owl").withRenderingMode(.alwaysTemplate)
+        item3.imageView.image = #imageLiteral(resourceName: "Owl")
         item3.imageView.tintColor = .white
-        item3.titleLabel.text = "item 3"
+        item3.titleLabel.text = "Owl"
         item3.action = { item in
-            self.showMessage(for: item)
+            Helper.showAlert(for: item)
         }
 
         actionButton.add(to: self)
     }
 }
 
-extension FirstViewController: JJFloatingActionButtonDelegate {
+extension ConfigurationExampleViewController: JJFloatingActionButtonDelegate {
 
     func floatingActionButtonWillOpen(_ button: JJFloatingActionButton) {
         print("Action button will open: \(button.state)")
@@ -89,14 +90,5 @@ extension FirstViewController: JJFloatingActionButtonDelegate {
 
     func floatingActionButtonDidClose(_ button: JJFloatingActionButton) {
         print("Action button did close: \(button.state)")
-    }
-}
-
-extension FirstViewController {
-
-    func showMessage(for item: JJActionItem) {
-        let alertController = UIAlertController(title: item.titleLabel.text, message: "button tapped!", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
     }
 }

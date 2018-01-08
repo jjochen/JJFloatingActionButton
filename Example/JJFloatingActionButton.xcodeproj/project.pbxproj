@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		192D1B6E2003C7440093064F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D1B6D2003C7440093064F /* Helper.swift */; };
+		192D1B702003CB8A0093064F /* ConfigurationExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D1B6F2003CB8A0093064F /* ConfigurationExampleViewController.swift */; };
+		192D1B722003CB930093064F /* SingleItemExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192D1B712003CB930093064F /* SingleItemExampleViewController.swift */; };
+		194504D42003D499003B205F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194504D22003D499003B205F /* LaunchScreen.storyboard */; };
 		195269411FD7E53B0053C785 /* JJCircleViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */; };
 		195269431FD7E6200053C785 /* UIColorExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */; };
 		195269451FD7E63B0053C785 /* JJActionItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195269441FD7E63B0053C785 /* JJActionItemSpec.swift */; };
 		198B66011FBAE904009A17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66001FBAE904009A17F2 /* AppDelegate.swift */; };
-		198B66031FBAE904009A17F2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66021FBAE904009A17F2 /* FirstViewController.swift */; };
-		198B66051FBAE904009A17F2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66041FBAE904009A17F2 /* SecondViewController.swift */; };
+		198B66031FBAE904009A17F2 /* BasicsExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66021FBAE904009A17F2 /* BasicsExampleViewController.swift */; };
+		198B66051FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66041FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift */; };
 		198B66081FBAE904009A17F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B66061FBAE904009A17F2 /* Main.storyboard */; };
 		198B660A1FBAE904009A17F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
-		198B660D1FBAE904009A17F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 198B660B1FBAE904009A17F2 /* LaunchScreen.storyboard */; };
 		198B66181FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */; };
 		198EA7E41FD73F6D00F7DA3E /* JJCircleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 198EA7E31FD73F6D00F7DA3E /* JJCircleView.xib */; };
 		199592AC1FD73F070058BEFC /* JJFloatingActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */; };
@@ -40,18 +43,21 @@
 /* Begin PBXFileReference section */
 		0BB37FAB0B0023FC171E7401 /* Pods-JJFloatingActionButton_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JJFloatingActionButton_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		19037F0D1FC2ED7B00138594 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
+		192D1B6D2003C7440093064F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		192D1B6F2003CB8A0093064F /* ConfigurationExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationExampleViewController.swift; sourceTree = "<group>"; };
+		192D1B712003CB930093064F /* SingleItemExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleItemExampleViewController.swift; sourceTree = "<group>"; };
 		193808CF1FBCA063002EF4C0 /* .codecov.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .codecov.yml; path = ../../.codecov.yml; sourceTree = "<group>"; };
+		194504D32003D499003B205F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCircleViewSpec.swift; sourceTree = "<group>"; };
 		195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionsSpec.swift; sourceTree = "<group>"; };
 		195269441FD7E63B0053C785 /* JJActionItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJActionItemSpec.swift; sourceTree = "<group>"; };
 		195637221FDA9EFB0003B8FF /* config.yml */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = config.yml; path = ../../.circleci/config.yml; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJFloatingActionButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B66001FBAE904009A17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		198B66021FBAE904009A17F2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		198B66041FBAE904009A17F2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		198B66021FBAE904009A17F2 /* BasicsExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsExampleViewController.swift; sourceTree = "<group>"; };
+		198B66041FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceBuilderExampleViewController.swift; sourceTree = "<group>"; };
 		198B66071FBAE904009A17F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		198B66091FBAE904009A17F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		198B660C1FBAE904009A17F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		198B660E1FBAE904009A17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		198B66131FBAE904009A17F2 /* JJFloatingActionButton_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JJFloatingActionButton_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonSpec.swift; sourceTree = "<group>"; };
@@ -124,12 +130,15 @@
 			isa = PBXGroup;
 			children = (
 				198B66001FBAE904009A17F2 /* AppDelegate.swift */,
-				198B66021FBAE904009A17F2 /* FirstViewController.swift */,
-				198B66041FBAE904009A17F2 /* SecondViewController.swift */,
+				198B66021FBAE904009A17F2 /* BasicsExampleViewController.swift */,
+				192D1B6F2003CB8A0093064F /* ConfigurationExampleViewController.swift */,
+				198B66041FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift */,
+				192D1B712003CB930093064F /* SingleItemExampleViewController.swift */,
+				192D1B6D2003C7440093064F /* Helper.swift */,
+				198B660E1FBAE904009A17F2 /* Info.plist */,
+				194504D22003D499003B205F /* LaunchScreen.storyboard */,
 				198B66061FBAE904009A17F2 /* Main.storyboard */,
 				198B66091FBAE904009A17F2 /* Assets.xcassets */,
-				198B660B1FBAE904009A17F2 /* LaunchScreen.storyboard */,
-				198B660E1FBAE904009A17F2 /* Info.plist */,
 			);
 			name = Example;
 			path = JJFloatingActionButton;
@@ -300,7 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				198B660D1FBAE904009A17F2 /* LaunchScreen.storyboard in Resources */,
+				194504D42003D499003B205F /* LaunchScreen.storyboard in Resources */,
 				198B660A1FBAE904009A17F2 /* Assets.xcassets in Resources */,
 				198B66081FBAE904009A17F2 /* Main.storyboard in Resources */,
 			);
@@ -435,9 +444,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				198B66051FBAE904009A17F2 /* SecondViewController.swift in Sources */,
+				192D1B722003CB930093064F /* SingleItemExampleViewController.swift in Sources */,
+				198B66051FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift in Sources */,
 				198B66011FBAE904009A17F2 /* AppDelegate.swift in Sources */,
-				198B66031FBAE904009A17F2 /* FirstViewController.swift in Sources */,
+				198B66031FBAE904009A17F2 /* BasicsExampleViewController.swift in Sources */,
+				192D1B702003CB8A0093064F /* ConfigurationExampleViewController.swift in Sources */,
+				192D1B6E2003C7440093064F /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,20 +477,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		194504D22003D499003B205F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				194504D32003D499003B205F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		198B66061FBAE904009A17F2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				198B66071FBAE904009A17F2 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		198B660B1FBAE904009A17F2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				198B660C1FBAE904009A17F2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

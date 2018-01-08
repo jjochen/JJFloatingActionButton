@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  SingleItemExampleViewController.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
@@ -22,16 +22,22 @@
 //  THE SOFTWARE.
 //
 
+import JJFloatingActionButton
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+internal class SingleItemExampleViewController: UIViewController {
 
-    var window: UIWindow?
+    fileprivate let actionButton = JJFloatingActionButton()
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        window?.tintColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        return true
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        actionButton.buttonColor = .red
+
+        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
+            Helper.showAlert(for: item)
+        }
+
+        actionButton.add(to: self)
     }
 }
