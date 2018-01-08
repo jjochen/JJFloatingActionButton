@@ -32,6 +32,8 @@ end
 
 begin
   require 'fileutils'
+  require 'octokit'
+  require 'cocoapods'
 
   task default: :test
 
@@ -168,6 +170,29 @@ begin
   task :push_podspec do
     title "Pushing podspec"
     sh 'bundle exec pod trunk push'
+    sh 'curl http://207.254.41.223:4567/redeploy/JJFloatingActionButton/latest'
+  end
+  
+  desc 'Create release on github'
+  task :create_github_release do
+    title "Creating release on github"
+    repo = "jjochen/JJFloatingActionButton"
+    version = version_from_podspec
+    body = changelog_for_version version
+    options = {
+      :name => version, 
+      :body => body,
+      :draft => false,
+      :prerelease => false
+    }
+    
+    puts "repo: #{repo}"
+    puts "version: #{version}"
+    puts "body: \n#{body}" 
+
+    client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
+    release = client.create_release repo, version, options
+    puts "#{release.name} created."
   end
 
 rescue LoadError, NameError => e
@@ -282,7 +307,7 @@ def test_documentation_coverage
   search_string = '100% documented'
   if File.foreach(file_path).grep(/#{Regexp.escape(search_string)}/).any?
     puts "'#{search_string}' found in #{file_path}"
-    else
+  else
     error_message "'#{search_string}' not found in #{file_path}"
     exit 1
   end
@@ -296,6 +321,40 @@ def update_version_in_podspec(version)
   new_contents = contents.gsub(/(spec\.version\s*=\s*)'.*'/, "\\1'#{version}'")
   puts new_contents
   File.open(file_name, "w") {|file| file.puts new_contents }
+end
+
+def version_from_podspec
+  spec = Pod::Specification.from_file('JJFloatingActionButton.podspec')
+  version = spec.version.to_s()
+  if version.nil? || version.empty?
+    error_message "podspec version not found."
+    exit 1
+  end
+  return version
+end
+
+def changelog_for_version(version)
+  check_parameter(version)
+  changelog = ""
+  File.open("CHANGELOG.md") do |f|
+    in_version = false
+    f.each_line do |line|
+      if in_version
+        if line.match(/^\#\# \[.*/) 
+          break
+        elsif
+          changelog.concat(line)
+        end
+      elsif line.match(/^\#\# \[#{version}\].*/)
+        in_version = true
+      end
+    end
+  end
+  if changelog.nil? || changelog.empty?
+    error_message "changelog for version #{verion} not found."
+    exit 1
+  end
+  return changelog
 end
 
 def create_release_branch_and_commit(version)
