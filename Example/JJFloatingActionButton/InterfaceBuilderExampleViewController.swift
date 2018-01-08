@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  InterfaceBuilderExampleViewController.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
@@ -25,7 +25,7 @@
 import JJFloatingActionButton
 import UIKit
 
-class SecondViewController: UIViewController {
+class InterfaceBuilderExampleViewController: UIViewController {
 
     @IBOutlet fileprivate var actionButton: JJFloatingActionButton!
 
@@ -33,11 +33,16 @@ class SecondViewController: UIViewController {
 
         super.viewDidLoad()
 
-        actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Favourite")) { item in
+        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
+            Helper.showAlert(for: item)
+        }
 
-            let alertController = UIAlertController(title: item.titleLabel.text, message: "button tapped!", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+        actionButton.addItem(title: "Owl", image: #imageLiteral(resourceName: "Owl")) { item in
+            Helper.showAlert(for: item)
+        }
+
+        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
+            Helper.showAlert(for: item)
         }
     }
 }

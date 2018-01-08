@@ -86,29 +86,29 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             it("looks correct highlighted with custom color") {
-                actionButton.highlightedButtonColor = UIColor.orange
+                actionButton.highlightedButtonColor = .orange
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
             }
 
             it("looks correct configured") {
-                actionButton.buttonColor = UIColor.blue
-                actionButton.highlightedButtonColor = UIColor.orange
+                actionButton.buttonColor = .blue
+                actionButton.highlightedButtonColor = .orange
                 actionButton.defaultButtonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
                 actionButton.openButtonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonImageColor = UIColor.red
-                actionButton.shadowColor = UIColor.orange
+                actionButton.buttonImageColor = .red
+                actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
                 actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
-                actionButton.itemTitleFont = UIFont.boldSystemFont(ofSize: 5)
-                actionButton.itemButtonColor = UIColor.magenta
-                actionButton.highlightedItemButtonColor = UIColor.red
-                actionButton.itemImageColor = UIColor.cyan
-                actionButton.itemTitleColor = UIColor.blue
-                actionButton.itemShadowColor = UIColor.yellow
+                actionButton.itemTitleFont = .boldSystemFont(ofSize: 5)
+                actionButton.itemButtonColor = .magenta
+                actionButton.highlightedItemButtonColor = .red
+                actionButton.itemImageColor = .cyan
+                actionButton.itemTitleColor = .blue
+                actionButton.itemShadowColor = .yellow
                 actionButton.itemShadowOffset = CGSize(width: 2, height: 0)
                 actionButton.itemShadowOpacity = Float(1)
                 actionButton.itemShadowRadius = CGFloat(0)
@@ -128,19 +128,19 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
                 actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
 
-                actionButton.buttonColor = UIColor.blue
+                actionButton.buttonColor = .blue
                 actionButton.defaultButtonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonImageColor = UIColor.red
-                actionButton.shadowColor = UIColor.orange
+                actionButton.buttonImageColor = .red
+                actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
                 actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
-                actionButton.itemTitleFont = UIFont.boldSystemFont(ofSize: 5)
-                actionButton.itemButtonColor = UIColor.magenta
-                actionButton.itemImageColor = UIColor.cyan
-                actionButton.itemTitleColor = UIColor.blue
-                actionButton.itemShadowColor = UIColor.yellow
+                actionButton.itemTitleFont = .boldSystemFont(ofSize: 5)
+                actionButton.itemButtonColor = .magenta
+                actionButton.itemImageColor = .cyan
+                actionButton.itemTitleColor = .blue
+                actionButton.itemShadowColor = .yellow
                 actionButton.itemShadowOffset = CGSize(width: 2, height: 0)
                 actionButton.itemShadowOpacity = Float(1)
                 actionButton.itemShadowRadius = CGFloat(0)
@@ -195,7 +195,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("items look correct highlighted with custom highligted color") {
-                        actionButton.highlightedItemButtonColor = UIColor.purple
+                        actionButton.highlightedItemButtonColor = .purple
                         let item = actionButton.items[0]
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTrue())
