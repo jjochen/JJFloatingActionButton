@@ -194,6 +194,34 @@ begin
     release = client.create_release repo, version, options
     puts "#{release.name} created."
   end
+  
+  desc 'Update github releases'
+  task :update_github_releases do
+    title "Updating releases on github"
+    repo = "jjochen/JJFloatingActionButton"
+    
+    client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
+    client.releases(repo).each do |release|
+      puts
+      
+      url = release.url
+      puts "url: #{url}"
+      
+      version = release.tag_name
+      puts "version: #{version}"
+      
+      body = changelog_for_version version
+      puts "body: \n#{body}"
+      
+      options = {
+        :name => version,
+        :body => body
+      }
+
+      release = client.update_release url, options unless body.empty?
+      puts "#{version} updated."
+    end
+  end
 
 rescue LoadError, NameError => e
   error_message 'Some Rake tasks haven been disabled because the environment' \
@@ -340,7 +368,7 @@ def changelog_for_version(version)
     in_version = false
     f.each_line do |line|
       if in_version
-        if line.match(/^\#\# \[.*/) 
+        if line.match(/^\#\# \[.*/) || line.match(/^\\\* \*.*/)
           break
         elsif
           changelog.concat(line)
