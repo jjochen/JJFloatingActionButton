@@ -107,9 +107,15 @@ begin
   desc 'Build documentation'
   task :build_documentation do
     generate_documentation
+    test_documentation_coverage
   end
-  
-  
+
+  desc 'Test documentation coverage'
+  task :test_documentation_coverage do
+    test_documentation_coverage
+  end
+
+
   #-- Changelog --------------------------------------------------------------#
 
   desc 'Generate changelog'
@@ -268,6 +274,18 @@ end
 def generate_documentation
   title 'Generating documentation'
   sh 'bundle exec jazzy'
+end
+
+def test_documentation_coverage
+  title 'Checking documentation coverage'
+  file_path = './docs/index.html'
+  search_string = '100% documented'
+  if File.foreach(file_path).grep(/#{Regexp.escape(search_string)}/).any?
+    puts "'#{search_string}' found in #{file_path}"
+    else
+    error_message "'#{search_string}' not found in #{file_path}"
+    exit 1
+  end
 end
 
 def update_version_in_podspec(version)
