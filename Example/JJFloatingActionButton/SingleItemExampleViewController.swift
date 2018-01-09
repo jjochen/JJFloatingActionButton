@@ -38,6 +38,6 @@ internal class SingleItemExampleViewController: UIViewController {
             Helper.showAlert(for: item)
         }
 
-        actionButton.add(to: self)
+        actionButton.display(in: self)
     }
 }
