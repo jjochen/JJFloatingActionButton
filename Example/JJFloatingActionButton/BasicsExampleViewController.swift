@@ -44,6 +44,6 @@ internal class BasicsExampleViewController: UIViewController {
             Helper.showAlert(for: item)
         }
 
-        actionButton.add(to: self)
+        actionButton.display(in: self)
     }
 }

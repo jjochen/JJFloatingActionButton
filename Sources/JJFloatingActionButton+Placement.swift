@@ -36,7 +36,7 @@ public extension JJFloatingActionButton {
     ///
     /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
     ///
-    func add(to superview: UIView, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
+    func display(in superview: UIView, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
         superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -91,10 +91,10 @@ public extension JJFloatingActionButton {
     ///
     /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
     ///
-    func add(to viewController: UIViewController, viewInset: CGFloat = 16, safeAreaInset: CGFloat =
+    func display(in viewController: UIViewController, viewInset: CGFloat = 16, safeAreaInset: CGFloat =
         0) {
         if let superview = viewController.view {
-            add(to: superview, viewInset: viewInset, safeAreaInset: safeAreaInset)
+            display(in: superview, viewInset: viewInset, safeAreaInset: safeAreaInset)
 
             var bottom: NSLayoutConstraint
 

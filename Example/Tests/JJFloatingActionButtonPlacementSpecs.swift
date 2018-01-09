@@ -51,7 +51,7 @@ class JJFloatingActionButtonPlacementSpec: QuickSpec {
             }
 
             it("looks correct when placed in view controller") {
-                actionButton.add(to: viewController)
+                actionButton.display(in: viewController)
                 expect(viewController.view).to(haveValidDeviceAgnosticSnapshot())
             }
         }
