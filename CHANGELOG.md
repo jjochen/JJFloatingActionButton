@@ -1,5 +1,15 @@
 # Change Log
 
+## [0.7.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.7.1) (2018-01-09)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.7.0...0.7.1)
+
+**Merged pull requests:**
+
+- Rename methods for placing button in view or view controller [\#107](https://github.com/jjochen/JJFloatingActionButton/pull/107) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Improved example [\#106](https://github.com/jjochen/JJFloatingActionButton/pull/106)
+- Add task for updating releases on GitHub [\#104](https://github.com/jjochen/JJFloatingActionButton/pull/104)
+- Add rake task for creating releases on GitHub [\#103](https://github.com/jjochen/JJFloatingActionButton/pull/103)
+
 ## [0.7.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.7.0) (2018-01-08)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.6.4...0.7.0)
 
