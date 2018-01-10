@@ -398,6 +398,25 @@ end
 def open_pull_request(version)
   title "Opening pull request"
   check_parameter(version)
-  sh "open 'https://github.com/jjochen/JJFloatingActionButton/compare/release%2F#{version}?expand=1'"
+  
+  repo = "jjochen/JJFloatingActionButton"
+  base = "master"
+  release_branch = "release/#{version}"
+  title = "Release #{version}"
+  
+  puts "repo: #{repo}"
+  puts "base: #{base}"
+  puts "head: #{release_branch}" 
+
+  client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
+  
+  pull_request = client.create_pull_request repo, base, release_branch, title
+  puts "#{pull_request.title} created."
+  puts pull_request.html_url
+  
+  client.add_labels_to_an_issue repo, pull_request.number, ['release']
+  puts "release label added."
+  
+  sh "open #{pull_request.html_url}"
 end
 
