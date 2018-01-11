@@ -1,12 +1,28 @@
 # Change Log
 
+## [0.7.2](https://github.com/jjochen/JJFloatingActionButton/tree/0.7.2) (2018-01-11)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.7.1...0.7.2)
+
+**Fixed bugs:**
+
+- Placement methods not accessible from objective-c [\#111](https://github.com/jjochen/JJFloatingActionButton/issues/111)
+
+**Merged pull requests:**
+
+- Rename placement methods to fix objc issues [\#112](https://github.com/jjochen/JJFloatingActionButton/pull/112) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Create release pull requests with octokit.rb [\#110](https://github.com/jjochen/JJFloatingActionButton/pull/110)
+
 ## [0.7.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.7.1) (2018-01-09)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.7.0...0.7.1)
+
+**Implemented enhancements:**
+
+- Improve Example [\#105](https://github.com/jjochen/JJFloatingActionButton/issues/105)
 
 **Merged pull requests:**
 
 - Rename methods for placing button in view or view controller [\#107](https://github.com/jjochen/JJFloatingActionButton/pull/107) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
-- Improved example [\#106](https://github.com/jjochen/JJFloatingActionButton/pull/106)
+- Improve example [\#106](https://github.com/jjochen/JJFloatingActionButton/pull/106)
 - Add task for updating releases on GitHub [\#104](https://github.com/jjochen/JJFloatingActionButton/pull/104)
 - Add rake task for creating releases on GitHub [\#103](https://github.com/jjochen/JJFloatingActionButton/pull/103)
 
