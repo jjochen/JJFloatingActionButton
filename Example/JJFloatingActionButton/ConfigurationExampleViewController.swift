@@ -70,7 +70,7 @@ internal class ConfigurationExampleViewController: UIViewController {
             Helper.showAlert(for: item)
         }
 
-        actionButton.display(in: self)
+        actionButton.display(inViewController: self)
     }
 }
 

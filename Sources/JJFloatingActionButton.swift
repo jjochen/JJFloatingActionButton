@@ -405,7 +405,7 @@ fileprivate extension JJFloatingActionButton {
 
 // MARK: - Public Methods
 
-public extension JJFloatingActionButton {
+@objc public extension JJFloatingActionButton {
 
     /// Add an action item with title, image and action to the list of items.
     /// The item will be pre configured with the default values.
@@ -416,9 +416,9 @@ public extension JJFloatingActionButton {
     ///
     /// - Returns: The item that was added. This can be configured after it has been added.
     ///
-    @objc @discardableResult func addItem(title: String? = nil,
-                                          image: UIImage? = nil,
-                                          action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
+    @discardableResult func addItem(title: String? = nil,
+                                    image: UIImage? = nil,
+                                    action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
         let item = JJActionItem()
         item.titleLabel.text = title
         item.imageView.image = image
@@ -436,7 +436,7 @@ public extension JJFloatingActionButton {
     ///
     /// - Returns: The item that was add. Its configuration can be changed after it has been added.
     ///
-    @objc func addItem(_ item: JJActionItem) {
+    func addItem(_ item: JJActionItem) {
         items.append(item)
         configureItem(item)
         configureButtonImage()
@@ -449,7 +449,7 @@ public extension JJFloatingActionButton {
     ///
     /// - Remark: Hidden items and items that have user interaction disabled are omitted.
     ///
-    @objc func open(animated: Bool = true, completion: (() -> Void)? = nil) {
+    func open(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard buttonState == .closed else {
             return
         }
@@ -499,7 +499,7 @@ public extension JJFloatingActionButton {
     /// - Parameter animated: When true, button will be close with an animation. Default is `true`.
     /// - Parameter completion: Will be handled upon completion. Default is `nil`.
     ///
-    @objc func close(animated: Bool = true, completion: (() -> Void)? = nil) {
+    func close(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard buttonState == .open else {
             return
         }
@@ -532,7 +532,7 @@ public extension JJFloatingActionButton {
     /// All items that will be shown when floating action button ist opened.
     /// This excludes hidden items and items that have user interaction disabled.
     ///
-    @objc var enabledItems: [JJActionItem] {
+    var enabledItems: [JJActionItem] {
         return items.filter { item -> Bool in
             !item.isHidden && item.isUserInteractionEnabled
         }

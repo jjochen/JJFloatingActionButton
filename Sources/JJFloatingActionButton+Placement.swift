@@ -24,7 +24,7 @@
 
 import UIKit
 
-public extension JJFloatingActionButton {
+@objc public extension JJFloatingActionButton {
 
     /// Add floating action button to a given superview and place in trailing bottom corner.
     ///
@@ -36,7 +36,7 @@ public extension JJFloatingActionButton {
     ///
     /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
     ///
-    func display(in superview: UIView, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
+    func display(inView superview: UIView, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
         superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -91,10 +91,9 @@ public extension JJFloatingActionButton {
     ///
     /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
     ///
-    func display(in viewController: UIViewController, viewInset: CGFloat = 16, safeAreaInset: CGFloat =
-        0) {
+    func display(inViewController viewController: UIViewController, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
         if let superview = viewController.view {
-            display(in: superview, viewInset: viewInset, safeAreaInset: safeAreaInset)
+            display(inView: superview, viewInset: viewInset, safeAreaInset: safeAreaInset)
 
             var bottom: NSLayoutConstraint
 
