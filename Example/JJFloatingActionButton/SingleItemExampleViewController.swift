@@ -37,6 +37,8 @@ internal class SingleItemExampleViewController: UIViewController {
         actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
             Helper.showAlert(for: item)
         }
+        
+        actionButton.handleSingleActionDirectly = false
 
         actionButton.display(inViewController: self)
     }
