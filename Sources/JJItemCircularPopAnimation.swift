@@ -54,7 +54,7 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
         case 1:
             interItemAngle = 0
         case 2:
-            interItemAngle = (maxAngle - minAngle) * 0.7
+            interItemAngle = (maxAngle - minAngle) * 0.8
         default:
             interItemAngle = (maxAngle - minAngle) / (CGFloat(numberOfItems) - 1)
         }

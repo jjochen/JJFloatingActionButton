@@ -57,9 +57,9 @@ internal class ConfigurationExampleViewController: UIViewController {
             Helper.showAlert(for: item)
         }
 
-//        actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
-//            Helper.showAlert(for: item)
-//        }
+        actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
+            Helper.showAlert(for: item)
+        }
 
         let item3 = actionButton.addItem()
         item3.circleView.color = .black
