@@ -67,21 +67,19 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
             item.transform = .identity
             containerView.addSubview(item)
 
-            var angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
-            var dx = itemSpacing * cos(angle)
-            var dy = itemSpacing * sin(angle)
-
             item.translatesAutoresizingMaskIntoConstraints = false
-
             item.heightAnchor.constraint(equalTo: actionButton.circleView.heightAnchor, multiplier: itemSizeRatio).isActive = true
-
-            item.circleView.centerXAnchor.constraint(equalTo: actionButton.circleView.centerXAnchor, constant: dx).isActive = true
-            item.circleView.centerYAnchor.constraint(equalTo: actionButton.circleView.centerYAnchor, constant: dy).isActive = true
-
-            item.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor).isActive = true
             item.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor).isActive = true
             item.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor).isActive = true
             item.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor).isActive = true
+            item.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor).isActive = true
+
+            let angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
+            let dx = itemSpacing * cos(angle)
+            let dy = itemSpacing * sin(angle)
+
+            item.circleView.centerXAnchor.constraint(equalTo: actionButton.circleView.centerXAnchor, constant: dx).isActive = true
+            item.circleView.centerYAnchor.constraint(equalTo: actionButton.circleView.centerYAnchor, constant: dy).isActive = true
 
             index += 1
         }
