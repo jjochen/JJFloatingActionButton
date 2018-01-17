@@ -152,6 +152,73 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 expect(superview) == snapshot()
             }
 
+            context("when using pop up style") {
+                beforeEach {
+                    actionButton.useItemOpeningStylePopUp(interItemSpacing: 10)
+                    actionButton.useButtonOpeningStyleTransition(image: #imageLiteral(resourceName: "Owl"))
+                }
+
+                it("it looks correct") {
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+            }
+
+            context("when using circular pop up style") {
+                beforeEach {
+                    actionButton.useItemOpeningStyleCircularPop(radius: 100)
+                    actionButton.useButtonOpeningStyleRotate(angle: -CGFloat.pi / 3)
+                }
+
+                it("it looks correct with 3 items") {
+
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct with 2 items") {
+
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct with 1 item") {
+
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.handleSingleActionDirectly = false
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct when opened and closed") {
+
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+
+                    actionButton.open(animated: false)
+                    actionButton.close(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+            }
+
             context("when multiple items are added") {
                 var action = "not done"
                 beforeEach {

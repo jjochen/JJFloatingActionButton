@@ -43,23 +43,6 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
 
     func addItems(to containerView: UIView) {
         let numberOfItems = items.count
-        guard numberOfItems > 0 else {
-            return
-        }
-
-        let minAngle = CGFloat.pi
-        let maxAngle = CGFloat.pi * 1.5
-        var interItemAngle: CGFloat
-        switch numberOfItems {
-        case 1:
-            interItemAngle = 0
-        case 2:
-            interItemAngle = (maxAngle - minAngle) * 0.8
-        default:
-            interItemAngle = (maxAngle - minAngle) / (CGFloat(numberOfItems) - 1)
-        }
-
-        let marginAngle = ((maxAngle - minAngle) - interItemAngle * (CGFloat(numberOfItems) - 1)) / 2
 
         var index = 0
         for item in items {
@@ -74,7 +57,7 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
             item.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor).isActive = true
             item.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor).isActive = true
 
-            let angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
+            let angle = angleForItem(at: index, numberOfItems: numberOfItems)
             let dx = radius * cos(angle)
             let dy = radius * sin(angle)
 
@@ -128,5 +111,30 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
         items.forEach { item in
             item.removeFromSuperview()
         }
+    }
+}
+
+// MARK: - Helper
+
+fileprivate extension JJItemCircularPopAnimation {
+
+    func angleForItem(at index: Int, numberOfItems: Int) -> CGFloat {
+        let minAngle = CGFloat.pi
+        let maxAngle = CGFloat.pi * 1.5
+
+        var interItemAngle: CGFloat
+        switch numberOfItems {
+        case 1:
+            interItemAngle = 0
+        case 2:
+            interItemAngle = (maxAngle - minAngle) * 0.8
+        default:
+            interItemAngle = (maxAngle - minAngle) / (CGFloat(numberOfItems) - 1)
+        }
+
+        let marginAngle = ((maxAngle - minAngle) - interItemAngle * (CGFloat(numberOfItems) - 1)) / 2
+        let angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
+
+        return angle
     }
 }
