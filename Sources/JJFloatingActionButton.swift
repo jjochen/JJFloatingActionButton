@@ -480,9 +480,10 @@ extension JJFloatingActionButton {
     }
 }
 
-// MARK: - Configuration
+// MARK: - Setup
 
-internal extension JJFloatingActionButton {
+fileprivate extension JJFloatingActionButton {
+
     func setup() {
         backgroundColor = .clear
         clipsToBounds = false
@@ -515,6 +516,10 @@ internal extension JJFloatingActionButton {
         configureButtonImage()
     }
 
+    func configureButtonImage() {
+        imageView.image = currentButtonImage
+    }
+
     func configureItem(_ item: JJActionItem) {
         item.circleView.color = itemButtonColor
         item.circleView.highlightedColor = highlightedItemButtonColor
@@ -528,13 +533,14 @@ internal extension JJFloatingActionButton {
         item.layer.shadowRadius = itemShadowRadius
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
+}
+
+// MARK: - Helper
+
+internal extension JJFloatingActionButton {
 
     var currentItemImageColor: UIColor {
         return itemImageColor ?? buttonColor
-    }
-
-    func configureButtonImage() {
-        imageView.image = currentButtonImage
     }
 
     var currentButtonImage: UIImage? {
