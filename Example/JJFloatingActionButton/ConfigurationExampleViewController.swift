@@ -34,7 +34,7 @@ internal class ConfigurationExampleViewController: UIViewController {
 
         actionButton.buttonColor = .red
         actionButton.defaultButtonImage = #imageLiteral(resourceName: "Dots")
-        actionButton.openButtonImage = #imageLiteral(resourceName: "X")
+        actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "X"))
         actionButton.buttonImageColor = .white
         actionButton.shadowColor = .black
         actionButton.shadowOffset = CGSize(width: 0, height: 1)
@@ -49,8 +49,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         actionButton.itemShadowOpacity = Float(0.4)
         actionButton.itemShadowRadius = CGFloat(2)
         actionButton.itemSizeRatio = CGFloat(0.75)
-        actionButton.interItemSpacing = CGFloat(12)
-        actionButton.rotationAngle = -CGFloat.pi / 4
+        actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
         actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
 
         actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in

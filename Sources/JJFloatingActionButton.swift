@@ -91,20 +91,6 @@ import UIKit
         }
     }
 
-    /// The image that is displayed when the button is opened.
-    /// Default is `nil`.
-    ///
-    /// - Warning: When `openButtonImage` is set, `rotationAngle` is ignored
-    ///            and the button will not rotate when opening.
-    ///
-    /// - SeeAlso: `rotationAngle`
-    ///
-    @objc @IBInspectable public dynamic var openButtonImage: UIImage? {
-        didSet {
-            configureButtonImage()
-        }
-    }
-
     /// The tint color of the image view.
     /// Default is `UIColor.white`.
     ///
@@ -275,19 +261,29 @@ import UIKit
     ///
     @objc @IBInspectable public dynamic var itemSizeRatio: CGFloat = 0.75
 
-    /// The space between two action items in points.
-    /// Default is `12`.
+    /// The opening style of the floating action button itself.
+    /// Possible values are
+    ///   - `.rotate(image:)`
+    ///   - `.transition(radius:)`
     ///
-    @objc @IBInspectable public dynamic var interItemSpacing: CGFloat = 12
+    /// - Warning: Not accessible from Objective-C because its type cannot be represented in Objective-C.
+    ///
+    /// - SeeAlso: `useButtonOpeningStyleRotate(angle:)`
+    /// - SeeAlso: `useButtonOpeningStyleTransition(image:)`
+    ///
+    public var buttonOpeningStyle: ButtonOpeningStyle = .rotate(angle: -.pi / 4)
 
-    /// The angle in radians the button should rotate when opening.
-    /// Default is `-CGFloat.pi / 4`.
+    /// The opening style of the action items.
+    /// Possible values are
+    ///   - `.popUp(interItemSpacing:)`
+    ///   - `.circularPop(radius:)`
     ///
-    /// - Warning: When `openButtonImage` is set, `rotationAngle` is ignored and the button will not rotate when opening.
+    /// - Warning: Not accessible from Objective-C because its type cannot be represented in Objective-C.
     ///
-    /// - SeeAlso: `openButtonImage`
+    /// - SeeAlso: `useItemOpeningStylePopUp(interItemSpacing:)`
+    /// - SeeAlso: `useItemOpeningStyleCircularPop(radius:)`
     ///
-    @objc @IBInspectable public dynamic var rotationAngle: CGFloat = -.pi / 4
+    public var itemOpeningStyle: ItemOpeningStyle = .popUp(interItemSpacing: 12)
 
     /// When enabled and only one action item is added, the floating action button will not open,
     /// but the action from the action item will be executed direclty when the button is tapped.
@@ -308,7 +304,7 @@ import UIKit
     ///   - `.closing`
     ///   - `.closed`
     ///
-    @objc public fileprivate(set) var buttonState: JJFloatingActionButtonState = .closed
+    @objc public internal(set) var buttonState: JJFloatingActionButtonState = .closed
 
     /// The round background view of the floating action button.
     /// Read only.
@@ -354,9 +350,9 @@ import UIKit
 
     internal lazy var itemContainerView: UIView = lazyItemContainer()
 
-    fileprivate var buttonAnimation: JJButtonAnimation?
+    internal var buttonAnimation: JJButtonAnimation?
 
-    fileprivate var itemAnimation: JJItemAnimation?
+    internal var itemAnimation: JJItemAnimation?
 }
 
 // MARK: - Lazy UI Elements
@@ -442,93 +438,6 @@ fileprivate extension JJFloatingActionButton {
         configureButtonImage()
     }
 
-    /// Open the floating action button and show all action items.
-    ///
-    /// - Parameter animated: When true, button will be opened with an animation. Default is `true`.
-    /// - Parameter completion: Will be handled upon completion. Default is `nil`.
-    ///
-    /// - Remark: Hidden items and items that have user interaction disabled are omitted.
-    ///
-    func open(animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard buttonState == .closed else {
-            return
-        }
-        guard let superview = superview else {
-            return
-        }
-        guard !items.isEmpty else {
-            return
-        }
-        guard !isSingleActionButton else {
-            return
-        }
-
-        buttonState = .opening
-        delegate?.floatingActionButtonWillOpen?(self)
-
-        buttonAnimation = currentButtonAnimation
-        itemAnimation = currentItemAnimation
-
-        superview.bringSubview(toFront: self)
-        addOverlayView(to: superview)
-        superview.insertSubview(itemContainerView, belowSubview: self)
-        itemAnimation?.addItems(to: itemContainerView)
-        itemContainerView.setNeedsLayout()
-        itemContainerView.layoutIfNeeded()
-
-        let animationGroup = DispatchGroup()
-
-        showOverlay(animated: animated, group: animationGroup)
-        buttonAnimation?.open(animated: animated, group: animationGroup)
-        itemAnimation?.open(animated: animated, group: animationGroup)
-
-        let groupCompletion: () -> Void = {
-            self.buttonState = .open
-            self.delegate?.floatingActionButtonDidOpen?(self)
-            completion?()
-        }
-        if animated {
-            animationGroup.notify(queue: .main, execute: groupCompletion)
-        } else {
-            groupCompletion()
-        }
-    }
-
-    /// Close the floating action button and hide all action items.
-    ///
-    /// - Parameter animated: When true, button will be close with an animation. Default is `true`.
-    /// - Parameter completion: Will be handled upon completion. Default is `nil`.
-    ///
-    func close(animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard buttonState == .open else {
-            return
-        }
-        buttonState = .closing
-        delegate?.floatingActionButtonWillClose?(self)
-        overlayView.isEnabled = false
-
-        let animationGroup = DispatchGroup()
-
-        hideOverlay(animated: animated, group: animationGroup)
-        buttonAnimation?.close(animated: animated, group: animationGroup)
-        itemAnimation?.close(animated: animated, group: animationGroup)
-
-        let groupCompletion: () -> Void = {
-            self.itemAnimation?.removeItems()
-            self.itemAnimation = nil
-            self.itemContainerView.removeFromSuperview()
-            self.buttonAnimation = nil
-            self.buttonState = .closed
-            self.delegate?.floatingActionButtonDidClose?(self)
-            completion?()
-        }
-        if animated {
-            animationGroup.notify(queue: .main, execute: groupCompletion)
-        } else {
-            groupCompletion()
-        }
-    }
-
     /// All items that will be shown when floating action button ist opened.
     /// This excludes hidden items and items that have user interaction disabled.
     ///
@@ -567,9 +476,10 @@ extension JJFloatingActionButton {
     }
 }
 
-// MARK: - Configuration
+// MARK: - Setup
 
 fileprivate extension JJFloatingActionButton {
+
     func setup() {
         backgroundColor = .clear
         clipsToBounds = false
@@ -602,6 +512,10 @@ fileprivate extension JJFloatingActionButton {
         configureButtonImage()
     }
 
+    func configureButtonImage() {
+        imageView.image = currentButtonImage
+    }
+
     func configureItem(_ item: JJActionItem) {
         item.circleView.color = itemButtonColor
         item.circleView.highlightedColor = highlightedItemButtonColor
@@ -615,13 +529,14 @@ fileprivate extension JJFloatingActionButton {
         item.layer.shadowRadius = itemShadowRadius
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
+}
+
+// MARK: - Helper
+
+internal extension JJFloatingActionButton {
 
     var currentItemImageColor: UIColor {
         return itemImageColor ?? buttonColor
-    }
-
-    func configureButtonImage() {
-        imageView.image = currentButtonImage
     }
 
     var currentButtonImage: UIImage? {
@@ -638,73 +553,6 @@ fileprivate extension JJFloatingActionButton {
 
     var isSingleActionButton: Bool {
         return handleSingleActionDirectly && enabledItems.count == 1
-    }
-}
-
-// MARK: - Animation
-
-fileprivate extension JJFloatingActionButton {
-
-    func addOverlayView(to superview: UIView) {
-        overlayView.isEnabled = true
-        superview.insertSubview(overlayView, belowSubview: self)
-        overlayView.translatesAutoresizingMaskIntoConstraints = false
-        overlayView.topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
-        overlayView.leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
-        overlayView.trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
-        overlayView.bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
-    }
-
-    func showOverlay(animated: Bool, group: DispatchGroup) {
-        let buttonAnimation: () -> Void = {
-            self.overlayView.alpha = 1
-        }
-        UIView.animate(duration: 0.3,
-                       usingSpringWithDamping: 1,
-                       initialSpringVelocity: 0.3,
-                       animations: buttonAnimation,
-                       group: group,
-                       animated: animated)
-    }
-
-    func hideOverlay(animated: Bool, group: DispatchGroup) {
-        let animations: () -> Void = {
-            self.overlayView.alpha = 0
-        }
-        let completion: (Bool) -> Void = { _ in
-            self.overlayView.removeFromSuperview()
-        }
-        UIView.animate(duration: 0.3,
-                       usingSpringWithDamping: 1,
-                       initialSpringVelocity: 0.8,
-                       animations: animations,
-                       completion: completion,
-                       group: group,
-                       animated: animated)
-    }
-
-    var currentButtonAnimation: JJButtonAnimation {
-        let buttonAnimation: JJButtonAnimation
-        if let openImage = openButtonImage {
-            buttonAnimation = JJButtonTransitionAnimation(actionButton: self,
-                                                          openImage: openImage,
-                                                          closeImage: currentButtonImage)
-        } else {
-            buttonAnimation = JJButtonRotationAnimation(actionButton: self,
-                                                        angle: rotationAngle)
-        }
-
-        return buttonAnimation
-    }
-
-    var currentItemAnimation: JJItemAnimation {
-        let itemAnimation: JJItemAnimation
-        itemAnimation = JJItemPopAnimation(actionButton: self,
-                                           items: enabledItems,
-                                           itemSizeRatio: itemSizeRatio,
-                                           interItemSpacing: interItemSpacing)
-
-        return itemAnimation
     }
 }
 
