@@ -128,19 +128,24 @@ begin
 
   #-- Record Video -----------------------------------------------------------#
   
-  desc 'Record video booted simulator and convert to gif'
+  desc 'Record video of booted simulator and convert to gif'
   task :record_gif do
+    Rake::Task[:record_gif_with_name].invoke 'JJFloatingActionButton'
+  end
+  
+  desc 'Record video of booted simulator and convert to gif with given name'
+  task :record_gif_with_name, :name do |task, args|
     title 'Recording video'
     check_executable('ffmpeg')
 
-    mov_path='./Images/JJFloatingActionButton.mov'
+    mov_path="./Images/#{args.name}.mov"
     
     trap('SIGINT') { puts }
     %x{xcrun simctl io booted recordVideo #{mov_path}}
   
-    title 'Convert to gif'
+    title 'Converting to gif'
     
-    gif_path='./Images/JJFloatingActionButton.gif'
+    gif_path="./Images/#{args.name}.gif"
     palette_path='./Images/palette.png'
     filters='fps=30,setpts=1*PTS,scale=250:-1:flags=lanczos'
 
