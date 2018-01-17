@@ -24,6 +24,19 @@
 
 import UIKit
 
+public extension JJFloatingActionButton {
+
+    enum ButtonOpeningStyle {
+        case rotate(angle: CGFloat)
+        case transition(image: UIImage)
+    }
+
+    enum ItemOpeningStyle {
+        case popUp(interItemSpacing: CGFloat)
+        case circularPop(radius: CGFloat)
+    }
+}
+
 @objc public extension JJFloatingActionButton {
 
     /// Open the floating action button and show all action items.
@@ -159,25 +172,55 @@ fileprivate extension JJFloatingActionButton {
 
     var currentButtonAnimation: JJButtonAnimation {
         let buttonAnimation: JJButtonAnimation
-        if let openImage = openButtonImage {
-            buttonAnimation = JJButtonTransitionAnimation(actionButton: self,
-                                                          openImage: openImage,
-                                                          closeImage: currentButtonImage)
-        } else {
+        switch buttonOpeningStyle {
+        case let .rotate(angle):
             buttonAnimation = JJButtonRotationAnimation(actionButton: self,
-                                                        angle: rotationAngle)
+                                                        angle: angle)
+        case let .transition(image):
+            buttonAnimation = JJButtonTransitionAnimation(actionButton: self,
+                                                          openImage: image,
+                                                          closeImage: currentButtonImage)
         }
-
         return buttonAnimation
     }
 
     var currentItemAnimation: JJItemAnimation {
         let itemAnimation: JJItemAnimation
-        itemAnimation = JJItemPopAnimation(actionButton: self,
-                                           items: enabledItems,
-                                           itemSizeRatio: itemSizeRatio,
-                                           interItemSpacing: interItemSpacing)
+        switch itemOpeningStyle {
+
+        case let .popUp(interItemSpacing):
+            itemAnimation = JJItemPopAnimation(actionButton: self,
+                                               items: enabledItems,
+                                               itemSizeRatio: itemSizeRatio,
+                                               interItemSpacing: interItemSpacing)
+        case let .circularPop(radius):
+            itemAnimation = JJItemCircularPopAnimation(actionButton: self,
+                                                       items: enabledItems,
+                                                       itemSizeRatio: itemSizeRatio,
+                                                       radius: radius)
+        }
 
         return itemAnimation
+    }
+}
+
+// MARK: - Objective-C setters for opening styles
+
+@objc public extension JJFloatingActionButton {
+
+    func useButtonOpeningStyleRotate(angle: CGFloat) {
+        buttonOpeningStyle = .rotate(angle: angle)
+    }
+
+    func useButtonOpeningStyleTransition(image: UIImage) {
+        buttonOpeningStyle = .transition(image: image)
+    }
+
+    func useItemOpeningStylePopUp(interItemSpacing: CGFloat) {
+        itemOpeningStyle = .popUp(interItemSpacing: interItemSpacing)
+    }
+
+    func useItemOpeningStyleCircularPop(radius: CGFloat) {
+        itemOpeningStyle = .circularPop(radius: radius)
     }
 }

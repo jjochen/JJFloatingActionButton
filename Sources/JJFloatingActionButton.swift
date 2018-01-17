@@ -91,20 +91,6 @@ import UIKit
         }
     }
 
-    /// The image that is displayed when the button is opened.
-    /// Default is `nil`.
-    ///
-    /// - Warning: When `openButtonImage` is set, `rotationAngle` is ignored
-    ///            and the button will not rotate when opening.
-    ///
-    /// - SeeAlso: `rotationAngle`
-    ///
-    @objc @IBInspectable public dynamic var openButtonImage: UIImage? {
-        didSet {
-            configureButtonImage()
-        }
-    }
-
     /// The tint color of the image view.
     /// Default is `UIColor.white`.
     ///
@@ -275,19 +261,9 @@ import UIKit
     ///
     @objc @IBInspectable public dynamic var itemSizeRatio: CGFloat = 0.75
 
-    /// The space between two action items in points.
-    /// Default is `12`.
-    ///
-    @objc @IBInspectable public dynamic var interItemSpacing: CGFloat = 12
+    public var buttonOpeningStyle: ButtonOpeningStyle = .rotate(angle: -.pi / 4)
 
-    /// The angle in radians the button should rotate when opening.
-    /// Default is `-CGFloat.pi / 4`.
-    ///
-    /// - Warning: When `openButtonImage` is set, `rotationAngle` is ignored and the button will not rotate when opening.
-    ///
-    /// - SeeAlso: `openButtonImage`
-    ///
-    @objc @IBInspectable public dynamic var rotationAngle: CGFloat = -.pi / 4
+    public var itemOpeningStyle: ItemOpeningStyle = .popUp(interItemSpacing: 12)
 
     /// When enabled and only one action item is added, the floating action button will not open,
     /// but the action from the action item will be executed direclty when the button is tapped.

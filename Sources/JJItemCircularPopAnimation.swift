@@ -29,13 +29,13 @@ internal class JJItemCircularPopAnimation {
     let actionButton: JJFloatingActionButton
     let items: [JJActionItem]
     let itemSizeRatio: CGFloat
-    let itemSpacing: CGFloat
+    let radius: CGFloat
 
-    init(actionButton: JJFloatingActionButton, items: [JJActionItem], itemSizeRatio: CGFloat, itemSpacing: CGFloat) {
+    init(actionButton: JJFloatingActionButton, items: [JJActionItem], itemSizeRatio: CGFloat, radius: CGFloat) {
         self.actionButton = actionButton
         self.items = items
         self.itemSizeRatio = itemSizeRatio
-        self.itemSpacing = itemSpacing
+        self.radius = radius
     }
 }
 
@@ -75,8 +75,8 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
             item.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor).isActive = true
 
             let angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
-            let dx = itemSpacing * cos(angle)
-            let dy = itemSpacing * sin(angle)
+            let dx = radius * cos(angle)
+            let dy = radius * sin(angle)
 
             item.circleView.centerXAnchor.constraint(equalTo: actionButton.circleView.centerXAnchor, constant: dx).isActive = true
             item.circleView.centerYAnchor.constraint(equalTo: actionButton.circleView.centerYAnchor, constant: dy).isActive = true
