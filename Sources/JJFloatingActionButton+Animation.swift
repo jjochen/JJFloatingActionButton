@@ -26,13 +26,37 @@ import UIKit
 
 public extension JJFloatingActionButton {
 
+    /// Opening style of the button itself.
+    ///
     enum ButtonOpeningStyle {
+
+        /// When opening, the button is rotated.
+        ///
+        /// - Parameter angle: The angle in radian the button will rotate when opening.
+        ///
         case rotate(angle: CGFloat)
+
+        /// When opening, the image view transitions to given image.
+        ///
+        /// - Parameter image: The image the button will show when opening.
+        ///
         case transition(image: UIImage)
     }
 
+    /// Opening style of the action items.
+    ///
     enum ItemOpeningStyle {
+
+        /// When opening, items "pop up" one after the other in a vertical line.
+        ///
+        /// - Parameter interItemSpacing: The distance in points between two adjacent action items.
+        ///
         case popUp(interItemSpacing: CGFloat)
+
+        /// When opening, items "pop up" one after the other in a circle around the action button.
+        ///
+        /// - Parameter radius: The distance in points between the center of an action item and the center of the button.
+        ///
         case circularPop(radius: CGFloat)
     }
 }
@@ -208,18 +232,50 @@ fileprivate extension JJFloatingActionButton {
 
 @objc public extension JJFloatingActionButton {
 
+    /// Sets `buttonOpeningStyle` to `.rotate(angle:)` with given angle.
+    ///
+    /// - Parameter angle: The angle in radian the button will rotate when opening.
+    ///
+    /// - Remark: Should not be used in swift. Set `buttonOpeningStyle` directly instead.
+    ///
+    /// - SeeAlso: `buttonOpeningStyle`.
+    ///
     func useButtonOpeningStyleRotate(angle: CGFloat) {
         buttonOpeningStyle = .rotate(angle: angle)
     }
 
+    /// Sets `buttonOpeningStyle` to `.transition(image:)` with given image.
+    ///
+    /// - Parameter image: The image the button will show when opening.
+    ///
+    /// - Remark: Should not be used in swift. Set `buttonOpeningStyle` directly instead.
+    ///
+    /// - SeeAlso: `buttonOpeningStyle`.
+    ///
     func useButtonOpeningStyleTransition(image: UIImage) {
         buttonOpeningStyle = .transition(image: image)
     }
 
+    /// Sets `itemOpeningStyle` to `.popUp(interItemSpacing:)` with given inter item spacing.
+    ///
+    /// - Parameter interItemSpacing: The distance in points between two adjacent action items.
+    ///
+    /// - Remark: Should not be used in swift. Set `itemOpeningStyle` directly instead.
+    ///
+    /// - SeeAlso: `itemOpeningStyle`.
+    ///
     func useItemOpeningStylePopUp(interItemSpacing: CGFloat) {
         itemOpeningStyle = .popUp(interItemSpacing: interItemSpacing)
     }
 
+    /// Sets `itemOpeningStyle` to `.circularPop(radius:)` with given radius.
+    ///
+    /// - Parameter radius: The distance in points between the center of an action item and the center of the button.
+    ///
+    /// - Remark: Should not be used in swift. Set `itemOpeningStyle` directly instead.
+    ///
+    /// - SeeAlso: `itemOpeningStyle`.
+    ///
     func useItemOpeningStyleCircularPop(radius: CGFloat) {
         itemOpeningStyle = .circularPop(radius: radius)
     }

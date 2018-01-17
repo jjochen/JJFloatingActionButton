@@ -261,8 +261,28 @@ import UIKit
     ///
     @objc @IBInspectable public dynamic var itemSizeRatio: CGFloat = 0.75
 
+    /// The opening style of the floating action button itself.
+    /// Possible values are
+    ///   - `.rotate(image:)`
+    ///   - `.transition(radius:)`
+    ///
+    /// - Warning: Not accessible from Objective-C because its type cannot be represented in Objective-C.
+    ///
+    /// - SeeAlso: `useButtonOpeningStyleRotate(angle:)`
+    /// - SeeAlso: `useButtonOpeningStyleTransition(image:)`
+    ///
     public var buttonOpeningStyle: ButtonOpeningStyle = .rotate(angle: -.pi / 4)
 
+    /// The opening style of the action items.
+    /// Possible values are
+    ///   - `.popUp(interItemSpacing:)`
+    ///   - `.circularPop(radius:)`
+    ///
+    /// - Warning: Not accessible from Objective-C because its type cannot be represented in Objective-C.
+    ///
+    /// - SeeAlso: `useItemOpeningStylePopUp(interItemSpacing:)`
+    /// - SeeAlso: `useItemOpeningStyleCircularPop(radius:)`
+    ///
     public var itemOpeningStyle: ItemOpeningStyle = .popUp(interItemSpacing: 12)
 
     /// When enabled and only one action item is added, the floating action button will not open,
