@@ -23,7 +23,10 @@ Floating Action Button for iOS
 ## <a name="preview"></a>Preview
 
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonBasics.gif" width='250' alt="Preview Basics"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircularPop.gif" width='250' alt="Preview Circular Pop"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
 
 
@@ -99,15 +102,11 @@ Button appearance and behavior can be customized:
 ```swift
 var buttonColor: UIColor
 var defaultButtonImage: UIImage?
-var openButtonImage: UIImage?
 var buttonImageColor: UIColor
 var shadowColor: UIColor
 var shadowOffset: CGSize
 var shadowOpacity: Float
 var shadowRadius: CGFloat
-
-var interItemSpacing: CGFloat
-var rotationAngle: CGFloat
 
 var itemTitleFont: UIFont
 var itemButtonColor: UIColor
@@ -118,6 +117,9 @@ var itemShadowOffset: CGSize
 var itemShadowOpacity: Float
 var itemShadowRadius: CGFloat
 var itemSizeRatio: CGFloat
+ 
+var buttonOpeningStyle: ButtonOpeningStyle
+var itemOpeningStyle: ItemOpeningStyle
 ```
 
 ### Delegate
