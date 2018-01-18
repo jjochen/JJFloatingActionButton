@@ -152,6 +152,28 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 expect(superview) == snapshot()
             }
 
+            it("looks correct with items configured with closure") {
+                actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like"))
+
+                actionButton.configureDefaultItem { item in
+                    item.titleLabel.font = .boldSystemFont(ofSize: 30)
+                    item.titleLabel.textColor = .magenta
+                    item.circleView.color = .red
+                    item.circleView.highlightedColor = .blue
+                    item.imageView.tintColor = .yellow
+
+                    item.layer.shadowColor = UIColor.cyan.cgColor
+                    item.layer.shadowOpacity = 1
+                    item.layer.shadowOffset = CGSize(width: -2, height: -2)
+                    item.layer.shadowRadius = 0
+                }
+
+                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.open(animated: false)
+
+                expect(superview) == snapshot()
+            }
+
             context("when using pop up style") {
                 beforeEach {
                     actionButton.useItemOpeningStylePopUp(interItemSpacing: 10)

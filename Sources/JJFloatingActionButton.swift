@@ -26,7 +26,6 @@ import UIKit
 
 /// A floating action button.
 ///
-/// ### Example ###
 ///   ````
 ///   let actionButton = JJFloatingActionButton()
 ///
@@ -438,6 +437,26 @@ fileprivate extension JJFloatingActionButton {
         configureButtonImage()
     }
 
+    /// Calls the given closure on each item that is or was added to the floating action button.
+    /// Default is `nil`.
+    ///
+    ///   ````
+    ///   let actionButton = JJFloatingActionButton()
+    ///
+    ///   actionButton.configureDefaultItem { item in
+    ///       item.imageView.contentMode = .scaleAspectFill
+    ///
+    ///       item.titleLabel.font = .systemFont(ofSize: 14)
+    ///
+    ///       item.layer.shadowColor = UIColor.black.cgColor
+    ///       item.layer.shadowOpacity = 0.3
+    ///       item.layer.shadowOffset = CGSize(width: 1, height: 1)
+    ///       item.layer.shadowRadius = 0
+    ///   }
+    ///   ````
+    ///
+    /// - Parameter body: A closure that takes an action item as a parameter.
+    ///
     func configureDefaultItem(_ body: ((JJActionItem) -> Void)?) {
         defaultItemConfiguration = body
         configureAllItems()
