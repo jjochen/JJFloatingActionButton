@@ -52,9 +52,7 @@ import UIKit
     ///
     @objc public var items: [JJActionItem] = [] {
         didSet {
-            items.forEach { item in
-                configureItem(item)
-            }
+            configureAllItems()
             configureButtonImage()
         }
     }
@@ -353,6 +351,8 @@ import UIKit
     internal var buttonAnimation: JJButtonAnimation?
 
     internal var itemAnimation: JJItemAnimation?
+
+    fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
 }
 
 // MARK: - Lazy UI Elements
@@ -438,6 +438,11 @@ fileprivate extension JJFloatingActionButton {
         configureButtonImage()
     }
 
+    func configureDefaultItem(_ body: ((JJActionItem) -> Void)?) {
+        defaultItemConfiguration = body
+        configureAllItems()
+    }
+
     /// All items that will be shown when floating action button ist opened.
     /// This excludes hidden items and items that have user interaction disabled.
     ///
@@ -516,6 +521,12 @@ fileprivate extension JJFloatingActionButton {
         imageView.image = currentButtonImage
     }
 
+    func configureAllItems() {
+        items.forEach { item in
+            configureItem(item)
+        }
+    }
+
     func configureItem(_ item: JJActionItem) {
         item.circleView.color = itemButtonColor
         item.circleView.highlightedColor = highlightedItemButtonColor
@@ -527,6 +538,9 @@ fileprivate extension JJFloatingActionButton {
         item.layer.shadowOpacity = itemShadowOpacity
         item.layer.shadowOffset = itemShadowOffset
         item.layer.shadowRadius = itemShadowRadius
+
+        defaultItemConfiguration?(item)
+
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
     }
 }
