@@ -278,7 +278,7 @@ end
 
 def install_cocoapods
   title 'Installing cocoapods'
-  sh 'bundle exec pod install --project-directory=Example'
+  sh 'bundle exec pod install --repo-update --project-directory=Example'
 end
 
 def update_gems

@@ -32,25 +32,34 @@ internal class ConfigurationExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
         actionButton.buttonColor = .red
         actionButton.defaultButtonImage = #imageLiteral(resourceName: "Dots")
         actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "X"))
-        actionButton.buttonImageColor = .white
-        actionButton.shadowColor = .black
-        actionButton.shadowOffset = CGSize(width: 0, height: 1)
-        actionButton.shadowOpacity = Float(0.5)
-        actionButton.shadowRadius = CGFloat(2)
-        actionButton.itemTitleFont = .boldSystemFont(ofSize: UIFont.systemFontSize)
-        actionButton.itemButtonColor = .white
-        actionButton.itemImageColor = .red
-        actionButton.itemTitleColor = .white
-        actionButton.itemShadowColor = .black
-        actionButton.itemShadowOffset = CGSize(width: 0, height: 1)
-        actionButton.itemShadowOpacity = Float(0.4)
-        actionButton.itemShadowRadius = CGFloat(2)
-        actionButton.itemSizeRatio = CGFloat(0.75)
         actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
-        actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
+
+        actionButton.imageView.tintColor = .white
+
+        actionButton.circleView.layer.shadowColor = UIColor.black.cgColor
+        actionButton.circleView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        actionButton.circleView.layer.shadowOpacity = Float(0.5)
+        actionButton.circleView.layer.shadowRadius = CGFloat(2)
+
+        actionButton.itemSizeRatio = CGFloat(0.75)
+        actionButton.configureDefaultItem { item in
+            item.titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize)
+            item.titleLabel.textColor = .white
+
+            item.circleView.color = .white
+
+            item.imageView.tintColor = .red
+
+            item.layer.shadowColor = UIColor.black.cgColor
+            item.layer.shadowOffset = CGSize(width: 0, height: 1)
+            item.layer.shadowOpacity = Float(0.4)
+            item.layer.shadowRadius = CGFloat(2)
+        }
+
 
         actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
             Helper.showAlert(for: item)
