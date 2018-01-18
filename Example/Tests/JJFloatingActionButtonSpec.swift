@@ -46,7 +46,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(0.002)
+                setNimbleTolerance(0.004)
             }
 
             it("does not open") {
@@ -153,10 +153,10 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             it("looks correct with items configured with closure") {
-                actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like"))
+                actionButton.addItem(title: "123", image: #imageLiteral(resourceName: "Like"))
 
                 actionButton.configureDefaultItem { item in
-                    item.titleLabel.font = .boldSystemFont(ofSize: 30)
+                    item.titleLabel.font = UIFont(name: "Courier", size: 30)
                     item.titleLabel.textColor = .magenta
                     item.circleView.color = .red
                     item.circleView.highlightedColor = .blue
@@ -168,7 +168,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     item.layer.shadowRadius = 0
                 }
 
-                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Baloon"))
                 actionButton.open(animated: false)
 
                 expect(superview) == snapshot()
