@@ -34,16 +34,16 @@ internal class ConfigurationExampleViewController: UIViewController {
 
         actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
         actionButton.buttonColor = .red
-        actionButton.defaultButtonImage = #imageLiteral(resourceName: "Dots")
+        actionButton.buttonImage = #imageLiteral(resourceName: "Dots")
         actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "X"))
         actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
 
         actionButton.imageView.tintColor = .white
 
-        actionButton.circleView.layer.shadowColor = UIColor.black.cgColor
-        actionButton.circleView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        actionButton.circleView.layer.shadowOpacity = Float(0.5)
-        actionButton.circleView.layer.shadowRadius = CGFloat(2)
+        actionButton.layer.shadowColor = UIColor.black.cgColor
+        actionButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        actionButton.layer.shadowOpacity = Float(0.4)
+        actionButton.layer.shadowRadius = CGFloat(2)
 
         actionButton.itemSizeRatio = CGFloat(0.75)
         actionButton.configureDefaultItem { item in
@@ -59,7 +59,6 @@ internal class ConfigurationExampleViewController: UIViewController {
             item.layer.shadowOpacity = Float(0.4)
             item.layer.shadowRadius = CGFloat(2)
         }
-
 
         actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
             Helper.showAlert(for: item)

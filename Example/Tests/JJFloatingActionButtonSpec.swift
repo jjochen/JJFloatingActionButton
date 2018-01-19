@@ -71,7 +71,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct highlighted with dark color") {
                 actionButton.buttonColor = UIColor(hue: 0.6, saturation: 0.9, brightness: 0.3, alpha: 1)
-                actionButton.highlightedItemButtonColor = nil
+                actionButton.highlightedButtonColor = nil
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
@@ -79,7 +79,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct highlighted with light color") {
                 actionButton.buttonColor = UIColor(hue: 0.4, saturation: 0.9, brightness: 0.7, alpha: 1)
-                actionButton.highlightedItemButtonColor = nil
+                actionButton.highlightedButtonColor = nil
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
@@ -95,7 +95,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             it("looks correct configured") {
                 actionButton.buttonColor = .blue
                 actionButton.highlightedButtonColor = .orange
-                actionButton.defaultButtonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
+                actionButton.buttonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
@@ -103,15 +103,17 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
                 actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
-                actionButton.itemTitleFont = .boldSystemFont(ofSize: 5)
-                actionButton.itemButtonColor = .magenta
-                actionButton.highlightedItemButtonColor = .red
-                actionButton.itemImageColor = .cyan
-                actionButton.itemTitleColor = .blue
-                actionButton.itemShadowColor = .yellow
-                actionButton.itemShadowOffset = CGSize(width: 2, height: 0)
-                actionButton.itemShadowOpacity = Float(1)
-                actionButton.itemShadowRadius = CGFloat(0)
+                actionButton.configureDefaultItem { item in
+                    item.titleLabel.font = .boldSystemFont(ofSize: 5)
+                    item.titleLabel.textColor = .blue
+                    item.buttonColor = .magenta
+                    item.highlightedButtonColor = .red
+                    item.buttonImageColor = .cyan
+                    item.shadowColor = .yellow
+                    item.shadowOffset = CGSize(width: 2, height: 0)
+                    item.shadowOpacity = Float(1)
+                    item.shadowRadius = CGFloat(0)
+                }
                 actionButton.itemSizeRatio = CGFloat(1.1)
                 actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
 
@@ -128,7 +130,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = .blue
-                actionButton.defaultButtonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
+                actionButton.buttonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonOpeningStyle = .rotate(angle: -CGFloat.pi / 5)
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
@@ -136,14 +138,17 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
                 actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
-                actionButton.itemTitleFont = .boldSystemFont(ofSize: 5)
-                actionButton.itemButtonColor = .magenta
-                actionButton.itemImageColor = .cyan
-                actionButton.itemTitleColor = .blue
-                actionButton.itemShadowColor = .yellow
-                actionButton.itemShadowOffset = CGSize(width: 2, height: 0)
-                actionButton.itemShadowOpacity = Float(1)
-                actionButton.itemShadowRadius = CGFloat(0)
+                actionButton.configureDefaultItem { item in
+                    item.titleLabel.font = .boldSystemFont(ofSize: 5)
+                    item.titleLabel.textColor = .blue
+                    item.buttonColor = .magenta
+                    item.highlightedButtonColor = .red
+                    item.buttonImageColor = .cyan
+                    item.shadowColor = .yellow
+                    item.shadowOffset = CGSize(width: 2, height: 0)
+                    item.shadowOpacity = Float(1)
+                    item.shadowRadius = CGFloat(0)
+                }
                 actionButton.itemSizeRatio = CGFloat(1.1)
                 actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
 
@@ -283,8 +288,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("items look correct highlighted with custom highligted color") {
-                        actionButton.highlightedItemButtonColor = .purple
                         let item = actionButton.items[0]
+                        item.circleView.highlightedColor = .purple
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTrue())
                         expect(superview) == snapshot()
@@ -399,7 +404,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("eventually shows default image") {
-                        expect(actionButton.imageView.image).toEventually(equal(actionButton.defaultButtonImage))
+                        expect(actionButton.imageView.image).toEventually(equal(actionButton.buttonImage))
                     }
                 }
 

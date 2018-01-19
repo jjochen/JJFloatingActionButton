@@ -26,11 +26,11 @@ import UIKit
 
 /// A colored circle with an highlighted state
 ///
-@objc @IBDesignable open class JJCircleView: UIView {
+@objc @IBDesignable public class JJCircleView: UIView {
 
     /// The color of the circle.
     ///
-    @objc @IBInspectable open dynamic var color: UIColor = JJStyles.defaultButtonColor {
+    @objc @IBInspectable public dynamic var color: UIColor = JJStyles.defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
             setNeedsDisplay()
@@ -39,7 +39,7 @@ import UIKit
 
     /// The color of the circle when highlighted. Default is `nil`.
     ///
-    @objc @IBInspectable open dynamic var highlightedColor: UIColor? {
+    @objc @IBInspectable public dynamic var highlightedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
@@ -48,7 +48,7 @@ import UIKit
     /// A Boolean value indicating whether the circle view draws a highlight.
     /// Default is `false`.
     ///
-    @objc open var isHighlighted = false {
+    @objc public var isHighlighted = false {
         didSet {
             setNeedsDisplay()
         }
@@ -73,7 +73,7 @@ import UIKit
     /// Draws the receiver’s image within the passed-in rectangle
     /// Overrides `draw(rect: CGRect)` from `UIView`.
     ///
-    open override func draw(_: CGRect) {
+    public override func draw(_: CGRect) {
         drawCircle(inRect: bounds)
     }
 

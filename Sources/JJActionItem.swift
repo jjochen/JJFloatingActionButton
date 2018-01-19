@@ -39,6 +39,7 @@ import UIKit
         let titleLabel = UILabel()
         titleLabel.isUserInteractionEnabled = false
         titleLabel.numberOfLines = 1
+        titleLabel.font = .systemFont(ofSize: UIFont.systemFontSize)
         return titleLabel
     }()
 
@@ -61,6 +62,59 @@ import UIKit
         view.isUserInteractionEnabled = false
         return view
     }()
+
+    /// The color of action item circle view.
+    /// Default is `UIColor.white`.
+    ///
+    @objc @IBInspectable public dynamic var buttonColor: UIColor {
+        get {
+            return circleView.color
+        }
+        set {
+            circleView.color = newValue
+        }
+    }
+
+    /// The color of action item circle view with highlighted state.
+    /// Default is `nil`.
+    ///
+    @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
+        get {
+            return circleView.highlightedColor
+        }
+        set {
+            circleView.highlightedColor = newValue
+        }
+    }
+
+    /// The image displayed on the button by default.
+    /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
+    /// the image from the item is shown istead.
+    /// When an `o penButtonImage` is given this is shwon when the button is opened.
+    /// Default is `nil`.
+    ///
+    @objc @IBInspectable public dynamic var buttonImage: UIImage? {
+        get {
+            return imageView.image
+        }
+        set {
+            imageView.image = newValue
+        }
+    }
+
+    /// The tint color of the image view.
+    /// Default is `UIColor.white`.
+    ///
+    /// - Warning: Only template images are colored.
+    ///
+    @objc @IBInspectable public dynamic var buttonImageColor: UIColor {
+        get {
+            return imageView.tintColor
+        }
+        set {
+            imageView.tintColor = newValue
+        }
+    }
 
     internal override init(frame: CGRect) {
         super.init(frame: frame)

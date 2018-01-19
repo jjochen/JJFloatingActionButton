@@ -100,6 +100,7 @@ actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnc
 Button appearance and behavior can be customized:
 
 ```swift
+// ToDo
 var buttonColor: UIColor
 var defaultButtonImage: UIImage?
 var buttonImageColor: UIColor
