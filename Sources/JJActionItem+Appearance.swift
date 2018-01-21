@@ -24,7 +24,7 @@
 
 import UIKit
 
-public extension JJActionItem {
+extension JJActionItem {
 
     /// The shadow color of the floating action button.
     /// Default is `UIColor.black`.

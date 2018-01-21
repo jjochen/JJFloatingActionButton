@@ -49,6 +49,8 @@ import UIKit
     /// The list of action items.
     /// Default is `[]`.
     ///
+    /// - SeeAlso: `enabledItems`
+    ///
     @objc public var items: [JJActionItem] = [] {
         didSet {
             items.forEach { item in
@@ -60,6 +62,8 @@ import UIKit
 
     /// The background color of the floating action button.
     /// Default is `UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)`.
+    ///
+    /// - SeeAlso: `circleView`
     ///
     @objc @IBInspectable public dynamic var buttonColor: UIColor {
         get {
@@ -73,6 +77,8 @@ import UIKit
     /// The background color of the floating action button with highlighted state.
     /// Default is `nil`.
     ///
+    /// - SeeAlso: `circleView`
+    ///
     @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
         get {
             return circleView.highlightedColor
@@ -85,10 +91,10 @@ import UIKit
     /// The image displayed on the button by default.
     /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
     /// the image from the item is shown istead.
-    /// When an `o penButtonImage` is given this is shwon when the button is opened.
+    /// When set to `nil` an image of a plus is used.
     /// Default is `nil`.
     ///
-    /// - SeeAlso: `openButtonImage`
+    /// - SeeAlso: `imageView`
     ///
     @objc @IBInspectable public dynamic var buttonImage: UIImage? {
         didSet {
@@ -100,6 +106,8 @@ import UIKit
     /// Default is `UIColor.white`.
     ///
     /// - Warning: Only template images are colored.
+    ///
+    /// - SeeAlso: `imageView`
     ///
     @objc @IBInspectable public dynamic var buttonImageColor: UIColor {
         get {
@@ -163,18 +171,47 @@ import UIKit
     /// The round background view of the floating action button.
     /// Read only.
     ///
-    @objc public fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
+    /// - SeeAlso: `buttonColor`
+    /// - SeeAlso: `highlightedButtonColor`
+    ///
+    @objc public fileprivate(set) lazy var circleView: JJCircleView = {
+        let view = JJCircleView()
+        view.isUserInteractionEnabled = false
+        view.color = JJStyles.defaultButtonColor
+        return view
+    }()
 
     /// The image view of the floating action button.
     /// Read only.
     ///
-    @objc public fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
+    /// - Warning: Setting the image of the `imageView` directly will not work.
+    ///            Use `buttonImage` instead.
+    ///
+    /// - SeeAlso: `buttonImage`
+    /// - SeeAlso: `buttonImageColor`
+    ///
+    @objc public fileprivate(set) lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = false
+        imageView.backgroundColor = .clear
+        imageView.tintColor = JJStyles.defaultButtonImageColor
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     /// The overlay view.
     /// Default background color is `UIColor(white: 0, alpha: 0.5)`.
     /// Read only.
     ///
-    @objc public fileprivate(set) lazy var overlayView: UIControl = lazyOverlayView()
+    @objc public fileprivate(set) lazy var overlayView: UIControl = {
+        let control = UIControl()
+        control.isUserInteractionEnabled = true
+        control.backgroundColor = JJStyles.defaultOverlayColor
+        control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
+        control.isEnabled = false
+        control.alpha = 0
+        return control
+    }()
 
     /// Initializes and returns a newly allocated floating action button object with the specified frame rectangle.
     ///
@@ -202,52 +239,19 @@ import UIKit
         setup()
     }
 
-    internal lazy var itemContainerView: UIView = lazyItemContainer()
+    internal lazy var itemContainerView: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = true
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     internal var buttonAnimation: JJButtonAnimation?
 
     internal var itemAnimation: JJItemAnimation?
 
     fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
-}
-
-// MARK: - Lazy UI Elements
-
-fileprivate extension JJFloatingActionButton {
-
-    func lazyCircleView() -> JJCircleView {
-        let view = JJCircleView()
-        view.isUserInteractionEnabled = false
-        view.color = JJStyles.defaultButtonColor
-        return view
-    }
-
-    func lazyImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.isUserInteractionEnabled = false
-        imageView.backgroundColor = .clear
-        imageView.tintColor = JJStyles.defaultButtonImageColor
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }
-
-    func lazyOverlayView() -> UIControl {
-        let control = UIControl()
-        control.isUserInteractionEnabled = true
-        control.backgroundColor = JJStyles.defaultOverlayColor
-        control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
-        control.isEnabled = false
-        control.alpha = 0
-        return control
-    }
-
-    func lazyItemContainer() -> UIView {
-        let view = UIView()
-        view.isUserInteractionEnabled = true
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }
 }
 
 // MARK: - Public Methods

@@ -28,9 +28,68 @@ import UIKit
 ///
 @objc @IBDesignable open class JJActionItem: UIControl {
 
-    /// The action that is executen when the item is pressed. Default is `nil`.
+    /// The action that is executen when the item is pressed.
+    /// Default is `nil`.
     ///
     @objc open var action: ((JJActionItem) -> Void)?
+
+    /// The color of action item circle view.
+    /// Default is `UIColor.white`.
+    ///
+    /// - SeeAlso: `circleView`
+    ///
+    @objc @IBInspectable public dynamic var buttonColor: UIColor {
+        get {
+            return circleView.color
+        }
+        set {
+            circleView.color = newValue
+        }
+    }
+
+    /// The color of action item circle view with highlighted state.
+    /// Default is `nil`.
+    ///
+    /// - SeeAlso: `circleView`
+    ///
+    @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
+        get {
+            return circleView.highlightedColor
+        }
+        set {
+            circleView.highlightedColor = newValue
+        }
+    }
+
+    /// The image displayed by the item.
+    /// Default is `nil`.
+    ///
+    /// - SeeAlso: `imageView`
+    ///
+    @objc @IBInspectable public dynamic var buttonImage: UIImage? {
+        get {
+            return imageView.image
+        }
+        set {
+            imageView.image = newValue
+        }
+    }
+
+    /// The tint color of the image view.
+    /// By default the color of the floating action button is used.
+    ///
+    /// - Warning: Only template images are colored.
+    ///
+    /// - SeeAlso: `imageView`
+    ///
+    @objc @IBInspectable public dynamic var buttonImageColor: UIColor {
+        get {
+            return imageView.tintColor
+        }
+        set {
+            imageView.tintColor = newValue
+        }
+    }
 
     /// The title label of the item. Can be configured as needed.
     /// Read only.
@@ -46,6 +105,9 @@ import UIKit
     /// The image view of the item. Can be configured as needed.
     /// Read only.
     ///
+    /// - SeeAlso: `buttonImage`
+    /// - SeeAlso: `buttonImageColor`
+    ///
     @objc open fileprivate(set) lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = false
@@ -57,64 +119,14 @@ import UIKit
     /// The background circle of the item. Can be configured as needed.
     /// Read only.
     ///
+    /// - SeeAlso: `buttonColor`
+    /// - SeeAlso: `highlightedButtonColor`
+    ///
     @objc open fileprivate(set) lazy var circleView: JJCircleView = {
         let view = JJCircleView()
         view.isUserInteractionEnabled = false
         return view
     }()
-
-    /// The color of action item circle view.
-    /// Default is `UIColor.white`.
-    ///
-    @objc @IBInspectable public dynamic var buttonColor: UIColor {
-        get {
-            return circleView.color
-        }
-        set {
-            circleView.color = newValue
-        }
-    }
-
-    /// The color of action item circle view with highlighted state.
-    /// Default is `nil`.
-    ///
-    @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
-        get {
-            return circleView.highlightedColor
-        }
-        set {
-            circleView.highlightedColor = newValue
-        }
-    }
-
-    /// The image displayed on the button by default.
-    /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
-    /// the image from the item is shown istead.
-    /// When an `o penButtonImage` is given this is shwon when the button is opened.
-    /// Default is `nil`.
-    ///
-    @objc @IBInspectable public dynamic var buttonImage: UIImage? {
-        get {
-            return imageView.image
-        }
-        set {
-            imageView.image = newValue
-        }
-    }
-
-    /// The tint color of the image view.
-    /// Default is `UIColor.white`.
-    ///
-    /// - Warning: Only template images are colored.
-    ///
-    @objc @IBInspectable public dynamic var buttonImageColor: UIColor {
-        get {
-            return imageView.tintColor
-        }
-        set {
-            imageView.tintColor = newValue
-        }
-    }
 
     internal override init(frame: CGRect) {
         super.init(frame: frame)
