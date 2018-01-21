@@ -26,7 +26,6 @@ import UIKit
 
 /// A floating action button.
 ///
-/// ### Example ###
 ///   ````
 ///   let actionButton = JJFloatingActionButton()
 ///
@@ -50,10 +49,12 @@ import UIKit
     /// The list of action items.
     /// Default is `[]`.
     ///
+    /// - SeeAlso: `enabledItems`
+    ///
     @objc public var items: [JJActionItem] = [] {
         didSet {
             items.forEach { item in
-                configureItem(item)
+                setupItem(item)
             }
             configureButtonImage()
         }
@@ -62,30 +63,40 @@ import UIKit
     /// The background color of the floating action button.
     /// Default is `UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)`.
     ///
-    @objc @IBInspectable public dynamic var buttonColor: UIColor = JJStyles.defaultButtonColor {
-        didSet {
-            circleView.color = buttonColor
+    /// - SeeAlso: `circleView`
+    ///
+    @objc @IBInspectable public dynamic var buttonColor: UIColor {
+        get {
+            return circleView.color
+        }
+        set {
+            circleView.color = newValue
         }
     }
 
     /// The background color of the floating action button with highlighted state.
     /// Default is `nil`.
     ///
+    /// - SeeAlso: `circleView`
+    ///
     @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
-        didSet {
-            circleView.highlightedColor = highlightedButtonColor
+        get {
+            return circleView.highlightedColor
+        }
+        set {
+            circleView.highlightedColor = newValue
         }
     }
 
     /// The image displayed on the button by default.
     /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
     /// the image from the item is shown istead.
-    /// When an `o penButtonImage` is given this is shwon when the button is opened.
+    /// When set to `nil` an image of a plus is used.
     /// Default is `nil`.
     ///
-    /// - SeeAlso: `openButtonImage`
+    /// - SeeAlso: `imageView`
     ///
-    @objc @IBInspectable public dynamic var defaultButtonImage: UIImage? {
+    @objc @IBInspectable public dynamic var buttonImage: UIImage? {
         didSet {
             configureButtonImage()
         }
@@ -96,163 +107,14 @@ import UIKit
     ///
     /// - Warning: Only template images are colored.
     ///
-    @objc @IBInspectable public dynamic var buttonImageColor: UIColor = .white {
-        didSet {
-            imageView.tintColor = buttonImageColor
+    /// - SeeAlso: `imageView`
+    ///
+    @objc @IBInspectable public dynamic var buttonImageColor: UIColor {
+        get {
+            return imageView.tintColor
         }
-    }
-
-    /// The shadow color of the floating action button.
-    /// Default is `UIColor.black`.
-    ///
-    @objc @IBInspectable public dynamic var shadowColor: UIColor? = .black {
-        didSet {
-            circleView.layer.shadowColor = shadowColor?.cgColor
-        }
-    }
-
-    /// The shadow offset of the floating action button.
-    /// Default is `CGSize(width: 0, height: 1)`.
-    ///
-    @objc @IBInspectable public dynamic var shadowOffset: CGSize = CGSize(width: 0, height: 1) {
-        didSet {
-            circleView.layer.shadowOffset = shadowOffset
-        }
-    }
-
-    /// The shadow opacity of the floating action button.
-    /// Default is `0.4`.
-    ///
-    @objc @IBInspectable public dynamic var shadowOpacity: Float = 0.4 {
-        didSet {
-            circleView.layer.shadowOpacity = shadowOpacity
-        }
-    }
-
-    /// The shadow radius of the floating action button.
-    /// Default is `2`.
-    ///
-    @objc @IBInspectable public dynamic var shadowRadius: CGFloat = 2 {
-        didSet {
-            circleView.layer.shadowRadius = shadowRadius
-        }
-    }
-
-    /// The default title font of an action item.
-    /// Default is `UIFont.systemFont(ofSize: UIFont.systemFontSize)`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc public dynamic var itemTitleFont: UIFont = .systemFont(ofSize: UIFont.systemFontSize) {
-        didSet {
-            items.forEach { item in
-                item.titleLabel.font = itemTitleFont
-            }
-        }
-    }
-
-    /// The default color of an action item.
-    /// Default is `UIColor.white`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var itemButtonColor: UIColor = .white {
-        didSet {
-            items.forEach { item in
-                item.circleView.color = itemButtonColor
-            }
-        }
-    }
-
-    /// The default highlighted color of an action item.
-    /// Default is `nil`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var highlightedItemButtonColor: UIColor? {
-        didSet {
-            items.forEach { item in
-                item.circleView.highlightedColor = highlightedItemButtonColor
-            }
-        }
-    }
-
-    /// The default image tint color of an action item.
-    /// If none is given, the color of the floating action button is used.
-    /// Default is `nil`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var itemImageColor: UIColor? {
-        didSet {
-            items.forEach { item in
-                item.imageView.tintColor = currentItemImageColor
-            }
-        }
-    }
-
-    /// The default title color of an action item.
-    /// Default is `UIColor.white`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var itemTitleColor: UIColor = .white {
-        didSet {
-            items.forEach { item in
-                item.titleLabel.textColor = itemTitleColor
-            }
-        }
-    }
-
-    /// The default shadow color of an action item.
-    /// Default is `UIColor.black`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var itemShadowColor: UIColor = .black {
-        didSet {
-            items.forEach { item in
-                item.layer.shadowColor = itemShadowColor.cgColor
-            }
-        }
-    }
-
-    /// The default shadow offset of an action item.
-    /// Default is `CGSize(width: 0, height: 1)`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var itemShadowOffset: CGSize = CGSize(width: 0, height: 1) {
-        didSet {
-            items.forEach { item in
-                item.layer.shadowOffset = itemShadowOffset
-            }
-        }
-    }
-
-    /// The default shadow opacity of an action item.
-    /// Default is `0.4`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var itemShadowOpacity: Float = 0.4 {
-        didSet {
-            items.forEach { item in
-                item.layer.shadowOpacity = itemShadowOpacity
-            }
-        }
-    }
-
-    /// The default shadow radius of an action item.
-    /// Default is `2`.
-    ///
-    /// - Remark: This can be changed for each action item.
-    ///
-    @objc @IBInspectable public dynamic var itemShadowRadius: CGFloat = 2 {
-        didSet {
-            items.forEach { item in
-                item.layer.shadowRadius = itemShadowRadius
-            }
+        set {
+            imageView.tintColor = newValue
         }
     }
 
@@ -309,18 +171,47 @@ import UIKit
     /// The round background view of the floating action button.
     /// Read only.
     ///
-    @objc public fileprivate(set) lazy var circleView: JJCircleView = lazyCircleView()
+    /// - SeeAlso: `buttonColor`
+    /// - SeeAlso: `highlightedButtonColor`
+    ///
+    @objc public fileprivate(set) lazy var circleView: JJCircleView = {
+        let view = JJCircleView()
+        view.isUserInteractionEnabled = false
+        view.color = JJStyles.defaultButtonColor
+        return view
+    }()
 
     /// The image view of the floating action button.
     /// Read only.
     ///
-    @objc public fileprivate(set) lazy var imageView: UIImageView = lazyImageView()
+    /// - Warning: Setting the image of the `imageView` directly will not work.
+    ///            Use `buttonImage` instead.
+    ///
+    /// - SeeAlso: `buttonImage`
+    /// - SeeAlso: `buttonImageColor`
+    ///
+    @objc public fileprivate(set) lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = false
+        imageView.backgroundColor = .clear
+        imageView.tintColor = JJStyles.defaultButtonImageColor
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     /// The overlay view.
     /// Default background color is `UIColor(white: 0, alpha: 0.5)`.
     /// Read only.
     ///
-    @objc public fileprivate(set) lazy var overlayView: UIControl = lazyOverlayView()
+    @objc public fileprivate(set) lazy var overlayView: UIControl = {
+        let control = UIControl()
+        control.isUserInteractionEnabled = true
+        control.backgroundColor = JJStyles.defaultOverlayColor
+        control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
+        control.isEnabled = false
+        control.alpha = 0
+        return control
+    }()
 
     /// Initializes and returns a newly allocated floating action button object with the specified frame rectangle.
     ///
@@ -348,55 +239,19 @@ import UIKit
         setup()
     }
 
-    internal lazy var itemContainerView: UIView = lazyItemContainer()
-
-    internal var buttonAnimation: JJButtonAnimation?
-
-    internal var itemAnimation: JJItemAnimation?
-}
-
-// MARK: - Lazy UI Elements
-
-fileprivate extension JJFloatingActionButton {
-
-    func lazyCircleView() -> JJCircleView {
-        let view = JJCircleView()
-        view.isUserInteractionEnabled = false
-        view.color = buttonColor
-        view.highlightedColor = highlightedButtonColor
-        view.layer.shadowColor = shadowColor?.cgColor
-        view.layer.shadowOffset = shadowOffset
-        view.layer.shadowOpacity = shadowOpacity
-        view.layer.shadowRadius = shadowRadius
-        return view
-    }
-
-    func lazyImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.tintColor = buttonImageColor
-        imageView.isUserInteractionEnabled = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .clear
-        return imageView
-    }
-
-    func lazyOverlayView() -> UIControl {
-        let control = UIControl()
-        control.isUserInteractionEnabled = true
-        control.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
-        control.isEnabled = false
-        control.alpha = 0
-        return control
-    }
-
-    func lazyItemContainer() -> UIView {
+    internal lazy var itemContainerView: UIView = {
         let view = UIView()
         view.isUserInteractionEnabled = true
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }
+    }()
+
+    internal var buttonAnimation: JJButtonAnimation?
+
+    internal var itemAnimation: JJItemAnimation?
+
+    fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
 }
 
 // MARK: - Public Methods
@@ -434,8 +289,35 @@ fileprivate extension JJFloatingActionButton {
     ///
     func addItem(_ item: JJActionItem) {
         items.append(item)
-        configureItem(item)
+        setupItem(item)
         configureButtonImage()
+    }
+
+    /// Calls the given closure on each item that is or was added to the floating action button.
+    /// Default is `nil`.
+    ///
+    ///   ````
+    ///   let actionButton = JJFloatingActionButton()
+    ///
+    ///   actionButton.configureDefaultItem { item in
+    ///       item.imageView.contentMode = .scaleAspectFill
+    ///
+    ///       item.titleLabel.font = .systemFont(ofSize: 14)
+    ///
+    ///       item.layer.shadowColor = UIColor.black.cgColor
+    ///       item.layer.shadowOpacity = 0.3
+    ///       item.layer.shadowOffset = CGSize(width: 1, height: 1)
+    ///       item.layer.shadowRadius = 0
+    ///   }
+    ///   ````
+    ///
+    /// - Parameter body: A closure that takes an action item as a parameter.
+    ///
+    func configureDefaultItem(_ body: ((JJActionItem) -> Void)?) {
+        defaultItemConfiguration = body
+        items.forEach { item in
+            defaultItemConfiguration?(item)
+        }
     }
 
     /// All items that will be shown when floating action button ist opened.
@@ -486,6 +368,11 @@ fileprivate extension JJFloatingActionButton {
         isUserInteractionEnabled = true
         addTarget(self, action: #selector(buttonWasTapped), for: .touchUpInside)
 
+        layer.shadowColor = JJStyles.defaultShadowColor.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 1)
+        layer.shadowOpacity = 0.4
+        layer.shadowRadius = 2
+
         addSubview(circleView)
         addSubview(imageView)
 
@@ -516,18 +403,19 @@ fileprivate extension JJFloatingActionButton {
         imageView.image = currentButtonImage
     }
 
-    func configureItem(_ item: JJActionItem) {
-        item.circleView.color = itemButtonColor
-        item.circleView.highlightedColor = highlightedItemButtonColor
-        item.imageView.tintColor = currentItemImageColor
-        item.titleLabel.font = itemTitleFont
-        item.titleLabel.textColor = itemTitleColor
+    func setupItem(_ item: JJActionItem) {
+        item.titleLabel.textColor = buttonImageColor
+        item.circleView.color = buttonImageColor
+        item.imageView.tintColor = buttonColor
 
-        item.layer.shadowColor = itemShadowColor.cgColor
-        item.layer.shadowOpacity = itemShadowOpacity
-        item.layer.shadowOffset = itemShadowOffset
-        item.layer.shadowRadius = itemShadowRadius
+        item.layer.shadowColor = layer.shadowColor
+        item.layer.shadowOpacity = layer.shadowOpacity
+        item.layer.shadowOffset = layer.shadowOffset
+        item.layer.shadowRadius = layer.shadowRadius
+
         item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
+
+        defaultItemConfiguration?(item)
     }
 }
 
@@ -535,20 +423,16 @@ fileprivate extension JJFloatingActionButton {
 
 internal extension JJFloatingActionButton {
 
-    var currentItemImageColor: UIColor {
-        return itemImageColor ?? buttonColor
-    }
-
     var currentButtonImage: UIImage? {
         if isSingleActionButton, let image = enabledItems.first?.imageView.image {
             return image
         }
 
-        if defaultButtonImage == nil {
-            defaultButtonImage = JJStyles.plusImage
+        if buttonImage == nil {
+            buttonImage = JJStyles.plusImage
         }
 
-        return defaultButtonImage
+        return buttonImage
     }
 
     var isSingleActionButton: Bool {

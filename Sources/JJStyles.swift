@@ -38,6 +38,18 @@ internal extension JJStyles {
     static var defaultHighlightedButtonColor: UIColor {
         return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.66, alpha: 1.00)
     }
+
+    static var defaultButtonImageColor: UIColor {
+        return .white
+    }
+
+    static var defaultShadowColor: UIColor {
+        return .black
+    }
+
+    static var defaultOverlayColor: UIColor {
+        return UIColor(white: 0, alpha: 0.5)
+    }
 }
 
 // MARK: - Images

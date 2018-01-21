@@ -46,7 +46,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(0.002)
+                setNimbleTolerance(0.004)
             }
 
             it("does not open") {
@@ -71,7 +71,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct highlighted with dark color") {
                 actionButton.buttonColor = UIColor(hue: 0.6, saturation: 0.9, brightness: 0.3, alpha: 1)
-                actionButton.highlightedItemButtonColor = nil
+                actionButton.highlightedButtonColor = nil
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
@@ -79,7 +79,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct highlighted with light color") {
                 actionButton.buttonColor = UIColor(hue: 0.4, saturation: 0.9, brightness: 0.7, alpha: 1)
-                actionButton.highlightedItemButtonColor = nil
+                actionButton.highlightedButtonColor = nil
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
                 expect(superview) == snapshot()
@@ -95,7 +95,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             it("looks correct configured") {
                 actionButton.buttonColor = .blue
                 actionButton.highlightedButtonColor = .orange
-                actionButton.defaultButtonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
+                actionButton.buttonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
@@ -103,15 +103,17 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
                 actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
-                actionButton.itemTitleFont = .boldSystemFont(ofSize: 5)
-                actionButton.itemButtonColor = .magenta
-                actionButton.highlightedItemButtonColor = .red
-                actionButton.itemImageColor = .cyan
-                actionButton.itemTitleColor = .blue
-                actionButton.itemShadowColor = .yellow
-                actionButton.itemShadowOffset = CGSize(width: 2, height: 0)
-                actionButton.itemShadowOpacity = Float(1)
-                actionButton.itemShadowRadius = CGFloat(0)
+                actionButton.configureDefaultItem { item in
+                    item.titleLabel.font = .boldSystemFont(ofSize: 5)
+                    item.titleLabel.textColor = .blue
+                    item.buttonColor = .magenta
+                    item.highlightedButtonColor = .red
+                    item.buttonImageColor = .cyan
+                    item.shadowColor = .yellow
+                    item.shadowOffset = CGSize(width: 2, height: 0)
+                    item.shadowOpacity = Float(1)
+                    item.shadowRadius = CGFloat(0)
+                }
                 actionButton.itemSizeRatio = CGFloat(1.1)
                 actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
 
@@ -128,7 +130,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = .blue
-                actionButton.defaultButtonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
+                actionButton.buttonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonOpeningStyle = .rotate(angle: -CGFloat.pi / 5)
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
@@ -136,17 +138,42 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.shadowOpacity = Float(0.6)
                 actionButton.shadowRadius = CGFloat(0)
                 actionButton.overlayView.backgroundColor = UIColor.brown.withAlphaComponent(0.3)
-                actionButton.itemTitleFont = .boldSystemFont(ofSize: 5)
-                actionButton.itemButtonColor = .magenta
-                actionButton.itemImageColor = .cyan
-                actionButton.itemTitleColor = .blue
-                actionButton.itemShadowColor = .yellow
-                actionButton.itemShadowOffset = CGSize(width: 2, height: 0)
-                actionButton.itemShadowOpacity = Float(1)
-                actionButton.itemShadowRadius = CGFloat(0)
+                actionButton.configureDefaultItem { item in
+                    item.titleLabel.font = .boldSystemFont(ofSize: 5)
+                    item.titleLabel.textColor = .blue
+                    item.buttonColor = .magenta
+                    item.highlightedButtonColor = .red
+                    item.buttonImageColor = .cyan
+                    item.shadowColor = .yellow
+                    item.shadowOffset = CGSize(width: 2, height: 0)
+                    item.shadowOpacity = Float(1)
+                    item.shadowRadius = CGFloat(0)
+                }
                 actionButton.itemSizeRatio = CGFloat(1.1)
                 actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
 
+                actionButton.open(animated: false)
+
+                expect(superview) == snapshot()
+            }
+
+            it("looks correct with items configured with closure") {
+                actionButton.addItem(title: "123", image: #imageLiteral(resourceName: "Like"))
+
+                actionButton.configureDefaultItem { item in
+                    item.titleLabel.font = UIFont(name: "Courier", size: 30)
+                    item.titleLabel.textColor = .magenta
+                    item.circleView.color = .red
+                    item.circleView.highlightedColor = .blue
+                    item.imageView.tintColor = .yellow
+
+                    item.layer.shadowColor = UIColor.cyan.cgColor
+                    item.layer.shadowOpacity = 1
+                    item.layer.shadowOffset = CGSize(width: -2, height: -2)
+                    item.layer.shadowRadius = 0
+                }
+
+                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Baloon"))
                 actionButton.open(animated: false)
 
                 expect(superview) == snapshot()
@@ -261,8 +288,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("items look correct highlighted with custom highligted color") {
-                        actionButton.highlightedItemButtonColor = .purple
                         let item = actionButton.items[0]
+                        item.circleView.highlightedColor = .purple
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTrue())
                         expect(superview) == snapshot()
@@ -377,7 +404,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("eventually shows default image") {
-                        expect(actionButton.imageView.image).toEventually(equal(actionButton.defaultButtonImage))
+                        expect(actionButton.imageView.image).toEventually(equal(actionButton.buttonImage))
                     }
                 }
 
@@ -521,70 +548,6 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct") {
                 expect(actionButton) == snapshot()
-            }
-        }
-
-        describe("JJFloatingActionButton with a delegate") {
-
-            var superview: UIView!
-            var actionButton: JJFloatingActionButton!
-            var delegate: JJFloatingActionButtonDelegateMock!
-
-            beforeEach {
-                superview = UIView()
-                actionButton = JJFloatingActionButton()
-                actionButton.addItem(title: "item 1")
-                actionButton.addItem(title: "item 2")
-                superview.addSubview(actionButton)
-
-                delegate = JJFloatingActionButtonDelegateMock()
-                actionButton.delegate = delegate
-            }
-
-            it("calls delegate when opening animated") {
-                expect(delegate.willOpenCalled).to(beFalse())
-                expect(delegate.didOpenCalled).to(beFalse())
-
-                actionButton.open(animated: true)
-
-                expect(delegate.willOpenCalled).to(beTrue())
-                expect(delegate.didOpenCalled).to(beFalse())
-                expect(delegate.didOpenCalled).toEventually(beTrue())
-            }
-
-            it("calls delegate when closing animated") {
-                actionButton.open(animated: false)
-
-                expect(delegate.willCloseCalled).to(beFalse())
-                expect(delegate.didCloseCalled).to(beFalse())
-
-                actionButton.close(animated: true)
-
-                expect(delegate.willCloseCalled).to(beTrue())
-                expect(delegate.didCloseCalled).to(beFalse())
-                expect(delegate.didCloseCalled).toEventually(beTrue())
-            }
-
-            it("calls delegate when opening and closing without animation") {
-
-                expect(delegate.willOpenCalled).to(beFalse())
-                expect(delegate.didOpenCalled).to(beFalse())
-                expect(delegate.willCloseCalled).to(beFalse())
-                expect(delegate.didCloseCalled).to(beFalse())
-
-                actionButton.open(animated: false)
-
-                expect(delegate.willOpenCalled).to(beTrue())
-                expect(delegate.didOpenCalled).to(beTrue())
-                expect(delegate.willCloseCalled).to(beFalse())
-                expect(delegate.didCloseCalled).to(beFalse())
-
-                actionButton.close(animated: false)
-
-                expect(delegate.willOpenCalled).to(beTrue())
-                expect(delegate.didOpenCalled).to(beTrue())
-                expect(delegate.willCloseCalled).to(beTrue())
-                expect(delegate.didCloseCalled).to(beTrue())
             }
         }
     }

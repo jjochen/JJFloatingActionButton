@@ -3,6 +3,8 @@ Floating Action Button for iOS
 
 ![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg) [![Version](https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![License](https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![Platform](https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![Build Status](https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield)](https://circleci.com/gh/jjochen/JJFloatingActionButton) [![codecov](https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg)](https://codecov.io/gh/jjochen/JJFloatingActionButton) [![Documentation](https://jjochen.github.io/JJFloatingActionButton/badge.svg)](https://jjochen.github.io/JJFloatingActionButton) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jjochen/JJFloatingActionButton/issues)
 
+Until reaching milestone 1.0.0 there might be breaking changes in minor versions!
+
 <p align="center">
   <a href="#features">Features</a> • <a href="#preview">Preview</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
 </p>
@@ -14,6 +16,7 @@ Floating Action Button for iOS
 - Fully customizable  ✓
 - Place with auto layout  ✓
 - Design in Interface Builder  ✓
+- RTL language support
 - Handles Button with single Action  ✓
 - Works in Swift and Objective-C Projects  ✓
 - Comprehensive Test Coverage  ✓
@@ -25,6 +28,8 @@ Floating Action Button for iOS
 <p align="center">
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonBasics.gif" width='250' alt="Preview Basics"> 
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration"> 
+</p>
+<p align="center">
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircularPop.gif" width='250' alt="Preview Circular Pop"> 
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
@@ -100,26 +105,44 @@ actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnc
 Button appearance and behavior can be customized:
 
 ```swift
-var buttonColor: UIColor
-var defaultButtonImage: UIImage?
-var buttonImageColor: UIColor
-var shadowColor: UIColor
-var shadowOffset: CGSize
-var shadowOpacity: Float
-var shadowRadius: CGFloat
+actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
+actionButton.buttonImage = UIImage(named: "Dots")
+actionButton.buttonColor = .red
+actionButton.buttonImageColor = .white
 
-var itemTitleFont: UIFont
-var itemButtonColor: UIColor
-var itemImageColor: UIColor
-var itemTitleColor: UIColor
-var itemShadowColor: UIColor
-var itemShadowOffset: CGSize
-var itemShadowOpacity: Float
-var itemShadowRadius: CGFloat
-var itemSizeRatio: CGFloat
- 
-var buttonOpeningStyle: ButtonOpeningStyle
-var itemOpeningStyle: ItemOpeningStyle
+actionButton.buttonOpeningStyle = .transition(image: UIImage(named: "X"))
+actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
+
+actionButton.layer.shadowColor = UIColor.black.cgColor
+actionButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+actionButton.layer.shadowOpacity = Float(0.4)
+actionButton.layer.shadowRadius = CGFloat(2)
+
+actionButton.itemSizeRatio = CGFloat(0.75)
+actionButton.configureDefaultItem { item in
+    item.titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize)
+    item.titleLabel.textColor = .white
+    item.buttonColor = .white
+    item.buttonImageColor = .red
+
+    item.layer.shadowColor = UIColor.black.cgColor
+    item.layer.shadowOffset = CGSize(width: 0, height: 1)
+    item.layer.shadowOpacity = Float(0.4)
+    item.layer.shadowRadius = CGFloat(2)
+}
+
+actionButton.addItem(title: "Balloon", image: UIImage(named: "Baloon")) { item in
+    // Do something
+}
+
+let item = actionButton.addItem()
+item.titleLabel.text = "Owl"
+item.imageView.image = UIImage(named: "Owl")
+item.buttonColor = .black
+item.buttonImageColor = .white
+tem.action = { item in
+    // Do something
+}
 ```
 
 ### Delegate

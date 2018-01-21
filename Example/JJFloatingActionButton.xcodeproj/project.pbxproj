@@ -14,6 +14,9 @@
 		195269411FD7E53B0053C785 /* JJCircleViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */; };
 		195269431FD7E6200053C785 /* UIColorExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */; };
 		195269451FD7E63B0053C785 /* JJActionItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195269441FD7E63B0053C785 /* JJActionItemSpec.swift */; };
+		1957C8C6201282D500F1574B /* JJFloatingActionButtonAppearanceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1957C8C42012815000F1574B /* JJFloatingActionButtonAppearanceSpec.swift */; };
+		1957C8C8201283EF00F1574B /* JJActionItemAppearanceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1957C8C7201283EF00F1574B /* JJActionItemAppearanceSpec.swift */; };
+		1957C8CA20128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1957C8C920128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift */; };
 		198B66011FBAE904009A17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66001FBAE904009A17F2 /* AppDelegate.swift */; };
 		198B66031FBAE904009A17F2 /* BasicsExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66021FBAE904009A17F2 /* BasicsExampleViewController.swift */; };
 		198B66051FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198B66041FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift */; };
@@ -23,7 +26,7 @@
 		198EA7E41FD73F6D00F7DA3E /* JJCircleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 198EA7E31FD73F6D00F7DA3E /* JJCircleView.xib */; };
 		199592AC1FD73F070058BEFC /* JJFloatingActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */; };
 		19B10AD81FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */; };
-		19B10ADA1FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift */; };
+		19B10ADA1FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */; };
 		19D311DD200F8A630023477D /* CircularPopExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D311DC200F8A630023477D /* CircularPopExampleViewController.swift */; };
 		19E247E61FD7E6F6009A7BA1 /* JJActionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */; };
 		19E247E81FD83CA7009A7BA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
@@ -53,6 +56,9 @@
 		195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionsSpec.swift; sourceTree = "<group>"; };
 		195269441FD7E63B0053C785 /* JJActionItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJActionItemSpec.swift; sourceTree = "<group>"; };
 		195637221FDA9EFB0003B8FF /* config.yml */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = config.yml; path = ../../.circleci/config.yml; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
+		1957C8C42012815000F1574B /* JJFloatingActionButtonAppearanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonAppearanceSpec.swift; sourceTree = "<group>"; };
+		1957C8C7201283EF00F1574B /* JJActionItemAppearanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJActionItemAppearanceSpec.swift; sourceTree = "<group>"; };
+		1957C8C920128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonDelegateSpec.swift; sourceTree = "<group>"; };
 		198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJFloatingActionButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B66001FBAE904009A17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		198B66021FBAE904009A17F2 /* BasicsExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsExampleViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +79,7 @@
 		199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JJFloatingActionButton.xib; sourceTree = "<group>"; };
 		19B10AC21FF7BDDD00D70C32 /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .jazzy.yaml; path = ../../.jazzy.yaml; sourceTree = "<group>"; };
 		19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloationgActionButtonDelegateMock.swift; sourceTree = "<group>"; };
-		19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonPlacementSpecs.swift; sourceTree = "<group>"; };
+		19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonPlacementSpec.swift; sourceTree = "<group>"; };
 		19B10ADB1FFE692100D70C32 /* Rakefile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; name = Rakefile; path = ../../Rakefile; sourceTree = "<group>"; tabWidth = 2; };
 		19D311DC200F8A630023477D /* CircularPopExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularPopExampleViewController.swift; sourceTree = "<group>"; };
 		19DF53B81FF59AE5006E292F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../Package.swift; sourceTree = "<group>"; };
@@ -153,8 +159,11 @@
 				198B66191FBAE904009A17F2 /* Info.plist */,
 				195269441FD7E63B0053C785 /* JJActionItemSpec.swift */,
 				1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */,
-				19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift */,
+				19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */,
 				198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */,
+				1957C8C920128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift */,
+				1957C8C42012815000F1574B /* JJFloatingActionButtonAppearanceSpec.swift */,
+				1957C8C7201283EF00F1574B /* JJActionItemAppearanceSpec.swift */,
 				195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */,
 				19B10ADD1FFFA83F00D70C32 /* Mocks */,
 				199592AA1FD73ED50058BEFC /* Resources */,
@@ -465,7 +474,10 @@
 				19B10AD81FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift in Sources */,
 				195269411FD7E53B0053C785 /* JJCircleViewSpec.swift in Sources */,
 				195269431FD7E6200053C785 /* UIColorExtensionsSpec.swift in Sources */,
-				19B10ADA1FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpecs.swift in Sources */,
+				1957C8CA20128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift in Sources */,
+				19B10ADA1FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift in Sources */,
+				1957C8C6201282D500F1574B /* JJFloatingActionButtonAppearanceSpec.swift in Sources */,
+				1957C8C8201283EF00F1574B /* JJActionItemAppearanceSpec.swift in Sources */,
 				195269451FD7E63B0053C785 /* JJActionItemSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
