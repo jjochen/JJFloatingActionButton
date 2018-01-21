@@ -33,12 +33,12 @@ internal class ConfigurationExampleViewController: UIViewController {
         super.viewDidLoad()
 
         actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
-        actionButton.buttonColor = .red
         actionButton.buttonImage = #imageLiteral(resourceName: "Dots")
+        actionButton.buttonColor = .red
+        actionButton.buttonImageColor = .white
+
         actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "X"))
         actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
-
-        actionButton.imageView.tintColor = .white
 
         actionButton.layer.shadowColor = UIColor.black.cgColor
         actionButton.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -49,10 +49,8 @@ internal class ConfigurationExampleViewController: UIViewController {
         actionButton.configureDefaultItem { item in
             item.titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize)
             item.titleLabel.textColor = .white
-
-            item.circleView.color = .white
-
-            item.imageView.tintColor = .red
+            item.buttonColor = .white
+            item.buttonImageColor = .red
 
             item.layer.shadowColor = UIColor.black.cgColor
             item.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -69,10 +67,10 @@ internal class ConfigurationExampleViewController: UIViewController {
         }
 
         let item3 = actionButton.addItem()
-        item3.circleView.color = .black
-        item3.imageView.image = #imageLiteral(resourceName: "Owl")
-        item3.imageView.tintColor = .white
         item3.titleLabel.text = "Owl"
+        item3.imageView.image = #imageLiteral(resourceName: "Owl")
+        item3.buttonColor = .black
+        item3.buttonImageColor = .white
         item3.action = { item in
             Helper.showAlert(for: item)
         }
