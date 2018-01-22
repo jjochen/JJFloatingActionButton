@@ -1,5 +1,23 @@
 # Change Log
 
+## [0.8.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.8.0) (2018-01-22)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.7.2...0.8.0)
+
+**Implemented enhancements:**
+
+- remove shadow properties and handle directly [\#118](https://github.com/jjochen/JJFloatingActionButton/issues/118)
+- Configure default item with public function [\#117](https://github.com/jjochen/JJFloatingActionButton/issues/117)
+- Split preview gifs [\#114](https://github.com/jjochen/JJFloatingActionButton/issues/114)
+- Use swift enum \(handle objc in extension\) [\#59](https://github.com/jjochen/JJFloatingActionButton/issues/59)
+
+**Merged pull requests:**
+
+- Define default item configuration on item directly [\#121](https://github.com/jjochen/JJFloatingActionButton/pull/121) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)] [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)] [[removed](https://github.com/jjochen/JJFloatingActionButton/labels/removed)]
+- Split preview gif and update readme [\#120](https://github.com/jjochen/JJFloatingActionButton/pull/120)
+- Add circular opening style [\#119](https://github.com/jjochen/JJFloatingActionButton/pull/119) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)] [[removed](https://github.com/jjochen/JJFloatingActionButton/labels/removed)]
+- Improve image drawing [\#116](https://github.com/jjochen/JJFloatingActionButton/pull/116) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Update dependencies \(jazzy, xcpretty\) [\#115](https://github.com/jjochen/JJFloatingActionButton/pull/115)
+
 ## [0.7.2](https://github.com/jjochen/JJFloatingActionButton/tree/0.7.2) (2018-01-11)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.7.1...0.7.2)
 

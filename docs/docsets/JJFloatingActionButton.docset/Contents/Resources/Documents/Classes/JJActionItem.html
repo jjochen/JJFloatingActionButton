@@ -62,6 +62,12 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/JJFloatingActionButton/ButtonOpeningStyle.html">– ButtonOpeningStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/JJFloatingActionButton/ItemOpeningStyle.html">– ItemOpeningStyle</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -89,7 +95,7 @@
             <h1>JJActionItem</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">@IBDesignable</span> <span class="n">open</span> <span class="kd">class</span> <span class="kt">JJActionItem</span><span class="p">:</span> <span class="kt">UIControl</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBDesignable</span> <span class="kd">open</span> <span class="kd">class</span> <span class="kt">JJActionItem</span><span class="p">:</span> <span class="kt">UIControl</span></code></pre>
 
                 </div>
               </div>
@@ -115,14 +121,152 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The action that is executen when the item is pressed. Default is <code>nil</code>.</p>
+                        <p>The action that is executen when the item is pressed.
+Default is <code>nil</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="k">var</span> <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt">JJActionItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt">JJActionItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonColor"></a>
+                    <a name="//apple_ref/swift/Property/buttonColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonColor">buttonColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color of action item circle view.
+Default is <code>UIColor.white</code>.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)circleView">circleView</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">buttonColor</span><span class="p">:</span> <span class="kt">UIColor</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)highlightedButtonColor"></a>
+                    <a name="//apple_ref/swift/Property/highlightedButtonColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)highlightedButtonColor">highlightedButtonColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color of action item circle view with highlighted state.
+Default is <code>nil</code>.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)circleView">circleView</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">highlightedButtonColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonImage"></a>
+                    <a name="//apple_ref/swift/Property/buttonImage" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonImage">buttonImage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The image displayed by the item.
+Default is <code>nil</code>.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)imageView">imageView</a></code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">buttonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonImageColor"></a>
+                    <a name="//apple_ref/swift/Property/buttonImageColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonImageColor">buttonImageColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The tint color of the image view.
+By default the color of the floating action button is used.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Only template images are colored.</p>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <p><code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)imageView">imageView</a></code></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">buttonImageColor</span><span class="p">:</span> <span class="kt">UIColor</span></code></pre>
 
                         </div>
                       </div>
@@ -150,7 +294,7 @@ Read only.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">titleLabel</span><span class="p">:</span> <span class="kt">UILabel</span> <span class="o">=</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">titleLabel</span><span class="p">:</span> <span class="kt">UILabel</span> <span class="o">=</span></code></pre>
 
                         </div>
                       </div>
@@ -172,13 +316,23 @@ Read only.</p>
                       <div class="abstract">
                         <p>The image view of the item. Can be configured as needed.
 Read only.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonImage">buttonImage</a></code>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonImageColor">buttonImageColor</a></code>
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">imageView</span><span class="p">:</span> <span class="kt">UIImageView</span> <span class="o">=</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">imageView</span><span class="p">:</span> <span class="kt">UIImageView</span> <span class="o">=</span></code></pre>
 
                         </div>
                       </div>
@@ -200,13 +354,23 @@ Read only.</p>
                       <div class="abstract">
                         <p>The background circle of the item. Can be configured as needed.
 Read only.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)buttonColor">buttonColor</a></code>
+
+</div>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Classes/JJActionItem.html#/c:@M@JJFloatingActionButton@objc(cs)JJActionItem(py)highlightedButtonColor">highlightedButtonColor</a></code>
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="n">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">circleView</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJCircleView.html">JJCircleView</a></span> <span class="o">=</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">open</span> <span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">circleView</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJCircleView.html">JJCircleView</a></span> <span class="o">=</span></code></pre>
 
                         </div>
                       </div>
@@ -233,7 +397,7 @@ Read only.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -287,7 +451,7 @@ Read only.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">didMoveToSuperview</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">didMoveToSuperview</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -318,7 +482,7 @@ Read only.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">isHighlighted</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">isHighlighted</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -333,8 +497,8 @@ Read only.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2018-01-11)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2018-01-22)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
