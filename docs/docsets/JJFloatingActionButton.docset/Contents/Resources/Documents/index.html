@@ -61,6 +61,12 @@
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/JJFloatingActionButton.html">JJFloatingActionButton</a>
               </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/JJFloatingActionButton/ButtonOpeningStyle.html">– ButtonOpeningStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/JJFloatingActionButton/ItemOpeningStyle.html">– ItemOpeningStyle</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -92,6 +98,8 @@
 
 <p><img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift 4.0"> <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version"></a> <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License"></a> <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform"></a> <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status"></a> <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation"></a> <a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome"></a></p>
 
+<p>Until reaching milestone 1.0.0 there might be breaking changes in minor versions!</p>
+
 <p align="center">
   <a href="#features">Features</a> • <a href="#preview">Preview</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
 </p>
@@ -102,6 +110,7 @@
 <li>Fully customizable  ✓</li>
 <li>Place with auto layout  ✓</li>
 <li>Design in Interface Builder  ✓</li>
+<li>RTL language support  ✓</li>
 <li>Handles Button with single Action  ✓</li>
 <li>Works in Swift and Objective-C Projects  ✓</li>
 <li>Comprehensive Test Coverage  ✓</li>
@@ -110,7 +119,13 @@
 <h2 id='a-name-preview-a-preview' class='heading'><a name="preview"></a>Preview</h2>
 
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButton.gif" width='250' alt="Preview">
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonBasics.gif" width='250' alt="Preview Basics"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration"> 
+</p>
+
+<p align="center">
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircularPop.gif" width='250' alt="Preview Circular Pop"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
 <h2 id='a-name-requirements-a-requirements' class='heading'><a name="requirements"></a>Requirements</h2>
 
@@ -166,27 +181,44 @@
 <h3 id='configuration' class='heading'>Configuration</h3>
 
 <p>Button appearance and behavior can be customized:</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">buttonColor</span><span class="p">:</span> <span class="kt">UIColor</span>
-<span class="k">var</span> <span class="nv">defaultButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span>
-<span class="k">var</span> <span class="nv">openButtonImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span>
-<span class="k">var</span> <span class="nv">buttonImageColor</span><span class="p">:</span> <span class="kt">UIColor</span>
-<span class="k">var</span> <span class="nv">shadowColor</span><span class="p">:</span> <span class="kt">UIColor</span>
-<span class="k">var</span> <span class="nv">shadowOffset</span><span class="p">:</span> <span class="kt">CGSize</span>
-<span class="k">var</span> <span class="nv">shadowOpacity</span><span class="p">:</span> <span class="kt">Float</span>
-<span class="k">var</span> <span class="nv">shadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<pre class="highlight swift"><code><span class="n">actionButton</span><span class="o">.</span><span class="n">overlayView</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonImage</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Dots"</span><span class="p">)</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">red</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
 
-<span class="k">var</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span>
-<span class="k">var</span> <span class="nv">rotationAngle</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonOpeningStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">transition</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"X"</span><span class="p">))</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">itemOpeningStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">popUp</span><span class="p">(</span><span class="nv">interItemSpacing</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span>
 
-<span class="k">var</span> <span class="nv">itemTitleFont</span><span class="p">:</span> <span class="kt">UIFont</span>
-<span class="k">var</span> <span class="nv">itemButtonColor</span><span class="p">:</span> <span class="kt">UIColor</span>
-<span class="k">var</span> <span class="nv">itemImageColor</span><span class="p">:</span> <span class="kt">UIColor</span>
-<span class="k">var</span> <span class="nv">itemTitleColor</span><span class="p">:</span> <span class="kt">UIColor</span>
-<span class="k">var</span> <span class="nv">itemShadowColor</span><span class="p">:</span> <span class="kt">UIColor</span>
-<span class="k">var</span> <span class="nv">itemShadowOffset</span><span class="p">:</span> <span class="kt">CGSize</span>
-<span class="k">var</span> <span class="nv">itemShadowOpacity</span><span class="p">:</span> <span class="kt">Float</span>
-<span class="k">var</span> <span class="nv">itemShadowRadius</span><span class="p">:</span> <span class="kt">CGFloat</span>
-<span class="k">var</span> <span class="nv">itemSizeRatio</span><span class="p">:</span> <span class="kt">CGFloat</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowOffset</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowOpacity</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowRadius</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">actionButton</span><span class="o">.</span><span class="n">itemSizeRatio</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">configureDefaultItem</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="o">.</span><span class="nf">boldSystemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="kt">UIFont</span><span class="o">.</span><span class="n">systemFontSize</span><span class="p">)</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">red</span>
+
+    <span class="n">item</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowOffset</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowOpacity</span> <span class="o">=</span> <span class="kt">Float</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowRadius</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">actionButton</span><span class="o">.</span><span class="nf">addItem</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Balloon"</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Baloon"</span><span class="p">))</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+    <span class="c1">// Do something</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">item</span> <span class="o">=</span> <span class="n">actionButton</span><span class="o">.</span><span class="nf">addItem</span><span class="p">()</span>
+<span class="n">item</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"Owl"</span>
+<span class="n">item</span><span class="o">.</span><span class="n">imageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Owl"</span><span class="p">)</span>
+<span class="n">item</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span>
+<span class="n">item</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
+<span class="n">tem</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+    <span class="c1">// Do something</span>
+<span class="p">}</span>
 </code></pre>
 <h3 id='delegate' class='heading'>Delegate</h3>
 <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonWillOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt">JJFloatingActionButton</span><span class="p">)</span>
@@ -218,8 +250,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2018-01-11)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2018-01-22)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
