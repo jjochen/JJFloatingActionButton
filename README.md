@@ -16,7 +16,7 @@ Until reaching milestone 1.0.0 there might be breaking changes in minor versions
 - Fully customizable  ✓
 - Place with auto layout  ✓
 - Design in Interface Builder  ✓
-- RTL language support
+- RTL language support  ✓
 - Handles Button with single Action  ✓
 - Works in Swift and Objective-C Projects  ✓
 - Comprehensive Test Coverage  ✓
@@ -105,7 +105,7 @@ actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnc
 Button appearance and behavior can be customized:
 
 ```swift
-actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
+actionButton.overlayView.backgroundColor = UIColor(white: 0, alpha: 0.3)
 actionButton.buttonImage = UIImage(named: "Dots")
 actionButton.buttonColor = .red
 actionButton.buttonImageColor = .white
