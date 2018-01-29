@@ -47,6 +47,8 @@ internal class ConfigurationExampleViewController: UIViewController {
 
         actionButton.itemSizeRatio = CGFloat(0.75)
         actionButton.configureDefaultItem { item in
+            item.titlePosition = .trailing
+
             item.titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize)
             item.titleLabel.textColor = .white
             item.buttonColor = .white
@@ -75,7 +77,16 @@ internal class ConfigurationExampleViewController: UIViewController {
             Helper.showAlert(for: item)
         }
 
-        actionButton.display(inViewController: self)
+
+        view.addSubview(actionButton)
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 11.0, *) {
+            actionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        } else {
+            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
+        }
     }
 }
 

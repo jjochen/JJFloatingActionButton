@@ -31,12 +31,75 @@ class JJActionItemSpec: QuickSpec {
 
     override func spec() {
 
+        describe("JJActionItem") {
+            var actionItem: JJActionItem!
+
+            beforeEach {
+
+                actionItem = JJActionItem(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                actionItem.titleLabel.font = UIFont(name: "Courier", size: 12)
+                actionItem.titleLabel.text = "item"
+                actionItem.imageView.image = #imageLiteral(resourceName: "Owl")
+                actionItem.buttonColor = .red
+                actionItem.buttonImageColor = .white
+
+                setNimbleTolerance(0.004)
+            }
+
+            it("looks correct") {
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with title position leading") {
+                actionItem.titlePosition = .leading
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with title position trailing") {
+                actionItem.titlePosition = .trailing
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with title position left") {
+                actionItem.titlePosition = .left
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with title position right") {
+                actionItem.titlePosition = .right
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with title position top") {
+                actionItem.titlePosition = .top
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with title position bottom") {
+                actionItem.titlePosition = .bottom
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with title position hidden") {
+                actionItem.titlePosition = .hidden
+                expect(actionItem) == snapshot()
+            }
+        }
+
         describe("JJActionItem loaded from xib") {
             var actionItem: JJActionItem?
 
             beforeEach {
                 let bundle = Bundle(for: type(of: self))
                 actionItem = bundle.loadNibNamed("JJActionItem", owner: nil)?.first as? JJActionItem
+
+                actionItem?.titleLabel.font = UIFont(name: "Courier", size: 12)
+                actionItem?.titleLabel.text = "item"
+                actionItem?.imageView.image = #imageLiteral(resourceName: "Owl")
+                actionItem?.buttonColor = .red
+                actionItem?.buttonImageColor = .white
+
+                setNimbleTolerance(0.004)
             }
 
             it("looks correct") {
