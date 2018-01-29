@@ -99,6 +99,7 @@ import UIKit
         titleLabel.isUserInteractionEnabled = false
         titleLabel.numberOfLines = 1
         titleLabel.font = .systemFont(ofSize: UIFont.systemFontSize)
+        titleLabel.textColor = .white
         return titleLabel
     }()
 
@@ -124,6 +125,7 @@ import UIKit
     ///
     @objc open fileprivate(set) lazy var circleView: JJCircleView = {
         let view = JJCircleView()
+        view.color = .white
         view.isUserInteractionEnabled = false
         return view
     }()

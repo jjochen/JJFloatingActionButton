@@ -40,6 +40,8 @@ class JJActionItemSpec: QuickSpec {
                 actionItem.titleLabel.font = UIFont(name: "Courier", size: 12)
                 actionItem.titleLabel.text = "item"
                 actionItem.imageView.image = #imageLiteral(resourceName: "Owl")
+                actionItem.buttonColor = .red
+                actionItem.buttonImageColor = .white
 
                 setNimbleTolerance(0.004)
             }
@@ -94,6 +96,8 @@ class JJActionItemSpec: QuickSpec {
                 actionItem?.titleLabel.font = UIFont(name: "Courier", size: 12)
                 actionItem?.titleLabel.text = "item"
                 actionItem?.imageView.image = #imageLiteral(resourceName: "Owl")
+                actionItem?.buttonColor = .red
+                actionItem?.buttonImageColor = .white
 
                 setNimbleTolerance(0.004)
             }
