@@ -179,6 +179,15 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 expect(superview) == snapshot()
             }
 
+            it("looks correct when only image color is changed") {
+                actionButton.buttonImageColor = .red
+                actionButton.addItem(title: "123", image: #imageLiteral(resourceName: "Like"))
+                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.open(animated: false)
+
+                expect(superview) == snapshot()
+            }
+
             context("when using pop up style") {
                 beforeEach {
                     actionButton.useItemOpeningStylePopUp(interItemSpacing: 10)
