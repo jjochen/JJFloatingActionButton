@@ -128,6 +128,14 @@ import UIKit
         return view
     }()
 
+    /// The position of the title label. Default is `.leading`.
+    ///
+    @objc public dynamic var titlePosition: JJActionItemTitlePosition = .leading {
+        didSet {
+            updateDynamicConstraints()
+        }
+    }
+
     internal override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -143,6 +151,8 @@ import UIKit
         super.init(coder: aDecoder)
         setup()
     }
+
+    fileprivate var dynamicConstraints: [NSLayoutConstraint] = []
 }
 
 // MARK: - UIView
@@ -187,22 +197,72 @@ fileprivate extension JJActionItem {
         addSubview(imageView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-
         circleView.translatesAutoresizingMaskIntoConstraints = false
-        circleView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        circleView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        circleView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor).isActive = true
-        circleView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 12).isActive = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        setContentHuggingPriority(.required, for: .horizontal)
+        setContentHuggingPriority(.required, for: .vertical)
+
+        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(900), for: .horizontal)
+        titleLabel.setContentCompressionResistancePriority(UILayoutPriority(900), for: .vertical)
+
+        var constraints: [NSLayoutConstraint] = []
 
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor).isActive = true
-        imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier).isActive = true
-        imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier).isActive = true
+        constraints.append(imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
+        constraints.append(imageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
+        constraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier))
+        constraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier))
+
+        constraints.append(circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor))
+
+        constraints.append(circleView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor))
+        constraints.append(circleView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor))
+        constraints.append(circleView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor))
+        constraints.append(circleView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor))
+
+        constraints.append(titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor))
+        constraints.append(titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor))
+        constraints.append(titleLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor))
+        constraints.append(titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor))
+
+        NSLayoutConstraint.activate(constraints)
+
+        updateDynamicConstraints()
+    }
+
+    func updateDynamicConstraints() {
+        NSLayoutConstraint.deactivate(dynamicConstraints)
+        dynamicConstraints.removeAll()
+        titleLabel.isHidden = false
+
+        let horizontalSpacing = CGFloat(12)
+        let verticalSpacing = CGFloat(4)
+
+        switch titlePosition {
+        case .leading:
+            dynamicConstraints.append(titleLabel.trailingAnchor.constraint(equalTo: circleView.leadingAnchor, constant: -horizontalSpacing))
+            dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
+        case .trailing:
+            dynamicConstraints.append(titleLabel.leadingAnchor.constraint(equalTo: circleView.trailingAnchor, constant: horizontalSpacing))
+            dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
+        case .left:
+            dynamicConstraints.append(titleLabel.rightAnchor.constraint(equalTo: circleView.leftAnchor, constant: -horizontalSpacing))
+            dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
+        case .right:
+            dynamicConstraints.append(titleLabel.leftAnchor.constraint(equalTo: circleView.rightAnchor, constant: horizontalSpacing))
+            dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
+        case .top:
+            dynamicConstraints.append(titleLabel.bottomAnchor.constraint(equalTo: circleView.topAnchor, constant: -verticalSpacing))
+            dynamicConstraints.append(titleLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
+        case .bottom:
+            dynamicConstraints.append(titleLabel.topAnchor.constraint(equalTo: circleView.bottomAnchor, constant: verticalSpacing))
+            dynamicConstraints.append(titleLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
+        case .hidden:
+            titleLabel.isHidden = true
+        }
+
+        NSLayoutConstraint.activate(dynamicConstraints)
+        setNeedsLayout()
     }
 }

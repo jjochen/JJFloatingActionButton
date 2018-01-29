@@ -22,5 +22,37 @@
 //  THE SOFTWARE.
 //
 
-
 import Foundation
+
+/// Action item title position.
+///
+@objc public enum JJActionItemTitlePosition: Int {
+
+    /// Place the title at the leading edge of the circle view.
+    ///
+    case leading
+
+    /// Place the title at the trailing edge of the circle view.
+    ///
+    case trailing
+
+    /// Place the title at the left edge of the circle view.
+    ///
+    case left
+
+    /// Place the title at the right edge of the circle view.
+    ///
+    case right
+
+    /// Place the title at the top edge of the circle view.
+    ///
+    case top
+
+    /// Place the title at the bottom edge of the circle view.
+    ///
+    case bottom
+
+    /// Hide the title all together.
+    ///
+    case hidden
+}
