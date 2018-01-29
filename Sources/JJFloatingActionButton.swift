@@ -404,8 +404,8 @@ fileprivate extension JJFloatingActionButton {
     }
 
     func setupItem(_ item: JJActionItem) {
-        item.titleLabel.textColor = buttonImageColor
-        item.circleView.color = buttonImageColor
+        item.titleLabel.textColor = .white
+        item.circleView.color = .white
         item.imageView.tintColor = buttonColor
 
         item.layer.shadowColor = layer.shadowColor
