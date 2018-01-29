@@ -51,7 +51,8 @@ extension JJItemPopAnimation: JJItemAnimation {
             containerView.addSubview(item)
 
             item.translatesAutoresizingMaskIntoConstraints = false
-            item.heightAnchor.constraint(equalTo: actionButton.circleView.heightAnchor, multiplier: itemSizeRatio).isActive = true
+            item.circleView.heightAnchor.constraint(equalTo: actionButton.circleView.heightAnchor,
+                                                    multiplier: itemSizeRatio).isActive = true
             item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
             item.circleView.centerXAnchor.constraint(equalTo: actionButton.circleView.centerXAnchor).isActive = true
             item.topAnchor.constraint(greaterThanOrEqualTo: containerView.topAnchor).isActive = true
