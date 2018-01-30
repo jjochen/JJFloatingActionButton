@@ -87,7 +87,6 @@ public extension JJFloatingActionButton {
         buttonState = .opening
         delegate?.floatingActionButtonWillOpen?(self)
 
-        buttonAnimation = currentButtonAnimation
         itemAnimation = currentItemAnimation
 
         superview.bringSubview(toFront: self)
@@ -101,7 +100,7 @@ public extension JJFloatingActionButton {
         let animationGroup = DispatchGroup()
 
         showOverlay(animated: animated, group: animationGroup)
-        buttonAnimation?.open(animated: animated, group: animationGroup)
+        openButton(animated: animated, group: animationGroup)
         itemAnimation?.open(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
@@ -132,14 +131,14 @@ public extension JJFloatingActionButton {
         let animationGroup = DispatchGroup()
 
         hideOverlay(animated: animated, group: animationGroup)
-        buttonAnimation?.close(animated: animated, group: animationGroup)
+        closeButton(animated: animated, group: animationGroup)
         itemAnimation?.close(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
             self.itemAnimation?.removeItems()
             self.itemAnimation = nil
             self.itemContainerView.removeFromSuperview()
-            self.buttonAnimation = nil
+            self.currentButtonOpeningStyle = nil
             self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
             completion?()
@@ -152,9 +151,9 @@ public extension JJFloatingActionButton {
     }
 }
 
-// MARK: - Animation
+// MARK: - Overlay Animation
 
-fileprivate extension JJFloatingActionButton {
+internal extension JJFloatingActionButton {
 
     func addOverlayView(to superview: UIView) {
         overlayView.isEnabled = true
@@ -193,20 +192,77 @@ fileprivate extension JJFloatingActionButton {
                        group: group,
                        animated: animated)
     }
+}
 
-    var currentButtonAnimation: JJButtonAnimation {
-        let buttonAnimation: JJButtonAnimation
+// MARK: - Button Animation
+
+internal extension JJFloatingActionButton {
+
+    func openButton(animated: Bool, group: DispatchGroup) {
+        currentButtonOpeningStyle = buttonOpeningStyle
         switch buttonOpeningStyle {
         case let .rotate(angle):
-            buttonAnimation = JJButtonRotationAnimation(actionButton: self,
-                                                        angle: angle)
+            rotateButton(angle: angle,
+                         fast: false,
+                         group: group,
+                         animated: animated)
         case let .transition(image):
-            buttonAnimation = JJButtonTransitionAnimation(actionButton: self,
-                                                          openImage: image,
-                                                          closeImage: currentButtonImage)
+            transistion(to: image,
+                        animated: animated,
+                        group: group)
         }
-        return buttonAnimation
     }
+
+    func closeButton(animated: Bool, group: DispatchGroup) {
+        precondition(currentButtonOpeningStyle != nil)
+
+        switch currentButtonOpeningStyle! {
+        case let .rotate(angle):
+            rotateButton(angle: 0,
+                         fast: true,
+                         group: group,
+                         animated: animated)
+        case let .transition(image):
+            transistion(to: currentButtonImage,
+                        animated: animated,
+                        group: group)
+        }
+    }
+
+    func rotateButton(angle: CGFloat,
+                      fast: Bool,
+                      group: DispatchGroup,
+                      animated: Bool) {
+
+        let animation: () -> Void = {
+            self.imageView.transform = CGAffineTransform(rotationAngle: angle)
+        }
+
+        let dampingRatio: CGFloat = fast ? 0.6 : 0.55
+        let velocity: CGFloat = fast ? 0.8 : 0.3
+        UIView.animate(duration: 0.3,
+                       usingSpringWithDamping: dampingRatio,
+                       initialSpringVelocity: velocity,
+                       animations: animation,
+                       group: group,
+                       animated: animated)
+    }
+
+    func transistion(to image: UIImage?, animated: Bool, group: DispatchGroup) {
+        let transition: () -> Void = {
+            self.imageView.image = image
+        }
+        UIView.transition(with: imageView,
+                          duration: 0.3,
+                          animations: transition,
+                          group: group,
+                          animated: animated)
+    }
+}
+
+// MARK: - Items Animation
+
+internal extension JJFloatingActionButton {
 
     var currentItemAnimation: JJItemAnimation {
         let itemAnimation: JJItemAnimation
