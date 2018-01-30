@@ -77,7 +77,7 @@ public extension JJFloatingActionButton {
         guard let superview = superview else {
             return
         }
-        guard !items.isEmpty else {
+        guard !enabledItems.isEmpty else {
             return
         }
         guard !isSingleActionButton else {
@@ -87,13 +87,13 @@ public extension JJFloatingActionButton {
         buttonState = .opening
         delegate?.floatingActionButtonWillOpen?(self)
 
-        itemAnimation = currentItemAnimation
+        animationConfiguration = AnimationConfiguration(items: enabledItems,
+                                                        buttonOpeningStyle: buttonOpeningStyle,
+                                                        itemOpeningStyle: itemOpeningStyle)
 
         superview.bringSubview(toFront: self)
         addOverlayView(to: superview)
-        superview.insertSubview(itemContainerView, belowSubview: self)
-
-        itemAnimation?.addItems(to: itemContainerView)
+        addItems(to: superview)
         itemContainerView.setNeedsLayout()
         itemContainerView.layoutIfNeeded()
 
@@ -101,7 +101,7 @@ public extension JJFloatingActionButton {
 
         showOverlay(animated: animated, group: animationGroup)
         openButton(animated: animated, group: animationGroup)
-        itemAnimation?.open(animated: animated, group: animationGroup)
+        openItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
             self.buttonState = .open
@@ -132,13 +132,14 @@ public extension JJFloatingActionButton {
 
         hideOverlay(animated: animated, group: animationGroup)
         closeButton(animated: animated, group: animationGroup)
-        itemAnimation?.close(animated: animated, group: animationGroup)
+        closeItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
-            self.itemAnimation?.removeItems()
-            self.itemAnimation = nil
+            self.animationConfiguration?.items.forEach { item in
+                item.removeFromSuperview()
+            }
+            self.animationConfiguration = nil
             self.itemContainerView.removeFromSuperview()
-            self.currentButtonOpeningStyle = nil
             self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
             completion?()
@@ -151,9 +152,19 @@ public extension JJFloatingActionButton {
     }
 }
 
-// MARK: - Overlay Animation
+// MARK: - Animation Configuration
 
 internal extension JJFloatingActionButton {
+    struct AnimationConfiguration {
+        let items: [JJActionItem]
+        let buttonOpeningStyle: ButtonOpeningStyle
+        let itemOpeningStyle: ItemOpeningStyle
+    }
+}
+
+// MARK: - Overlay Animation
+
+fileprivate extension JJFloatingActionButton {
 
     func addOverlayView(to superview: UIView) {
         overlayView.isEnabled = true
@@ -196,11 +207,12 @@ internal extension JJFloatingActionButton {
 
 // MARK: - Button Animation
 
-internal extension JJFloatingActionButton {
+fileprivate extension JJFloatingActionButton {
 
     func openButton(animated: Bool, group: DispatchGroup) {
-        currentButtonOpeningStyle = buttonOpeningStyle
-        switch buttonOpeningStyle {
+        precondition(animationConfiguration != nil)
+
+        switch animationConfiguration!.buttonOpeningStyle {
         case let .rotate(angle):
             rotateButton(angle: angle,
                          fast: false,
@@ -214,15 +226,15 @@ internal extension JJFloatingActionButton {
     }
 
     func closeButton(animated: Bool, group: DispatchGroup) {
-        precondition(currentButtonOpeningStyle != nil)
+        precondition(animationConfiguration != nil)
 
-        switch currentButtonOpeningStyle! {
-        case let .rotate(_):
+        switch animationConfiguration!.buttonOpeningStyle {
+        case let .rotate:
             rotateButton(angle: 0,
                          fast: true,
                          group: group,
                          animated: animated)
-        case let .transition(_):
+        case let .transition:
             transistion(to: currentButtonImage,
                         animated: animated,
                         group: group)
@@ -262,25 +274,104 @@ internal extension JJFloatingActionButton {
 
 // MARK: - Items Animation
 
-internal extension JJFloatingActionButton {
+fileprivate extension JJFloatingActionButton {
 
-    var currentItemAnimation: JJItemAnimation {
-        let itemAnimation: JJItemAnimation
-        switch itemOpeningStyle {
+    func addItems(to superview: UIView) {
+        precondition(animationConfiguration != nil)
 
-        case let .popUp(interItemSpacing):
-            itemAnimation = JJItemPopAnimation(actionButton: self,
-                                               items: enabledItems,
-                                               itemSizeRatio: itemSizeRatio,
-                                               interItemSpacing: interItemSpacing)
-        case let .circularPop(radius):
-            itemAnimation = JJItemCircularPopAnimation(actionButton: self,
-                                                       items: enabledItems,
-                                                       itemSizeRatio: itemSizeRatio,
-                                                       radius: radius)
+        superview.insertSubview(itemContainerView, belowSubview: self)
+
+        var previousItem: JJActionItem?
+        var index = 0
+        for item in animationConfiguration!.items {
+            let previousView = previousItem ?? circleView
+            item.alpha = 0
+            item.transform = .identity
+            itemContainerView.addSubview(item)
+
+            item.translatesAutoresizingMaskIntoConstraints = false
+
+            item.circleView.heightAnchor.constraint(equalTo: circleView.heightAnchor,
+                                                    multiplier: itemSizeRatio).isActive = true
+
+            layout(item: item, at: index, previousView: previousView)
+
+            item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
+            item.leadingAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leadingAnchor).isActive = true
+            item.trailingAnchor.constraint(lessThanOrEqualTo: itemContainerView.trailingAnchor).isActive = true
+            item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
+
+            previousItem = item
+            index += 1
         }
+    }
 
-        return itemAnimation
+    func openItems(animated: Bool, group: DispatchGroup) {
+        precondition(animationConfiguration != nil)
+
+        var delay = 0.0
+        for item in animationConfiguration!.items {
+            prepareItemForClosedState(item)
+            let animation: () -> Void = {
+                self.prepareItemForOpenState(item)
+            }
+            UIView.animate(duration: 0.3,
+                           delay: delay,
+                           usingSpringWithDamping: 0.55,
+                           initialSpringVelocity: 0.3,
+                           animations: animation,
+                           group: group,
+                           animated: animated)
+
+            delay += interItemDelay
+        }
+    }
+
+    func closeItems(animated: Bool, group: DispatchGroup) {
+        precondition(animationConfiguration != nil)
+
+        var delay: TimeInterval = 0.0
+        for item in animationConfiguration!.items.reversed() {
+            let animation: () -> Void = {
+                self.prepareItemForClosedState(item)
+            }
+            UIView.animate(duration: 0.15,
+                           delay: delay,
+                           usingSpringWithDamping: 0.6,
+                           initialSpringVelocity: 0.8,
+                           animations: animation,
+                           group: group,
+                           animated: animated)
+
+            delay += interItemDelay
+        }
+    }
+
+    func layout(item: JJActionItem, at _: Int, previousView: UIView) {
+        let interItemSpacing = CGFloat(12)
+        item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
+        item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+    }
+
+    func prepareItemForClosedState(_ item: JJActionItem) {
+        item.scale(by: 0.4)
+        item.alpha = 0
+    }
+
+    func prepareItemForOpenState(_ item: JJActionItem) {
+        item.transform = .identity
+        item.alpha = 1
+    }
+
+    var interItemDelay: TimeInterval {
+        precondition(animationConfiguration != nil)
+
+        switch animationConfiguration!.itemOpeningStyle {
+        case let .popUp:
+            return 0.1
+        case let .circularPop:
+            return 0.1
+        }
     }
 }
 

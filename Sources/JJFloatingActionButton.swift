@@ -247,9 +247,7 @@ import UIKit
         return view
     }()
 
-    internal var currentButtonOpeningStyle: ButtonOpeningStyle?
-
-    internal var itemAnimation: JJItemAnimation?
+    internal var animationConfiguration: AnimationConfiguration?
 
     fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
 }
