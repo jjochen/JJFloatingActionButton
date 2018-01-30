@@ -72,7 +72,7 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
     func open(animated: Bool, group: DispatchGroup) {
         var delay = 0.0
         for item in items {
-            item.scale()
+            item.scale(by: 0.4)
             let animation: () -> Void = {
                 item.transform = .identity
                 item.alpha = 1
@@ -93,7 +93,7 @@ extension JJItemCircularPopAnimation: JJItemAnimation {
         var delay = 0.0
         for item in items.reversed() {
             let animation: () -> Void = {
-                item.scale()
+                item.scale(by: 0.4)
                 item.alpha = 0
             }
             UIView.animate(duration: 0.15,
