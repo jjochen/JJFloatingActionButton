@@ -247,7 +247,7 @@ import UIKit
         return view
     }()
 
-    internal var buttonAnimation: JJButtonAnimation?
+    internal var currentButtonOpeningStyle: ButtonOpeningStyle?
 
     internal var itemAnimation: JJItemAnimation?
 

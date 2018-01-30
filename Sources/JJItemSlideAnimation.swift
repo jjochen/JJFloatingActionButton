@@ -24,7 +24,6 @@
 
 import UIKit
 
-
 internal class JJItemSlideAnimation {
 
     let actionButton: JJFloatingActionButton
@@ -105,7 +104,6 @@ extension JJItemSlideAnimation: JJItemAnimation {
                        animations: animation,
                        group: group,
                        animated: animated)
-
     }
 
     func removeItems() {

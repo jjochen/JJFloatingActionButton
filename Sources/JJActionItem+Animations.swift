@@ -48,7 +48,7 @@ internal extension JJActionItem {
 
 fileprivate extension JJActionItem {
 
-    fileprivate func scaled(point: CGPoint, factor: CGFloat) -> CGPoint {
+    func scaled(point: CGPoint, factor: CGFloat) -> CGPoint {
         let anchorPoint = CGPoint(x: bounds.width * layer.anchorPoint.x, y: bounds.height * layer.anchorPoint.y)
         let scaledX = anchorPoint.x + (point.x - anchorPoint.x) * factor
         let scaledY = anchorPoint.y + (point.y - anchorPoint.y) * factor
