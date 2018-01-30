@@ -217,12 +217,12 @@ internal extension JJFloatingActionButton {
         precondition(currentButtonOpeningStyle != nil)
 
         switch currentButtonOpeningStyle! {
-        case let .rotate(angle):
+        case let .rotate(_):
             rotateButton(angle: 0,
                          fast: true,
                          group: group,
                          animated: animated)
-        case let .transition(image):
+        case let .transition(_):
             transistion(to: currentButtonImage,
                         animated: animated,
                         group: group)
