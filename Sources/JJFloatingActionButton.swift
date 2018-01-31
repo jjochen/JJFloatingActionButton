@@ -145,7 +145,7 @@ import UIKit
     /// - SeeAlso: `useItemOpeningStylePopUp(interItemSpacing:)`
     /// - SeeAlso: `useItemOpeningStyleCircularPop(radius:)`
     ///
-    public var itemOpeningStyle: ItemOpeningStyle = .popUp(interItemSpacing: 12)
+    public var itemAnimationConfiguration: JJItemAnimationConfiguration = .popUp()
 
     /// When enabled and only one action item is added, the floating action button will not open,
     /// but the action from the action item will be executed direclty when the button is tapped.
@@ -248,7 +248,7 @@ import UIKit
     }()
 
     internal var currentButtonAnimationConfiguration: JJButtonAnimationConfiguration?
-    internal var currentItemOpeningStyle: ItemOpeningStyle?
+    internal var currentItemAnimationConfiguration: JJItemAnimationConfiguration?
     internal var openItems: [JJActionItem] = []
 
     fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
