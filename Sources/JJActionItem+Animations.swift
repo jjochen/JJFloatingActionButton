@@ -27,11 +27,6 @@ import UIKit
 
 internal extension JJActionItem {
 
-    func scale(by factor: CGFloat) {
-        let unscaledCircleCenter = circleView.center
-        scale(by: factor, translateCircleCenterTo: unscaledCircleCenter)
-    }
-
     func scale(by factor: CGFloat, translateCircleCenterTo point: CGPoint) {
         let scale = CGAffineTransform(scaleX: factor, y: factor)
 

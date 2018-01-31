@@ -115,7 +115,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     item.shadowRadius = CGFloat(0)
                 }
                 actionButton.itemSizeRatio = CGFloat(1.1)
-                actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
+                actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 7)
 
                 actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
                 actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
@@ -150,7 +150,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     item.shadowRadius = CGFloat(0)
                 }
                 actionButton.itemSizeRatio = CGFloat(1.1)
-                actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
+                actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 7)
 
                 actionButton.open(animated: false)
 
@@ -190,7 +190,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             context("when using pop up style") {
                 beforeEach {
-                    actionButton.useItemOpeningStylePopUp(interItemSpacing: 10)
+                    actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 10)
                     actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Owl"))
                 }
 
@@ -207,7 +207,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             context("when using slide in style") {
                 beforeEach {
-                    actionButton.useItemOpeningStyleSlideIn(interItemSpacing: 10, distance: 50)
+                    actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 10)
                     actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Owl"))
                 }
 
@@ -224,7 +224,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             context("when using circular pop up style") {
                 beforeEach {
-                    actionButton.useItemOpeningStyleCircularPop(radius: 100)
+                    actionButton.itemAnimationConfiguration = .circularPopUp(withRadius: 100)
                     actionButton.buttonAnimationConfiguration = .rotation(toAngle: -CGFloat.pi / 3)
                 }
 

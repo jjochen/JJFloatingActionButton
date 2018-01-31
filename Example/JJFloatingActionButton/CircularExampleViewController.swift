@@ -32,7 +32,7 @@ internal class CircularExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        actionButton.itemOpeningStyle = .circularSlideIn(radius: 120, distance: 80)
+        actionButton.itemAnimationConfiguration = .circularSlideIn(withRadius: 120)
         actionButton.buttonAnimationConfiguration = .rotation(toAngle: .pi / 4)
 
         actionButton.addItem(image: #imageLiteral(resourceName: "Baloon")) { item in
