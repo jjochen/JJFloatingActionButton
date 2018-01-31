@@ -133,7 +133,7 @@ import UIKit
     /// - SeeAlso: `useButtonOpeningStyleRotate(angle:)`
     /// - SeeAlso: `useButtonOpeningStyleTransition(image:)`
     ///
-    public var buttonOpeningStyle: ButtonOpeningStyle = .rotate(angle: -.pi / 4)
+    public var buttonAnimationConfiguration: JJButtonAnimationConfiguration = .rotation()
 
     /// The opening style of the action items.
     /// Possible values are
@@ -247,7 +247,9 @@ import UIKit
         return view
     }()
 
-    internal var animationConfiguration: AnimationConfiguration?
+    internal var currentButtonAnimationConfiguration: JJButtonAnimationConfiguration?
+    internal var currentItemOpeningStyle: ItemOpeningStyle?
+    internal var openItems: [JJActionItem] = []
 
     fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
 }

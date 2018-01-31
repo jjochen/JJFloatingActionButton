@@ -99,9 +99,7 @@ public extension JJFloatingActionButton {
         buttonState = .opening
         delegate?.floatingActionButtonWillOpen?(self)
 
-        animationConfiguration = AnimationConfiguration(items: enabledItems,
-                                                        buttonOpeningStyle: buttonOpeningStyle,
-                                                        itemOpeningStyle: itemOpeningStyle)
+        storeAnimationState()
 
         superview.bringSubview(toFront: self)
         addOverlayView(to: superview)
@@ -112,7 +110,9 @@ public extension JJFloatingActionButton {
         let animationGroup = DispatchGroup()
 
         showOverlay(animated: animated, group: animationGroup)
-        openButton(animated: animated, group: animationGroup)
+        openButton(withConfiguration: currentButtonAnimationConfiguration!,
+                   animated: animated,
+                   group: animationGroup)
         openItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
@@ -143,14 +143,16 @@ public extension JJFloatingActionButton {
         let animationGroup = DispatchGroup()
 
         hideOverlay(animated: animated, group: animationGroup)
-        closeButton(animated: animated, group: animationGroup)
+        closeButton(withConfiguration: currentButtonAnimationConfiguration!,
+                    animated: animated,
+                    group: animationGroup)
         closeItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
-            self.animationConfiguration?.items.forEach { item in
+            self.openItems.forEach { item in
                 item.removeFromSuperview()
             }
-            self.animationConfiguration = nil
+            self.resetAnimationState()
             self.itemContainerView.removeFromSuperview()
             self.buttonState = .closed
             self.delegate?.floatingActionButtonDidClose?(self)
@@ -164,13 +166,20 @@ public extension JJFloatingActionButton {
     }
 }
 
-// MARK: - Animation Configuration
+// MARK: - Animation State
 
-internal extension JJFloatingActionButton {
-    struct AnimationConfiguration {
-        let items: [JJActionItem]
-        let buttonOpeningStyle: ButtonOpeningStyle
-        let itemOpeningStyle: ItemOpeningStyle
+fileprivate extension JJFloatingActionButton {
+
+    func storeAnimationState() {
+        openItems = enabledItems
+        currentItemOpeningStyle = itemOpeningStyle
+        currentButtonAnimationConfiguration = buttonAnimationConfiguration
+    }
+
+    func resetAnimationState() {
+        openItems.removeAll()
+        currentButtonAnimationConfiguration = nil
+        currentItemOpeningStyle = nil
     }
 }
 
@@ -221,40 +230,44 @@ fileprivate extension JJFloatingActionButton {
 
 fileprivate extension JJFloatingActionButton {
 
-    func openButton(animated: Bool, group: DispatchGroup) {
-        precondition(animationConfiguration != nil)
+    func openButton(withConfiguration configuration: JJButtonAnimationConfiguration,
+                    animated: Bool,
+                    group: DispatchGroup) {
 
-        switch animationConfiguration!.buttonOpeningStyle {
-        case let .rotate(angle):
-            rotateButton(angle: angle,
-                         fast: false,
-                         group: group,
-                         animated: animated)
-        case let .transition(image):
-            transistion(to: image,
-                        animated: animated,
-                        group: group)
-        }
-    }
-
-    func closeButton(animated: Bool, group: DispatchGroup) {
-        precondition(animationConfiguration != nil)
-
-        switch animationConfiguration!.buttonOpeningStyle {
-        case .rotate:
-            rotateButton(angle: 0,
-                         fast: true,
+        switch configuration.style {
+        case .rotation:
+            rotateButton(toAngle: configuration.angle,
+                         settings: configuration.opening,
                          group: group,
                          animated: animated)
         case .transition:
-            transistion(to: currentButtonImage,
+            transistion(toImage: configuration.image,
+                        settings: configuration.opening,
                         animated: animated,
                         group: group)
         }
     }
 
-    func rotateButton(angle: CGFloat,
-                      fast: Bool,
+    func closeButton(withConfiguration configuration: JJButtonAnimationConfiguration,
+                     animated: Bool,
+                     group: DispatchGroup) {
+
+        switch configuration.style {
+        case .rotation:
+            rotateButton(toAngle: 0,
+                         settings: configuration.closing,
+                         group: group,
+                         animated: animated)
+        case .transition:
+            transistion(toImage: currentButtonImage,
+                        settings: configuration.closing,
+                        animated: animated,
+                        group: group)
+        }
+    }
+
+    func rotateButton(toAngle angle: CGFloat,
+                      settings: JJAnimationSettings,
                       group: DispatchGroup,
                       animated: Bool) {
 
@@ -262,22 +275,23 @@ fileprivate extension JJFloatingActionButton {
             self.imageView.transform = CGAffineTransform(rotationAngle: angle)
         }
 
-        let dampingRatio: CGFloat = fast ? 0.6 : 0.55
-        let velocity: CGFloat = fast ? 0.8 : 0.3
-        UIView.animate(duration: 0.3,
-                       usingSpringWithDamping: dampingRatio,
-                       initialSpringVelocity: velocity,
+        UIView.animate(duration: settings.duration,
+                       usingSpringWithDamping: settings.dampingRatio,
+                       initialSpringVelocity: settings.velocity,
                        animations: animation,
                        group: group,
                        animated: animated)
     }
 
-    func transistion(to image: UIImage?, animated: Bool, group: DispatchGroup) {
+    func transistion(toImage image: UIImage?,
+                     settings: JJAnimationSettings,
+                     animated: Bool,
+                     group: DispatchGroup) {
         let transition: () -> Void = {
             self.imageView.image = image
         }
         UIView.transition(with: imageView,
-                          duration: 0.3,
+                          duration: settings.duration,
                           animations: transition,
                           group: group,
                           animated: animated)
@@ -289,12 +303,10 @@ fileprivate extension JJFloatingActionButton {
 fileprivate extension JJFloatingActionButton {
 
     func addItems(to superview: UIView) {
-        precondition(animationConfiguration != nil)
-        let configuration = animationConfiguration!
 
         superview.insertSubview(itemContainerView, belowSubview: self)
 
-        configuration.items.forEach { item in
+        openItems.forEach { item in
             item.alpha = 0
             item.transform = .identity
             itemContainerView.addSubview(item)
@@ -310,20 +322,21 @@ fileprivate extension JJFloatingActionButton {
             item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
         }
 
-        layout(items: configuration.items, forStyle: configuration.itemOpeningStyle)
+        layoutItems()
     }
 
     func openItems(animated: Bool, group: DispatchGroup) {
-        precondition(animationConfiguration != nil)
-        let configuration = animationConfiguration!
+        guard let style = currentItemOpeningStyle else {
+            preconditionFailure("Error: current item animation configuration not set!")
+        }
 
-        let numberOfItems = configuration.items.count
+        let numberOfItems = openItems.count
         var delay: TimeInterval = 0.0
         var index = 0
-        for item in configuration.items {
-            prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems, style: configuration.itemOpeningStyle)
+        for item in openItems {
+            prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems, style: style)
             let animation: () -> Void = {
-                self.prepareItemForOpenState(item, style: configuration.itemOpeningStyle)
+                self.prepareItemForOpenState(item, style: style)
             }
             UIView.animate(duration: 0.3,
                            delay: delay,
@@ -333,21 +346,22 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += interItemDelay(forStyle: configuration.itemOpeningStyle)
+            delay += interItemDelay(forStyle: style)
             index += 1
         }
     }
 
     func closeItems(animated: Bool, group: DispatchGroup) {
-        precondition(animationConfiguration != nil)
-        let configuration = animationConfiguration!
+        guard let style = currentItemOpeningStyle else {
+            preconditionFailure("Error: current item animation configuration not set!")
+        }
 
-        let numberOfItems = configuration.items.count
+        let numberOfItems = openItems.count
         var delay: TimeInterval = 0.0
         var index = numberOfItems - 1
-        for item in configuration.items.reversed() {
+        for item in openItems.reversed() {
             let animation: () -> Void = {
-                self.prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems, style: configuration.itemOpeningStyle)
+                self.prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems, style: style)
             }
             UIView.animate(duration: 0.15,
                            delay: delay,
@@ -357,21 +371,25 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += interItemDelay(forStyle: configuration.itemOpeningStyle)
+            delay += interItemDelay(forStyle: style)
             index -= 1
         }
     }
 
-    func layout(items: [JJActionItem], forStyle style: ItemOpeningStyle) {
+    func layoutItems() {
+        guard let style = currentItemOpeningStyle else {
+            preconditionFailure("Error: current item animation configuration not set!")
+        }
+
         switch style {
         case let .popUp(interItemSpacing):
-            layoutItemsInVerticalLine(items, interItemSpacing: interItemSpacing)
+            layoutItemsInVerticalLine(interItemSpacing: interItemSpacing)
         case let .slideIn(interItemSpacing, _):
-            layoutItemsInVerticalLine(items, interItemSpacing: interItemSpacing)
+            layoutItemsInVerticalLine(interItemSpacing: interItemSpacing)
         case let .circularPop(radius):
-            layoutItemsInCircle(items, radius: radius)
+            layoutItemsInCircle(radius: radius)
         case let .circularSlideIn(radius, _):
-            layoutItemsInCircle(items, radius: radius)
+            layoutItemsInCircle(radius: radius)
         }
     }
 
@@ -409,9 +427,9 @@ fileprivate extension JJFloatingActionButton {
         }
     }
 
-    func layoutItemsInVerticalLine(_ items: [JJActionItem], interItemSpacing: CGFloat) {
+    func layoutItemsInVerticalLine(interItemSpacing: CGFloat) {
         var previousItem: JJActionItem?
-        for item in items {
+        for item in openItems {
             let previousView = previousItem ?? circleView
             item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
             item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
@@ -419,10 +437,10 @@ fileprivate extension JJFloatingActionButton {
         }
     }
 
-    func layoutItemsInCircle(_ items: [JJActionItem], radius: CGFloat) {
-        let numberOfItems = items.count
+    func layoutItemsInCircle(radius: CGFloat) {
+        let numberOfItems = openItems.count
         var index: Int = 0
-        for item in items {
+        for item in openItems {
             let angle = angleForItem(at: index, numberOfItems: numberOfItems)
             let dx = radius * cos(angle)
             let dy = radius * sin(angle)
@@ -458,30 +476,6 @@ fileprivate extension JJFloatingActionButton {
 // MARK: - Objective-C setters for opening styles
 
 @objc public extension JJFloatingActionButton {
-
-    /// Sets `buttonOpeningStyle` to `.rotate(angle:)` with given angle.
-    ///
-    /// - Parameter angle: The angle in radian the button will rotate when opening.
-    ///
-    /// - Remark: Should not be used in swift. Set `buttonOpeningStyle` directly instead.
-    ///
-    /// - SeeAlso: `buttonOpeningStyle`.
-    ///
-    func useButtonOpeningStyleRotate(angle: CGFloat) {
-        buttonOpeningStyle = .rotate(angle: angle)
-    }
-
-    /// Sets `buttonOpeningStyle` to `.transition(image:)` with given image.
-    ///
-    /// - Parameter image: The image the button will show when opening.
-    ///
-    /// - Remark: Should not be used in swift. Set `buttonOpeningStyle` directly instead.
-    ///
-    /// - SeeAlso: `buttonOpeningStyle`.
-    ///
-    func useButtonOpeningStyleTransition(image: UIImage) {
-        buttonOpeningStyle = .transition(image: image)
-    }
 
     /// Sets `itemOpeningStyle` to `.popUp(interItemSpacing:)` with given inter item spacing.
     ///

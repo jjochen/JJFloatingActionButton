@@ -96,7 +96,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.buttonColor = .blue
                 actionButton.highlightedButtonColor = .orange
                 actionButton.buttonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Baloon"))
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -131,7 +131,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 actionButton.buttonColor = .blue
                 actionButton.buttonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonOpeningStyle = .rotate(angle: -CGFloat.pi / 5)
+                actionButton.buttonAnimationConfiguration = .rotation(toAngle: -CGFloat.pi / 5)
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -191,7 +191,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when using pop up style") {
                 beforeEach {
                     actionButton.useItemOpeningStylePopUp(interItemSpacing: 10)
-                    actionButton.useButtonOpeningStyleTransition(image: #imageLiteral(resourceName: "Owl"))
+                    actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Owl"))
                 }
 
                 it("it looks correct") {
@@ -208,7 +208,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when using slide in style") {
                 beforeEach {
                     actionButton.useItemOpeningStyleSlideIn(interItemSpacing: 10, distance: 50)
-                    actionButton.useButtonOpeningStyleTransition(image: #imageLiteral(resourceName: "Owl"))
+                    actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Owl"))
                 }
 
                 it("it looks correct") {
@@ -225,7 +225,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when using circular pop up style") {
                 beforeEach {
                     actionButton.useItemOpeningStyleCircularPop(radius: 100)
-                    actionButton.useButtonOpeningStyleRotate(angle: -CGFloat.pi / 3)
+                    actionButton.buttonAnimationConfiguration = .rotation(toAngle: -CGFloat.pi / 3)
                 }
 
                 it("it looks correct with 3 items") {
@@ -413,7 +413,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 context("and is opened animated with open image") {
                     beforeEach {
-                        actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Dots"))
+                        actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Dots"))
                         actionButton.open(animated: true)
                     }
 
@@ -424,7 +424,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 context("and is closed animated with open image") {
                     beforeEach {
-                        actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Dots"))
+                        actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Dots"))
                         actionButton.open(animated: false)
                         actionButton.close(animated: true)
                     }
