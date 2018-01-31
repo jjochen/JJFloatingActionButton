@@ -27,7 +27,7 @@
 		199592AC1FD73F070058BEFC /* JJFloatingActionButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199592AB1FD73F070058BEFC /* JJFloatingActionButton.xib */; };
 		19B10AD81FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */; };
 		19B10ADA1FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */; };
-		19D311DD200F8A630023477D /* CircularPopExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D311DC200F8A630023477D /* CircularPopExampleViewController.swift */; };
+		19D311DD200F8A630023477D /* CircularExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D311DC200F8A630023477D /* CircularExampleViewController.swift */; };
 		19E247E61FD7E6F6009A7BA1 /* JJActionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */; };
 		19E247E81FD83CA7009A7BA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
 		2239EB8C92AD42AB79A037CA /* Pods_JJFloatingActionButton_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75526023A5E4A843EAE2F986 /* Pods_JJFloatingActionButton_Example.framework */; };
@@ -81,7 +81,7 @@
 		19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloationgActionButtonDelegateMock.swift; sourceTree = "<group>"; };
 		19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonPlacementSpec.swift; sourceTree = "<group>"; };
 		19B10ADB1FFE692100D70C32 /* Rakefile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; name = Rakefile; path = ../../Rakefile; sourceTree = "<group>"; tabWidth = 2; };
-		19D311DC200F8A630023477D /* CircularPopExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularPopExampleViewController.swift; sourceTree = "<group>"; };
+		19D311DC200F8A630023477D /* CircularExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularExampleViewController.swift; sourceTree = "<group>"; };
 		19DF53B81FF59AE5006E292F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../Package.swift; sourceTree = "<group>"; };
 		19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JJActionItem.xib; sourceTree = "<group>"; };
 		19E247E91FD854B1009A7BA1 /* .github_changelog_generator */ = {isa = PBXFileReference; lastKnownFileType = text; name = .github_changelog_generator; path = ../../.github_changelog_generator; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 				198B66001FBAE904009A17F2 /* AppDelegate.swift */,
 				198B66021FBAE904009A17F2 /* BasicsExampleViewController.swift */,
 				192D1B6F2003CB8A0093064F /* ConfigurationExampleViewController.swift */,
-				19D311DC200F8A630023477D /* CircularPopExampleViewController.swift */,
+				19D311DC200F8A630023477D /* CircularExampleViewController.swift */,
 				198B66041FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift */,
 				192D1B712003CB930093064F /* SingleItemExampleViewController.swift */,
 				192D1B6D2003C7440093064F /* Helper.swift */,
@@ -462,7 +462,7 @@
 				198B66031FBAE904009A17F2 /* BasicsExampleViewController.swift in Sources */,
 				192D1B702003CB8A0093064F /* ConfigurationExampleViewController.swift in Sources */,
 				192D1B6E2003C7440093064F /* Helper.swift in Sources */,
-				19D311DD200F8A630023477D /* CircularPopExampleViewController.swift in Sources */,
+				19D311DD200F8A630023477D /* CircularExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
