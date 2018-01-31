@@ -241,12 +241,12 @@ fileprivate extension JJFloatingActionButton {
         precondition(animationConfiguration != nil)
 
         switch animationConfiguration!.buttonOpeningStyle {
-        case let .rotate:
+        case .rotate:
             rotateButton(angle: 0,
                          fast: true,
                          group: group,
                          animated: animated)
-        case let .transition:
+        case .transition:
             transistion(to: currentButtonImage,
                         animated: animated,
                         group: group)
@@ -377,13 +377,13 @@ fileprivate extension JJFloatingActionButton {
 
     func prepareItemForClosedState(_ item: JJActionItem, atIndex index: Int, numberOfItems: Int, style: ItemOpeningStyle) {
         switch style {
-        case let .popUp:
+        case .popUp:
             item.scale(by: 0.4)
         case .slideIn:
             let offset: CGFloat = item.isTitleOnTheRight ? -50 : 50
             let point = item.circleView.center.applying(CGAffineTransform(translationX: offset, y: 0))
             item.scale(by: 0.4, translateCircleCenterTo: point)
-        case let .circularPop:
+        case .circularPop:
             item.scale(by: 0.4)
         case let .circularSlideIn(_, distance):
             let angle = angleForItem(at: index, numberOfItems: numberOfItems) + .pi
@@ -402,7 +402,7 @@ fileprivate extension JJFloatingActionButton {
 
     func interItemDelay(forStyle style: ItemOpeningStyle) -> TimeInterval {
         switch style {
-        case let .circularPop:
+        case .circularPop:
             return 0.05
         default:
             return 0.1
