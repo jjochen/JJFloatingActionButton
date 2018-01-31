@@ -53,11 +53,23 @@ public extension JJFloatingActionButton {
         ///
         case popUp(interItemSpacing: CGFloat)
 
+        /// When opening, items "slide in" from the side one after the other in a vertical line.
+        ///
+        /// - Parameter interItemSpacing: The distance in points between two adjacent action items.
+        ///
+        case slideIn(interItemSpacing: CGFloat, distance: CGFloat)
+
         /// When opening, items "pop up" one after the other in a circle around the action button.
         ///
         /// - Parameter radius: The distance in points between the center of an action item and the center of the button.
         ///
         case circularPop(radius: CGFloat)
+
+        /// When opening, items "slide in" one after the other in a circle around the action button.
+        ///
+        /// - Parameter radius: The distance in points between the center of an action item and the center of the button.
+        ///
+        case circularSlideIn(radius: CGFloat, distance: CGFloat)
     }
 }
 
@@ -278,13 +290,11 @@ fileprivate extension JJFloatingActionButton {
 
     func addItems(to superview: UIView) {
         precondition(animationConfiguration != nil)
+        let configuration = animationConfiguration!
 
         superview.insertSubview(itemContainerView, belowSubview: self)
 
-        var previousItem: JJActionItem?
-        var index = 0
-        for item in animationConfiguration!.items {
-            let previousView = previousItem ?? circleView
+        configuration.items.forEach { item in
             item.alpha = 0
             item.transform = .identity
             itemContainerView.addSubview(item)
@@ -294,26 +304,26 @@ fileprivate extension JJFloatingActionButton {
             item.circleView.heightAnchor.constraint(equalTo: circleView.heightAnchor,
                                                     multiplier: itemSizeRatio).isActive = true
 
-            layout(item: item, at: index, previousView: previousView)
-
             item.topAnchor.constraint(greaterThanOrEqualTo: itemContainerView.topAnchor).isActive = true
             item.leadingAnchor.constraint(greaterThanOrEqualTo: itemContainerView.leadingAnchor).isActive = true
             item.trailingAnchor.constraint(lessThanOrEqualTo: itemContainerView.trailingAnchor).isActive = true
             item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
-
-            previousItem = item
-            index += 1
         }
+
+        layout(items: configuration.items, forStyle: configuration.itemOpeningStyle)
     }
 
     func openItems(animated: Bool, group: DispatchGroup) {
         precondition(animationConfiguration != nil)
+        let configuration = animationConfiguration!
 
-        var delay = 0.0
-        for item in animationConfiguration!.items {
-            prepareItemForClosedState(item)
+        let numberOfItems = configuration.items.count
+        var delay: TimeInterval = 0.0
+        var index = 0
+        for item in configuration.items {
+            prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems, style: configuration.itemOpeningStyle)
             let animation: () -> Void = {
-                self.prepareItemForOpenState(item)
+                self.prepareItemForOpenState(item, style: configuration.itemOpeningStyle)
             }
             UIView.animate(duration: 0.3,
                            delay: delay,
@@ -323,17 +333,21 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += interItemDelay
+            delay += interItemDelay(forStyle: configuration.itemOpeningStyle)
+            index += 1
         }
     }
 
     func closeItems(animated: Bool, group: DispatchGroup) {
         precondition(animationConfiguration != nil)
+        let configuration = animationConfiguration!
 
+        let numberOfItems = configuration.items.count
         var delay: TimeInterval = 0.0
-        for item in animationConfiguration!.items.reversed() {
+        var index = numberOfItems - 1
+        for item in configuration.items.reversed() {
             let animation: () -> Void = {
-                self.prepareItemForClosedState(item)
+                self.prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems, style: configuration.itemOpeningStyle)
             }
             UIView.animate(duration: 0.15,
                            delay: delay,
@@ -343,35 +357,101 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += interItemDelay
+            delay += interItemDelay(forStyle: configuration.itemOpeningStyle)
+            index -= 1
         }
     }
 
-    func layout(item: JJActionItem, at _: Int, previousView: UIView) {
-        let interItemSpacing = CGFloat(12)
-        item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
-        item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+    func layout(items: [JJActionItem], forStyle style: ItemOpeningStyle) {
+        switch style {
+        case let .popUp(interItemSpacing):
+            layoutItemsInVerticalLine(items, interItemSpacing: interItemSpacing)
+        case let .slideIn(interItemSpacing, _):
+            layoutItemsInVerticalLine(items, interItemSpacing: interItemSpacing)
+        case let .circularPop(radius):
+            layoutItemsInCircle(items, radius: radius)
+        case let .circularSlideIn(radius, _):
+            layoutItemsInCircle(items, radius: radius)
+        }
     }
 
-    func prepareItemForClosedState(_ item: JJActionItem) {
-        item.scale(by: 0.4)
+    func prepareItemForClosedState(_ item: JJActionItem, atIndex index: Int, numberOfItems: Int, style: ItemOpeningStyle) {
+        switch style {
+        case let .popUp:
+            item.scale(by: 0.4)
+        case .slideIn:
+            let offset: CGFloat = item.isTitleOnTheRight ? -50 : 50
+            let point = item.circleView.center.applying(CGAffineTransform(translationX: offset, y: 0))
+            item.scale(by: 0.4, translateCircleCenterTo: point)
+        case let .circularPop:
+            item.scale(by: 0.4)
+        case let .circularSlideIn(_, distance):
+            let angle = angleForItem(at: index, numberOfItems: numberOfItems) + .pi
+            let dx = distance * cos(angle)
+            let dy = distance * sin(angle)
+            let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: dy))
+            item.scale(by: 0.4, translateCircleCenterTo: point)
+        }
         item.alpha = 0
     }
 
-    func prepareItemForOpenState(_ item: JJActionItem) {
+    func prepareItemForOpenState(_ item: JJActionItem, style _: ItemOpeningStyle) {
         item.transform = .identity
         item.alpha = 1
     }
 
-    var interItemDelay: TimeInterval {
-        precondition(animationConfiguration != nil)
-
-        switch animationConfiguration!.itemOpeningStyle {
-        case let .popUp:
-            return 0.1
+    func interItemDelay(forStyle style: ItemOpeningStyle) -> TimeInterval {
+        switch style {
         case let .circularPop:
+            return 0.05
+        default:
             return 0.1
         }
+    }
+
+    func layoutItemsInVerticalLine(_ items: [JJActionItem], interItemSpacing: CGFloat) {
+        var previousItem: JJActionItem?
+        for item in items {
+            let previousView = previousItem ?? circleView
+            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
+            item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor).isActive = true
+            previousItem = item
+        }
+    }
+
+    func layoutItemsInCircle(_ items: [JJActionItem], radius: CGFloat) {
+        let numberOfItems = items.count
+        var index: Int = 0
+        for item in items {
+            let angle = angleForItem(at: index, numberOfItems: numberOfItems)
+            let dx = radius * cos(angle)
+            let dy = radius * sin(angle)
+
+            item.circleView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor, constant: dx).isActive = true
+            item.circleView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor, constant: dy).isActive = true
+
+            index += 1
+        }
+    }
+
+    func angleForItem(at index: Int, numberOfItems: Int) -> CGFloat {
+        let minAngle = CGFloat.pi
+        let maxAngle = CGFloat.pi * 1.5
+
+        var interItemAngle: CGFloat
+        switch numberOfItems {
+        case 1:
+            interItemAngle = 0
+        case 2:
+            interItemAngle = (maxAngle - minAngle) * 0.8
+        default:
+            interItemAngle = (maxAngle - minAngle) / (CGFloat(numberOfItems) - 1)
+        }
+
+        let marginAngle = ((maxAngle - minAngle) - interItemAngle * (CGFloat(numberOfItems) - 1)) / 2
+        let angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
+
+        return angle
     }
 }
 
@@ -415,6 +495,18 @@ fileprivate extension JJFloatingActionButton {
         itemOpeningStyle = .popUp(interItemSpacing: interItemSpacing)
     }
 
+    /// Sets `itemOpeningStyle` to `.slideIn(interItemSpacing:distance:)` with given inter item spacing.
+    ///
+    /// - Parameter interItemSpacing: The distance in points between two adjacent action items.
+    ///
+    /// - Remark: Should not be used in swift. Set `itemOpeningStyle` directly instead.
+    ///
+    /// - SeeAlso: `itemOpeningStyle`.
+    ///
+    func useItemOpeningStyleSlideIn(interItemSpacing: CGFloat, distance: CGFloat) {
+        itemOpeningStyle = .slideIn(interItemSpacing: interItemSpacing, distance: distance)
+    }
+
     /// Sets `itemOpeningStyle` to `.circularPop(radius:)` with given radius.
     ///
     /// - Parameter radius: The distance in points between the center of an action item and the center of the button.
@@ -425,5 +517,17 @@ fileprivate extension JJFloatingActionButton {
     ///
     func useItemOpeningStyleCircularPop(radius: CGFloat) {
         itemOpeningStyle = .circularPop(radius: radius)
+    }
+
+    /// Sets `itemOpeningStyle` to `.circularSlideIn(radius:distance:)` with given radius.
+    ///
+    /// - Parameter radius: The distance in points between the center of an action item and the center of the button.
+    ///
+    /// - Remark: Should not be used in swift. Set `itemOpeningStyle` directly instead.
+    ///
+    /// - SeeAlso: `itemOpeningStyle`.
+    ///
+    func useItemOpeningStyleCircularSlideIn(radius: CGFloat, distance: CGFloat) {
+        itemOpeningStyle = .circularSlideIn(radius: radius, distance: distance)
     }
 }
