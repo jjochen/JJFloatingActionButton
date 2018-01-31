@@ -32,7 +32,7 @@ internal class CircularPopExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        actionButton.itemOpeningStyle = .circularPop(radius: 120)
+        actionButton.itemOpeningStyle = .circularSlideIn(radius: 120, distance: 80)
         actionButton.buttonOpeningStyle = .rotate(angle: .pi / 4)
 
         actionButton.addItem(image: #imageLiteral(resourceName: "Baloon")) { item in

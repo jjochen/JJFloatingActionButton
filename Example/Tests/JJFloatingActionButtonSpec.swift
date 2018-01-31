@@ -205,6 +205,23 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 }
             }
 
+            context("when using slide in style") {
+                beforeEach {
+                    actionButton.useItemOpeningStyleSlideIn(interItemSpacing: 10, distance: 50)
+                    actionButton.useButtonOpeningStyleTransition(image: #imageLiteral(resourceName: "Owl"))
+                }
+
+                it("it looks correct") {
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+            }
+
             context("when using circular pop up style") {
                 beforeEach {
                     actionButton.useItemOpeningStyleCircularPop(radius: 100)

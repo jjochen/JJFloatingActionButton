@@ -53,7 +53,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         actionButton.buttonImageColor = .white
 
         actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "X"))
-        actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
+        actionButton.itemOpeningStyle = .slideIn(interItemSpacing: 14, distance: 50)
 
         actionButton.layer.shadowColor = UIColor.black.cgColor
         actionButton.layer.shadowOffset = CGSize(width: 0, height: 1)
