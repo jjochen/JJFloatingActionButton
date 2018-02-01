@@ -95,12 +95,12 @@ jobs:
       - store_test_results: *xcpretty-reports
 
 
-  build-and-test-ios10-iphone7plus:
+  build-and-test-ios10-iphone7:
     <<: *defaults
 
     environment:
-      DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7 Plus
-      SIMULATOR: iPhone 7 Plus (10.3.1) [
+      DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
+      SIMULATOR: iPhone 7 (10.3.1) [
 
     steps:
       - checkout
@@ -199,6 +199,6 @@ workflows:
       - lint-podspec
       - swiftlint
       - build-and-test-ios11-iphonex
-      - build-and-test-ios10-iphone7plus
+      - build-and-test-ios10-iphone7
       - build-documentation
       - push-podspec: *filter-version-tags-only

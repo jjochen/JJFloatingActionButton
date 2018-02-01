@@ -186,22 +186,6 @@ extension JJActionItem {
     }
 }
 
-internal extension JJActionItem {
-    var isTitleOnTheRight: Bool {
-        let isRTLLanguage = (UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft)
-        switch titlePosition {
-        case .right:
-            return true
-        case .leading:
-            return isRTLLanguage
-        case .trailing:
-            return !isRTLLanguage
-        default:
-            return false
-        }
-    }
-}
-
 // MARK: - Private Methods
 
 fileprivate extension JJActionItem {
