@@ -48,6 +48,8 @@ import Foundation
     @objc public var dampingRatio: CGFloat = 0.55
 
     @objc public var velocity: CGFloat = 0.3
+
+    @objc public var interItemDeleay: TimeInterval = 0.1
 }
 
 @objc public class JJButtonAnimationConfiguration: NSObject {
@@ -87,62 +89,42 @@ import Foundation
 @objc public extension JJItemAnimationConfiguration {
 
     @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
-        let configuration = JJItemAnimationConfiguration(withLayout: .vertical)
-        configuration.interItemSpacing = interItemSpacing
-        configuration.slideDistance = 0
+        let configuration = JJItemAnimationConfiguration()
+        configuration.itemLayout = verticalLine(withInterItemSpacing: interItemSpacing)
+        configuration.prepareItemForClosedState = scale()
         return configuration
     }
 
     @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
-        let configuration = JJItemAnimationConfiguration(withLayout: .vertical)
-        configuration.interItemSpacing = interItemSpacing
-        configuration.slideDistance = 50
+        let configuration = JJItemAnimationConfiguration()
+        configuration.itemLayout = verticalLine(withInterItemSpacing: interItemSpacing)
+        configuration.prepareItemForClosedState = horizontalOffset()
         return configuration
     }
 
     @objc static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
-        let configuration = JJItemAnimationConfiguration(withLayout: .circular)
-        configuration.radius = radius
-        configuration.slideDistance = 0
+        let configuration = JJItemAnimationConfiguration()
+        configuration.itemLayout = circular(withRadius: radius)
+        configuration.prepareItemForClosedState = scale()
         return configuration
     }
 
     @objc static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
-        let configuration = JJItemAnimationConfiguration(withLayout: .circular)
-        configuration.radius = radius
-        configuration.slideDistance = radius * 0.75
+        let configuration = JJItemAnimationConfiguration()
+        configuration.itemLayout = circular(withRadius: radius)
+        configuration.prepareItemForClosedState = circularOffset(distance: radius * 0.75)
         return configuration
     }
 }
 
 @objc public class JJItemAnimationConfiguration: NSObject {
 
-    @objc public init(withLayout layout: JJItemLayout) {
-        self.layout = layout
-    }
-
-    @objc public enum JJItemLayout: Int {
-        case vertical
-        case circular
-    }
-
-    @objc public let layout: JJItemLayout
-
-    @objc public var interItemDelayWhenOpening: TimeInterval = 0.1
-
-    @objc public var interItemDelayWhenClosing: TimeInterval = 0.1
-
-    @objc public var interItemSpacing: CGFloat = 12
-
-    @objc public var radius: CGFloat = 100
-
-    @objc public var slideDistance: CGFloat = 0
-
     @objc public lazy var opening: JJAnimationSettings = {
         var settings = JJAnimationSettings()
         settings.duration = 0.3
         settings.dampingRatio = 0.55
         settings.velocity = 0.3
+        settings.interItemDeleay = 0.1
         return settings
     }()
 
@@ -151,75 +133,99 @@ import Foundation
         settings.duration = 0.15
         settings.dampingRatio = 0.6
         settings.velocity = 0.8
+        settings.interItemDeleay = 0.1
         return settings
     }()
+
+    // ToDo: create separate class
+    public typealias JJItemLayout = (_ items: [JJActionItem], _ referenceView: UIView) -> Void
+
+    public typealias JJItemPreparation = (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int) -> Void
+
+    @objc public var itemLayout: JJItemLayout = verticalLine(withInterItemSpacing: 12)
+
+    @objc public var prepareItemForOpenState: JJItemPreparation = resetToDefault()
+
+    @objc public var prepareItemForClosedState: JJItemPreparation = scale()
 }
 
-internal extension JJItemAnimationConfiguration {
+public extension JJItemAnimationConfiguration {
 
-    func prepareItemForClosedState(_ item: JJActionItem, atIndex index: Int, numberOfItems: Int) {
-
-        let angle = slideAngleForItem(item, at: index, numberOfItems: numberOfItems)
-        let dx = slideDistance * cos(angle)
-        let dy = slideDistance * sin(angle)
-        let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: dy))
-        item.scale(by: 0.4, translateCircleCenterTo: point)
-
-        item.alpha = 0
+    @objc static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat) -> JJItemLayout {
+        return { items, referenceView in
+            var previousItem: JJActionItem?
+            for item in items {
+                let previousView = previousItem ?? referenceView
+                item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
+                item.circleView.centerXAnchor.constraint(equalTo: referenceView.centerXAnchor).isActive = true
+                previousItem = item
+            }
+        }
     }
 
-    func prepareItemForOpenState(_ item: JJActionItem) {
-        item.transform = .identity
-        item.alpha = 1
+    @objc static func circular(withRadius radius: CGFloat) -> JJItemLayout {
+        return { items, referenceView in
+            let numberOfItems = items.count
+            var index: Int = 0
+            for item in items {
+                let angle = angleForItem(at: index, numberOfItems: numberOfItems)
+                let dx = radius * cos(angle)
+                let dy = radius * sin(angle)
+
+                item.circleView.centerXAnchor.constraint(equalTo: referenceView.centerXAnchor, constant: dx).isActive = true
+                item.circleView.centerYAnchor.constraint(equalTo: referenceView.centerYAnchor, constant: dy).isActive = true
+
+                index += 1
+            }
+        }
     }
 
-    func layoutItems(_ items: [JJActionItem], referenceView: UIView) {
-        switch layout {
-        case .vertical:
-            layoutItemsInVerticalLine(items, referenceView: referenceView)
-        case .circular:
-            layoutItemsInCircle(items, referenceView: referenceView)
+    @objc static func resetToDefault() -> JJItemPreparation {
+        return { item, _, _ in
+            item.transform = .identity
+            item.alpha = 1
+        }
+    }
+
+    @objc static func scale(by ratio: CGFloat = 0.4) -> JJItemPreparation {
+        return { item, _, _ in
+            item.scale(by: ratio)
+            item.alpha = 0
+        }
+    }
+
+    @objc static func offset(translationX: CGFloat, translationY: CGFloat, scale _: CGFloat = 0.4) -> JJItemPreparation {
+        return { item, _, _ in
+            let point = item.circleView.center.applying(CGAffineTransform(translationX: translationX, y: translationY))
+            item.scale(by: 0.4, translateCircleCenterTo: point)
+            item.alpha = 0
+        }
+    }
+
+    @objc static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
+        return { item, _, _ in
+            let dx = item.isTitleOnTheRight ? -distance : distance
+            let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: 0))
+            item.scale(by: scale, translateCircleCenterTo: point)
+            item.alpha = 0
+        }
+    }
+
+    @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
+        return { item, index, numberOfItems in
+            let angle = angleForItem(at: index, numberOfItems: numberOfItems) + CGFloat.pi
+            let dx = distance * cos(angle)
+            let dy = distance * sin(angle)
+            let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: dy))
+            item.scale(by: scale, translateCircleCenterTo: point)
+            item.alpha = 0
         }
     }
 }
 
 fileprivate extension JJItemAnimationConfiguration {
 
-    func layoutItemsInVerticalLine(_ items: [JJActionItem], referenceView: UIView) {
-        var previousItem: JJActionItem?
-        for item in items {
-            let previousView = previousItem ?? referenceView
-            item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
-            item.circleView.centerXAnchor.constraint(equalTo: referenceView.centerXAnchor).isActive = true
-            previousItem = item
-        }
-    }
-
-    func layoutItemsInCircle(_ items: [JJActionItem], referenceView: UIView) {
-        let numberOfItems = items.count
-        var index: Int = 0
-        for item in items {
-            let angle = angleForItem(at: index, numberOfItems: numberOfItems)
-            let dx = radius * cos(angle)
-            let dy = radius * sin(angle)
-
-            item.circleView.centerXAnchor.constraint(equalTo: referenceView.centerXAnchor, constant: dx).isActive = true
-            item.circleView.centerYAnchor.constraint(equalTo: referenceView.centerYAnchor, constant: dy).isActive = true
-
-            index += 1
-        }
-    }
-
-    func slideAngleForItem(_ item: JJActionItem, at index: Int, numberOfItems: Int) -> CGFloat {
-        switch layout {
-        case .vertical:
-            return item.isTitleOnTheRight ? CGFloat.pi : 0
-        case .circular:
-            return angleForItem(at: index, numberOfItems: numberOfItems) + CGFloat.pi
-        }
-    }
-
-    func angleForItem(at index: Int, numberOfItems: Int) -> CGFloat {
+    static func angleForItem(at index: Int, numberOfItems: Int) -> CGFloat {
         let minAngle = CGFloat.pi
         let maxAngle = CGFloat.pi * 1.5
 
