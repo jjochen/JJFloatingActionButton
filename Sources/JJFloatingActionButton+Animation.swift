@@ -254,9 +254,8 @@ fileprivate extension JJFloatingActionButton {
 fileprivate extension JJFloatingActionButton {
 
     func addItems(to superview: UIView) {
-        guard let configuration = currentItemAnimationConfiguration else {
-            preconditionFailure("Error: current item animation configuration not set!")
-        }
+        precondition(currentItemAnimationConfiguration != nil)
+        let configuration = currentItemAnimationConfiguration!
 
         superview.insertSubview(itemContainerView, belowSubview: self)
 
@@ -276,21 +275,20 @@ fileprivate extension JJFloatingActionButton {
             item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
         }
 
-        configuration.layoutItems(openItems, referenceView: circleView)
+        configuration.itemLayout(openItems, circleView)
     }
 
     func openItems(animated: Bool, group: DispatchGroup) {
-        guard let configuration = currentItemAnimationConfiguration else {
-            preconditionFailure("Error: current item animation configuration not set!")
-        }
+        precondition(currentItemAnimationConfiguration != nil)
+        let configuration = currentItemAnimationConfiguration!
 
         let numberOfItems = openItems.count
         var delay: TimeInterval = 0.0
         var index = 0
         for item in openItems {
-            configuration.prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems)
+            configuration.prepareItemForClosedState(item, index, numberOfItems)
             let animation: () -> Void = {
-                configuration.prepareItemForOpenState(item)
+                configuration.prepareItemForOpenState(item, index, numberOfItems)
             }
             UIView.animate(duration: configuration.opening.duration,
                            delay: delay,
@@ -300,22 +298,21 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += configuration.interItemDelayWhenOpening
+            delay += configuration.opening.interItemDeleay
             index += 1
         }
     }
 
     func closeItems(animated: Bool, group: DispatchGroup) {
-        guard let configuration = currentItemAnimationConfiguration else {
-            preconditionFailure("Error: current item animation configuration not set!")
-        }
+        precondition(currentItemAnimationConfiguration != nil)
+        let configuration = currentItemAnimationConfiguration!
 
         let numberOfItems = openItems.count
         var delay: TimeInterval = 0.0
         var index = numberOfItems - 1
         for item in openItems.reversed() {
             let animation: () -> Void = {
-                configuration.prepareItemForClosedState(item, atIndex: index, numberOfItems: numberOfItems)
+                configuration.prepareItemForClosedState(item, index, numberOfItems)
             }
             UIView.animate(duration: configuration.closing.duration,
                            delay: delay,
@@ -325,7 +322,7 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += configuration.interItemDelayWhenClosing
+            delay += configuration.closing.interItemDeleay
             index -= 1
         }
     }

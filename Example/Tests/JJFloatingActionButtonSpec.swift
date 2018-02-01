@@ -272,6 +272,68 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 }
             }
 
+            context("when using circular slide in style") {
+                beforeEach {
+                    actionButton.itemAnimationConfiguration = .circularSlideIn(withRadius: 80)
+                    actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Owl"))
+                }
+
+                it("it looks correct") {
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+            }
+
+            context("when using custom item configuration") {
+                let configuration = JJItemAnimationConfiguration()
+
+                beforeEach {
+                    configuration.prepareItemForOpenState = { item, _, _ in
+                        item.alpha = 1
+                    }
+                    actionButton.itemAnimationConfiguration = configuration
+
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+                }
+
+                it("it looks correct with items scaled") {
+
+                    configuration.itemLayout = JJItemAnimationConfiguration.verticalLine(withInterItemSpacing: 10)
+                    configuration.prepareItemForClosedState = JJItemAnimationConfiguration.scale()
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct with items offseted") {
+
+                    configuration.itemLayout = JJItemAnimationConfiguration.verticalLine(withInterItemSpacing: 10)
+                    configuration.prepareItemForClosedState = JJItemAnimationConfiguration.offset(translationX: -20, translationY: 10)
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct with circular offset items") {
+
+                    configuration.itemLayout = JJItemAnimationConfiguration.circular(withRadius: 50)
+                    configuration.prepareItemForClosedState = JJItemAnimationConfiguration.circularOffset(distance: 20, scale: 0.5)
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+            }
+
             context("when multiple items are added") {
                 var action = "not done"
                 beforeEach {
@@ -510,8 +572,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
         }
 
         describe("JJFloatingActionButton with rtl language") {
-            let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
-            let actionButtonFrame = CGRect(origin: CGPoint(x: 20, y: 230), size: CGSize(width: 56, height: 56))
+            let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 400))
+            let actionButtonFrame = CGRect(origin: CGPoint(x: 50, y: 330), size: CGSize(width: 56, height: 56))
 
             var actionButton: JJFloatingActionButton!
             var superview: UIView!
@@ -526,14 +588,38 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 superview.semanticContentAttribute = .forceRightToLeft
                 actionButton.semanticContentAttribute = .forceRightToLeft
 
+                let item1 = actionButton.addItem(title: "leading", image: #imageLiteral(resourceName: "Like"))
+                item1.titlePosition = .leading
+                item1.semanticContentAttribute = .forceRightToLeft
+                let item2 = actionButton.addItem(title: "trailing", image: #imageLiteral(resourceName: "Baloon"))
+                item2.titlePosition = .trailing
+                item2.semanticContentAttribute = .forceRightToLeft
+                let item3 = actionButton.addItem(title: "right", image: #imageLiteral(resourceName: "Like"))
+                item3.titlePosition = .right
+                item3.semanticContentAttribute = .forceRightToLeft
+                let item4 = actionButton.addItem(title: "left", image: #imageLiteral(resourceName: "Baloon"))
+                item4.titlePosition = .left
+                item4.semanticContentAttribute = .forceRightToLeft
+                let item5 = actionButton.addItem(title: "hidden", image: #imageLiteral(resourceName: "Baloon"))
+                item5.titlePosition = .hidden
+                item5.semanticContentAttribute = .forceRightToLeft
+
                 setNimbleTolerance(0.004)
             }
 
             it("looks correct") {
-                let item1 = actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                item1.semanticContentAttribute = .forceRightToLeft
-                let item2 = actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
-                item2.semanticContentAttribute = .forceRightToLeft
+                actionButton.open(animated: false)
+
+                expect(superview) == snapshot()
+            }
+
+            it("looks correct with slide in configuration") {
+                let configuration = JJItemAnimationConfiguration()
+                configuration.prepareItemForOpenState = { item, _, _ in
+                    item.alpha = 1
+                }
+                configuration.prepareItemForClosedState = JJItemAnimationConfiguration.horizontalOffset(distance: 20, scale: 0.6)
+                actionButton.itemAnimationConfiguration = configuration
 
                 actionButton.open(animated: false)
 
