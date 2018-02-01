@@ -275,7 +275,7 @@ fileprivate extension JJFloatingActionButton {
             item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
         }
 
-        configuration.itemLayout(openItems, circleView)
+        configuration.itemLayout.layout(openItems, circleView)
     }
 
     func openItems(animated: Bool, group: DispatchGroup) {
@@ -286,9 +286,9 @@ fileprivate extension JJFloatingActionButton {
         var delay: TimeInterval = 0.0
         var index = 0
         for item in openItems {
-            configuration.prepareItemForClosedState(item, index, numberOfItems)
+            configuration.closedState.prepare(item, index, numberOfItems)
             let animation: () -> Void = {
-                configuration.prepareItemForOpenState(item, index, numberOfItems)
+                configuration.openState.prepare(item, index, numberOfItems)
             }
             UIView.animate(duration: configuration.opening.duration,
                            delay: delay,
@@ -312,7 +312,7 @@ fileprivate extension JJFloatingActionButton {
         var index = numberOfItems - 1
         for item in openItems.reversed() {
             let animation: () -> Void = {
-                configuration.prepareItemForClosedState(item, index, numberOfItems)
+                configuration.closedState.prepare(item, index, numberOfItems)
             }
             UIView.animate(duration: configuration.closing.duration,
                            delay: delay,

@@ -293,7 +293,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 let configuration = JJItemAnimationConfiguration()
 
                 beforeEach {
-                    configuration.prepareItemForOpenState = { item, _, _ in
+                    configuration.openState = JJItemPreparation { item, _, _ in
                         item.alpha = 1
                     }
                     actionButton.itemAnimationConfiguration = configuration
@@ -305,8 +305,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 it("it looks correct with items scaled") {
 
-                    configuration.itemLayout = JJItemAnimationConfiguration.verticalLine(withInterItemSpacing: 10)
-                    configuration.prepareItemForClosedState = JJItemAnimationConfiguration.scale()
+                    configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
+                    configuration.closedState = .scale()
 
                     actionButton.open(animated: false)
 
@@ -315,8 +315,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 it("it looks correct with items offseted") {
 
-                    configuration.itemLayout = JJItemAnimationConfiguration.verticalLine(withInterItemSpacing: 10)
-                    configuration.prepareItemForClosedState = JJItemAnimationConfiguration.offset(translationX: -20, translationY: 10)
+                    configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
+                    configuration.closedState = .offset(translationX: -20, translationY: 10)
 
                     actionButton.open(animated: false)
 
@@ -325,8 +325,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 it("it looks correct with circular offset items") {
 
-                    configuration.itemLayout = JJItemAnimationConfiguration.circular(withRadius: 50)
-                    configuration.prepareItemForClosedState = JJItemAnimationConfiguration.circularOffset(distance: 20, scale: 0.5)
+                    configuration.itemLayout = .circular(withRadius: 50)
+                    configuration.closedState = .circularOffset(distance: 20, scale: 0.5)
 
                     actionButton.open(animated: false)
 
@@ -588,21 +588,20 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 superview.semanticContentAttribute = .forceRightToLeft
                 actionButton.semanticContentAttribute = .forceRightToLeft
 
+                actionButton.configureDefaultItem { item in
+                    item.titleLabel.font = UIFont(name: "Courier", size: 12)
+                    item.semanticContentAttribute = .forceRightToLeft
+                }
                 let item1 = actionButton.addItem(title: "leading", image: #imageLiteral(resourceName: "Like"))
                 item1.titlePosition = .leading
-                item1.semanticContentAttribute = .forceRightToLeft
                 let item2 = actionButton.addItem(title: "trailing", image: #imageLiteral(resourceName: "Baloon"))
                 item2.titlePosition = .trailing
-                item2.semanticContentAttribute = .forceRightToLeft
                 let item3 = actionButton.addItem(title: "right", image: #imageLiteral(resourceName: "Like"))
                 item3.titlePosition = .right
-                item3.semanticContentAttribute = .forceRightToLeft
                 let item4 = actionButton.addItem(title: "left", image: #imageLiteral(resourceName: "Baloon"))
                 item4.titlePosition = .left
-                item4.semanticContentAttribute = .forceRightToLeft
                 let item5 = actionButton.addItem(title: "hidden", image: #imageLiteral(resourceName: "Baloon"))
                 item5.titlePosition = .hidden
-                item5.semanticContentAttribute = .forceRightToLeft
 
                 setNimbleTolerance(0.004)
             }
@@ -615,10 +614,10 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct with slide in configuration") {
                 let configuration = JJItemAnimationConfiguration()
-                configuration.prepareItemForOpenState = { item, _, _ in
+                configuration.openState = JJItemPreparation { item, _, _ in
                     item.alpha = 1
                 }
-                configuration.prepareItemForClosedState = JJItemAnimationConfiguration.horizontalOffset(distance: 20, scale: 0.6)
+                configuration.closedState = .horizontalOffset(distance: 20, scale: 0.6)
                 actionButton.itemAnimationConfiguration = configuration
 
                 actionButton.open(animated: false)
