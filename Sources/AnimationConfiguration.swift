@@ -186,28 +186,28 @@ import Foundation
 
 @objc public class JJItemPreparation: NSObject {
 
-    @objc public var prepare: (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int) -> Void
+    @objc public var prepare: (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int, _ referenceView: UIView) -> Void
 
-    @objc public init(prepare: @escaping (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int) -> Void) {
+    @objc public init(prepare: @escaping (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int, _ referenceView: UIView) -> Void) {
         self.prepare = prepare
     }
 
     @objc static func identity() -> JJItemPreparation {
-        return JJItemPreparation { item, _, _ in
+        return JJItemPreparation { item, _, _, _ in
             item.transform = .identity
             item.alpha = 1
         }
     }
 
     @objc static func scale(by ratio: CGFloat = 0.4) -> JJItemPreparation {
-        return JJItemPreparation { item, _, _ in
+        return JJItemPreparation { item, _, _, _ in
             item.scale(by: ratio)
             item.alpha = 0
         }
     }
 
     @objc static func offset(translationX: CGFloat, translationY: CGFloat, scale _: CGFloat = 0.4) -> JJItemPreparation {
-        return JJItemPreparation { item, _, _ in
+        return JJItemPreparation { item, _, _, _ in
             let point = item.circleView.center.applying(CGAffineTransform(translationX: translationX, y: translationY))
             item.scale(by: 0.4, translateCircleCenterTo: point)
             item.alpha = 0
@@ -215,8 +215,8 @@ import Foundation
     }
 
     @objc static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
-        return JJItemPreparation { item, _, _ in
-            let dx = item.isTitleOnTheRight ? -distance : distance
+        return JJItemPreparation { item, _, _, referenceView in
+            let dx = referenceView.isOnRightSideOfScreen ? distance : -distance
             let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: 0))
             item.scale(by: scale, translateCircleCenterTo: point)
             item.alpha = 0
@@ -224,7 +224,7 @@ import Foundation
     }
 
     @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
-        return JJItemPreparation { item, index, numberOfItems in
+        return JJItemPreparation { item, index, numberOfItems, _ in
             let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems) + CGFloat.pi
             let dx = distance * cos(angle)
             let dy = distance * sin(angle)
@@ -255,5 +255,15 @@ fileprivate extension JJItemAnimationConfiguration {
         let angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
 
         return angle
+    }
+}
+
+fileprivate extension UIView {
+    var isOnRightSideOfScreen: Bool {
+        guard let window = UIApplication.shared.keyWindow else {
+            return false
+        }
+        let point = convert(center, to: window)
+        return point.x >= window.bounds.size.width / 2
     }
 }

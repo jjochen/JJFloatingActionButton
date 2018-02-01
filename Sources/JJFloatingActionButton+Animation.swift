@@ -286,9 +286,9 @@ fileprivate extension JJFloatingActionButton {
         var delay: TimeInterval = 0.0
         var index = 0
         for item in openItems {
-            configuration.closedState.prepare(item, index, numberOfItems)
+            configuration.closedState.prepare(item, index, numberOfItems, circleView)
             let animation: () -> Void = {
-                configuration.openState.prepare(item, index, numberOfItems)
+                configuration.openState.prepare(item, index, numberOfItems, self.circleView)
             }
             UIView.animate(duration: configuration.opening.duration,
                            delay: delay,
@@ -312,7 +312,7 @@ fileprivate extension JJFloatingActionButton {
         var index = numberOfItems - 1
         for item in openItems.reversed() {
             let animation: () -> Void = {
-                configuration.closedState.prepare(item, index, numberOfItems)
+                configuration.closedState.prepare(item, index, numberOfItems, self.circleView)
             }
             UIView.animate(duration: configuration.closing.duration,
                            delay: delay,

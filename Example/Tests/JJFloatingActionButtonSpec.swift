@@ -293,7 +293,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 let configuration = JJItemAnimationConfiguration()
 
                 beforeEach {
-                    configuration.openState = JJItemPreparation { item, _, _ in
+                    configuration.openState = JJItemPreparation { item, _, _, _ in
                         item.alpha = 1
                     }
                     actionButton.itemAnimationConfiguration = configuration
@@ -614,7 +614,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct with slide in configuration") {
                 let configuration = JJItemAnimationConfiguration()
-                configuration.openState = JJItemPreparation { item, _, _ in
+                configuration.openState = JJItemPreparation { item, _, _, _ in
                     item.alpha = 1
                 }
                 configuration.closedState = .horizontalOffset(distance: 20, scale: 0.6)
