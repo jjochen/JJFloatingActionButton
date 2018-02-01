@@ -90,29 +90,31 @@ import Foundation
 
     @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = verticalLine(withInterItemSpacing: interItemSpacing)
-        configuration.prepareItemForClosedState = scale()
+        configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
+        configuration.closedState = .scale()
         return configuration
     }
 
     @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = verticalLine(withInterItemSpacing: interItemSpacing)
-        configuration.prepareItemForClosedState = horizontalOffset()
+        configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
+        configuration.closedState = .horizontalOffset()
         return configuration
     }
 
     @objc static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = circular(withRadius: radius)
-        configuration.prepareItemForClosedState = scale()
+        configuration.itemLayout = .circular(withRadius: radius)
+        configuration.closedState = .scale()
+        configuration.opening.interItemDeleay = 0.05
+        configuration.closing.interItemDeleay = 0.05
         return configuration
     }
 
     @objc static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = circular(withRadius: radius)
-        configuration.prepareItemForClosedState = circularOffset(distance: radius * 0.75)
+        configuration.itemLayout = .circular(withRadius: radius)
+        configuration.closedState = .circularOffset(distance: radius * 0.75)
         return configuration
     }
 }
@@ -137,22 +139,23 @@ import Foundation
         return settings
     }()
 
-    // ToDo: create separate class
-    public typealias JJItemLayout = (_ items: [JJActionItem], _ referenceView: UIView) -> Void
+    @objc public var itemLayout: JJItemLayout = .verticalLine(withInterItemSpacing: 12)
 
-    public typealias JJItemPreparation = (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int) -> Void
+    @objc public var openState: JJItemPreparation = .identity()
 
-    @objc public var itemLayout: JJItemLayout = verticalLine(withInterItemSpacing: 12)
-
-    @objc public var prepareItemForOpenState: JJItemPreparation = resetToDefault()
-
-    @objc public var prepareItemForClosedState: JJItemPreparation = scale()
+    @objc public var closedState: JJItemPreparation = .scale()
 }
 
-public extension JJItemAnimationConfiguration {
+@objc public class JJItemLayout: NSObject {
+
+    @objc public var layout: (_ items: [JJActionItem], _ referenceView: UIView) -> Void
+
+    @objc public init(layout: @escaping (_ items: [JJActionItem], _ referenceView: UIView) -> Void) {
+        self.layout = layout
+    }
 
     @objc static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat) -> JJItemLayout {
-        return { items, referenceView in
+        return JJItemLayout { items, referenceView in
             var previousItem: JJActionItem?
             for item in items {
                 let previousView = previousItem ?? referenceView
@@ -164,11 +167,11 @@ public extension JJItemAnimationConfiguration {
     }
 
     @objc static func circular(withRadius radius: CGFloat) -> JJItemLayout {
-        return { items, referenceView in
+        return JJItemLayout { items, referenceView in
             let numberOfItems = items.count
             var index: Int = 0
             for item in items {
-                let angle = angleForItem(at: index, numberOfItems: numberOfItems)
+                let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems)
                 let dx = radius * cos(angle)
                 let dy = radius * sin(angle)
 
@@ -179,23 +182,32 @@ public extension JJItemAnimationConfiguration {
             }
         }
     }
+}
 
-    @objc static func resetToDefault() -> JJItemPreparation {
-        return { item, _, _ in
+@objc public class JJItemPreparation: NSObject {
+
+    @objc public var prepare: (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int) -> Void
+
+    @objc public init(prepare: @escaping (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int) -> Void) {
+        self.prepare = prepare
+    }
+
+    @objc static func identity() -> JJItemPreparation {
+        return JJItemPreparation { item, _, _ in
             item.transform = .identity
             item.alpha = 1
         }
     }
 
     @objc static func scale(by ratio: CGFloat = 0.4) -> JJItemPreparation {
-        return { item, _, _ in
+        return JJItemPreparation { item, _, _ in
             item.scale(by: ratio)
             item.alpha = 0
         }
     }
 
     @objc static func offset(translationX: CGFloat, translationY: CGFloat, scale _: CGFloat = 0.4) -> JJItemPreparation {
-        return { item, _, _ in
+        return JJItemPreparation { item, _, _ in
             let point = item.circleView.center.applying(CGAffineTransform(translationX: translationX, y: translationY))
             item.scale(by: 0.4, translateCircleCenterTo: point)
             item.alpha = 0
@@ -203,7 +215,7 @@ public extension JJItemAnimationConfiguration {
     }
 
     @objc static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
-        return { item, _, _ in
+        return JJItemPreparation { item, _, _ in
             let dx = item.isTitleOnTheRight ? -distance : distance
             let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: 0))
             item.scale(by: scale, translateCircleCenterTo: point)
@@ -212,8 +224,8 @@ public extension JJItemAnimationConfiguration {
     }
 
     @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
-        return { item, index, numberOfItems in
-            let angle = angleForItem(at: index, numberOfItems: numberOfItems) + CGFloat.pi
+        return JJItemPreparation { item, index, numberOfItems in
+            let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems) + CGFloat.pi
             let dx = distance * cos(angle)
             let dy = distance * sin(angle)
             let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: dy))
