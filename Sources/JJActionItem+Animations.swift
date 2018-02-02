@@ -22,31 +22,30 @@
 //  THE SOFTWARE.
 //
 
-import CoreGraphics
 import UIKit
 
 internal extension JJActionItem {
 
-    func scale(by factor: CGFloat) {
-        let unscaledCircleCenter = circleView.center
-        scale(by: factor, translateCircleCenterTo: unscaledCircleCenter)
-    }
-
-    func scale(by factor: CGFloat, translateCircleCenterTo point: CGPoint) {
-        let scale = CGAffineTransform(scaleX: factor, y: factor)
-
-        let circleCenter = circleView.center
-        let circleCenterScaled = scaled(point: circleCenter, factor: factor)
-        let translationX = point.x - circleCenterScaled.x
-        let translationY = point.y - circleCenterScaled.y
+    func scale(by factor: CGFloat, translationX: CGFloat = 0, translationY: CGFloat = 0) {
+        let scale = scaleTransformation(factor: factor)
         let translation = CGAffineTransform(translationX: translationX, y: translationY)
-
         let scaleAndTranslation = scale.concatenating(translation)
         transform = scaleAndTranslation
     }
 }
 
 fileprivate extension JJActionItem {
+
+    func scaleTransformation(factor: CGFloat) -> CGAffineTransform {
+        let scale = CGAffineTransform(scaleX: factor, y: factor)
+
+        let center = circleView.center
+        let circleCenterScaled = scaled(point: center, factor: factor)
+        let translationX = center.x - circleCenterScaled.x
+        let translationY = center.y - circleCenterScaled.y
+        let translation = CGAffineTransform(translationX: translationX, y: translationY)
+        return scale.concatenating(translation)
+    }
 
     func scaled(point: CGPoint, factor: CGFloat) -> CGPoint {
         let anchorPoint = CGPoint(x: bounds.width * layer.anchorPoint.x, y: bounds.height * layer.anchorPoint.y)

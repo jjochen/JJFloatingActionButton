@@ -43,7 +43,7 @@ class JJActionItemSpec: QuickSpec {
                 actionItem.buttonColor = .red
                 actionItem.buttonImageColor = .white
 
-                setNimbleTolerance(0.004)
+                setNimbleTolerance(0.002)
             }
 
             it("looks correct") {
@@ -99,7 +99,7 @@ class JJActionItemSpec: QuickSpec {
                 actionItem?.buttonColor = .red
                 actionItem?.buttonImageColor = .white
 
-                setNimbleTolerance(0.004)
+                setNimbleTolerance(0.002)
             }
 
             it("looks correct") {

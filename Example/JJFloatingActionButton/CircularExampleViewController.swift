@@ -33,7 +33,9 @@ internal class CircularExampleViewController: UIViewController {
         super.viewDidLoad()
 
         actionButton.itemAnimationConfiguration = .circularSlideIn(withRadius: 120)
-        actionButton.buttonAnimationConfiguration = .rotation(toAngle: .pi / 4)
+        actionButton.buttonAnimationConfiguration = .rotation(toAngle: .pi * 3 / 4)
+        actionButton.buttonAnimationConfiguration.opening.duration = 0.8
+        actionButton.buttonAnimationConfiguration.closing.duration = 0.6
 
         actionButton.addItem(image: #imageLiteral(resourceName: "Baloon")) { item in
             Helper.showAlert(for: item)
