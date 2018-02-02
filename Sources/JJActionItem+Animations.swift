@@ -29,8 +29,7 @@ internal extension JJActionItem {
     func scale(by factor: CGFloat, translationX: CGFloat = 0, translationY: CGFloat = 0) {
         let scale = scaleTransformation(factor: factor)
         let translation = CGAffineTransform(translationX: translationX, y: translationY)
-        let scaleAndTranslation = scale.concatenating(translation)
-        transform = scaleAndTranslation
+        transform = scale.concatenating(translation)
     }
 }
 
@@ -40,18 +39,18 @@ fileprivate extension JJActionItem {
         let scale = CGAffineTransform(scaleX: factor, y: factor)
 
         let center = circleView.center
-        let circleCenterScaled = scaled(point: center, factor: factor)
+        let circleCenterScaled = point(center, transformed: scale)
         let translationX = center.x - circleCenterScaled.x
         let translationY = center.y - circleCenterScaled.y
         let translation = CGAffineTransform(translationX: translationX, y: translationY)
         return scale.concatenating(translation)
     }
 
-    func scaled(point: CGPoint, factor: CGFloat) -> CGPoint {
+    func point(_ point: CGPoint, transformed transform: CGAffineTransform) -> CGPoint {
         let anchorPoint = CGPoint(x: bounds.width * layer.anchorPoint.x, y: bounds.height * layer.anchorPoint.y)
-        let scaledX = anchorPoint.x + (point.x - anchorPoint.x) * factor
-        let scaledY = anchorPoint.y + (point.y - anchorPoint.y) * factor
-        let scaled = CGPoint(x: scaledX, y: scaledY)
-        return scaled
+        let relativePoint = CGPoint(x: point.x - anchorPoint.x, y: point.y - anchorPoint.y)
+        let transformedPoint = relativePoint.applying(transform)
+        let result = CGPoint(x: anchorPoint.x + transformedPoint.x, y: anchorPoint.y + transformedPoint.y)
+        return result
     }
 }
