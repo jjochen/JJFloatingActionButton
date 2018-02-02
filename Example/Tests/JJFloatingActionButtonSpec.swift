@@ -617,7 +617,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 configuration.openState = JJItemPreparation { item, _, _, _ in
                     item.alpha = 1
                 }
-                configuration.closedState = .horizontalOffset(distance: 20, scale: 0.6)
+                configuration.closedState = .horizontalOffset(distance: 40, scale: 0.6)
                 actionButton.itemAnimationConfiguration = configuration
 
                 actionButton.open(animated: false)
