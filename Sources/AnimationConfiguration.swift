@@ -206,19 +206,17 @@ import Foundation
         }
     }
 
-    @objc static func offset(translationX: CGFloat, translationY: CGFloat, scale _: CGFloat = 0.4) -> JJItemPreparation {
+    @objc static func offset(translationX: CGFloat, translationY: CGFloat, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, _ in
-            let point = item.circleView.center.applying(CGAffineTransform(translationX: translationX, y: translationY))
-            item.scale(by: 0.4, translateCircleCenterTo: point)
+            item.scale(by: scale, translationX: translationX, translationY: translationY)
             item.alpha = 0
         }
     }
 
     @objc static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, referenceView in
-            let dx = referenceView.isOnRightSideOfScreen ? distance : -distance
-            let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: 0))
-            item.scale(by: scale, translateCircleCenterTo: point)
+            let translationX = referenceView.isOnRightSideOfScreen ? distance : -distance
+            item.scale(by: scale, translationX: translationX)
             item.alpha = 0
         }
     }
@@ -226,10 +224,9 @@ import Foundation
     @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, index, numberOfItems, _ in
             let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems) + CGFloat.pi
-            let dx = distance * cos(angle)
-            let dy = distance * sin(angle)
-            let point = item.circleView.center.applying(CGAffineTransform(translationX: dx, y: dy))
-            item.scale(by: scale, translateCircleCenterTo: point)
+            let translationX = distance * cos(angle)
+            let translationY = distance * sin(angle)
+            item.scale(by: scale, translationX: translationX, translationY: translationY)
             item.alpha = 0
         }
     }

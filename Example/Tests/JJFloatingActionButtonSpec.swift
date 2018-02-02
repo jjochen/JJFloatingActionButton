@@ -46,7 +46,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(0.004)
+                setNimbleTolerance(0.002)
             }
 
             it("does not open") {
@@ -603,7 +603,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 let item5 = actionButton.addItem(title: "hidden", image: #imageLiteral(resourceName: "Baloon"))
                 item5.titlePosition = .hidden
 
-                setNimbleTolerance(0.004)
+                setNimbleTolerance(0.002)
             }
 
             it("looks correct") {
