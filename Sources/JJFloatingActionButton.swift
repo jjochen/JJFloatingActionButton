@@ -41,7 +41,6 @@ import UIKit
 ///   ````
 ///
 @objc @IBDesignable public class JJFloatingActionButton: UIControl {
-
     /// The delegate object for the floating action button.
     ///
     @objc public weak var delegate: JJFloatingActionButtonDelegate?
@@ -91,7 +90,7 @@ import UIKit
     /// The image displayed on the button by default.
     /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
     /// the image from the item is shown istead.
-    /// When set to `nil` an image of a plus is used.
+    /// When set to `nil` an image of a plus sign is used.
     /// Default is `nil`.
     ///
     /// - SeeAlso: `imageView`
@@ -124,26 +123,18 @@ import UIKit
     @objc @IBInspectable public dynamic var itemSizeRatio: CGFloat = 0.75
 
     /// The opening style of the floating action button itself.
-    /// Possible values are
-    ///   - `.rotate(image:)`
-    ///   - `.transition(radius:)`
+    /// Default is `JJButtonAnimationConfiguration.rotation()`
     ///
-    /// - Warning: Not accessible from Objective-C because its type cannot be represented in Objective-C.
-    ///
-    /// - SeeAlso: `useButtonOpeningStyleRotate(angle:)`
-    /// - SeeAlso: `useButtonOpeningStyleTransition(image:)`
+    /// - SeeAlso: `JJButtonAnimationConfiguration`
+    /// - SeeAlso: `itemAnimationConfiguration`
     ///
     public var buttonAnimationConfiguration: JJButtonAnimationConfiguration = .rotation()
 
     /// The opening style of the action items.
-    /// Possible values are
-    ///   - `.popUp(interItemSpacing:)`
-    ///   - `.circularPop(radius:)`
+    /// Default is `JJItemAnimationConfiguration.popUp()`
     ///
-    /// - Warning: Not accessible from Objective-C because its type cannot be represented in Objective-C.
-    ///
-    /// - SeeAlso: `useItemOpeningStylePopUp(interItemSpacing:)`
-    /// - SeeAlso: `useItemOpeningStyleCircularPop(radius:)`
+    /// - SeeAlso: `JJItemAnimationConfiguration`
+    /// - SeeAlso: `buttonAnimationConfiguration`
     ///
     public var itemAnimationConfiguration: JJItemAnimationConfiguration = .popUp()
 
@@ -257,7 +248,6 @@ import UIKit
 // MARK: - Public Methods
 
 @objc public extension JJFloatingActionButton {
-
     /// Add an action item with title, image and action to the list of items.
     /// The item will be pre configured with the default values.
     ///
@@ -333,7 +323,6 @@ import UIKit
 // MARK: - UIControl
 
 extension JJFloatingActionButton {
-
     /// A Boolean value indicating whether the action button draws a highlight.
     ///
     open override var isHighlighted: Bool {
@@ -350,7 +339,6 @@ extension JJFloatingActionButton {
 // MARK: - UIView
 
 extension JJFloatingActionButton {
-
     /// The natural size for the floating action button.
     ///
     open override var intrinsicContentSize: CGSize {
@@ -361,7 +349,6 @@ extension JJFloatingActionButton {
 // MARK: - Setup
 
 fileprivate extension JJFloatingActionButton {
-
     func setup() {
         backgroundColor = .clear
         clipsToBounds = false
@@ -420,7 +407,6 @@ fileprivate extension JJFloatingActionButton {
 // MARK: - Helper
 
 internal extension JJFloatingActionButton {
-
     var currentButtonImage: UIImage? {
         if isSingleActionButton, let image = enabledItems.first?.imageView.image {
             return image
@@ -441,7 +427,6 @@ internal extension JJFloatingActionButton {
 // MARK: - Actions
 
 fileprivate extension JJFloatingActionButton {
-
     @objc func buttonWasTapped() {
         switch buttonState {
         case .open:

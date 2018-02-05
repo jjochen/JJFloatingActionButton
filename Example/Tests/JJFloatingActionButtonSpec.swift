@@ -28,11 +28,8 @@ import Nimble_Snapshots
 import Quick
 
 class JJFloatingActionButtonSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJFloatingActionButton") {
-
             let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
             let actionButtonFrame = CGRect(origin: CGPoint(x: 130, y: 230), size: CGSize(width: 56, height: 56))
 
@@ -426,7 +423,6 @@ class JJFloatingActionButtonSpec: QuickSpec {
         }
 
         describe("JJFloatingActionButton without superview") {
-
             let actionButtonFrame = CGRect(origin: .zero, size: CGSize(width: 56, height: 56))
             var actionButton: JJFloatingActionButton!
 
@@ -435,7 +431,6 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             context("when multiple items are added") {
-
                 beforeEach {
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
                     actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))

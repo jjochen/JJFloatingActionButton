@@ -25,7 +25,6 @@
 import UIKit
 
 public extension JJFloatingActionButton {
-
     /// The shadow color of the floating action button.
     /// Default is `UIColor.black`.
     ///
@@ -77,10 +76,8 @@ public extension JJFloatingActionButton {
         }
     }
 }
-
 
 extension JJActionItem {
-
     /// The shadow color of the floating action button.
     /// Default is `UIColor.black`.
     ///
@@ -132,4 +129,3 @@ extension JJActionItem {
         }
     }
 }
-

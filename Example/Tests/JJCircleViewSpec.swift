@@ -28,9 +28,7 @@ import Nimble_Snapshots
 import Quick
 
 class JJCircleViewSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJCircleView loaded from xib") {
             var circleView: JJCircleView?
 

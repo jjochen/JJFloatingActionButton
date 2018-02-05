@@ -25,7 +25,6 @@
 import UIKit
 
 @objc public extension JJFloatingActionButton {
-
     /// Add floating action button to a given superview and place in trailing bottom corner.
     ///
     /// - Parameter superview: The view to which the floating action button is added as a subview.

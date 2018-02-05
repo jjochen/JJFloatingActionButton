@@ -30,7 +30,6 @@ internal struct Styles {
 // MARK: - Colors
 
 internal extension Styles {
-
     static var defaultButtonColor: UIColor {
         return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
     }
@@ -55,7 +54,6 @@ internal extension Styles {
 // MARK: - Images
 
 internal extension Styles {
-
     static var plusImage: UIImage? {
         return drawImage(name: "plus", size: CGSize(width: 24, height: 24)) {
             let bezierPath = UIBezierPath()
@@ -105,7 +103,6 @@ internal extension Styles {
 // MARK: - Helper
 
 fileprivate extension Styles {
-
     static var cache = NSCache<NSString, UIImage>()
 
     static func drawImage(name: NSString,
