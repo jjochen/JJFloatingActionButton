@@ -227,7 +227,7 @@ fileprivate extension JJFloatingActionButton {
 
         UIView.animate(duration: settings.duration,
                        usingSpringWithDamping: settings.dampingRatio,
-                       initialSpringVelocity: settings.velocity,
+                       initialSpringVelocity: settings.initialVelocity,
                        animations: animation,
                        group: group,
                        animated: animated)
@@ -273,7 +273,7 @@ fileprivate extension JJFloatingActionButton {
             item.bottomAnchor.constraint(lessThanOrEqualTo: itemContainerView.bottomAnchor).isActive = true
         }
 
-        configuration.itemLayout.layout(openItems, circleView)
+        configuration.itemLayout.layout(openItems, self)
     }
 
     func openItems(animated: Bool, group: DispatchGroup) {
@@ -284,14 +284,14 @@ fileprivate extension JJFloatingActionButton {
         var delay: TimeInterval = 0.0
         var index = 0
         for item in openItems {
-            configuration.closedState.prepare(item, index, numberOfItems, circleView)
+            configuration.closedState.prepare(item, index, numberOfItems, self)
             let animation: () -> Void = {
-                configuration.openState.prepare(item, index, numberOfItems, self.circleView)
+                configuration.openState.prepare(item, index, numberOfItems, self)
             }
             UIView.animate(duration: configuration.opening.duration,
                            delay: delay,
                            usingSpringWithDamping: configuration.opening.dampingRatio,
-                           initialSpringVelocity: configuration.opening.velocity,
+                           initialSpringVelocity: configuration.opening.initialVelocity,
                            animations: animation,
                            group: group,
                            animated: animated)
@@ -310,12 +310,12 @@ fileprivate extension JJFloatingActionButton {
         var index = numberOfItems - 1
         for item in openItems.reversed() {
             let animation: () -> Void = {
-                configuration.closedState.prepare(item, index, numberOfItems, self.circleView)
+                configuration.closedState.prepare(item, index, numberOfItems, self)
             }
             UIView.animate(duration: configuration.closing.duration,
                            delay: delay,
                            usingSpringWithDamping: configuration.closing.dampingRatio,
-                           initialSpringVelocity: configuration.closing.velocity,
+                           initialSpringVelocity: configuration.closing.initialVelocity,
                            animations: animation,
                            group: group,
                            animated: animated)
