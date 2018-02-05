@@ -215,7 +215,7 @@ import Foundation
 
     @objc static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, referenceView in
-            let translationX = referenceView.isOnRightSideOfScreen ? distance : -distance
+            let translationX = referenceView.isOnLeftSideOfScreen ? -distance : distance
             item.scale(by: scale, translationX: translationX)
             item.alpha = 0
         }
@@ -232,7 +232,7 @@ import Foundation
     }
 }
 
-fileprivate extension JJItemAnimationConfiguration {
+internal extension JJItemAnimationConfiguration {
 
     static func angleForItem(at index: Int, numberOfItems: Int) -> CGFloat {
         let minAngle = CGFloat.pi
@@ -255,12 +255,17 @@ fileprivate extension JJItemAnimationConfiguration {
     }
 }
 
-fileprivate extension UIView {
-    var isOnRightSideOfScreen: Bool {
-        guard let window = UIApplication.shared.keyWindow else {
+internal extension UIView {
+
+    var isOnLeftSideOfScreen: Bool {
+        return isOnLeftSide(ofView: UIApplication.shared.keyWindow)
+    }
+
+    func isOnLeftSide(ofView superview: UIView?) -> Bool {
+        guard let superview = superview else {
             return false
         }
-        let point = convert(center, to: window)
-        return point.x >= window.bounds.size.width / 2
+        let point = convert(center, to: superview)
+        return point.x < superview.bounds.size.width / 2
     }
 }
