@@ -1,5 +1,5 @@
 //
-//  JJFloatingActionButtonSpec.swift
+//  AnimationConfigurationSpec.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
@@ -196,7 +196,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 it("it looks correct with circular offset items") {
 
                     configuration.itemLayout = .circular(withRadius: 50)
-                    configuration.closedState = .circularOffset(distance: 20, scale: 0.5)
+                    configuration.closedState = .circularOffset(distance: 50, scale: 0.5)
 
                     actionButton.open(animated: false)
 
@@ -232,6 +232,42 @@ class AnimationConfigurationSpec: QuickSpec {
                 expect(actionButton.isOnLeftSideOfScreen).to(beTrue())
             }
 
+            context("when using circular pop up style") {
+                beforeEach {
+                    actionButton.itemAnimationConfiguration = .circularPopUp(withRadius: 100)
+                    actionButton.buttonAnimationConfiguration = .rotation(toAngle: -CGFloat.pi / 3)
+                    actionButton.items = []
+                }
+
+                it("it looks correct with 3 items") {
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct with 2 items") {
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct with 1 item") {
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.handleSingleActionDirectly = false
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+            }
+
             context("when using custom item animation configuration") {
                 let configuration = JJItemAnimationConfiguration()
 
@@ -256,6 +292,16 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .offset(translationX: -20, translationY: 10)
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
+                it("it looks correct with circular offset items") {
+
+                    configuration.itemLayout = .circular(withRadius: 50)
+                    configuration.closedState = .circularOffset(distance: 50, scale: 0.5)
 
                     actionButton.open(animated: false)
 

@@ -159,11 +159,11 @@
 			isa = PBXGroup;
 			children = (
 				198B66191FBAE904009A17F2 /* Info.plist */,
-				19EDBD4420285DF100559C37 /* AnimationConfigurationSpec.swift */,
 				195269441FD7E63B0053C785 /* JJActionItemSpec.swift */,
 				1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */,
 				19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */,
 				198B66171FBAE904009A17F2 /* JJFloatingActionButtonSpec.swift */,
+				19EDBD4420285DF100559C37 /* AnimationConfigurationSpec.swift */,
 				1957C8C920128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift */,
 				1957C8C42012815000F1574B /* JJFloatingActionButtonAppearanceSpec.swift */,
 				1957C8C7201283EF00F1574B /* JJActionItemAppearanceSpec.swift */,

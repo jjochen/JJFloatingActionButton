@@ -171,7 +171,7 @@ import Foundation
             let numberOfItems = items.count
             var index: Int = 0
             for item in items {
-                let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems)
+                let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems, referenceView: referenceView)
                 let dx = radius * cos(angle)
                 let dy = radius * sin(angle)
 
@@ -222,8 +222,8 @@ import Foundation
     }
 
     @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
-        return JJItemPreparation { item, index, numberOfItems, _ in
-            let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems) + CGFloat.pi
+        return JJItemPreparation { item, index, numberOfItems, referenceView in
+            let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems, referenceView: referenceView) + CGFloat.pi
             let translationX = distance * cos(angle)
             let translationY = distance * sin(angle)
             item.scale(by: scale, translationX: translationX, translationY: translationY)
@@ -234,24 +234,25 @@ import Foundation
 
 internal extension JJItemAnimationConfiguration {
 
-    static func angleForItem(at index: Int, numberOfItems: Int) -> CGFloat {
-        let minAngle = CGFloat.pi
-        let maxAngle = CGFloat.pi * 1.5
+    static func angleForItem(at index: Int, numberOfItems: Int, referenceView: UIView) -> CGFloat {
+        precondition(numberOfItems > 0)
+        precondition(index >= 0)
+        precondition(index < numberOfItems)
+
+        let startAngle: CGFloat = referenceView.isOnLeftSideOfScreen ? 2 * .pi : .pi
+        let endAngle: CGFloat = 1.5 * .pi
 
         var interItemAngle: CGFloat
-        switch numberOfItems {
-        case 1:
-            interItemAngle = 0
-        case 2:
-            interItemAngle = (maxAngle - minAngle) * 0.8
+        switch (numberOfItems, index) {
+        case (1, _):
+            return (startAngle + endAngle) / 2
+        case (2, 0):
+            return startAngle + 0.1 * (endAngle - startAngle)
+        case (2, 1):
+            return endAngle - 0.1 * (endAngle - startAngle)
         default:
-            interItemAngle = (maxAngle - minAngle) / (CGFloat(numberOfItems) - 1)
+            return startAngle + CGFloat(index) * (endAngle - startAngle) / (CGFloat(numberOfItems) - 1)
         }
-
-        let marginAngle = ((maxAngle - minAngle) - interItemAngle * (CGFloat(numberOfItems) - 1)) / 2
-        let angle = minAngle + marginAngle + CGFloat(index) * interItemAngle
-
-        return angle
     }
 }
 
