@@ -150,7 +150,7 @@ jobs:
 
       - run:
           name: Build Documentation
-          command: bundle exec rake build_documentation
+          command: bundle exec rake generate_documentation
 
 
   swiftlint:

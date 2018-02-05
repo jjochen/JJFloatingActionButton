@@ -24,25 +24,132 @@
 
 import Foundation
 
-// MARK: - Default Button Configurations
+// MARK: - JJAnimationSettings
 
+/// General animation configuration settings
+///
 @objc public class JJAnimationSettings: NSObject {
+    /// Duration of the animation.
+    /// Default is `0.3`
+    ///
     @objc public var duration: TimeInterval = 0.3
 
+    /// Damping ratio of the animation.
+    /// Default is `0.55`
+    ///
+    /// - Remark: Not used for transitions.
+    ///
     @objc public var dampingRatio: CGFloat = 0.55
 
-    @objc public var velocity: CGFloat = 0.3
+    /// Initial velocity of the animation.
+    /// Default is `0.3`
+    ///
+    /// - Remark: Not used for transitions.
+    ///
+    @objc public var initialVelocity: CGFloat = 0.3
 
+    /// Delay in between two item animations.
+    /// Default is `0.1`
+    ///
+    /// - Remark: Only used for item animations.
+    ///
     @objc public var interItemDeleay: TimeInterval = 0.1
 }
 
+// MARK: - JJButtonAnimationConfiguration
+
+/// Button animation configuration
+///
+@objc public class JJButtonAnimationConfiguration: NSObject {
+    /// Initializes and returns a newly allocated button animation configuration object with the specified style.
+    ///
+    /// - Parameter style: The animation style.
+    ///
+    /// - Returns: An initialized button animation configuration object.
+    ///
+    @objc public init(withStyle style: JJButtonAnimationStyle) {
+        self.style = style
+    }
+
+    /// Button animation style
+    ///
+    @objc public enum JJButtonAnimationStyle: Int {
+        /// Rotate button image to given angle.
+        ///
+        case rotation
+
+        /// Transition to given image.
+        ///
+        case transition
+    }
+
+    /// Button animation style
+    /// Possible values:
+    ///   - `.rotation`
+    ///   - `.transition`
+    ///
+    @objc public let style: JJButtonAnimationStyle
+
+    /// The angle in radian the button will rotate to when opening.
+    ///
+    /// - Remark: Is ignored for style `.rotation`
+    ///
+    @objc public var angle: CGFloat = 0
+
+    /// The image button will transition to when opening.
+    ///
+    /// - Remark: Is ignored for style `.transition`
+    ///
+    @objc public var image: UIImage?
+
+    /// Animation settings for opening animation.
+    /// Default values are:
+    ///   - `duration = 0.3`
+    ///   - `dampingRatio = 0.55`
+    ///   - `initialVelocity = 0.3`
+    ///
+    @objc public lazy var opening: JJAnimationSettings = {
+        var settings = JJAnimationSettings()
+        settings.duration = 0.3
+        settings.dampingRatio = 0.55
+        settings.initialVelocity = 0.3
+        return settings
+    }()
+
+    /// Animation settings for closing animation.
+    /// Default values are:
+    ///   - `duration = 0.3`
+    ///   - `dampingRatio = 0.6`
+    ///   - `initialVelocity = 0.8`
+    ///
+    @objc public lazy var closing: JJAnimationSettings = {
+        var settings = JJAnimationSettings()
+        settings.duration = 0.3
+        settings.dampingRatio = 0.6
+        settings.initialVelocity = 0.8
+        return settings
+    }()
+}
+
 @objc public extension JJButtonAnimationConfiguration {
+    /// Returns a button animation configuration that rotates the button image by given angle.
+    ///
+    /// - Parameter angle: The angle in radian the button will rotate to when opening.
+    ///
+    /// - Returns: A button animation configuration object.
+    ///
     @objc static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .rotation)
         configuration.angle = angle
         return configuration
     }
 
+    /// Returns a button animation configuration that transitions to a given image.
+    ///
+    /// - Parameter image: The image button will transition to when opening.
+    ///
+    /// - Returns: A button animation configuration object.
+    ///
     @objc static func transition(toImage image: UIImage) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .transition)
         configuration.image = image
@@ -50,40 +157,68 @@ import Foundation
     }
 }
 
-@objc public class JJButtonAnimationConfiguration: NSObject {
-    @objc public init(withStyle style: JJButtonAnimationStyle) {
-        self.style = style
-    }
+// MARK: - JJItemAnimationConfiguration
 
-    @objc public enum JJButtonAnimationStyle: Int {
-        case rotation
-        case transition
-    }
-
-    @objc public let style: JJButtonAnimationStyle
-
-    @objc public var angle: CGFloat = 0
-
-    @objc public var image: UIImage?
-
+/// Item animation configuration
+///
+@objc public class JJItemAnimationConfiguration: NSObject {
+    /// Animation settings for opening animation.
+    /// Default values are:
+    ///   - `duration = 0.3`
+    ///   - `dampingRatio = 0.55`
+    ///   - `initialVelocity = 0.3`
+    ///   - `interItemDeleay = 0.1`
+    ///
     @objc public lazy var opening: JJAnimationSettings = {
         var settings = JJAnimationSettings()
         settings.duration = 0.3
         settings.dampingRatio = 0.55
-        settings.velocity = 0.3
+        settings.initialVelocity = 0.3
+        settings.interItemDeleay = 0.1
         return settings
     }()
 
+    /// Animation settings for closing animation.
+    /// Default values are:
+    ///   - `duration = 0.3`
+    ///   - `dampingRatio = 0.6`
+    ///   - `initialVelocity = 0.8`
+    ///   - `interItemDeleay = 0.1`
+    ///
     @objc public lazy var closing: JJAnimationSettings = {
         var settings = JJAnimationSettings()
-        settings.duration = 0.3
+        settings.duration = 0.15
         settings.dampingRatio = 0.6
-        settings.velocity = 0.8
+        settings.initialVelocity = 0.8
+        settings.interItemDeleay = 0.1
         return settings
     }()
+
+    /// Defines the layout of the acton items when opened.
+    /// Default is a layout in a vertical line with 12 points inter item spacing
+    ///
+    @objc public var itemLayout: JJItemLayout = .verticalLine()
+
+    /// Configures the items before opening. The change from open to closed state is animated.
+    /// Default is a scale by factor `0.4` and `item.alpha = 0`.
+    ///
+    @objc public var closedState: JJItemPreparation = .scale()
+
+    /// Configures the items for open state. The change from open to closed state is animated.
+    /// Default is `item.transform = .identity` and `item.alpha = 1`.
+    ///
+    @objc public var openState: JJItemPreparation = .identity()
 }
 
 @objc public extension JJItemAnimationConfiguration {
+    /// Returns an item animation configuration with
+    ///   - `itemLayout = .verticalLine()`
+    ///   - `closedState = .scale()`
+    ///
+    /// - Parameter interItemSpacing: The distance between two adjacent items.
+    ///
+    /// - Returns: An item animation configuration object.
+    ///
     @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
@@ -91,6 +226,14 @@ import Foundation
         return configuration
     }
 
+    /// Returns an item animation configuration with
+    ///   - `itemLayout = .verticalLine()`
+    ///   - `closedState = .horizontalOffset()`
+    ///
+    /// - Parameter interItemSpacing: The distance between two adjacent items.
+    ///
+    /// - Returns: An item animation configuration object.
+    ///
     @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
@@ -98,6 +241,14 @@ import Foundation
         return configuration
     }
 
+    /// Returns an item animation configuration with
+    ///   - `itemLayout = .circular()`
+    ///   - `closedState = .scale()`
+    ///
+    /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    ///
+    /// - Returns: An item animation configuration object.
+    ///
     @objc static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
@@ -107,6 +258,14 @@ import Foundation
         return configuration
     }
 
+    /// Returns an item animation configuration with
+    ///   - `itemLayout = .circular()`
+    ///   - `closedState = .circularOffset()`
+    ///
+    /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    ///
+    /// - Returns: An item animation configuration object.
+    ///
     @objc static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
@@ -115,62 +274,60 @@ import Foundation
     }
 }
 
-@objc public class JJItemAnimationConfiguration: NSObject {
-    @objc public lazy var opening: JJAnimationSettings = {
-        var settings = JJAnimationSettings()
-        settings.duration = 0.3
-        settings.dampingRatio = 0.55
-        settings.velocity = 0.3
-        settings.interItemDeleay = 0.1
-        return settings
-    }()
+// MARK: - JJItemLayout
 
-    @objc public lazy var closing: JJAnimationSettings = {
-        var settings = JJAnimationSettings()
-        settings.duration = 0.15
-        settings.dampingRatio = 0.6
-        settings.velocity = 0.8
-        settings.interItemDeleay = 0.1
-        return settings
-    }()
-
-    @objc public var itemLayout: JJItemLayout = .verticalLine(withInterItemSpacing: 12)
-
-    @objc public var openState: JJItemPreparation = .identity()
-
-    @objc public var closedState: JJItemPreparation = .scale()
-}
-
+/// Item layout
+///
 @objc public class JJItemLayout: NSObject {
-    @objc public var layout: (_ items: [JJActionItem], _ referenceView: UIView) -> Void
+    /// A closure that defines the layout of given action items relative to an action button.
+    ///
+    @objc public var layout: (_ items: [JJActionItem], _ actionButton: JJFloatingActionButton) -> Void
 
-    @objc public init(layout: @escaping (_ items: [JJActionItem], _ referenceView: UIView) -> Void) {
+    /// Initializes and returns a newly allocated item layout object with given layout closure.
+    ///
+    /// - Parameter layout: A closure that defines the the layout of given action items relative to an action button.
+    ///
+    /// - Returns: An initialized item layout object.
+    ///
+    @objc public init(layout: @escaping (_ items: [JJActionItem], _ actionButton: JJFloatingActionButton) -> Void) {
         self.layout = layout
     }
 
-    @objc static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat) -> JJItemLayout {
-        return JJItemLayout { items, referenceView in
+    /// Returns an item layout object that places the items in a vertical line with given inter item spacing.
+    ///
+    /// - Parameter interItemSpacing: The distance between two adjacent items.
+    ///
+    /// - Returns: An item layout object.
+    ///
+    @objc static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemLayout {
+        return JJItemLayout { items, actionButton in
             var previousItem: JJActionItem?
             for item in items {
-                let previousView = previousItem ?? referenceView
+                let previousView = previousItem ?? actionButton
                 item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
-                item.circleView.centerXAnchor.constraint(equalTo: referenceView.centerXAnchor).isActive = true
+                item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor).isActive = true
                 previousItem = item
             }
         }
     }
 
-    @objc static func circular(withRadius radius: CGFloat) -> JJItemLayout {
-        return JJItemLayout { items, referenceView in
+    /// Returns an item layout object that places the items in a circle around the action button with given radius.
+    ///
+    /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    ///
+    /// - Returns: An item layout object.
+    ///
+    @objc static func circular(withRadius radius: CGFloat = 100) -> JJItemLayout {
+        return JJItemLayout { items, actionButton in
             let numberOfItems = items.count
             var index: Int = 0
             for item in items {
-                let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems, referenceView: referenceView)
+                let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems, actionButton: actionButton)
                 let dx = radius * cos(angle)
                 let dy = radius * sin(angle)
 
-                item.circleView.centerXAnchor.constraint(equalTo: referenceView.centerXAnchor, constant: dx).isActive = true
-                item.circleView.centerYAnchor.constraint(equalTo: referenceView.centerYAnchor, constant: dy).isActive = true
+                item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor, constant: dx).isActive = true
+                item.circleView.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor, constant: dy).isActive = true
 
                 index += 1
             }
@@ -178,13 +335,36 @@ import Foundation
     }
 }
 
-@objc public class JJItemPreparation: NSObject {
-    @objc public var prepare: (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int, _ referenceView: UIView) -> Void
+// MARK: - JJItemPreparation
 
-    @objc public init(prepare: @escaping (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int, _ referenceView: UIView) -> Void) {
+/// Item preparation
+///
+@objc public class JJItemPreparation: NSObject {
+    /// A closure that prepares a given action item for animation.
+    ///
+    @objc public var prepare: (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int, _ actionButton: JJFloatingActionButton) -> Void
+
+    /// Initializes and returns a newly allocated item preparation object with given prepare closure.
+    ///
+    /// - Parameter layout: A closure that defines the the layout of given action items relative to an action button.
+    ///
+    /// - Returns: An initialized item layout object.
+    ///
+    @objc public init(prepare: @escaping (
+        _ item: JJActionItem,
+        _ index: Int,
+        _ numberOfItems: Int,
+        _ actionButton: JJFloatingActionButton
+    ) -> Void) {
         self.prepare = prepare
     }
 
+    /// Returns an item preparation object that
+    ///   - sets `item.alpha` to `1` and
+    ///   - `item.transform` to `identitiy`.
+    ///
+    /// - Returns: An item preparation object.
+    ///
     @objc static func identity() -> JJItemPreparation {
         return JJItemPreparation { item, _, _, _ in
             item.transform = .identity
@@ -192,6 +372,14 @@ import Foundation
         }
     }
 
+    /// Returns an item preparation object that
+    ///   - sets `item.alpha` to `0` and
+    ///   - scales the item by given ratio.
+    ///
+    /// - Parameter ratio: The factor by which the item is scaled
+    ///
+    /// - Returns: An item preparation object.
+    ///
     @objc static func scale(by ratio: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, _ in
             item.scale(by: ratio)
@@ -199,6 +387,17 @@ import Foundation
         }
     }
 
+    /// Returns an item preparation object that
+    ///   - sets `item.alpha` to `0`,
+    ///   - offsets the item by given values and
+    ///   - scales the item by given ratio.
+    ///
+    /// - Parameter translationX: The value in points by which the item is offsetted horizontally
+    /// - Parameter translationY: The value in points by which the item is offsetted vertically
+    /// - Parameter scale: The factor by which the item is scaled
+    ///
+    /// - Returns: An item preparation object.
+    ///
     @objc static func offset(translationX: CGFloat, translationY: CGFloat, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, _ in
             item.scale(by: scale, translationX: translationX, translationY: translationY)
@@ -206,19 +405,43 @@ import Foundation
         }
     }
 
+    /// Returns an item preparation object that
+    ///   - sets `item.alpha` to `0`,
+    ///   - offsets the item horizontally by given values.
+    ///
+    /// - Parameter distance: The value in points by which the item is offsetted horizontally
+    ///                       towards the closest vertical edge of the screen.
+    /// - Parameter scale: The factor by which the item is scaled
+    ///
+    /// - Remark: The item is offseted towards the closest vertical edge of the screen.
+    ///
+    /// - Returns: An item preparation object.
+    ///
     @objc static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
-        return JJItemPreparation { item, _, _, referenceView in
-            let translationX = referenceView.isOnLeftSideOfScreen ? -distance : distance
+        return JJItemPreparation { item, _, _, actionButton in
+            let translationX = actionButton.isOnLeftSideOfScreen ? -distance : distance
             item.scale(by: scale, translationX: translationX)
             item.alpha = 0
         }
     }
 
+    /// Returns an item preparation object that
+    ///   - sets `item.alpha` to `0`,
+    ///   - offsets the item horizontally by given values.
+    ///
+    /// - Parameter distance: The value in points by which the item is offsetted
+    ///                       towards the action button.
+    /// - Parameter scale: The factor by which the item is scaled
+    ///
+    /// - Remark: The item is offseted towards the action button.
+    ///
+    /// - Returns: An item preparation object.
+    ///
     @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
-        return JJItemPreparation { item, index, numberOfItems, referenceView in
+        return JJItemPreparation { item, index, numberOfItems, actionButton in
             let itemAngle = JJItemAnimationConfiguration.angleForItem(at: index,
                                                                       numberOfItems: numberOfItems,
-                                                                      referenceView: referenceView)
+                                                                      actionButton: actionButton)
             let transitionAngle = itemAngle + CGFloat.pi
             let translationX = distance * cos(transitionAngle)
             let translationY = distance * sin(transitionAngle)
@@ -228,13 +451,15 @@ import Foundation
     }
 }
 
+// MARK: - Helper
+
 internal extension JJItemAnimationConfiguration {
-    static func angleForItem(at index: Int, numberOfItems: Int, referenceView: UIView) -> CGFloat {
+    static func angleForItem(at index: Int, numberOfItems: Int, actionButton: JJFloatingActionButton) -> CGFloat {
         precondition(numberOfItems > 0)
         precondition(index >= 0)
         precondition(index < numberOfItems)
 
-        let startAngle: CGFloat = referenceView.isOnLeftSideOfScreen ? 2 * .pi : .pi
+        let startAngle: CGFloat = actionButton.isOnLeftSideOfScreen ? 2 * .pi : .pi
         let endAngle: CGFloat = 1.5 * .pi
 
         var interItemAngle: CGFloat
