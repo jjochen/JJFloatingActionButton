@@ -26,7 +26,6 @@ import JJFloatingActionButton
 import UIKit
 
 internal class ConfigurationExampleViewController: UIViewController {
-
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
@@ -95,7 +94,6 @@ internal class ConfigurationExampleViewController: UIViewController {
 }
 
 extension ConfigurationExampleViewController: JJFloatingActionButtonDelegate {
-
     func floatingActionButtonWillOpen(_ button: JJFloatingActionButton) {
         print("Action button will open: \(button.state)")
     }

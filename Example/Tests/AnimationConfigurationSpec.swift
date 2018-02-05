@@ -28,11 +28,8 @@ import Nimble_Snapshots
 import Quick
 
 class AnimationConfigurationSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJFloatingActionButton") {
-
             var actionButton: JJFloatingActionButton!
             var superview: UIView!
 
@@ -57,11 +54,11 @@ class AnimationConfigurationSpec: QuickSpec {
                 setNimbleTolerance(0.002)
             }
 
-            it ("is on the right side of the screen") {
+            it("is on the right side of the screen") {
                 expect(actionButton.isOnLeftSideOfScreen).to(beFalse())
             }
 
-            it ("is on the right side of nothing") {
+            it("is on the right side of nothing") {
                 expect(actionButton.isOnLeftSide(ofView: nil)).to(beFalse())
             }
 
@@ -72,7 +69,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct") {
-
                     actionButton.open(animated: false)
 
                     expect(superview) == snapshot()
@@ -86,7 +82,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct") {
-
                     actionButton.open(animated: false)
                     expect(superview) == snapshot()
                 }
@@ -128,7 +123,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct when opened and closed") {
-
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
                     actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
                     actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
@@ -164,7 +158,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct with items scaled") {
-
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .scale()
 
@@ -174,7 +167,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct with horizontal offset") {
-
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .horizontalOffset(distance: 30, scale: 0.5)
 
@@ -184,7 +176,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct with items offseted") {
-
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .offset(translationX: -20, translationY: 10)
 
@@ -194,7 +185,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct with circular offset items") {
-
                     configuration.itemLayout = .circular(withRadius: 50)
                     configuration.closedState = .circularOffset(distance: 50, scale: 0.5)
 
@@ -206,12 +196,10 @@ class AnimationConfigurationSpec: QuickSpec {
         }
 
         describe("JJFloatingActionButton on the left") {
-
             var actionButton: JJFloatingActionButton!
             var superview: UIView!
 
             beforeEach {
-
                 let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 400))
                 let actionButtonFrame = CGRect(origin: CGPoint(x: 50, y: 330), size: CGSize(width: 56, height: 56))
 
@@ -228,7 +216,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 setNimbleTolerance(0.002)
             }
 
-            it ("is on the left side of the screen") {
+            it("is on the left side of the screen") {
                 expect(actionButton.isOnLeftSideOfScreen).to(beTrue())
             }
 
@@ -279,7 +267,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct with horizontal offset") {
-
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .horizontalOffset(distance: 30, scale: 0.5)
 
@@ -289,7 +276,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct with items offseted") {
-
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .offset(translationX: -20, translationY: 10)
 
@@ -299,7 +285,6 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("it looks correct with circular offset items") {
-
                     configuration.itemLayout = .circular(withRadius: 50)
                     configuration.closedState = .circularOffset(distance: 50, scale: 0.5)
 

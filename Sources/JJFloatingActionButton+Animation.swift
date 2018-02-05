@@ -25,13 +25,15 @@
 import UIKit
 
 @objc public extension JJFloatingActionButton {
-
     /// Open the floating action button and show all action items.
     ///
     /// - Parameter animated: When true, button will be opened with an animation. Default is `true`.
     /// - Parameter completion: Will be handled upon completion. Default is `nil`.
     ///
     /// - Remark: Hidden items and items that have user interaction disabled are omitted.
+    ///
+    /// - SeeAlso: `buttonAnimationConfiguration`
+    /// - SeeAlso: `itemAnimationConfiguration`
     ///
     func open(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard buttonState == .closed else {
@@ -83,6 +85,9 @@ import UIKit
     /// - Parameter animated: When true, button will be close with an animation. Default is `true`.
     /// - Parameter completion: Will be handled upon completion. Default is `nil`.
     ///
+    /// - SeeAlso: `buttonAnimationConfiguration`
+    /// - SeeAlso: `itemAnimationConfiguration`
+    ///
     func close(animated: Bool = true, completion: (() -> Void)? = nil) {
         guard buttonState == .open else {
             return
@@ -120,7 +125,6 @@ import UIKit
 // MARK: - Animation State
 
 fileprivate extension JJFloatingActionButton {
-
     func storeAnimationState() {
         openItems = enabledItems
         currentItemAnimationConfiguration = itemAnimationConfiguration
@@ -137,7 +141,6 @@ fileprivate extension JJFloatingActionButton {
 // MARK: - Overlay Animation
 
 fileprivate extension JJFloatingActionButton {
-
     func addOverlayView(to superview: UIView) {
         overlayView.isEnabled = true
         superview.insertSubview(overlayView, belowSubview: self)
@@ -180,11 +183,9 @@ fileprivate extension JJFloatingActionButton {
 // MARK: - Button Animation
 
 fileprivate extension JJFloatingActionButton {
-
     func openButton(withConfiguration configuration: JJButtonAnimationConfiguration,
                     animated: Bool,
                     group: DispatchGroup) {
-
         switch configuration.style {
         case .rotation:
             rotateButton(toAngle: configuration.angle,
@@ -202,7 +203,6 @@ fileprivate extension JJFloatingActionButton {
     func closeButton(withConfiguration configuration: JJButtonAnimationConfiguration,
                      animated: Bool,
                      group: DispatchGroup) {
-
         switch configuration.style {
         case .rotation:
             rotateButton(toAngle: 0,
@@ -221,7 +221,6 @@ fileprivate extension JJFloatingActionButton {
                       settings: JJAnimationSettings,
                       group: DispatchGroup,
                       animated: Bool) {
-
         let animation: () -> Void = {
             self.imageView.transform = CGAffineTransform(rotationAngle: angle)
         }
@@ -252,7 +251,6 @@ fileprivate extension JJFloatingActionButton {
 // MARK: - Items Animation
 
 fileprivate extension JJFloatingActionButton {
-
     func addItems(to superview: UIView) {
         precondition(currentItemAnimationConfiguration != nil)
         let configuration = currentItemAnimationConfiguration!

@@ -27,7 +27,6 @@ import Foundation
 /// Button state.
 ///
 @objc public enum JJFloatingActionButtonState: Int {
-
     /// No items are visible
     ///
     case closed

@@ -27,7 +27,6 @@ import Foundation
 /// Action item title position.
 ///
 @objc public enum JJActionItemTitlePosition: Int {
-
     /// Place the title at the leading edge of the circle view.
     ///
     case leading

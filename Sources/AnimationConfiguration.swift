@@ -26,8 +26,17 @@ import Foundation
 
 // MARK: - Default Button Configurations
 
-@objc public extension JJButtonAnimationConfiguration {
+@objc public class JJAnimationSettings: NSObject {
+    @objc public var duration: TimeInterval = 0.3
 
+    @objc public var dampingRatio: CGFloat = 0.55
+
+    @objc public var velocity: CGFloat = 0.3
+
+    @objc public var interItemDeleay: TimeInterval = 0.1
+}
+
+@objc public extension JJButtonAnimationConfiguration {
     @objc static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .rotation)
         configuration.angle = angle
@@ -41,19 +50,7 @@ import Foundation
     }
 }
 
-@objc public class JJAnimationSettings: NSObject {
-
-    @objc public var duration: TimeInterval = 0.3
-
-    @objc public var dampingRatio: CGFloat = 0.55
-
-    @objc public var velocity: CGFloat = 0.3
-
-    @objc public var interItemDeleay: TimeInterval = 0.1
-}
-
 @objc public class JJButtonAnimationConfiguration: NSObject {
-
     @objc public init(withStyle style: JJButtonAnimationStyle) {
         self.style = style
     }
@@ -87,7 +84,6 @@ import Foundation
 }
 
 @objc public extension JJItemAnimationConfiguration {
-
     @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
@@ -120,7 +116,6 @@ import Foundation
 }
 
 @objc public class JJItemAnimationConfiguration: NSObject {
-
     @objc public lazy var opening: JJAnimationSettings = {
         var settings = JJAnimationSettings()
         settings.duration = 0.3
@@ -147,7 +142,6 @@ import Foundation
 }
 
 @objc public class JJItemLayout: NSObject {
-
     @objc public var layout: (_ items: [JJActionItem], _ referenceView: UIView) -> Void
 
     @objc public init(layout: @escaping (_ items: [JJActionItem], _ referenceView: UIView) -> Void) {
@@ -185,7 +179,6 @@ import Foundation
 }
 
 @objc public class JJItemPreparation: NSObject {
-
     @objc public var prepare: (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int, _ referenceView: UIView) -> Void
 
     @objc public init(prepare: @escaping (_ item: JJActionItem, _ index: Int, _ numberOfItems: Int, _ referenceView: UIView) -> Void) {
@@ -223,9 +216,12 @@ import Foundation
 
     @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, index, numberOfItems, referenceView in
-            let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems, referenceView: referenceView) + CGFloat.pi
-            let translationX = distance * cos(angle)
-            let translationY = distance * sin(angle)
+            let itemAngle = JJItemAnimationConfiguration.angleForItem(at: index,
+                                                                      numberOfItems: numberOfItems,
+                                                                      referenceView: referenceView)
+            let transitionAngle = itemAngle + CGFloat.pi
+            let translationX = distance * cos(transitionAngle)
+            let translationY = distance * sin(transitionAngle)
             item.scale(by: scale, translationX: translationX, translationY: translationY)
             item.alpha = 0
         }
@@ -233,7 +229,6 @@ import Foundation
 }
 
 internal extension JJItemAnimationConfiguration {
-
     static func angleForItem(at index: Int, numberOfItems: Int, referenceView: UIView) -> CGFloat {
         precondition(numberOfItems > 0)
         precondition(index >= 0)
@@ -257,7 +252,6 @@ internal extension JJItemAnimationConfiguration {
 }
 
 fileprivate extension JJActionItem {
-
     func scale(by factor: CGFloat, translationX: CGFloat = 0, translationY: CGFloat = 0) {
         let scale = scaleTransformation(factor: factor)
         let translation = CGAffineTransform(translationX: translationX, y: translationY)
@@ -266,7 +260,6 @@ fileprivate extension JJActionItem {
 }
 
 fileprivate extension JJActionItem {
-
     func scaleTransformation(factor: CGFloat) -> CGAffineTransform {
         let scale = CGAffineTransform(scaleX: factor, y: factor)
 
@@ -288,7 +281,6 @@ fileprivate extension JJActionItem {
 }
 
 internal extension UIView {
-
     var isOnLeftSideOfScreen: Bool {
         return isOnLeftSide(ofView: UIApplication.shared.keyWindow)
     }

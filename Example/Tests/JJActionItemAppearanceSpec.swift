@@ -29,11 +29,8 @@ import Nimble_Snapshots
 import Quick
 
 class JJActionItemAppearanceSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJActionItem") {
-
             var item: JJActionItem!
 
             beforeEach {

@@ -26,7 +26,6 @@ import JJFloatingActionButton
 import UIKit
 
 internal class CircularExampleViewController: UIViewController {
-
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
