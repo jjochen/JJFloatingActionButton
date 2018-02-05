@@ -51,7 +51,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
-                setNimbleTolerance(0.002)
+                setNimbleTolerance(0.003)
             }
 
             it("is on the right side of the screen") {
