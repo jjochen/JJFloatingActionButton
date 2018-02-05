@@ -177,7 +177,7 @@ import UIKit
     @objc public fileprivate(set) lazy var circleView: JJCircleView = {
         let view = JJCircleView()
         view.isUserInteractionEnabled = false
-        view.color = JJStyles.defaultButtonColor
+        view.color = Styles.defaultButtonColor
         return view
     }()
 
@@ -194,7 +194,7 @@ import UIKit
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = false
         imageView.backgroundColor = .clear
-        imageView.tintColor = JJStyles.defaultButtonImageColor
+        imageView.tintColor = Styles.defaultButtonImageColor
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -206,7 +206,7 @@ import UIKit
     @objc public fileprivate(set) lazy var overlayView: UIControl = {
         let control = UIControl()
         control.isUserInteractionEnabled = true
-        control.backgroundColor = JJStyles.defaultOverlayColor
+        control.backgroundColor = Styles.defaultOverlayColor
         control.addTarget(self, action: #selector(overlayViewWasTapped), for: .touchUpInside)
         control.isEnabled = false
         control.alpha = 0
@@ -368,7 +368,7 @@ fileprivate extension JJFloatingActionButton {
         isUserInteractionEnabled = true
         addTarget(self, action: #selector(buttonWasTapped), for: .touchUpInside)
 
-        layer.shadowColor = JJStyles.defaultShadowColor.cgColor
+        layer.shadowColor = Styles.defaultShadowColor.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowOpacity = 0.4
         layer.shadowRadius = 2
@@ -427,7 +427,7 @@ internal extension JJFloatingActionButton {
         }
 
         if buttonImage == nil {
-            buttonImage = JJStyles.plusImage
+            buttonImage = Styles.plusImage
         }
 
         return buttonImage

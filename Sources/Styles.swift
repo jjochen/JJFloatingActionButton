@@ -1,5 +1,5 @@
 //
-//  JJStyles.swift
+//  Styles.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
@@ -24,12 +24,12 @@
 
 import UIKit
 
-internal struct JJStyles {
+internal struct Styles {
 }
 
 // MARK: - Colors
 
-internal extension JJStyles {
+internal extension Styles {
 
     static var defaultButtonColor: UIColor {
         return UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
@@ -54,7 +54,7 @@ internal extension JJStyles {
 
 // MARK: - Images
 
-internal extension JJStyles {
+internal extension Styles {
 
     static var plusImage: UIImage? {
         return drawImage(name: "plus", size: CGSize(width: 24, height: 24)) {
@@ -104,7 +104,7 @@ internal extension JJStyles {
 
 // MARK: - Helper
 
-fileprivate extension JJStyles {
+fileprivate extension Styles {
 
     static var cache = NSCache<NSString, UIImage>()
 

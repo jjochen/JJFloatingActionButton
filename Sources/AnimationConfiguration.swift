@@ -256,6 +256,37 @@ internal extension JJItemAnimationConfiguration {
     }
 }
 
+fileprivate extension JJActionItem {
+
+    func scale(by factor: CGFloat, translationX: CGFloat = 0, translationY: CGFloat = 0) {
+        let scale = scaleTransformation(factor: factor)
+        let translation = CGAffineTransform(translationX: translationX, y: translationY)
+        transform = scale.concatenating(translation)
+    }
+}
+
+fileprivate extension JJActionItem {
+
+    func scaleTransformation(factor: CGFloat) -> CGAffineTransform {
+        let scale = CGAffineTransform(scaleX: factor, y: factor)
+
+        let center = circleView.center
+        let circleCenterScaled = point(center, transformed: scale)
+        let translationX = center.x - circleCenterScaled.x
+        let translationY = center.y - circleCenterScaled.y
+        let translation = CGAffineTransform(translationX: translationX, y: translationY)
+        return scale.concatenating(translation)
+    }
+
+    func point(_ point: CGPoint, transformed transform: CGAffineTransform) -> CGPoint {
+        let anchorPoint = CGPoint(x: bounds.width * layer.anchorPoint.x, y: bounds.height * layer.anchorPoint.y)
+        let relativePoint = CGPoint(x: point.x - anchorPoint.x, y: point.y - anchorPoint.y)
+        let transformedPoint = relativePoint.applying(transform)
+        let result = CGPoint(x: anchorPoint.x + transformedPoint.x, y: anchorPoint.y + transformedPoint.y)
+        return result
+    }
+}
+
 internal extension UIView {
 
     var isOnLeftSideOfScreen: Bool {
