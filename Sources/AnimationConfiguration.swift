@@ -462,7 +462,6 @@ internal extension JJItemAnimationConfiguration {
         let startAngle: CGFloat = actionButton.isOnLeftSideOfScreen ? 2 * .pi : .pi
         let endAngle: CGFloat = 1.5 * .pi
 
-        var interItemAngle: CGFloat
         switch (numberOfItems, index) {
         case (1, _):
             return (startAngle + endAngle) / 2
