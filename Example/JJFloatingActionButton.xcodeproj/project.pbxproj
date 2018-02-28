@@ -28,6 +28,7 @@
 		19B10AD81FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B10AD71FFCEF0800D70C32 /* JJFloationgActionButtonDelegateMock.swift */; };
 		19B10ADA1FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */; };
 		19D311DD200F8A630023477D /* CircularExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D311DC200F8A630023477D /* CircularExampleViewController.swift */; };
+		19D6CE7D2046C35F009F486D /* .codeclimate.yml in Resources */ = {isa = PBXBuildFile; fileRef = 19D6CE7C2046C35F009F486D /* .codeclimate.yml */; };
 		19E247E61FD7E6F6009A7BA1 /* JJActionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */; };
 		19E247E81FD83CA7009A7BA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 198B66091FBAE904009A17F2 /* Assets.xcassets */; };
 		19EDBD4520285DF100559C37 /* AnimationConfigurationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EDBD4420285DF100559C37 /* AnimationConfigurationSpec.swift */; };
@@ -83,6 +84,7 @@
 		19B10AD91FFD1F5600D70C32 /* JJFloatingActionButtonPlacementSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonPlacementSpec.swift; sourceTree = "<group>"; };
 		19B10ADB1FFE692100D70C32 /* Rakefile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; indentWidth = 2; name = Rakefile; path = ../../Rakefile; sourceTree = "<group>"; tabWidth = 2; };
 		19D311DC200F8A630023477D /* CircularExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularExampleViewController.swift; sourceTree = "<group>"; };
+		19D6CE7C2046C35F009F486D /* .codeclimate.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .codeclimate.yml; path = ../../.codeclimate.yml; sourceTree = "<group>"; };
 		19DF53B81FF59AE5006E292F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../Package.swift; sourceTree = "<group>"; };
 		19E247E41FD7E6B5009A7BA1 /* JJActionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JJActionItem.xib; sourceTree = "<group>"; };
 		19E247E91FD854B1009A7BA1 /* .github_changelog_generator */ = {isa = PBXFileReference; lastKnownFileType = text; name = .github_changelog_generator; path = ../../.github_changelog_generator; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				193808CF1FBCA063002EF4C0 /* .codecov.yml */,
+				19D6CE7C2046C35F009F486D /* .codeclimate.yml */,
 				19E247E91FD854B1009A7BA1 /* .github_changelog_generator */,
 				198B662D1FBAEE16009A17F2 /* .gitignore */,
 				19B10AC21FF7BDDD00D70C32 /* .jazzy.yaml */,
@@ -324,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D6CE7D2046C35F009F486D /* .codeclimate.yml in Resources */,
 				194504D42003D499003B205F /* LaunchScreen.storyboard in Resources */,
 				198B660A1FBAE904009A17F2 /* Assets.xcassets in Resources */,
 				198B66081FBAE904009A17F2 /* Main.storyboard in Resources */,
