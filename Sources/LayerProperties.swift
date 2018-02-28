@@ -78,7 +78,7 @@ public extension JJFloatingActionButton {
 }
 
 extension JJActionItem {
-    /// The shadow color of the floating action button.
+    /// The shadow color of the action item.
     /// Default is `UIColor.black`.
     ///
     @objc @IBInspectable dynamic var shadowColor: UIColor? {
@@ -93,7 +93,7 @@ extension JJActionItem {
         }
     }
 
-    /// The shadow offset of the floating action button.
+    /// The shadow offset of the action item.
     /// Default is `CGSize(width: 0, height: 1)`.
     ///
     @objc @IBInspectable dynamic var shadowOffset: CGSize {
@@ -105,7 +105,7 @@ extension JJActionItem {
         }
     }
 
-    /// The shadow opacity of the floating action button.
+    /// The shadow opacity of the action item.
     /// Default is `0.4`.
     ///
     @objc @IBInspectable dynamic var shadowOpacity: Float {
@@ -117,7 +117,7 @@ extension JJActionItem {
         }
     }
 
-    /// The shadow radius of the floating action button.
+    /// The shadow radius of the action item.
     /// Default is `2`.
     ///
     @objc @IBInspectable dynamic var shadowRadius: CGFloat {
