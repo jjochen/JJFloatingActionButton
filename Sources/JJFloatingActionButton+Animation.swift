@@ -296,7 +296,7 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += configuration.opening.interItemDeleay
+            delay += configuration.opening.interItemDelay
             index += 1
         }
     }
@@ -320,7 +320,7 @@ fileprivate extension JJFloatingActionButton {
                            group: group,
                            animated: animated)
 
-            delay += configuration.closing.interItemDeleay
+            delay += configuration.closing.interItemDelay
             index -= 1
         }
     }

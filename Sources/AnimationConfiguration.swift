@@ -53,7 +53,27 @@ import Foundation
     ///
     /// - Remark: Only used for item animations.
     ///
-    @objc public var interItemDeleay: TimeInterval = 0.1
+    @objc public var interItemDelay: TimeInterval = 0.1
+
+    /// Initializes and returns a newly allocated animation settings object with specified parameters.
+    ///
+    /// - Parameter duration: Duration of the animation. Default is `0.3`.
+    /// - Parameter dampingRatio: Damping ratio of the animation. Default is `0.55`
+    /// - Parameter initialVelocity: Initial velocity of the animation. Default is `0.3`
+    /// - Parameter interItemDelay: Delay in between two item animations. Default is `0.1`
+    ///
+    /// - Returns: An initialized animation settings object.
+    ///
+    @objc public convenience init(duration: TimeInterval = 0.3,
+                                  dampingRatio: CGFloat = 0.55,
+                                  initialVelocity: CGFloat = 0.3,
+                                  interItemDelay: TimeInterval = 0.1) {
+        self.init()
+        self.duration = duration
+        self.dampingRatio = dampingRatio
+        self.initialVelocity = initialVelocity
+        self.interItemDelay = interItemDelay
+    }
 }
 
 // MARK: - JJButtonAnimationConfiguration
@@ -108,13 +128,7 @@ import Foundation
     ///   - `dampingRatio = 0.55`
     ///   - `initialVelocity = 0.3`
     ///
-    @objc public lazy var opening: JJAnimationSettings = {
-        var settings = JJAnimationSettings()
-        settings.duration = 0.3
-        settings.dampingRatio = 0.55
-        settings.initialVelocity = 0.3
-        return settings
-    }()
+    @objc public lazy var opening = JJAnimationSettings(duration: 0.3, dampingRatio: 0.55, initialVelocity: 0.3)
 
     /// Animation settings for closing animation.
     /// Default values are:
@@ -122,13 +136,7 @@ import Foundation
     ///   - `dampingRatio = 0.6`
     ///   - `initialVelocity = 0.8`
     ///
-    @objc public lazy var closing: JJAnimationSettings = {
-        var settings = JJAnimationSettings()
-        settings.duration = 0.3
-        settings.dampingRatio = 0.6
-        settings.initialVelocity = 0.8
-        return settings
-    }()
+    @objc public lazy var closing = JJAnimationSettings(duration: 0.3, dampingRatio: 0.6, initialVelocity: 0.8)
 }
 
 @objc public extension JJButtonAnimationConfiguration {
@@ -167,32 +175,18 @@ import Foundation
     ///   - `duration = 0.3`
     ///   - `dampingRatio = 0.55`
     ///   - `initialVelocity = 0.3`
-    ///   - `interItemDeleay = 0.1`
+    ///   - `interItemDelay = 0.1`
     ///
-    @objc public lazy var opening: JJAnimationSettings = {
-        var settings = JJAnimationSettings()
-        settings.duration = 0.3
-        settings.dampingRatio = 0.55
-        settings.initialVelocity = 0.3
-        settings.interItemDeleay = 0.1
-        return settings
-    }()
+    @objc public lazy var opening = JJAnimationSettings(duration: 0.3, dampingRatio: 0.55, initialVelocity: 0.3, interItemDelay: 0.1)
 
     /// Animation settings for closing animation.
     /// Default values are:
     ///   - `duration = 0.3`
     ///   - `dampingRatio = 0.6`
     ///   - `initialVelocity = 0.8`
-    ///   - `interItemDeleay = 0.1`
+    ///   - `interItemDelay = 0.1`
     ///
-    @objc public lazy var closing: JJAnimationSettings = {
-        var settings = JJAnimationSettings()
-        settings.duration = 0.15
-        settings.dampingRatio = 0.6
-        settings.initialVelocity = 0.8
-        settings.interItemDeleay = 0.1
-        return settings
-    }()
+    @objc public lazy var closing = JJAnimationSettings(duration: 0.15, dampingRatio: 0.6, initialVelocity: 0.8, interItemDelay: 0.1)
 
     /// Defines the layout of the acton items when opened.
     /// Default is a layout in a vertical line with 12 points inter item spacing
@@ -253,8 +247,8 @@ import Foundation
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
         configuration.closedState = .scale()
-        configuration.opening.interItemDeleay = 0.05
-        configuration.closing.interItemDeleay = 0.05
+        configuration.opening.interItemDelay = 0.05
+        configuration.closing.interItemDelay = 0.05
         return configuration
     }
 
