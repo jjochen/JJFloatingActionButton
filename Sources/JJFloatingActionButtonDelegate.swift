@@ -27,7 +27,6 @@ import Foundation
 /// Floating action button delegate protocol
 ///
 @objc public protocol JJFloatingActionButtonDelegate {
-
     /// Is called before opening animation. Button state is .opening.
     ///
     @objc optional func floatingActionButtonWillOpen(_ button: JJFloatingActionButton)

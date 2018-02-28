@@ -28,14 +28,11 @@ import Nimble_Snapshots
 import Quick
 
 class JJActionItemSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJActionItem") {
             var actionItem: JJActionItem!
 
             beforeEach {
-
                 actionItem = JJActionItem(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
                 actionItem.titleLabel.font = UIFont(name: "Courier", size: 12)
                 actionItem.titleLabel.text = "item"
@@ -43,7 +40,7 @@ class JJActionItemSpec: QuickSpec {
                 actionItem.buttonColor = .red
                 actionItem.buttonImageColor = .white
 
-                setNimbleTolerance(0.004)
+                setNimbleTolerance(0.002)
             }
 
             it("looks correct") {
@@ -99,7 +96,7 @@ class JJActionItemSpec: QuickSpec {
                 actionItem?.buttonColor = .red
                 actionItem?.buttonImageColor = .white
 
-                setNimbleTolerance(0.004)
+                setNimbleTolerance(0.002)
             }
 
             it("looks correct") {

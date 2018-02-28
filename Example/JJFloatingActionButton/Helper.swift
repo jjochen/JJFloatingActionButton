@@ -26,7 +26,6 @@ import JJFloatingActionButton
 import UIKit
 
 internal struct Helper {
-
     static func showAlert(for item: JJActionItem) {
         showAlert(title: item.titleLabel.text, message: "Item tapped!")
     }

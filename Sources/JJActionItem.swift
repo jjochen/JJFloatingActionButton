@@ -27,7 +27,6 @@ import UIKit
 /// The item view representing an action.
 ///
 @objc @IBDesignable open class JJActionItem: UIControl {
-
     /// The action that is executen when the item is pressed.
     /// Default is `nil`.
     ///
@@ -160,7 +159,6 @@ import UIKit
 // MARK: - UIView
 
 extension JJActionItem {
-
     /// Tells the view that its superview changed.
     ///
     open override func didMoveToSuperview() {
@@ -172,7 +170,6 @@ extension JJActionItem {
 // MARK: - UIControl
 
 extension JJActionItem {
-
     /// A Boolean value indicating whether the action item draws a highlight.
     ///
     open override var isHighlighted: Bool {
@@ -189,7 +186,6 @@ extension JJActionItem {
 // MARK: - Private Methods
 
 fileprivate extension JJActionItem {
-
     func setup() {
         backgroundColor = .clear
         isUserInteractionEnabled = true

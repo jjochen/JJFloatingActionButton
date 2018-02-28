@@ -26,19 +26,33 @@ import JJFloatingActionButton
 import UIKit
 
 internal class ConfigurationExampleViewController: UIViewController {
-
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureActionButton()
+
+        view.addSubview(actionButton)
+
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 11.0, *) {
+            actionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+        } else {
+            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
+        }
+    }
+
+    fileprivate func configureActionButton() {
         actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
         actionButton.buttonImage = #imageLiteral(resourceName: "Dots")
         actionButton.buttonColor = .red
         actionButton.buttonImageColor = .white
 
-        actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "X"))
-        actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
+        actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "X"))
+        actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 14)
 
         actionButton.layer.shadowColor = UIColor.black.cgColor
         actionButton.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -76,22 +90,10 @@ internal class ConfigurationExampleViewController: UIViewController {
         item3.action = { item in
             Helper.showAlert(for: item)
         }
-
-
-        view.addSubview(actionButton)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            actionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
-        } else {
-            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
-        }
     }
 }
 
 extension ConfigurationExampleViewController: JJFloatingActionButtonDelegate {
-
     func floatingActionButtonWillOpen(_ button: JJFloatingActionButton) {
         print("Action button will open: \(button.state)")
     }

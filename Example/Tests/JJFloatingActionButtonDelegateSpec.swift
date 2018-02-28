@@ -28,11 +28,8 @@ import Nimble_Snapshots
 import Quick
 
 class JJFloatingActionButtonDelegateSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJFloatingActionButton") {
-
             var superview: UIView!
             var actionButton: JJFloatingActionButton!
             var delegate: JJFloatingActionButtonDelegateMock!
@@ -73,7 +70,6 @@ class JJFloatingActionButtonDelegateSpec: QuickSpec {
             }
 
             it("calls delegate when opening and closing without animation") {
-
                 expect(delegate.willOpenCalled).to(beFalse())
                 expect(delegate.didOpenCalled).to(beFalse())
                 expect(delegate.willCloseCalled).to(beFalse())

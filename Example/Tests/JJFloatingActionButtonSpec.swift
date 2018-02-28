@@ -28,11 +28,8 @@ import Nimble_Snapshots
 import Quick
 
 class JJFloatingActionButtonSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJFloatingActionButton") {
-
             let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
             let actionButtonFrame = CGRect(origin: CGPoint(x: 130, y: 230), size: CGSize(width: 56, height: 56))
 
@@ -46,7 +43,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton = JJFloatingActionButton(frame: actionButtonFrame)
                 superview.addSubview(actionButton)
 
-                setNimbleTolerance(0.004)
+                setNimbleTolerance(0.002)
             }
 
             it("does not open") {
@@ -96,7 +93,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.buttonColor = .blue
                 actionButton.highlightedButtonColor = .orange
                 actionButton.buttonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Baloon"))
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -115,7 +112,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     item.shadowRadius = CGFloat(0)
                 }
                 actionButton.itemSizeRatio = CGFloat(1.1)
-                actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
+                actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 7)
 
                 actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
                 actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
@@ -131,7 +128,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 actionButton.buttonColor = .blue
                 actionButton.buttonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonOpeningStyle = .rotate(angle: -CGFloat.pi / 5)
+                actionButton.buttonAnimationConfiguration = .rotation(toAngle: -CGFloat.pi / 5)
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -150,7 +147,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     item.shadowRadius = CGFloat(0)
                 }
                 actionButton.itemSizeRatio = CGFloat(1.1)
-                actionButton.itemOpeningStyle = .popUp(interItemSpacing: 7)
+                actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 7)
 
                 actionButton.open(animated: false)
 
@@ -186,73 +183,6 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.open(animated: false)
 
                 expect(superview) == snapshot()
-            }
-
-            context("when using pop up style") {
-                beforeEach {
-                    actionButton.useItemOpeningStylePopUp(interItemSpacing: 10)
-                    actionButton.useButtonOpeningStyleTransition(image: #imageLiteral(resourceName: "Owl"))
-                }
-
-                it("it looks correct") {
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
-
-                    actionButton.open(animated: false)
-
-                    expect(superview) == snapshot()
-                }
-            }
-
-            context("when using circular pop up style") {
-                beforeEach {
-                    actionButton.useItemOpeningStyleCircularPop(radius: 100)
-                    actionButton.useButtonOpeningStyleRotate(angle: -CGFloat.pi / 3)
-                }
-
-                it("it looks correct with 3 items") {
-
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
-
-                    actionButton.open(animated: false)
-
-                    expect(superview) == snapshot()
-                }
-
-                it("it looks correct with 2 items") {
-
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
-
-                    actionButton.open(animated: false)
-
-                    expect(superview) == snapshot()
-                }
-
-                it("it looks correct with 1 item") {
-
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.handleSingleActionDirectly = false
-
-                    actionButton.open(animated: false)
-
-                    expect(superview) == snapshot()
-                }
-
-                it("it looks correct when opened and closed") {
-
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
-
-                    actionButton.open(animated: false)
-                    actionButton.close(animated: false)
-
-                    expect(superview) == snapshot()
-                }
             }
 
             context("when multiple items are added") {
@@ -396,7 +326,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 context("and is opened animated with open image") {
                     beforeEach {
-                        actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Dots"))
+                        actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Dots"))
                         actionButton.open(animated: true)
                     }
 
@@ -407,7 +337,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 context("and is closed animated with open image") {
                     beforeEach {
-                        actionButton.buttonOpeningStyle = .transition(image: #imageLiteral(resourceName: "Dots"))
+                        actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Dots"))
                         actionButton.open(animated: false)
                         actionButton.close(animated: true)
                     }
@@ -492,40 +422,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
         }
 
-        describe("JJFloatingActionButton with rtl language") {
-            let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
-            let actionButtonFrame = CGRect(origin: CGPoint(x: 20, y: 230), size: CGSize(width: 56, height: 56))
-
-            var actionButton: JJFloatingActionButton!
-            var superview: UIView!
-
-            beforeEach {
-                superview = UIView(frame: superviewFrame)
-                superview.backgroundColor = .white
-
-                actionButton = JJFloatingActionButton(frame: actionButtonFrame)
-                superview.addSubview(actionButton)
-
-                superview.semanticContentAttribute = .forceRightToLeft
-                actionButton.semanticContentAttribute = .forceRightToLeft
-
-                setNimbleTolerance(0.004)
-            }
-
-            it("looks correct") {
-                let item1 = actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                item1.semanticContentAttribute = .forceRightToLeft
-                let item2 = actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
-                item2.semanticContentAttribute = .forceRightToLeft
-
-                actionButton.open(animated: false)
-
-                expect(superview) == snapshot()
-            }
-        }
-
         describe("JJFloatingActionButton without superview") {
-
             let actionButtonFrame = CGRect(origin: .zero, size: CGSize(width: 56, height: 56))
             var actionButton: JJFloatingActionButton!
 
@@ -534,7 +431,6 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             context("when multiple items are added") {
-
                 beforeEach {
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
                     actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))

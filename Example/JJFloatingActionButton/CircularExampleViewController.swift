@@ -1,5 +1,5 @@
 //
-//  CircularPopExampleViewController.swift
+//  CircularExampleViewController.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
@@ -25,15 +25,16 @@
 import JJFloatingActionButton
 import UIKit
 
-internal class CircularPopExampleViewController: UIViewController {
-
+internal class CircularExampleViewController: UIViewController {
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        actionButton.itemOpeningStyle = .circularPop(radius: 120)
-        actionButton.buttonOpeningStyle = .rotate(angle: .pi / 4)
+        actionButton.itemAnimationConfiguration = .circularSlideIn(withRadius: 120)
+        actionButton.buttonAnimationConfiguration = .rotation(toAngle: .pi * 3 / 4)
+        actionButton.buttonAnimationConfiguration.opening.duration = 0.8
+        actionButton.buttonAnimationConfiguration.closing.duration = 0.6
 
         actionButton.addItem(image: #imageLiteral(resourceName: "Baloon")) { item in
             Helper.showAlert(for: item)

@@ -29,11 +29,8 @@ import Nimble_Snapshots
 import Quick
 
 class JJFloatingActionButtonAppearanceSpec: QuickSpec {
-
     override func spec() {
-
         describe("JJFloatingActionButton") {
-
             var actionButton: JJFloatingActionButton!
 
             beforeEach {

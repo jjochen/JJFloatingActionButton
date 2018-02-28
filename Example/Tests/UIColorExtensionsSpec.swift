@@ -27,11 +27,8 @@ import Nimble
 import Quick
 
 class UIColorExtensionsSpec: QuickSpec {
-
     override func spec() {
-
         describe("UIColor") {
-
             context("when light") {
                 var originalColor: UIColor!
                 var highlightedColor: UIColor!
@@ -42,7 +39,6 @@ class UIColorExtensionsSpec: QuickSpec {
                 }
 
                 it("has a lower brightness in highligted version") {
-
                     var originalBrightness = CGFloat(0)
                     originalColor.getHue(nil, saturation: nil, brightness: &originalBrightness, alpha: nil)
 
@@ -63,7 +59,6 @@ class UIColorExtensionsSpec: QuickSpec {
                 }
 
                 it("has a greater brightness in highligted version") {
-
                     var originalBrightness = CGFloat(0)
                     originalColor.getHue(nil, saturation: nil, brightness: &originalBrightness, alpha: nil)
 

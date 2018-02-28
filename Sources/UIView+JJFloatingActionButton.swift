@@ -25,7 +25,6 @@
 import UIKit
 
 internal extension UIView {
-
     class func animate(duration: TimeInterval,
                        delay: TimeInterval = 0,
                        usingSpringWithDamping dampingRatio: CGFloat,
@@ -35,7 +34,6 @@ internal extension UIView {
                        completion: ((Bool) -> Void)? = nil,
                        group: DispatchGroup? = nil,
                        animated: Bool = true) {
-
         let groupedAnimations: () -> Void = {
             group?.enter()
             animations()
@@ -66,7 +64,6 @@ internal extension UIView {
                           completion: ((Bool) -> Swift.Void)? = nil,
                           group: DispatchGroup? = nil,
                           animated: Bool = true) {
-
         let groupedAnimations: () -> Void = {
             group?.enter()
             animations?()

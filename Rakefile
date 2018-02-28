@@ -106,8 +106,8 @@ begin
   
   #-- Documentation ----------------------------------------------------------#
 
-  desc 'Build documentation'
-  task :build_documentation do
+  desc 'Generate documentation'
+  task :generate_documentation do
     generate_documentation
     test_documentation_coverage
   end

@@ -27,10 +27,9 @@ import UIKit
 /// A colored circle with an highlighted state
 ///
 @objc @IBDesignable public class JJCircleView: UIView {
-
     /// The color of the circle.
     ///
-    @objc @IBInspectable public dynamic var color: UIColor = JJStyles.defaultButtonColor {
+    @objc @IBInspectable public dynamic var color: UIColor = Styles.defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
             setNeedsDisplay()
@@ -77,13 +76,12 @@ import UIKit
         drawCircle(inRect: bounds)
     }
 
-    fileprivate var highlightedColorFallback = JJStyles.defaultHighlightedButtonColor
+    fileprivate var highlightedColorFallback = Styles.defaultHighlightedButtonColor
 }
 
 // MARK: - Private Methods
 
 fileprivate extension JJCircleView {
-
     func setup() {
         backgroundColor = .clear
     }

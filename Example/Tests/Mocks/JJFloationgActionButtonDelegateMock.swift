@@ -25,7 +25,6 @@
 @testable import JJFloatingActionButton
 
 class JJFloatingActionButtonDelegateMock: JJFloatingActionButtonDelegate {
-
     var willOpenCalled = false
     var didOpenCalled = false
     var willCloseCalled = false

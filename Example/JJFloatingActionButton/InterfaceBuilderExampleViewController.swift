@@ -26,11 +26,9 @@ import JJFloatingActionButton
 import UIKit
 
 class InterfaceBuilderExampleViewController: UIViewController {
-
     @IBOutlet fileprivate var actionButton: JJFloatingActionButton!
 
     override func viewDidLoad() {
-
         super.viewDidLoad()
 
         actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
