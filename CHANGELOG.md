@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.9.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.9.1) (2018-03-01)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.0...0.9.1)
+
+**Merged pull requests:**
+
+- Recreate preview gifs on iPhone 8 [\#139](https://github.com/jjochen/JJFloatingActionButton/pull/139)
+
 ## [0.9.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.9.0) (2018-03-01)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.8.0...0.9.0)
 

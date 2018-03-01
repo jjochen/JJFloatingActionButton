@@ -111,9 +111,19 @@
 
 <p>Floating Action Button for iOS</p>
 
-<p><img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift 4.0"> <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version"></a> <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License"></a> <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform"></a> <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status"></a> <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://codeclimate.com/github/jjochen/JJFloatingActionButton"><img src="https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg" alt="Code Climate"></a> <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation"></a> <a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome"></a></p>
-
 <p>Until reaching milestone 1.0.0 there might be breaking changes in minor versions!</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift 4.0" /> 
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a> 
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License" /></a> 
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform" /></a> 
+  <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status" /></a> 
+  <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov" /></a> 
+  <a href="https://codeclimate.com/github/jjochen/JJFloatingActionButton"><img src="https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg" alt="Code Climate" /></a> 
+  <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation" /></a> 
+  <a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome" /></a>
+</p>
 
 <p align="center">
   <a href="#features">Features</a> • <a href="#preview">Preview</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
@@ -139,7 +149,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircularPop.gif" width='250' alt="Preview Circular Pop"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircular.gif" width='250' alt="Preview Circular"> 
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
 <h2 id='a-name-requirements-a-requirements' class='heading'><a name="requirements"></a>Requirements</h2>
@@ -192,6 +202,9 @@
 <span class="n">actionButton</span><span class="o">.</span><span class="n">translatesAutoresizingMaskIntoConstraints</span> <span class="o">=</span> <span class="kc">false</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">trailingAnchor</span><span class="o">.</span><span class="nf">constraint</span><span class="p">(</span><span class="nv">equalTo</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="o">.</span><span class="n">trailingAnchor</span><span class="p">,</span> <span class="nv">constant</span><span class="p">:</span> <span class="o">-</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">isActive</span> <span class="o">=</span> <span class="kc">true</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">bottomAnchor</span><span class="o">.</span><span class="nf">constraint</span><span class="p">(</span><span class="nv">equalTo</span><span class="p">:</span> <span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="o">.</span><span class="n">bottomAnchor</span><span class="p">,</span> <span class="nv">constant</span><span class="p">:</span> <span class="o">-</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">isActive</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="c1">// last 4 lines can be replaced with</span>
+<span class="c1">// actionButton.display(inViewController: self)</span>
 </code></pre>
 <h3 id='configuration' class='heading'>Configuration</h3>
 
@@ -201,8 +214,8 @@
 <span class="n">actionButton</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">red</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
 
-<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonOpeningStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">transition</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"X"</span><span class="p">))</span>
-<span class="n">actionButton</span><span class="o">.</span><span class="n">itemOpeningStyle</span> <span class="o">=</span> <span class="o">.</span><span class="nf">popUp</span><span class="p">(</span><span class="nv">interItemSpacing</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonAnimationConfiguration</span> <span class="o">=</span> <span class="o">.</span><span class="nf">transition</span><span class="p">(</span><span class="nv">toImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"X"</span><span class="p">))</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">itemAnimationConfiguration</span> <span class="o">=</span> <span class="o">.</span><span class="nf">slideIn</span><span class="p">(</span><span class="nv">withInterItemSpacing</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span>
 
 <span class="n">actionButton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span><span class="o">.</span><span class="n">cgColor</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">shadowOffset</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
@@ -211,6 +224,8 @@
 
 <span class="n">actionButton</span><span class="o">.</span><span class="n">itemSizeRatio</span> <span class="o">=</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">configureDefaultItem</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+    <span class="n">item</span><span class="o">.</span><span class="n">titlePosition</span> <span class="o">=</span> <span class="o">.</span><span class="n">trailing</span>
+
     <span class="n">item</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="o">.</span><span class="nf">boldSystemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="kt">UIFont</span><span class="o">.</span><span class="n">systemFontSize</span><span class="p">)</span>
     <span class="n">item</span><span class="o">.</span><span class="n">titleLabel</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
     <span class="n">item</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
@@ -231,7 +246,7 @@
 <span class="n">item</span><span class="o">.</span><span class="n">imageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Owl"</span><span class="p">)</span>
 <span class="n">item</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span>
 <span class="n">item</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
-<span class="n">tem</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+<span class="n">item</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
     <span class="c1">// Do something</span>
 <span class="p">}</span>
 </code></pre>
