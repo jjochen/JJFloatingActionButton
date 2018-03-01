@@ -175,7 +175,6 @@ begin
   task :push_podspec do
     title "Pushing podspec"
     sh 'bundle exec pod trunk push'
-    sh 'curl http://207.254.41.223:4567/redeploy/JJFloatingActionButton/latest'
   end
   
   desc 'Create release on github'
