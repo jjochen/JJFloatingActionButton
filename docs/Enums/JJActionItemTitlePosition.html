@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>JJFloatingActionButtonDelegate Protocol Reference</title>
+    <title>JJActionItemTitlePosition Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Protocol/JJFloatingActionButtonDelegate" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Enum/JJActionItemTitlePosition" class="dashAnchor"></a>
 
-    <a title="JJFloatingActionButtonDelegate Protocol Reference"></a>
+    <a title="JJActionItemTitlePosition Enumeration Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">JJFloatingActionButton Reference</a>
       <img class="carat" src="../img/carat.png" />
-      JJFloatingActionButtonDelegate Protocol Reference
+      JJActionItemTitlePosition Enumeration Reference
     </p>
 
     <div class="content-wrapper">
@@ -107,14 +107,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>JJFloatingActionButtonDelegate</h1>
+            <h1>JJActionItemTitlePosition</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">JJFloatingActionButtonDelegate</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JJActionItemTitlePosition</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                 </div>
               </div>
-            <p>Floating action button delegate protocol</p>
+            <p>Action item title position.</p>
 
           </div>
         </section>
@@ -126,9 +126,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonWillOpen:"></a>
-                    <a name="//apple_ref/swift/Method/floatingActionButtonWillOpen(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonWillOpen:">floatingActionButtonWillOpen(_:)</a>
+                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionLeading"></a>
+                    <a name="//apple_ref/swift/Element/leading" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionLeading">leading</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -136,26 +136,30 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Is called before opening animation. Button state is .opening.</p>
+                        <p>Place the title at the leading edge of the circle view.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonWillOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">leading</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonDidOpen:"></a>
-                    <a name="//apple_ref/swift/Method/floatingActionButtonDidOpen(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonDidOpen:">floatingActionButtonDidOpen(_:)</a>
+                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionTrailing"></a>
+                    <a name="//apple_ref/swift/Element/trailing" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionTrailing">trailing</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -163,26 +167,30 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Is called after opening animation. Button state is .opened.</p>
+                        <p>Place the title at the trailing edge of the circle view.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonDidOpen</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">trailing</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonWillClose:"></a>
-                    <a name="//apple_ref/swift/Method/floatingActionButtonWillClose(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonWillClose:">floatingActionButtonWillClose(_:)</a>
+                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionLeft"></a>
+                    <a name="//apple_ref/swift/Element/left" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionLeft">left</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -190,26 +198,30 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Is called before closing animation. Button state is .closing.</p>
+                        <p>Place the title at the left edge of the circle view.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonWillClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">left</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonDidClose:"></a>
-                    <a name="//apple_ref/swift/Method/floatingActionButtonDidClose(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(pl)JJFloatingActionButtonDelegate(im)floatingActionButtonDidClose:">floatingActionButtonDidClose(_:)</a>
+                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionRight"></a>
+                    <a name="//apple_ref/swift/Element/right" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionRight">right</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -217,14 +229,107 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Is called after closing animation. Button state is .closed.</p>
+                        <p>Place the title at the right edge of the circle view.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">optional</span> <span class="kd">func</span> <span class="nf">floatingActionButtonDidClose</span><span class="p">(</span><span class="n">_</span> <span class="nv">button</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">right</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionTop"></a>
+                    <a name="//apple_ref/swift/Element/top" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionTop">top</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Place the title at the top edge of the circle view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">top</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionBottom"></a>
+                    <a name="//apple_ref/swift/Element/bottom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionBottom">bottom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Place the title at the bottom edge of the circle view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">bottom</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionHidden"></a>
+                    <a name="//apple_ref/swift/Element/hidden" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition@JJActionItemTitlePositionHidden">hidden</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Hide the title all together.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">hidden</span></code></pre>
 
                         </div>
                       </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>JJCircleView Class Reference</title>
+    <title>JJAnimationSettings Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/JJCircleView" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/JJAnimationSettings" class="dashAnchor"></a>
 
-    <a title="JJCircleView Class Reference"></a>
+    <a title="JJAnimationSettings Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">JJFloatingActionButton Reference</a>
       <img class="carat" src="../img/carat.png" />
-      JJCircleView Class Reference
+      JJAnimationSettings Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -107,14 +107,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>JJCircleView</h1>
+            <h1>JJAnimationSettings</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBDesignable</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">JJCircleView</span><span class="p">:</span> <span class="kt">UIView</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">JJAnimationSettings</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>A colored circle with an highlighted state</p>
+            <p>General animation configuration settings</p>
 
           </div>
         </section>
@@ -126,9 +126,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(py)color"></a>
-                    <a name="//apple_ref/swift/Property/color" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(py)color">color</a>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)duration"></a>
+                    <a name="//apple_ref/swift/Property/duration" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)duration">duration</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -136,14 +136,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The color of the circle.</p>
+                        <p>Duration of the animation.
+Default is <code>0.3</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">color</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="kt">Styles</span><span class="o">.</span><span class="n">defaultButtonColor</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mf">0.3</span></code></pre>
 
                         </div>
                       </div>
@@ -153,9 +154,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(py)highlightedColor"></a>
-                    <a name="//apple_ref/swift/Property/highlightedColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(py)highlightedColor">highlightedColor</a>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)dampingRatio"></a>
+                    <a name="//apple_ref/swift/Property/dampingRatio" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)dampingRatio">dampingRatio</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -163,14 +164,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The color of the circle when highlighted. Default is <code>nil</code>.</p>
+                        <p>Damping ratio of the animation.
+Default is <code>0.55</code></p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Not used for transitions.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">@IBInspectable</span> <span class="kd">public</span> <span class="kd">dynamic</span> <span class="k">var</span> <span class="nv">highlightedColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">dampingRatio</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.55</span></code></pre>
 
                         </div>
                       </div>
@@ -180,9 +187,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(py)isHighlighted"></a>
-                    <a name="//apple_ref/swift/Property/isHighlighted" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(py)isHighlighted">isHighlighted</a>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)initialVelocity"></a>
+                    <a name="//apple_ref/swift/Property/initialVelocity" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)initialVelocity">initialVelocity</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -190,15 +197,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A Boolean value indicating whether the circle view draws a highlight.
-Default is <code>false</code>.</p>
+                        <p>Initial velocity of the animation.
+Default is <code>0.3</code></p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Not used for transitions.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">isHighlighted</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">initialVelocity</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.3</span></code></pre>
 
                         </div>
                       </div>
@@ -208,9 +220,9 @@ Default is <code>false</code>.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(im)initWithCoder:"></a>
-                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(im)initWithCoder:">init(coder:)</a>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)interItemDelay"></a>
+                    <a name="//apple_ref/swift/Property/interItemDelay" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(py)interItemDelay">interItemDelay</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,14 +230,50 @@ Default is <code>false</code>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Returns an object initialized from data in a given unarchiver.</p>
+                        <p>Delay in between two item animations.
+Default is <code>0.1</code></p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    Only used for item animations.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">interItemDelay</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mf">0.1</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(im)initWithDuration:dampingRatio:initialVelocity:interItemDelay:"></a>
+                    <a name="//apple_ref/swift/Method/init(duration:dampingRatio:initialVelocity:interItemDelay:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJAnimationSettings(im)initWithDuration:dampingRatio:initialVelocity:interItemDelay:">init(duration:dampingRatio:initialVelocity:interItemDelay:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes and returns a newly allocated animation settings object with specified parameters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+                              <span class="nv">dampingRatio</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.55</span><span class="p">,</span>
+                              <span class="nv">initialVelocity</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+                              <span class="nv">interItemDelay</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -236,12 +284,48 @@ Default is <code>false</code>.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>aDecoder</em>
+                                <em>duration</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>An unarchiver object.</p>
+                                  <p>Duration of the animation. Default is <code>0.3</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dampingRatio</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Damping ratio of the animation. Default is <code>0.55</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>initialVelocity</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Initial velocity of the animation. Default is <code>0.3</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interItemDelay</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Delay in between two item animations. Default is <code>0.1</code></p>
                                 </div>
                               </td>
                             </tr>
@@ -250,35 +334,7 @@ Default is <code>false</code>.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p><code>self</code>, initialized using the data in decoder.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(im)drawRect:"></a>
-                    <a name="//apple_ref/swift/Method/draw(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJCircleView(im)drawRect:">draw(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Draws the receiver’s image within the passed-in rectangle
-Overrides <code>draw(rect: CGRect)</code> from <code>UIView</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">draw</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span></code></pre>
-
-                        </div>
+                        <p>An initialized animation settings object.</p>
                       </div>
                     </section>
                   </div>

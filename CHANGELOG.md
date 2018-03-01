@@ -1,5 +1,23 @@
 # Change Log
 
+## [0.9.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.9.0) (2018-03-01)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.8.0...0.9.0)
+
+**Implemented enhancements:**
+
+- Make item title position configurable [\#122](https://github.com/jjochen/JJFloatingActionButton/issues/122)
+- Add more opening styles  [\#87](https://github.com/jjochen/JJFloatingActionButton/issues/87)
+
+**Merged pull requests:**
+
+- Add App Icon to example project [\#136](https://github.com/jjochen/JJFloatingActionButton/pull/136)
+- Improve configurability of animations [\#134](https://github.com/jjochen/JJFloatingActionButton/pull/134) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)] [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Add codeclimate configuration [\#133](https://github.com/jjochen/JJFloatingActionButton/pull/133)
+- Configure swift version in pod spec [\#131](https://github.com/jjochen/JJFloatingActionButton/pull/131)
+-  Make position of action item title configurable [\#130](https://github.com/jjochen/JJFloatingActionButton/pull/130) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Update dependencies [\#129](https://github.com/jjochen/JJFloatingActionButton/pull/129)
+- Revert default color for item title and item circle to white [\#126](https://github.com/jjochen/JJFloatingActionButton/pull/126) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+
 ## [0.8.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.8.0) (2018-01-22)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.7.2...0.8.0)
 
