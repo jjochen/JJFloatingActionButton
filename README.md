@@ -1,14 +1,23 @@
 # JJFloatingActionButton
 Floating Action Button for iOS
 
-![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg) [![Version](https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![License](https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![Platform](https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat)](https://cocoapods.org/pods/JJFloatingActionButton) [![Build Status](https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield)](https://circleci.com/gh/jjochen/JJFloatingActionButton) [![codecov](https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg)](https://codecov.io/gh/jjochen/JJFloatingActionButton) [![Code Climate](https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg)](https://codeclimate.com/github/jjochen/JJFloatingActionButton) [![Documentation](https://jjochen.github.io/JJFloatingActionButton/badge.svg)](https://jjochen.github.io/JJFloatingActionButton) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jjochen/JJFloatingActionButton/issues)
-
 Until reaching milestone 1.0.0 there might be breaking changes in minor versions!
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift 4.0" /> 
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a> 
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License" /></a> 
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform" /></a> 
+  <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status" /></a> 
+  <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov" /></a> 
+  <a href="https://codeclimate.com/github/jjochen/JJFloatingActionButton"><img src="https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg" alt="Code Climate" /></a> 
+  <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation" /></a> 
+  <a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome" /></a>
+</p>
 
 <p align="center">
   <a href="#features">Features</a> • <a href="#preview">Preview</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
 </p>
-
 
 ## <a name="features"></a>Features
 
@@ -30,7 +39,7 @@ Until reaching milestone 1.0.0 there might be breaking changes in minor versions
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration"> 
 </p>
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircularPop.gif" width='250' alt="Preview Circular Pop"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircular.gif" width='250' alt="Preview Circular"> 
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
 
@@ -98,6 +107,9 @@ view.addSubview(actionButton)
 actionButton.translatesAutoresizingMaskIntoConstraints = false
 actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
 actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
+
+// last 4 lines can be replaced with
+// actionButton.display(inViewController: self)
 ```
 
 ### Configuration
@@ -110,8 +122,8 @@ actionButton.buttonImage = UIImage(named: "Dots")
 actionButton.buttonColor = .red
 actionButton.buttonImageColor = .white
 
-actionButton.buttonOpeningStyle = .transition(image: UIImage(named: "X"))
-actionButton.itemOpeningStyle = .popUp(interItemSpacing: 14)
+actionButton.buttonAnimationConfiguration = .transition(toImage: UIImage(named: "X"))
+actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 14)
 
 actionButton.layer.shadowColor = UIColor.black.cgColor
 actionButton.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -120,6 +132,8 @@ actionButton.layer.shadowRadius = CGFloat(2)
 
 actionButton.itemSizeRatio = CGFloat(0.75)
 actionButton.configureDefaultItem { item in
+    item.titlePosition = .trailing
+
     item.titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize)
     item.titleLabel.textColor = .white
     item.buttonColor = .white
@@ -140,7 +154,7 @@ item.titleLabel.text = "Owl"
 item.imageView.image = UIImage(named: "Owl")
 item.buttonColor = .black
 item.buttonImageColor = .white
-tem.action = { item in
+item.action = { item in
     // Do something
 }
 ```
