@@ -36,16 +36,7 @@ import UIKit
     /// - SeeAlso: `itemAnimationConfiguration`
     ///
     func open(animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard buttonState == .closed else {
-            return
-        }
-        guard let superview = superview else {
-            return
-        }
-        guard !enabledItems.isEmpty else {
-            return
-        }
-        guard !isSingleActionButton else {
+        guard let superview = superview, buttonState == .closed, !enabledItems.isEmpty, !isSingleActionButton else {
             return
         }
 
