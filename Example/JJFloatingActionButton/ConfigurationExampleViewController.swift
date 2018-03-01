@@ -82,12 +82,12 @@ internal class ConfigurationExampleViewController: UIViewController {
             Helper.showAlert(for: item)
         }
 
-        let item3 = actionButton.addItem()
-        item3.titleLabel.text = "Owl"
-        item3.imageView.image = #imageLiteral(resourceName: "Owl")
-        item3.buttonColor = .black
-        item3.buttonImageColor = .white
-        item3.action = { item in
+        let item = actionButton.addItem()
+        item.titleLabel.text = "Owl"
+        item.imageView.image = #imageLiteral(resourceName: "Owl")
+        item.buttonColor = .black
+        item.buttonImageColor = .white
+        item.action = { item in
             Helper.showAlert(for: item)
         }
     }
