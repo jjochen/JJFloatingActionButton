@@ -1,6 +1,8 @@
 # JJFloatingActionButton
 Floating Action Button for iOS
 
+Until reaching milestone 1.0.0 there might be breaking changes in minor versions!
+
 <p align="center">
   <img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift 4.0" /> 
   <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a> 
@@ -16,8 +18,6 @@ Floating Action Button for iOS
 <p align="center">
   <a href="#features">Features</a> • <a href="#preview">Preview</a> • <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#author">Author</a> • <a href="#license">License</a>
 </p>
-
-Until reaching milestone 1.0.0 there might be breaking changes in minor versions!
 
 ## <a name="features"></a>Features
 
