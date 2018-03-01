@@ -39,7 +39,7 @@ Until reaching milestone 1.0.0 there might be breaking changes in minor versions
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration"> 
 </p>
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircularPop.gif" width='250' alt="Preview Circular Pop"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircular.gif" width='250' alt="Preview Circular"> 
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
 
