@@ -28,7 +28,9 @@ import UIKit
     /// Add floating action button to a given superview and place in trailing bottom corner.
     ///
     /// - Parameter superview: The view to which the floating action button is added as a subview.
-    /// - Parameter viewInset: The (minimum) spacing in points between button and superview.
+    /// - Parameter bottomInset: The (minimum) bottom vertical spacing in points between button and superview.
+    ///             Default is `16`.
+    /// - Parameter trailingInset: The (minimum) trailing horizontal spacing in points between button and superview.
     ///             Default is `16`.
     /// - Parameter safeAreaInset: The (minimum) spacing in points between button and safe area of the superview.
     ///             Default is `0`.
@@ -83,7 +85,9 @@ import UIKit
     /// Add floating action button to a view of a given view controller and place in trailing bottom corner.
     ///
     /// - Parameter viewController: The view controller to which view the floating action button is added as a subview.
-    /// - Parameter viewInset: The (minimum) spacing in points between button and the view controllers view.
+    /// - Parameter bottomInset: The (minimum) bottom vertical spacing in points between button and superview.
+    ///             Default is `16`.
+    /// - Parameter trailingInset: The (minimum) trailing horizontal spacing in points between button and superview.
     ///             Default is `16`.
     /// - Parameter safeAreaInset: The (minimum) spacing in points between button and safe area of the view controllers view.
     ///             Default is `0`.
