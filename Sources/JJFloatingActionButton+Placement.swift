@@ -35,17 +35,17 @@ import UIKit
     ///
     /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
     ///
-    func display(inView superview: UIView, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
+    func display(inView superview: UIView, bottomInset: CGFloat = 16, trailingInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
         superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
 
         var trailing: NSLayoutConstraint
 
-        trailing = trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -viewInset)
+        trailing = trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -trailingInset)
         trailing.priority = UILayoutPriority(250)
         trailing.isActive = true
 
-        trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: -viewInset)
+        trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: -trailingInset)
         trailing.priority = .required
         trailing.isActive = true
 
@@ -61,11 +61,11 @@ import UIKit
 
         var bottom: NSLayoutConstraint
 
-        bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -viewInset)
+        bottom = bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -bottomInset)
         bottom.priority = UILayoutPriority(250)
         bottom.isActive = true
 
-        bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -viewInset)
+        bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.bottomAnchor, constant: -bottomInset)
         bottom.priority = .required
         bottom.isActive = true
 
@@ -90,17 +90,17 @@ import UIKit
     ///
     /// - Remark: On iOS prior to iOS 11 `safeAreaInset` is ignored.
     ///
-    func display(inViewController viewController: UIViewController, viewInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
+    func display(inViewController viewController: UIViewController, bottomInset: CGFloat = 16, trailingInset: CGFloat = 16, safeAreaInset: CGFloat = 0) {
         if let superview = viewController.view {
-            display(inView: superview, viewInset: viewInset, safeAreaInset: safeAreaInset)
 
+            display(inView: superview, bottomInset: bottomInset, trailingInset: trailingInset, safeAreaInset: safeAreaInset)
             var bottom: NSLayoutConstraint
 
-            bottom = bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor, constant: -viewInset)
+            bottom = bottomAnchor.constraint(equalTo: viewController.bottomLayoutGuide.topAnchor, constant: -bottomInset)
             bottom.priority = UILayoutPriority(500)
             bottom.isActive = true
 
-            bottom = bottomAnchor.constraint(lessThanOrEqualTo: viewController.bottomLayoutGuide.topAnchor, constant: -viewInset)
+            bottom = bottomAnchor.constraint(lessThanOrEqualTo: viewController.bottomLayoutGuide.topAnchor, constant: -bottomInset)
             bottom.priority = .required
             bottom.isActive = true
         }
