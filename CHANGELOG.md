@@ -1,5 +1,17 @@
 # Change Log
 
+## [0.9.2](https://github.com/jjochen/JJFloatingActionButton/tree/0.9.2) (2018-06-18)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.1...0.9.2)
+
+**Implemented enhancements:**
+
+- View inset for bottom and trailing separately [\#144](https://github.com/jjochen/JJFloatingActionButton/issues/144)
+
+**Merged pull requests:**
+
+- Fix circle ci checks [\#146](https://github.com/jjochen/JJFloatingActionButton/pull/146)
+- Separate bottom and trailing inset in layout category [\#145](https://github.com/jjochen/JJFloatingActionButton/pull/145) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+
 ## [0.9.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.9.1) (2018-03-01)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.0...0.9.1)
 
