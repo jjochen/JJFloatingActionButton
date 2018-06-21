@@ -299,7 +299,6 @@ def xcodebuild_test(destination)
     "  -sdk iphonesimulator" \
     "  -destination \"#{destination}\"" \
     "  -enableCodeCoverage YES" \
-    "  CODE_SIGNING_REQUIRED=NO" \
     "  CODE_SIGN_IDENTITY=" \
     "  PROVISIONING_PROFILE=" \
     " | xcpretty --report junit && exit ${PIPESTATUS[0]}"

@@ -4,7 +4,7 @@ version: 2
 defaults: &defaults
   
   macos:
-    xcode: "9.1.0"
+    xcode: "9.4.0"
     
   shell: /bin/bash --login -eo pipefail
 
@@ -76,8 +76,8 @@ jobs:
     <<: *defaults
 
     environment:
-      DESTINATION: platform=iOS Simulator,OS=11.1,name=iPhone X
-      SIMULATOR: iPhone X (11.1) [
+      DESTINATION: platform=iOS Simulator,OS=11.4,name=iPhone X
+      SIMULATOR: iPhone X (11.4) [
 
     steps:
       - checkout

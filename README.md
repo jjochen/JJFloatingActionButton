@@ -3,6 +3,8 @@ Floating Action Button for iOS
 
 Until reaching milestone 1.0.0 there might be breaking changes in minor versions!
 
+----
+
 <p align="center">
   <img src="https://img.shields.io/badge/Swift-4.0-orange.svg" alt="Swift 4.0" /> 
   <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a> 
