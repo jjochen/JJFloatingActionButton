@@ -29,16 +29,36 @@ import Quick
 
 class JJCircleViewSpec: QuickSpec {
     override func spec() {
-        describe("JJCircleView loaded from xib") {
+        describe("JJCircleView") {
             var circleView: JJCircleView?
 
-            beforeEach {
-                let bundle = Bundle(for: type(of: self))
-                circleView = bundle.loadNibNamed("JJCircleView", owner: nil)?.first as? JJCircleView
+            context("loaded from xib") {
+                beforeEach {
+                    let bundle = Bundle(for: type(of: self))
+                    circleView = bundle.loadNibNamed("JJCircleView", owner: nil, options: nil)?.first as? JJCircleView
+                }
+
+                it("exists") {
+                    expect(circleView).toNot(beNil())
+                }
+
+                it("looks correct") {
+                    expect(circleView) == snapshot()
+                }
             }
 
-            it("looks correct") {
-                expect(circleView) == snapshot()
+            context("created programatically") {
+                beforeEach {
+                    circleView = JJCircleView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+                }
+
+                it("exists") {
+                    expect(circleView).toNot(beNil())
+                }
+
+                it("looks correct") {
+                    expect(circleView) == snapshot()
+                }
             }
         }
     }
