@@ -317,11 +317,11 @@ import Foundation
             var index: Int = 0
             for item in items {
                 let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems, actionButton: actionButton)
-                let dx = radius * cos(angle)
-                let dy = radius * sin(angle)
+                let horizontalDistance = radius * cos(angle)
+                let verticalDistance = radius * sin(angle)
 
-                item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor, constant: dx).isActive = true
-                item.circleView.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor, constant: dy).isActive = true
+                item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor, constant: horizontalDistance).isActive = true
+                item.circleView.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor, constant: verticalDistance).isActive = true
 
                 index += 1
             }
