@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1gd-jP-Iqk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1gd-jP-Iqk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -210,8 +210,38 @@
                                             </segue>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fzg-XH-MoO" detailTextLabel="Kfa-Bd-xxB" style="IBUITableViewCellStyleSubtitle" id="t9q-bs-9j5" userLabel="Single Item">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="jgj-jo-bVD" detailTextLabel="CaL-h8-kUc" style="IBUITableViewCellStyleSubtitle" id="3GL-zo-Qgl" userLabel="Downwards">
                                         <rect key="frame" x="0.0" y="180" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3GL-zo-Qgl" id="5VC-EU-GLm">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Opening Downwards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jgj-jo-bVD" userLabel="Title">
+                                                    <rect key="frame" x="16" y="10" width="158.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using a custom downwards opening style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CaL-h8-kUc" userLabel="Subtitle">
+                                                    <rect key="frame" x="16" y="33.5" width="234.5" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="eNk-0Z-oLC" kind="show" id="6Dg-ce-ncF">
+                                                <segue key="commit" inheritsFrom="parent" id="YTx-WH-Jra"/>
+                                                <segue key="preview" inheritsFrom="commit" id="ekU-pd-k1X"/>
+                                            </segue>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="fzg-XH-MoO" detailTextLabel="Kfa-Bd-xxB" style="IBUITableViewCellStyleSubtitle" id="t9q-bs-9j5" userLabel="Single Item">
+                                        <rect key="frame" x="0.0" y="240" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t9q-bs-9j5" id="L8y-Tl-CY0">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
@@ -241,7 +271,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="h82-vy-5ti" detailTextLabel="mLa-Sw-Usw" style="IBUITableViewCellStyleSubtitle" id="YbW-dJ-dt2" userLabel="Interface Builder">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="300" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YbW-dJ-dt2" id="cEM-id-8KO">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="59.5"/>
@@ -420,8 +450,46 @@
             </objects>
             <point key="canvasLocation" x="4522" y="-366"/>
         </scene>
+        <!--Downwards-->
+        <scene sceneID="HE4-dX-fKk">
+            <objects>
+                <viewController storyboardIdentifier="DownwardsExampleViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eNk-0Z-oLC" userLabel="Downwards" customClass="DownwardsExampleViewController" customModule="JJFloatingActionButton_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hYq-Ap-AUx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Downwards" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="4FS-k2-2eO" userLabel="Title">
+                                <rect key="frame" x="96.5" y="312" width="182.5" height="43"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Floating Action Button with custom configuration unsing a downwards opening style" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxQ-Il-whM" userLabel="Subtitle">
+                                <rect key="frame" x="28" y="363" width="319" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dxQ-Il-whM" firstAttribute="top" secondItem="4FS-k2-2eO" secondAttribute="bottom" constant="8" symbolic="YES" id="4GA-Ph-8AI"/>
+                            <constraint firstAttribute="centerY" secondItem="4FS-k2-2eO" secondAttribute="centerY" id="IBu-Bb-Qou"/>
+                            <constraint firstItem="dxQ-Il-whM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zCv-HR-sq1" secondAttribute="leading" constant="20" id="J9E-55-pCS"/>
+                            <constraint firstAttribute="centerX" secondItem="4FS-k2-2eO" secondAttribute="centerX" id="mlY-Xw-gvn"/>
+                            <constraint firstItem="dxQ-Il-whM" firstAttribute="centerX" secondItem="4FS-k2-2eO" secondAttribute="centerX" id="njK-sL-rj6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zCv-HR-sq1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H4J-gh-DBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5361" y="-367"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="6Dg-ce-ncF"/>
         <segue reference="OXY-CS-PSv"/>
         <segue reference="lpU-8N-sO0"/>
         <segue reference="iun-ED-VLW"/>
