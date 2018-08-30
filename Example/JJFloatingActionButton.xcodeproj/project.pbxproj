@@ -14,6 +14,7 @@
 		195269411FD7E53B0053C785 /* JJCircleViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */; };
 		195269431FD7E6200053C785 /* UIColorExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */; };
 		195269451FD7E63B0053C785 /* JJActionItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195269441FD7E63B0053C785 /* JJActionItemSpec.swift */; };
+		1952C91E20FF904D00B4DC25 /* DownwardsExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952C91D20FF904D00B4DC25 /* DownwardsExampleViewController.swift */; };
 		1957C8C6201282D500F1574B /* JJFloatingActionButtonAppearanceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1957C8C42012815000F1574B /* JJFloatingActionButtonAppearanceSpec.swift */; };
 		1957C8C8201283EF00F1574B /* JJActionItemAppearanceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1957C8C7201283EF00F1574B /* JJActionItemAppearanceSpec.swift */; };
 		1957C8CA20128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1957C8C920128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift */; };
@@ -57,6 +58,7 @@
 		1952693F1FD7E4CD0053C785 /* JJCircleViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJCircleViewSpec.swift; sourceTree = "<group>"; };
 		195269421FD7E6200053C785 /* UIColorExtensionsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionsSpec.swift; sourceTree = "<group>"; };
 		195269441FD7E63B0053C785 /* JJActionItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJActionItemSpec.swift; sourceTree = "<group>"; };
+		1952C91D20FF904D00B4DC25 /* DownwardsExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownwardsExampleViewController.swift; sourceTree = "<group>"; };
 		195637221FDA9EFB0003B8FF /* config.yml */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text; lineEnding = 0; name = config.yml; path = ../../.circleci/config.yml; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		1957C8C42012815000F1574B /* JJFloatingActionButtonAppearanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonAppearanceSpec.swift; sourceTree = "<group>"; };
 		1957C8C7201283EF00F1574B /* JJActionItemAppearanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJActionItemAppearanceSpec.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				19D311DC200F8A630023477D /* CircularExampleViewController.swift */,
 				198B66041FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift */,
 				192D1B712003CB930093064F /* SingleItemExampleViewController.swift */,
+				1952C91D20FF904D00B4DC25 /* DownwardsExampleViewController.swift */,
 				192D1B6D2003C7440093064F /* Helper.swift */,
 				198B660E1FBAE904009A17F2 /* Info.plist */,
 				194504D22003D499003B205F /* LaunchScreen.storyboard */,
@@ -434,6 +437,7 @@
 				192D1B722003CB930093064F /* SingleItemExampleViewController.swift in Sources */,
 				198B66051FBAE904009A17F2 /* InterfaceBuilderExampleViewController.swift in Sources */,
 				198B66011FBAE904009A17F2 /* AppDelegate.swift in Sources */,
+				1952C91E20FF904D00B4DC25 /* DownwardsExampleViewController.swift in Sources */,
 				198B66031FBAE904009A17F2 /* BasicsExampleViewController.swift in Sources */,
 				192D1B702003CB8A0093064F /* ConfigurationExampleViewController.swift in Sources */,
 				192D1B6E2003C7440093064F /* Helper.swift in Sources */,
