@@ -36,6 +36,8 @@ internal class ConfigurationExampleViewController: UIViewController {
         view.addSubview(actionButton)
 
         actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.widthAnchor.constraint(equalToConstant: 65).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: 65).isActive = true
         if #available(iOS 11.0, *) {
             actionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
             actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
