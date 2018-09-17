@@ -1,5 +1,20 @@
 # Change Log
 
+## [0.10.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.10.0) (2018-09-17)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.2...0.10.0)
+
+**Implemented enhancements:**
+
+- Make spacing between the titleLabel and circleView configurable [\#154](https://github.com/jjochen/JJFloatingActionButton/issues/154)
+
+**Merged pull requests:**
+
+- Update dependencies [\#156](https://github.com/jjochen/JJFloatingActionButton/pull/156)
+- Make title spacing configurable [\#155](https://github.com/jjochen/JJFloatingActionButton/pull/155) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Add example for downward animation [\#153](https://github.com/jjochen/JJFloatingActionButton/pull/153)
+- Add example on how to change size of action button [\#152](https://github.com/jjochen/JJFloatingActionButton/pull/152)
+- Update dependencies and circleci configuration [\#148](https://github.com/jjochen/JJFloatingActionButton/pull/148)
+
 ## [0.9.2](https://github.com/jjochen/JJFloatingActionButton/tree/0.9.2) (2018-06-18)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.1...0.9.2)
 
