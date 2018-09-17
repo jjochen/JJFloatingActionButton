@@ -5,7 +5,7 @@
 
 **Implemented enhancements:**
 
-- Question: How to change the spacing between the titleLabel and circleView? [\#154](https://github.com/jjochen/JJFloatingActionButton/issues/154)
+- Make spacing between the titleLabel and circleView configurable [\#154](https://github.com/jjochen/JJFloatingActionButton/issues/154)
 
 **Merged pull requests:**
 
