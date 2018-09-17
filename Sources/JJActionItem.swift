@@ -137,6 +137,17 @@ import UIKit
         }
     }
 
+    /// The position of the title label. Default is `-1`.
+    /// When titleSpacing is negative default spacing is used:
+    /// Default horizontal spacing is `12`.
+    /// Default vertical spaicng is `4`.
+    ///
+    @objc public dynamic var titleSpacing: CGFloat = -1 {
+        didSet {
+            updateDynamicConstraints()
+        }
+    }
+
     internal override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -234,8 +245,8 @@ fileprivate extension JJActionItem {
         dynamicConstraints.removeAll()
         titleLabel.isHidden = false
 
-        let horizontalSpacing = CGFloat(12)
-        let verticalSpacing = CGFloat(4)
+        let horizontalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(12)
+        let verticalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(4)
 
         switch titlePosition {
         case .leading:

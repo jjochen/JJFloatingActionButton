@@ -81,6 +81,18 @@ class JJActionItemSpec: QuickSpec {
                 actionItem.titlePosition = .hidden
                 expect(actionItem) == snapshot()
             }
+
+            it("looks correct with horizontal title spacing configured") {
+                actionItem.titlePosition = .leading
+                actionItem.titleSpacing = 42
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with vertical title spacing configured") {
+                actionItem.titlePosition = .bottom
+                actionItem.titleSpacing = 42
+                expect(actionItem) == snapshot()
+            }
         }
 
         describe("JJActionItem loaded from xib") {
