@@ -64,6 +64,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         actionButton.itemSizeRatio = CGFloat(0.75)
         actionButton.configureDefaultItem { item in
             item.titlePosition = .trailing
+            item.titleSpacing = 16
 
             item.titleLabel.font = .boldSystemFont(ofSize: UIFont.systemFontSize)
             item.titleLabel.textColor = .white
