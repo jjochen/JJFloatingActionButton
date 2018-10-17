@@ -99,8 +99,8 @@ jobs:
     <<: *defaults
 
     environment:
-      DESTINATION: platform=iOS Simulator,OS=11.4,name=iPhone X
-      SIMULATOR: iPhone X (11.4) [
+      DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
+      SIMULATOR: iPhone X (11.2) [
 
     steps:
       - checkout
