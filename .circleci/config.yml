@@ -114,7 +114,6 @@ jobs:
       - run: *install-cocoapods
       - save_cache: *save-pods-cache
       - run: *run-tests
-      - run: *update-codecov
       - store_artifacts: *xcpretty-reports
       - store_test_results: *xcpretty-reports
 
@@ -138,7 +137,6 @@ jobs:
       - run: *install-cocoapods
       - save_cache: *save-pods-cache
       - run: *run-tests
-      - run: *update-codecov
       - store_artifacts: *xcpretty-reports
       - store_test_results: *xcpretty-reports
 
