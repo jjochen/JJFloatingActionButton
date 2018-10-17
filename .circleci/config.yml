@@ -72,7 +72,7 @@ aliases:
 
 jobs:
 
-  build-and-test-ios12-iphonexmax:
+  build-and-test-ios12-iphonexsmax:
     <<: *defaults
 
     environment:
