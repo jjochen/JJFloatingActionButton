@@ -29,7 +29,7 @@ internal extension UIView {
                        delay: TimeInterval = 0,
                        usingSpringWithDamping dampingRatio: CGFloat,
                        initialSpringVelocity velocity: CGFloat,
-                       options: UIViewAnimationOptions = [.beginFromCurrentState],
+                       options: UIView.AnimationOptions = [.beginFromCurrentState],
                        animations: @escaping () -> Void,
                        completion: ((Bool) -> Void)? = nil,
                        group: DispatchGroup? = nil,
@@ -59,7 +59,7 @@ internal extension UIView {
 
     class func transition(with view: UIView,
                           duration: TimeInterval,
-                          options: UIViewAnimationOptions = [.transitionCrossDissolve],
+                          options: UIView.AnimationOptions = [.transitionCrossDissolve],
                           animations: (() -> Swift.Void)?,
                           completion: ((Bool) -> Swift.Void)? = nil,
                           group: DispatchGroup? = nil,

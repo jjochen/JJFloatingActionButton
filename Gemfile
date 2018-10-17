@@ -5,7 +5,7 @@ source 'https://rubygems.org' do
   gem 'xcpretty'
   gem 'synx'
   gem 'github_changelog_generator'
-  gem 'jazzy', '>= 0.9.0'
+  gem 'jazzy', git: 'https://github.com/realm/jazzy', branch: 'master'
   gem 'rake'
   gem 'fileutils'
   gem 'octokit'

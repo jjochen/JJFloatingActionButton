@@ -241,37 +241,52 @@ fileprivate extension JJActionItem {
     }
 
     func updateDynamicConstraints() {
+        titleLabel.isHidden = (titlePosition == .hidden)
         NSLayoutConstraint.deactivate(dynamicConstraints)
         dynamicConstraints.removeAll()
-        titleLabel.isHidden = false
+        createDynamicConstraints()
+        NSLayoutConstraint.activate(dynamicConstraints)
+        setNeedsLayout()
+    }
 
+    func createDynamicConstraints() {
         let horizontalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(12)
         let verticalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(4)
 
         switch titlePosition {
         case .leading:
+            dynamicConstraints.append(circleView.trailingAnchor.constraint(equalTo: trailingAnchor))
+            dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
             dynamicConstraints.append(titleLabel.trailingAnchor.constraint(equalTo: circleView.leadingAnchor, constant: -horizontalSpacing))
             dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
         case .trailing:
+            dynamicConstraints.append(circleView.leadingAnchor.constraint(equalTo: leadingAnchor))
+            dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
             dynamicConstraints.append(titleLabel.leadingAnchor.constraint(equalTo: circleView.trailingAnchor, constant: horizontalSpacing))
             dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
         case .left:
+            dynamicConstraints.append(circleView.rightAnchor.constraint(equalTo: rightAnchor))
+            dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
             dynamicConstraints.append(titleLabel.rightAnchor.constraint(equalTo: circleView.leftAnchor, constant: -horizontalSpacing))
             dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
         case .right:
+            dynamicConstraints.append(circleView.leftAnchor.constraint(equalTo: leftAnchor))
+            dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
             dynamicConstraints.append(titleLabel.leftAnchor.constraint(equalTo: circleView.rightAnchor, constant: horizontalSpacing))
             dynamicConstraints.append(titleLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
         case .top:
+            dynamicConstraints.append(circleView.bottomAnchor.constraint(equalTo: bottomAnchor))
+            dynamicConstraints.append(circleView.centerXAnchor.constraint(equalTo: centerXAnchor))
             dynamicConstraints.append(titleLabel.bottomAnchor.constraint(equalTo: circleView.topAnchor, constant: -verticalSpacing))
             dynamicConstraints.append(titleLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
         case .bottom:
+            dynamicConstraints.append(circleView.topAnchor.constraint(equalTo: topAnchor))
+            dynamicConstraints.append(circleView.centerXAnchor.constraint(equalTo: centerXAnchor))
             dynamicConstraints.append(titleLabel.topAnchor.constraint(equalTo: circleView.bottomAnchor, constant: verticalSpacing))
             dynamicConstraints.append(titleLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
         case .hidden:
-            titleLabel.isHidden = true
+            dynamicConstraints.append(circleView.centerXAnchor.constraint(equalTo: centerXAnchor))
+            dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
         }
-
-        NSLayoutConstraint.activate(dynamicConstraints)
-        setNeedsLayout()
     }
 }
