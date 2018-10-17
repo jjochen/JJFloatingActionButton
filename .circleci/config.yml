@@ -72,12 +72,12 @@ aliases:
 
 jobs:
 
-  build-and-test-ios12-iphonexsmax:
+  build-and-test-ios12-iphonexs:
     <<: *defaults
 
     environment:
-      DESTINATION: platform=iOS Simulator,OS=12.0,name=iPhone XS Max
-      SIMULATOR: iPhone XS Max (12.0) [
+      DESTINATION: platform=iOS Simulator,OS=12.0,name=iPhone XS
+      SIMULATOR: iPhone XS (12.0) [
 
     steps:
       - checkout
@@ -222,7 +222,7 @@ workflows:
     jobs:
       - lint-podspec
       - swiftlint
-      - build-and-test-ios12-iphonexsmax
+      - build-and-test-ios12-iphonexs
       - build-and-test-ios11-iphonex
       - build-and-test-ios10-iphone7
       - build-documentation
