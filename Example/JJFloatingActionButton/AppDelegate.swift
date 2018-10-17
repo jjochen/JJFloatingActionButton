@@ -28,7 +28,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window?.tintColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
         UINavigationBar.appearance().tintColor = UIColor.white
         return true
