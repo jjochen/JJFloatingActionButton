@@ -241,10 +241,15 @@ fileprivate extension JJActionItem {
     }
 
     func updateDynamicConstraints() {
+        titleLabel.isHidden = (titlePosition == .hidden)
         NSLayoutConstraint.deactivate(dynamicConstraints)
         dynamicConstraints.removeAll()
-        titleLabel.isHidden = false
+        createDynamicConstraints()
+        NSLayoutConstraint.activate(dynamicConstraints)
+        setNeedsLayout()
+    }
 
+    func createDynamicConstraints() {
         let horizontalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(12)
         let verticalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(4)
 
@@ -282,10 +287,6 @@ fileprivate extension JJActionItem {
         case .hidden:
             dynamicConstraints.append(circleView.centerXAnchor.constraint(equalTo: centerXAnchor))
             dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
-            titleLabel.isHidden = true
         }
-
-        NSLayoutConstraint.activate(dynamicConstraints)
-        setNeedsLayout()
     }
 }
