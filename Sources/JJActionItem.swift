@@ -27,10 +27,13 @@ import UIKit
 /// The item view representing an action.
 ///
 @objc @IBDesignable open class JJActionItem: UIControl {
-    /// The action that is executen when the item is pressed.
+    /// The action that is executen when the item is tapped.
     /// Default is `nil`.
     ///
-    @objc open var action: ((JJActionItem, UIEvent) -> Void)?
+    /// - Parameter item: The action item that has been tapped.
+    /// - Parameter event: The touch event of the tap.
+    ///
+    @objc open var action: ((_ item: JJActionItem, _ event: UIEvent) -> Void)?
 
     /// The color of action item circle view.
     /// Default is `UIColor.white`.

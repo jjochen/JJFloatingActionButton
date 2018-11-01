@@ -34,7 +34,7 @@ internal struct Helper {
         let eventInfo = event.allTouches?.first?.debugDescription
         let alertController = UIAlertController(title: item.titleLabel.text, message: "Item tapped!", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        alertController.addAction(UIAlertAction(title: "Event Info", style: .default) { action in
+        alertController.addAction(UIAlertAction(title: "Event Info", style: .default) { _ in
             showAlert(title: "Event Info", message: eventInfo)
         })
         rootViewController?.present(alertController, animated: true, completion: nil)
