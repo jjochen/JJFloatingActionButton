@@ -30,6 +30,16 @@ internal struct Helper {
         showAlert(title: item.titleLabel.text, message: "Item tapped!")
     }
 
+    static func showAlert(for item: JJActionItem, event: UIEvent) {
+        let eventInfo = event.allTouches?.first?.debugDescription
+        let alertController = UIAlertController(title: item.titleLabel.text, message: "Item tapped!", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        alertController.addAction(UIAlertAction(title: "Event Info", style: .default) { action in
+            showAlert(title: "Event Info", message: eventInfo)
+        })
+        rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+
     static func showAlert(title: String?, message: String?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

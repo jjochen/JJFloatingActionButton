@@ -259,7 +259,7 @@ import UIKit
     ///
     @discardableResult func addItem(title: String? = nil,
                                     image: UIImage? = nil,
-                                    action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
+                                    action: ((JJActionItem, UIEvent) -> Void)? = nil) -> JJActionItem {
         let item = JJActionItem()
         item.titleLabel.text = title
         item.imageView.image = image
@@ -353,7 +353,7 @@ fileprivate extension JJFloatingActionButton {
         backgroundColor = .clear
         clipsToBounds = false
         isUserInteractionEnabled = true
-        addTarget(self, action: #selector(buttonWasTapped), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonWasTapped(sender:event:)), for: .touchUpInside)
 
         layer.shadowColor = Styles.defaultShadowColor.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -398,7 +398,7 @@ fileprivate extension JJFloatingActionButton {
         item.layer.shadowOffset = layer.shadowOffset
         item.layer.shadowRadius = layer.shadowRadius
 
-        item.addTarget(self, action: #selector(itemWasTapped(sender:)), for: .touchUpInside)
+        item.addTarget(self, action: #selector(itemWasTapped(sender:event:)), for: .touchUpInside)
 
         defaultItemConfiguration?(item)
     }
@@ -427,36 +427,36 @@ internal extension JJFloatingActionButton {
 // MARK: - Actions
 
 fileprivate extension JJFloatingActionButton {
-    @objc func buttonWasTapped() {
+    @objc func buttonWasTapped(sender _: JJFloatingActionButton, event: UIEvent) {
         switch buttonState {
         case .open:
             close()
 
         case .closed:
-            handleSingleActionOrOpen()
+            handleSingleActionOrOpen(forEvent: event)
 
         default:
             break
         }
     }
 
-    @objc func itemWasTapped(sender: JJActionItem) {
+    @objc func itemWasTapped(sender: JJActionItem, event: UIEvent) {
         close()
-        sender.action?(sender)
+        sender.action?(sender, event)
     }
 
     @objc func overlayViewWasTapped() {
         close()
     }
 
-    func handleSingleActionOrOpen() {
+    func handleSingleActionOrOpen(forEvent event: UIEvent) {
         guard !enabledItems.isEmpty else {
             return
         }
 
         if isSingleActionButton {
             let item = enabledItems.first
-            item?.action?(item!)
+            item?.action?(item!, event)
         } else {
             open()
         }

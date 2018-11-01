@@ -30,7 +30,7 @@ import UIKit
     /// The action that is executen when the item is pressed.
     /// Default is `nil`.
     ///
-    @objc open var action: ((JJActionItem) -> Void)?
+    @objc open var action: ((JJActionItem, UIEvent) -> Void)?
 
     /// The color of action item circle view.
     /// Default is `UIColor.white`.

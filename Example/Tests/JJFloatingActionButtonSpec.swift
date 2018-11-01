@@ -188,7 +188,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when multiple items are added") {
                 var action = "not done"
                 beforeEach {
-                    actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { _ in
+                    actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { _, _ in
                         action = "done!"
                     }
                     actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
@@ -368,7 +368,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when 1 item is added") {
                 var action = "not done"
                 beforeEach {
-                    actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { _ in
+                    actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { _, _ in
                         action = "done!"
                     }
                 }

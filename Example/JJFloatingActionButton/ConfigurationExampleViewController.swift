@@ -77,12 +77,12 @@ internal class ConfigurationExampleViewController: UIViewController {
             item.layer.shadowRadius = CGFloat(2)
         }
 
-        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item, event in
+            Helper.showAlert(for: item, event: event)
         }
 
-        actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item, event in
+            Helper.showAlert(for: item, event: event)
         }
 
         let item = actionButton.addItem()
@@ -90,8 +90,8 @@ internal class ConfigurationExampleViewController: UIViewController {
         item.imageView.image = #imageLiteral(resourceName: "Owl")
         item.buttonColor = .black
         item.buttonImageColor = .white
-        item.action = { item in
-            Helper.showAlert(for: item)
+        item.action = { item, event in
+            Helper.showAlert(for: item, event: event)
         }
     }
 }
