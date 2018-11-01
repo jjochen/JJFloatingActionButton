@@ -36,19 +36,19 @@ internal class CircularExampleViewController: UIViewController {
         actionButton.buttonAnimationConfiguration.opening.duration = 0.8
         actionButton.buttonAnimationConfiguration.closing.duration = 0.6
 
-        actionButton.addItem(image: #imageLiteral(resourceName: "Baloon")) { item in
+        actionButton.addItem(image: #imageLiteral(resourceName: "Baloon")) { item, _ in
             Helper.showAlert(for: item)
         }
 
-        actionButton.addItem(image: #imageLiteral(resourceName: "Like")) { item in
+        actionButton.addItem(image: #imageLiteral(resourceName: "Like")) { item, _ in
             Helper.showAlert(for: item)
         }
 
-        actionButton.addItem(image: #imageLiteral(resourceName: "Owl")) { item in
+        actionButton.addItem(image: #imageLiteral(resourceName: "Owl")) { item, _ in
             Helper.showAlert(for: item)
         }
 
-        actionButton.addItem(image: #imageLiteral(resourceName: "Favourite")) { item in
+        actionButton.addItem(image: #imageLiteral(resourceName: "Favourite")) { item, _ in
             Helper.showAlert(for: item)
         }
 
