@@ -26,23 +26,19 @@ import JJFloatingActionButton
 import UIKit
 
 internal struct Helper {
-    static func showAlert(for item: JJActionItem) {
-        showAlert(title: item.titleLabel.text, message: "Item tapped!")
+    static func showAlert(for item: JJActionItem, event: UIEvent? = nil) {
+        let eventInfo = event?.allTouches?.first?.debugDescription
+        showAlert(title: item.titleLabel.text, message: "Item tapped!", more: eventInfo)
     }
 
-    static func showAlert(for item: JJActionItem, event: UIEvent) {
-        let eventInfo = event.allTouches?.first?.debugDescription
-        let alertController = UIAlertController(title: item.titleLabel.text, message: "Item tapped!", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        alertController.addAction(UIAlertAction(title: "Event Info", style: .default) { _ in
-            showAlert(title: "Event Info", message: eventInfo)
-        })
-        rootViewController?.present(alertController, animated: true, completion: nil)
-    }
-
-    static func showAlert(title: String?, message: String?) {
+    static func showAlert(title: String?, message: String? = nil, more: String? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        if let more = more {
+            alertController.addAction(UIAlertAction(title: "More", style: .default) { _ in
+                showAlert(title: "More Info", message: more)
+            })
+        }
         rootViewController?.present(alertController, animated: true, completion: nil)
     }
 
