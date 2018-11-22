@@ -27,8 +27,10 @@ import UIKit
 /// The item view representing an action.
 ///
 @objc @IBDesignable open class JJActionItem: UIControl {
-    /// The action that is executen when the item is pressed.
+    /// The action that is executen when the item is tapped.
     /// Default is `nil`.
+    ///
+    /// - Parameter item: The action item that has been tapped.
     ///
     @objc open var action: ((JJActionItem) -> Void)?
 
