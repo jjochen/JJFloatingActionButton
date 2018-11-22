@@ -32,6 +32,12 @@ import UIKit
     ///
     @objc open var action: ((JJActionItem) -> Void)?
 
+    /// Calls the action on the action item.
+    ///
+    @objc public func callAction() {
+        action?(self)
+    }
+
     /// The color of action item circle view.
     /// Default is `UIColor.white`.
     ///
