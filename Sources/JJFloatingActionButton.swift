@@ -442,7 +442,7 @@ fileprivate extension JJFloatingActionButton {
 
     @objc func itemWasTapped(sender: JJActionItem) {
         close()
-        sender.action?(sender)
+        sender.callAction()
     }
 
     @objc func overlayViewWasTapped() {
@@ -456,7 +456,7 @@ fileprivate extension JJFloatingActionButton {
 
         if isSingleActionButton {
             let item = enabledItems.first
-            item?.action?(item!)
+            item?.callAction()
         } else {
             open()
         }
