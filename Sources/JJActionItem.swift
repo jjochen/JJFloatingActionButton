@@ -217,6 +217,20 @@ fileprivate extension JJActionItem {
         circleView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
+        createStaticConstraints()
+        updateDynamicConstraints()
+    }
+
+    func updateDynamicConstraints() {
+        titleLabel.isHidden = (titlePosition == .hidden)
+        NSLayoutConstraint.deactivate(dynamicConstraints)
+        dynamicConstraints.removeAll()
+        createDynamicConstraints()
+        NSLayoutConstraint.activate(dynamicConstraints)
+        setNeedsLayout()
+    }
+
+    func createStaticConstraints() {
         setContentHuggingPriority(.required, for: .horizontal)
         setContentHuggingPriority(.required, for: .vertical)
 
@@ -258,17 +272,6 @@ fileprivate extension JJActionItem {
         constraints.append(titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor))
 
         NSLayoutConstraint.activate(constraints)
-
-        updateDynamicConstraints()
-    }
-
-    func updateDynamicConstraints() {
-        titleLabel.isHidden = (titlePosition == .hidden)
-        NSLayoutConstraint.deactivate(dynamicConstraints)
-        dynamicConstraints.removeAll()
-        createDynamicConstraints()
-        NSLayoutConstraint.activate(dynamicConstraints)
-        setNeedsLayout()
     }
 
     func createDynamicConstraints() {
