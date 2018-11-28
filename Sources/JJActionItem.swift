@@ -141,7 +141,7 @@ import UIKit
     ///
     @objc public dynamic var titlePosition: JJActionItemTitlePosition = .leading {
         didSet {
-            updateDynamicConstraints()
+            setNeedsUpdateConstraints()
         }
     }
 
@@ -152,7 +152,7 @@ import UIKit
     ///
     @objc public dynamic var titleSpacing: CGFloat = -1 {
         didSet {
-            updateDynamicConstraints()
+            setNeedsUpdateConstraints()
         }
     }
 
@@ -183,6 +183,11 @@ extension JJActionItem {
     open override func didMoveToSuperview() {
         // reset tintAdjustmentMode
         imageView.tintColorDidChange()
+    }
+
+    open override func updateConstraints() {
+        updateDynamicConstraints()
+        super.updateConstraints()
     }
 }
 
@@ -275,8 +280,8 @@ fileprivate extension JJActionItem {
     }
 
     func createDynamicConstraints() {
-        let horizontalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(12)
-        let verticalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(4)
+        let horizontalSpacing = titleSpacing(forAxis: .horizontal)
+        let verticalSpacing = titleSpacing(forAxis: .vertical)
 
         switch titlePosition {
         case .leading:
@@ -313,5 +318,21 @@ fileprivate extension JJActionItem {
             dynamicConstraints.append(circleView.centerXAnchor.constraint(equalTo: centerXAnchor))
             dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
         }
+    }
+
+    func titleSpacing(forAxis axis: NSLayoutConstraint.Axis) -> CGFloat {
+        guard let text = titleLabel.text else {
+            return 0
+        }
+
+        if text.isEmpty {
+            return 0
+        }
+
+        if titleSpacing > 0 {
+            return titleSpacing
+        }
+
+        return axis == .horizontal ? CGFloat(12) : CGFloat(4)
     }
 }

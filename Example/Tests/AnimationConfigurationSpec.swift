@@ -122,6 +122,20 @@ class AnimationConfigurationSpec: QuickSpec {
                     expect(superview) == snapshot()
                 }
 
+                it("looks correct when item have background color") {
+                    actionButton.configureDefaultItem({ item in
+                        item.backgroundColor = .red
+                    })
+
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(title: "title", image: #imageLiteral(resourceName: "Owl"))
+
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+
                 it("it looks correct when opened and closed") {
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
                     actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
