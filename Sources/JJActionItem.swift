@@ -224,6 +224,7 @@ fileprivate extension JJActionItem {
         titleLabel.setContentCompressionResistancePriority(UILayoutPriority(900), for: .vertical)
 
         var constraints: [NSLayoutConstraint] = []
+        var constraint: NSLayoutConstraint
 
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         constraints.append(imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
@@ -237,6 +238,19 @@ fileprivate extension JJActionItem {
         constraints.append(circleView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor))
         constraints.append(circleView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor))
         constraints.append(circleView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor))
+
+        constraint = circleView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
+        constraint = circleView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
+        constraint = circleView.topAnchor.constraint(equalTo: topAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
+        constraint = circleView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
 
         constraints.append(titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor))
         constraints.append(titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor))
