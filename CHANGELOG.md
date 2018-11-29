@@ -1,5 +1,25 @@
 # Change Log
 
+## [1.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.0.0) (2018-11-29)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.10.0...1.0.0)
+
+**Implemented enhancements:**
+
+- Swift 4.2 support [\#159](https://github.com/jjochen/JJFloatingActionButton/issues/159)
+
+**Fixed bugs:**
+
+- Item tap area overlaps in circular pop up style [\#170](https://github.com/jjochen/JJFloatingActionButton/issues/170)
+
+**Merged pull requests:**
+
+- Update dependencies [\#173](https://github.com/jjochen/JJFloatingActionButton/pull/173)
+- Update README [\#172](https://github.com/jjochen/JJFloatingActionButton/pull/172)
+- Fix item layout in circular pop up style [\#171](https://github.com/jjochen/JJFloatingActionButton/pull/171) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Add convenience method to action item that calls it's action [\#169](https://github.com/jjochen/JJFloatingActionButton/pull/169) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Update tests for iOS 12.1 and new devices [\#163](https://github.com/jjochen/JJFloatingActionButton/pull/163)
+- Migrate to swift 4.2 [\#161](https://github.com/jjochen/JJFloatingActionButton/pull/161) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+
 ## [0.10.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.10.0) (2018-09-17)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.2...0.10.0)
 
