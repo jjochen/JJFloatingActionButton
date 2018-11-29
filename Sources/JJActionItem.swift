@@ -141,7 +141,7 @@ import UIKit
     ///
     @objc public dynamic var titlePosition: JJActionItemTitlePosition = .leading {
         didSet {
-            updateDynamicConstraints()
+            setNeedsUpdateConstraints()
         }
     }
 
@@ -152,7 +152,7 @@ import UIKit
     ///
     @objc public dynamic var titleSpacing: CGFloat = -1 {
         didSet {
-            updateDynamicConstraints()
+            setNeedsUpdateConstraints()
         }
     }
 
@@ -183,6 +183,13 @@ extension JJActionItem {
     open override func didMoveToSuperview() {
         // reset tintAdjustmentMode
         imageView.tintColorDidChange()
+    }
+
+    /// Updates constraints for the view.
+    ///
+    open override func updateConstraints() {
+        updateDynamicConstraints()
+        super.updateConstraints()
     }
 }
 
@@ -217,6 +224,20 @@ fileprivate extension JJActionItem {
         circleView.translatesAutoresizingMaskIntoConstraints = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
+        createStaticConstraints()
+        updateDynamicConstraints()
+    }
+
+    func updateDynamicConstraints() {
+        titleLabel.isHidden = (titlePosition == .hidden)
+        NSLayoutConstraint.deactivate(dynamicConstraints)
+        dynamicConstraints.removeAll()
+        createDynamicConstraints()
+        NSLayoutConstraint.activate(dynamicConstraints)
+        setNeedsLayout()
+    }
+
+    func createStaticConstraints() {
         setContentHuggingPriority(.required, for: .horizontal)
         setContentHuggingPriority(.required, for: .vertical)
 
@@ -224,6 +245,7 @@ fileprivate extension JJActionItem {
         titleLabel.setContentCompressionResistancePriority(UILayoutPriority(900), for: .vertical)
 
         var constraints: [NSLayoutConstraint] = []
+        var constraint: NSLayoutConstraint
 
         let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         constraints.append(imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
@@ -238,28 +260,30 @@ fileprivate extension JJActionItem {
         constraints.append(circleView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor))
         constraints.append(circleView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor))
 
+        constraint = circleView.leadingAnchor.constraint(equalTo: leadingAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
+        constraint = circleView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
+        constraint = circleView.topAnchor.constraint(equalTo: topAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
+        constraint = circleView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        constraint.priority = .defaultLow
+        constraints.append(constraint)
+
         constraints.append(titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor))
         constraints.append(titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor))
         constraints.append(titleLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor))
         constraints.append(titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor))
 
         NSLayoutConstraint.activate(constraints)
-
-        updateDynamicConstraints()
-    }
-
-    func updateDynamicConstraints() {
-        titleLabel.isHidden = (titlePosition == .hidden)
-        NSLayoutConstraint.deactivate(dynamicConstraints)
-        dynamicConstraints.removeAll()
-        createDynamicConstraints()
-        NSLayoutConstraint.activate(dynamicConstraints)
-        setNeedsLayout()
     }
 
     func createDynamicConstraints() {
-        let horizontalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(12)
-        let verticalSpacing = titleSpacing >= 0 ? titleSpacing : CGFloat(4)
+        let horizontalSpacing = titleSpacing(forAxis: .horizontal)
+        let verticalSpacing = titleSpacing(forAxis: .vertical)
 
         switch titlePosition {
         case .leading:
@@ -296,5 +320,21 @@ fileprivate extension JJActionItem {
             dynamicConstraints.append(circleView.centerXAnchor.constraint(equalTo: centerXAnchor))
             dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
         }
+    }
+
+    func titleSpacing(forAxis axis: NSLayoutConstraint.Axis) -> CGFloat {
+        guard let text = titleLabel.text else {
+            return 0
+        }
+
+        if text.isEmpty {
+            return 0
+        }
+
+        if titleSpacing > 0 {
+            return titleSpacing
+        }
+
+        return axis == .horizontal ? CGFloat(12) : CGFloat(4)
     }
 }
