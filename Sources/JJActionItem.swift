@@ -185,6 +185,8 @@ extension JJActionItem {
         imageView.tintColorDidChange()
     }
 
+    /// Updates constraints for the view.
+    ///
     open override func updateConstraints() {
         updateDynamicConstraints()
         super.updateConstraints()
