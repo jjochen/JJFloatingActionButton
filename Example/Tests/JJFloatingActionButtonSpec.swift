@@ -455,5 +455,29 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 expect(actionButton) == snapshot()
             }
         }
+
+        describe("JJFloatingActionButton using single item initializer") {
+            var actionButton: JJFloatingActionButton!
+            var action = "not done"
+
+            beforeEach {
+                actionButton = JJFloatingActionButton(image: #imageLiteral(resourceName: "Favourite"), action: { _ in
+                    action = "done!"
+                })
+            }
+
+            it("has one item") {
+                expect(actionButton.items.count) == 1
+            }
+
+            it("has the correct icon") {
+                expect(actionButton.items.first?.buttonImage) == #imageLiteral(resourceName: "Favourite")
+            }
+
+            it("performs action when tapped") {
+                actionButton.sendActions(for: .touchUpInside)
+                expect(action).toEventually(equal("done!"))
+            }
+        }
     }
 }
