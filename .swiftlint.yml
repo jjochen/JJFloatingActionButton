@@ -5,6 +5,9 @@ excluded:
 - Example/Pods
 - Example/Tests
 
+disabled_rules:
+  - redundant_objc_attribute
+
 opt_in_rules:
   - empty_count
   - explicit_init
