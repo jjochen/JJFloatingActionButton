@@ -230,6 +230,20 @@ import UIKit
         setup()
     }
 
+    /// Initializes and returns a newly allocated floating action button object with the specified image and action.
+    ///
+    /// - Parameter image: The image of the action item. Default is `nil`.
+    /// - Parameter action: The action handler of the action item. Default is `nil`.
+    ///
+    /// - Returns: An initialized floating action button object.
+    ///
+    /// - SeeAlso: init(frame: CGRect)
+    ///
+    @objc public convenience init(image: UIImage, action: ((JJActionItem) -> Void)? = nil) {
+        self.init()
+        addItem(title: nil, image: image, action: action)
+    }
+
     internal lazy var itemContainerView: UIView = {
         let view = UIView()
         view.isUserInteractionEnabled = true
