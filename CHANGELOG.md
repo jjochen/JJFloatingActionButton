@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.1.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.1.0) (2019-01-13)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/1.0.0...1.1.0)
+
+**Implemented enhancements:**
+
+- Add convenience initializer for single item button [\#138](https://github.com/jjochen/JJFloatingActionButton/issues/138)
+
+**Merged pull requests:**
+
+- Add convenience initializer for floating action button with single item [\#178](https://github.com/jjochen/JJFloatingActionButton/pull/178) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Disable redundant\_objc\_attribute rule in swiftlint configuration [\#177](https://github.com/jjochen/JJFloatingActionButton/pull/177)
+
 ## [1.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.0.0) (2018-11-29)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.10.0...1.0.0)
 
