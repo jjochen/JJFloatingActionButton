@@ -1,66 +1,141 @@
+version: 2.1
 
-version: 2
+executors:
 
-defaults: &defaults
-  
-  macos:
-    xcode: "10.0.0"
-    
-  shell: /bin/bash --login -eo pipefail
+  ios12-iphone-xs-max:
+    macos:
+      xcode: 10.1.0
+    shell: /bin/bash --login -eo pipefail
+    environment:
+      DESTINATION: platform=iOS Simulator,OS=12.1,name=iPhone XS Max
+      SIMULATOR: iPhone XS Max (12.0) [
+
+  ios11-iphone-x:
+    macos:
+      xcode: 10.1.0
+    shell: /bin/bash --login -eo pipefail
+    environment:
+      DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
+      SIMULATOR: iPhone X (11.2) [
+
+  ios10-iphone-7:
+    macos:
+      xcode: 10.1.0
+    shell: /bin/bash --login -eo pipefail
+    environment:
+      DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
+      SIMULATOR: iPhone 7 (10.3.1) [
+
+
+commands:
+
+  update-bundler:
+    description: Update bundler to newest version
+    steps:
+      - run:
+          name: Update bunder
+          command: gem install bundler
+
+  restore-gem-cache:
+    description: Restore gems from cache
+    steps:
+      - restore_cache:
+          keys:
+            - v1-gem-cache-{{ checksum "Gemfile.lock" }}
+            - v1-gem-cache
+
+  bundle-install:
+    description: Install gems
+    steps:
+      - run:
+          name: Bundle install
+          command: bundle install --path vendor/bundle
+
+  save-gem-cache:
+    description: Save gems to cache
+    steps:
+      - save_cache:
+          key: v1-gem-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+          - vendor/bundle
+
+  start-simulator:
+    description: Start simulator
+    steps:
+      - run:
+          name: Start simulator
+          command: xcrun instruments -w "$SIMULATOR" || true
+
+  fetch-cocoapods-specs:
+    description: Fetch CocoaPods repository from S3
+    steps:
+      - run:
+          name: Fetch CocoaPods Specs
+          command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+
+  restore-pods-cache:
+    description: Restore pods directory from cache
+    steps:
+      - restore_cache:
+          keys:
+            - v1-pods-cache-{{ checksum "Example/Podfile.lock" }}
+            - v1-pods-cache
+
+  install-cocoapods:
+    description: Install cocoapods of example project
+    steps:
+      - run:
+          name: Install CocoaPods
+          command: bundle exec pod install --project-directory=Example
+
+  save-pods-cache:
+    description: Save pods directory to cache
+    steps:
+      - save_cache:
+          key: v1-pods-cache-{{ checksum "Example/Podfile.lock" }}
+          paths:
+            - Example/Pods
+
+  run-tests:
+    description: Run tests on sepcific device
+    steps:
+      - run:
+          name: Build and run tests
+          command: bundle exec rake test_destination
+
+  update-codecov:
+    description: Upload coverage information to Codecov
+    steps:
+      - run:
+          name: Update Codecov
+          command: bash <(curl -s https://codecov.io/bash)
+
+  store-reports:
+    description: Store reports
+    steps:
+      - store_artifacts:
+          path: build/reports/junit.xml
+      - store_test_results:
+          path: build/reports/junit.xml
+
+  setup-gems:
+    description: Update bundler and install gems
+    steps:
+      - update-bundler
+      - restore-gem-cache
+      - bundle-install
+      - save-gem-cache
+
+  setup-cocoapods:
+    description: Fetch specs and install cocoapods
+    steps:
+      - fetch-cocoapods-specs
+      - restore-pods-cache
+      - install-cocoapods
+      - save-pods-cache
 
 
 aliases:
-  
-  - &update-bundler
-    name: Update Bunder
-    command: gem install bundler
-  
-  - &restore-gem-cache
-    keys:
-      - v1-gem-cache-{{ checksum "Gemfile.lock" }}
-      - v1-gem-cache
-
-  - &bundle-install
-    name: Bundle install
-    command: bundle install --path vendor/bundle
-    
-  - &save-gem-cache
-    key: v1-gem-cache-{{ checksum "Gemfile.lock" }}
-    paths:
-      - vendor/bundle
-    
-  - &start-simulator
-    name: Start simulator
-    command: xcrun instruments -w "$SIMULATOR" || true
-
-  - &fetch-cocoapods-specs
-    name: Fetch CocoaPods Specs
-    command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-
-  - &restore-pods-cache
-    keys:
-      - v1-pods-cache-{{ checksum "Example/Podfile.lock" }}
-      - v1-pods-cache
-
-  - &install-cocoapods
-    name: Install CocoaPods
-    command: bundle exec pod install --project-directory=Example
-
-  - &save-pods-cache
-    key: v1-pods-cache-{{ checksum "Example/Podfile.lock" }}
-    paths:
-      - Example/Pods
-  
-  - &run-tests
-    name: Build and run tests
-    command: bundle exec rake test_destination
-
-  - &update-codecov
-    name: Update Codecov
-    command: bash <(curl -s https://codecov.io/bash)
-  
-  - &xcpretty-reports
-    path: build/reports/junit.xml
 
   - &filter-version-tags-only
     filters:
@@ -73,148 +148,81 @@ aliases:
 jobs:
 
   build-and-test-ios12-iphonexsmax:
-    <<: *defaults
-
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=12.0,name=iPhone XS Max
-      SIMULATOR: iPhone XS Max (12.0) [
-
+    executor: ios12-iphone-xs-max
     steps:
       - checkout
-      - run: *update-bundler
-      - restore_cache: *restore-gem-cache
-      - run: *bundle-install
-      - save_cache: *save-gem-cache
-      - run: *start-simulator
-      - run: *fetch-cocoapods-specs
-      - restore_cache: *restore-pods-cache
-      - run: *install-cocoapods
-      - save_cache: *save-pods-cache
-      - run: *run-tests
-      - run: *update-codecov
-      - store_artifacts: *xcpretty-reports
-      - store_test_results: *xcpretty-reports
+      - setup-gems
+      - start-simulator
+      - setup-cocoapods
+      - run-tests
+      - update-codecov
+      - store-reports
 
   build-and-test-ios11-iphonex:
-    <<: *defaults
-
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
-      SIMULATOR: iPhone X (11.2) [
-
+    executor: ios11-iphone-x
     steps:
       - checkout
-      - run: *update-bundler
-      - restore_cache: *restore-gem-cache
-      - run: *bundle-install
-      - save_cache: *save-gem-cache
-      - run: *start-simulator
-      - run: *fetch-cocoapods-specs
-      - restore_cache: *restore-pods-cache
-      - run: *install-cocoapods
-      - save_cache: *save-pods-cache
-      - run: *run-tests
-      - store_artifacts: *xcpretty-reports
-      - store_test_results: *xcpretty-reports
-
+      - setup-gems
+      - start-simulator
+      - setup-cocoapods
+      - run-tests
+      - store-reports
 
   build-and-test-ios10-iphone7:
-    <<: *defaults
-
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
-      SIMULATOR: iPhone 7 (10.3.1) [
-
+    executor: ios10-iphone-7
     steps:
       - checkout
-      - run: *update-bundler
-      - restore_cache: *restore-gem-cache
-      - run: *bundle-install
-      - save_cache: *save-gem-cache
-      - run: *start-simulator
-      - run: *fetch-cocoapods-specs
-      - restore_cache: *restore-pods-cache
-      - run: *install-cocoapods
-      - save_cache: *save-pods-cache
-      - run: *run-tests
-      - store_artifacts: *xcpretty-reports
-      - store_test_results: *xcpretty-reports
-
+      - setup-gems
+      - start-simulator
+      - setup-cocoapods
+      - run-tests
+      - store-reports
 
   lint-podspec:
-    <<: *defaults
-
+    executor: ios12-iphone-xs-max
     steps:
       - checkout
-      - run: *update-bundler
-      - restore_cache: *restore-gem-cache
-      - run: *bundle-install
-      - save_cache: *save-gem-cache
-
+      - setup-gems
       - run:
           name: Lint Podspec
           command: bundle exec rake lint_podspec
 
-
   build-documentation:
-    <<: *defaults
-
+    executor: ios12-iphone-xs-max
     steps:
       - checkout
-      - run: *update-bundler
-      - restore_cache: *restore-gem-cache
-      - run: *bundle-install
-      - save_cache: *save-gem-cache
-      - run: *fetch-cocoapods-specs
-      - restore_cache: *restore-pods-cache
-      - run: *install-cocoapods
-      - save_cache: *save-pods-cache
-
+      - setup-gems
+      - setup-cocoapods
       - run:
           name: Build Documentation
           command: bundle exec rake generate_documentation
 
-
   swiftlint:
-
     docker:
       - image: dantoml/swiftlint:latest
-
     steps:
       - checkout
-
       - run:
           name: Swiftlint
           command: swiftlint lint --reporter junit | tee result.xml
-
       - store_artifacts:
           path: result.xml
-
       - store_test_results:
           path: result.xml
 
-
   push-podspec:
-    <<: *defaults
-
+    executor: ios12-iphone-xs-max
     steps:
       - checkout
-      - run: *update-bundler
-      - restore_cache: *restore-gem-cache
-      - run: *bundle-install
-      - save_cache: *save-gem-cache
-      - run: *fetch-cocoapods-specs
-      - restore_cache: *restore-pods-cache
-      - run: *install-cocoapods
-      - save_cache: *save-pods-cache
-
+      - setup-gems
+      - setup-cocoapods
       - run:
           name: Push Podspec to trunk
           command: bundle exec rake push_podspec
 
 
 workflows:
-  version: 2
+  version: 2.1
 
   run-tests:
     jobs:
