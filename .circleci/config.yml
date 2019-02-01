@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  
+
   ios12-iphone-xs-max:
     macos:
       xcode: 10.1.0
@@ -9,7 +9,7 @@ executors:
     environment:
       DESTINATION: platform=iOS Simulator,OS=12.1,name=iPhone XS Max
       SIMULATOR: iPhone XS Max (12.0) [
-  
+
   ios11-iphone-x:
     macos:
       xcode: 10.1.0
@@ -17,7 +17,7 @@ executors:
     environment:
       DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
       SIMULATOR: iPhone X (11.2) [
-  
+
   ios10-iphone-7:
     macos:
       xcode: 10.1.0
@@ -28,14 +28,14 @@ executors:
 
 
 commands:
-  
+
   update-bundler:
     description: Update bundler to newest version
     steps:
       - run:
           name: Update bunder
           command: gem install bundler
-  
+
   restore-gem-cache:
     description: Restore gems from cache
     steps:
@@ -50,7 +50,7 @@ commands:
       - run:
           name: Bundle install
           command: bundle install --path vendor/bundle
-    
+
   save-gem-cache:
     description: Save gems to cache
     steps:
@@ -58,7 +58,7 @@ commands:
           key: v1-gem-cache-{{ checksum "Gemfile.lock" }}
           paths:
           - vendor/bundle
-    
+
   start-simulator:
     description: Start simulator
     steps:
@@ -95,7 +95,7 @@ commands:
           key: v1-pods-cache-{{ checksum "Example/Podfile.lock" }}
           paths:
             - Example/Pods
-  
+
   run-tests:
     description: Run tests on sepcific device
     steps:
@@ -109,7 +109,7 @@ commands:
       - run:
           name: Update Codecov
           command: bash <(curl -s https://codecov.io/bash)
-  
+
   store-reports:
     description: Store reports
     steps:
@@ -120,15 +120,15 @@ commands:
 
   setup-gems:
     description: Update bundler and install gems
-    steps: 
+    steps:
       - update-bundler
       - restore-gem-cache
       - bundle-install
       - save-gem-cache
-      
+
   setup-cocoapods:
     description: Fetch specs and install cocoapods
-    steps: 
+    steps:
       - fetch-cocoapods-specs
       - restore-pods-cache
       - install-cocoapods
@@ -136,7 +136,7 @@ commands:
 
 
 aliases:
-  
+
   - &filter-version-tags-only
     filters:
       tags:
@@ -168,7 +168,6 @@ jobs:
       - run-tests
       - store-reports
 
-
   build-and-test-ios10-iphone7:
     executor: ios10-iphone-7
     steps:
@@ -179,7 +178,6 @@ jobs:
       - run-tests
       - store-reports
 
-
   lint-podspec:
     executor: ios12-iphone-xs-max
     steps:
@@ -188,7 +186,6 @@ jobs:
       - run:
           name: Lint Podspec
           command: bundle exec rake lint_podspec
-
 
   build-documentation:
     executor: ios12-iphone-xs-max
@@ -199,7 +196,6 @@ jobs:
       - run:
           name: Build Documentation
           command: bundle exec rake generate_documentation
-
 
   swiftlint:
     docker:
@@ -213,7 +209,6 @@ jobs:
           path: result.xml
       - store_test_results:
           path: result.xml
-
 
   push-podspec:
     executor: ios12-iphone-xs-max
