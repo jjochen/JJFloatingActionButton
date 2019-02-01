@@ -479,5 +479,33 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 expect(action).toEventually(equal("done!"))
             }
         }
+
+        describe("JJFloatingActionButton using layout constraints") {
+            let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
+
+            var actionButton: JJFloatingActionButton!
+            var superview: UIView!
+
+            beforeEach {
+                superview = UIView(frame: superviewFrame)
+                superview.backgroundColor = .white
+
+                actionButton = JJFloatingActionButton()
+                superview.addSubview(actionButton)
+
+                actionButton.translatesAutoresizingMaskIntoConstraints = false
+                actionButton.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16).isActive = true
+                actionButton.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -16).isActive = true
+            }
+
+            it("looks correct") {
+                expect(superview) == snapshot()
+            }
+
+            it("looks correct when diameter is set") {
+                actionButton.buttonDiameter = 100
+                expect(superview) == snapshot()
+            }
+        }
     }
 }
