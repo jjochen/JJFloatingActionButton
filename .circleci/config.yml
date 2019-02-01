@@ -1,12 +1,30 @@
-
 version: 2.1
 
-executors: 
+executors:
   
-  xcode10:
+  ios12-iphone-xs-max:
     macos:
       xcode: 10.1.0
     shell: /bin/bash --login -eo pipefail
+    environment:
+      DESTINATION: platform=iOS Simulator,OS=12.0,name=iPhone XS Max
+      SIMULATOR: iPhone XS Max (12.0) [
+  
+  ios11-iphone-x:
+    macos:
+      xcode: 10.1.0
+    shell: /bin/bash --login -eo pipefail
+    environment:
+      DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
+      SIMULATOR: iPhone X (11.2) [
+  
+  ios10-iphone-7:
+    macos:
+      xcode: 10.1.0
+    shell: /bin/bash --login -eo pipefail
+    environment:
+      DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
+      SIMULATOR: iPhone 7 (10.3.1) [
 
 
 commands:
@@ -43,19 +61,10 @@ commands:
     
   start-simulator:
     description: Start simulator
-    parameters:
-      name: 
-        description: Name of the simulator that should be launched
-        type: string
-        default: iPhone XS Max
-      version: 
-        description: iOS version running on the simulator
-        type: string
-        default: 12.1
     steps:
       - run:
         name: Start simulator
-        command: xcrun instruments -w "<< parameters.name >> (<< parameters.version>>) [" || true
+        command: xcrun instruments -w "$SIMULATOR" || true
 
   fetch-cocoapods-specs:
     description: Fetch CocoaPods repository from S3
@@ -89,17 +98,6 @@ commands:
   
   run-tests:
     description: Run tests on sepcific device
-    parameters:
-      name: 
-        description: Name of the device
-        type: string
-        default: iPhone XS Max
-      version: 
-        description: iOS version running on the device
-        type: string
-        default: 12.1
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=<< parameters.version >>,name=<< parameters.name >>
     steps:
       - run:
         name: Build and run tests
@@ -136,6 +134,7 @@ commands:
       - install-cocoapods
       - save-pods-cache
 
+
 aliases:
   
   - &filter-version-tags-only
@@ -149,12 +148,7 @@ aliases:
 jobs:
 
   build-and-test-ios12-iphonexsmax:
-    executor: xcode10
-
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=12.0,name=iPhone XS Max
-      SIMULATOR: iPhone XS Max (12.0) [
-
+    executor: ios12-iphone-xs-max
     steps:
       - checkout
       - setup-gems
@@ -165,12 +159,7 @@ jobs:
       - store-reports
 
   build-and-test-ios11-iphonex:
-    executor: xcode10
-
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
-      SIMULATOR: iPhone X (11.2) [
-
+    executor: ios11-iphone-x
     steps:
       - checkout
       - setup-gems
@@ -181,12 +170,7 @@ jobs:
 
 
   build-and-test-ios10-iphone7:
-    executor: xcode10
-
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
-      SIMULATOR: iPhone 7 (10.3.1) [
-
+    executor: ios10-iphone-7
     steps:
       - checkout
       - setup-gems
@@ -197,57 +181,46 @@ jobs:
 
 
   lint-podspec:
-    executor: xcode10
-
+    executor: ios12-iphone-xs-max
     steps:
       - checkout
       - setup-gems
-
       - run:
           name: Lint Podspec
           command: bundle exec rake lint_podspec
 
 
   build-documentation:
-    executor: xcode10
-
+    executor: ios12-iphone-xs-max
     steps:
       - checkout
       - setup-gems
       - setup-cocoapods
-
       - run:
           name: Build Documentation
           command: bundle exec rake generate_documentation
 
 
   swiftlint:
-
     docker:
       - image: dantoml/swiftlint:latest
-
     steps:
       - checkout
-
       - run:
           name: Swiftlint
           command: swiftlint lint --reporter junit | tee result.xml
-
       - store_artifacts:
           path: result.xml
-
       - store_test_results:
           path: result.xml
 
 
   push-podspec:
     executor: xcode10
-
     steps:
       - checkout
       - setup-gems
       - setup-cocoapods
-
       - run:
           name: Push Podspec to trunk
           command: bundle exec rake push_podspec
