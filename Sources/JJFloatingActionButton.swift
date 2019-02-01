@@ -117,6 +117,16 @@ import UIKit
         }
     }
 
+    /// The default diameter of the floating action button.
+    /// This is ignored if the size is defined by autolayout.
+    /// Default is `56`.
+    ///
+    @objc @IBInspectable public dynamic var buttonDiameter: CGFloat = 56 {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+
     /// The size of an action item in relation to the floating action button.
     /// Default is `0.75`.
     ///
@@ -356,7 +366,7 @@ extension JJFloatingActionButton {
     /// The natural size for the floating action button.
     ///
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 56, height: 56)
+        return CGSize(width: buttonDiameter, height: buttonDiameter)
     }
 }
 
