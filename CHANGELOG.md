@@ -1,5 +1,25 @@
 # Change Log
 
+## [1.2.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.2.0) (2019-02-08)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/1.1.0...1.2.0)
+
+**Implemented enhancements:**
+
+- Upgrade to circleci 2.1 [\#183](https://github.com/jjochen/JJFloatingActionButton/issues/183)
+
+**Fixed bugs:**
+
+- Button size changes with rotation/transition [\#191](https://github.com/jjochen/JJFloatingActionButton/issues/191)
+
+**Merged pull requests:**
+
+- Add swiftformat configuration file [\#194](https://github.com/jjochen/JJFloatingActionButton/pull/194)
+- Prevent images to change button/item size [\#193](https://github.com/jjochen/JJFloatingActionButton/pull/193) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)] [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Update project dependencies [\#189](https://github.com/jjochen/JJFloatingActionButton/pull/189)
+- Make default button size configurable [\#188](https://github.com/jjochen/JJFloatingActionButton/pull/188) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Add license title to LICENSE file [\#187](https://github.com/jjochen/JJFloatingActionButton/pull/187)
+- Upgrade circleci config to version 2.1 [\#185](https://github.com/jjochen/JJFloatingActionButton/pull/185)
+
 ## [1.1.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.1.0) (2019-01-13)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/1.0.0...1.1.0)
 
