@@ -1,0 +1,33 @@
+--allman false
+--binarygrouping none
+--closingparen balanced
+--commas always
+--comments indent
+--decimalgrouping none
+--disable redundantFileprivate, redundantObjc
+--elseposition same-line
+--empty void
+--exclude Example/Pods, Package.swift
+--exponentcase lowercase
+--exponentgrouping disabled
+--fractiongrouping disabled
+--header ignore
+--hexgrouping none
+--hexliteralcase uppercase
+--ifdef indent
+--importgrouping alphabetized
+--indent 4
+--indentcase false
+--linebreaks lf
+--octalgrouping none
+--operatorfunc spaced
+--patternlet hoist
+--ranges spaced
+--self remove
+--selfrequired 
+--semicolons inline
+--stripunusedargs always
+--swiftversion 4.2
+--trimwhitespace always
+--wraparguments after-first
+--wrapcollections preserve
