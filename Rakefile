@@ -79,7 +79,7 @@ begin
   task :format do
     title 'Formating code'
     check_executable('swiftformat')
-    sh "swiftformat Example/Tests Example/JJFloatingActionButton Sources --swiftversion 4.2"
+    sh "swiftformat ."
   end
 
   desc 'Format and lint code'
