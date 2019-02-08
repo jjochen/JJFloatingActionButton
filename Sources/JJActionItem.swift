@@ -218,7 +218,7 @@ fileprivate extension JJActionItem {
 
         addSubview(titleLabel)
         addSubview(circleView)
-        addSubview(imageView)
+        circleView.addSubview(imageView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         circleView.translatesAutoresizingMaskIntoConstraints = false
@@ -279,6 +279,11 @@ fileprivate extension JJActionItem {
         constraints.append(titleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor))
 
         NSLayoutConstraint.activate(constraints)
+
+        imageView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
+        imageView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .vertical)
+        circleView.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        circleView.setContentHuggingPriority(.fittingSizeLevel, for: .vertical)
     }
 
     func createDynamicConstraints() {
