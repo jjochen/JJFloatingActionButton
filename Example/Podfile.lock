@@ -4,7 +4,7 @@ PODS:
   - iOSSnapshotTestCase/Core (5.0.2)
   - iOSSnapshotTestCase/SwiftSupport (5.0.2):
     - iOSSnapshotTestCase/Core
-  - JJFloatingActionButton (1.1.0)
+  - JJFloatingActionButton (1.2.0)
   - Nimble (7.3.3)
   - Nimble-Snapshots (6.9.1):
     - Nimble-Snapshots/Core (= 6.9.1)
@@ -32,7 +32,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
-  JJFloatingActionButton: 22dbc6d46be82b4ded04c443f5b3ca6aea337de4
+  JJFloatingActionButton: 037dc8b3feee3de982183c3628033fd2c1d89709
   Nimble: 3b434b1e7d0a92603a13550a82880b0d952f518e
   Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
   Quick: f4f7f063c524394c73ed93ac70983c609805d481
