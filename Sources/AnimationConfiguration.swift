@@ -344,12 +344,10 @@ import Foundation
     ///
     /// - Returns: An initialized item layout object.
     ///
-    @objc public init(prepare: @escaping (
-        _ item: JJActionItem,
-        _ index: Int,
-        _ numberOfItems: Int,
-        _ actionButton: JJFloatingActionButton
-    ) -> Void) {
+    @objc public init(prepare: @escaping (_ item: JJActionItem,
+                                          _ index: Int,
+                                          _ numberOfItems: Int,
+                                          _ actionButton: JJFloatingActionButton) -> Void) {
         self.prepare = prepare
     }
 

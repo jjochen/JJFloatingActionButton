@@ -63,6 +63,7 @@
 		1957C8C42012815000F1574B /* JJFloatingActionButtonAppearanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonAppearanceSpec.swift; sourceTree = "<group>"; };
 		1957C8C7201283EF00F1574B /* JJActionItemAppearanceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJActionItemAppearanceSpec.swift; sourceTree = "<group>"; };
 		1957C8C920128AD200F1574B /* JJFloatingActionButtonDelegateSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JJFloatingActionButtonDelegateSpec.swift; sourceTree = "<group>"; };
+		198002BD220D85C100BCE849 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; name = .swiftformat; path = ../../.swiftformat; sourceTree = "<group>"; };
 		198B65FD1FBAE904009A17F2 /* JJFloatingActionButton_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JJFloatingActionButton_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		198B66001FBAE904009A17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		198B66021FBAE904009A17F2 /* BasicsExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsExampleViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 				198B662D1FBAEE16009A17F2 /* .gitignore */,
 				19B10AC21FF7BDDD00D70C32 /* .jazzy.yaml */,
 				198B662E1FBAEE16009A17F2 /* .swift-version */,
+				198002BD220D85C100BCE849 /* .swiftformat */,
 				19E247EA1FD93525009A7BA1 /* .swiftlint.yml */,
 				19037F0D1FC2ED7B00138594 /* CHANGELOG.md */,
 				195637221FDA9EFB0003B8FF /* config.yml */,

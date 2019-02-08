@@ -44,13 +44,13 @@ begin
   task :test do
     xcodebuild_test "platform=iOS Simulator,name=iPhone X"
   end
-  
+
   desc 'Run tests for DESTINATION env'
   task :test_destination do
     Rake::Task[:print_debug_info].invoke
     xcodebuild_test ENV['DESTINATION']
   end
-  
+
   desc 'Print debug info'
   task :print_debug_info do
     title 'Debug info'
@@ -65,7 +65,7 @@ begin
     check_executable('swiftlint')
     sh "swiftlint"
   end
-  
+
   desc 'Lint podspec'
   task :lint_podspec do
     title 'Linting podspec'
@@ -79,7 +79,7 @@ begin
   task :format do
     title 'Formating code'
     check_executable('swiftformat')
-    sh "swiftformat Example/Tests Example/JJFloatingActionButton Sources"
+    sh "swiftformat ."
   end
 
   desc 'Format and lint code'
@@ -102,8 +102,8 @@ begin
     update_gems
     update_cocoapods
   end
-  
-  
+
+
   #-- Documentation ----------------------------------------------------------#
 
   desc 'Generate documentation'
@@ -127,24 +127,24 @@ begin
 
 
   #-- Record Video -----------------------------------------------------------#
-  
+
   desc 'Record video of booted simulator and convert to gif'
   task :record_gif do
     Rake::Task[:record_gif_with_name].invoke 'JJFloatingActionButton'
   end
-  
+
   desc 'Record video of booted simulator and convert to gif with given name'
   task :record_gif_with_name, :name do |task, args|
     title 'Recording video'
     check_executable('ffmpeg')
 
     mov_path="./Images/#{args.name}.mov"
-    
+
     trap('SIGINT') { puts }
     %x{xcrun simctl io booted recordVideo #{mov_path}}
-  
+
     title 'Converting to gif'
-    
+
     gif_path="./Images/#{args.name}.gif"
     palette_path='./Images/palette.png'
     filters='fps=30,setpts=1*PTS,scale=250:-1:flags=lanczos'
@@ -155,8 +155,8 @@ begin
       File.delete palette_path
     end
   end
-  
-  
+
+
   #-- Release ----------------------------------------------------------------#
 
   desc 'Release version'
@@ -170,13 +170,13 @@ begin
     create_release_branch_and_commit args.version
     open_pull_request args.version
   end
-  
+
   desc 'Push podspec'
   task :push_podspec do
     title "Pushing podspec"
     sh 'bundle exec pod trunk push'
   end
-  
+
   desc 'Create release on github'
   task :create_github_release do
     title "Creating release on github"
@@ -184,12 +184,12 @@ begin
     version = version_from_podspec
     body = changelog_for_version version
     options = {
-      :name => version, 
+      :name => version,
       :body => body,
       :draft => false,
       :prerelease => false
     }
-    
+
     puts "repo: #{repo}"
     puts "version: #{version}"
     puts "body: \n#{body}" 
@@ -198,25 +198,25 @@ begin
     release = client.create_release repo, version, options
     puts "#{release.name} created."
   end
-  
+
   desc 'Update github releases'
   task :update_github_releases do
     title "Updating releases on github"
     repo = "jjochen/JJFloatingActionButton"
-    
+
     client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
     client.releases(repo).each do |release|
       puts
-      
+
       url = release.url
       puts "url: #{url}"
-      
+
       version = release.tag_name
       puts "version: #{version}"
-      
+
       body = changelog_for_version version
       puts "body: \n#{body}"
-      
+
       options = {
         :name => version,
         :body => body
@@ -324,7 +324,7 @@ def generate_changelog(version)
     sh "github_changelog_generator --future-release #{version}"
   else
     sh "github_changelog_generator"
-  end  
+  end
 end
 
 def generate_documentation
@@ -401,25 +401,25 @@ end
 def open_pull_request(version)
   title "Opening pull request"
   check_parameter(version)
-  
+
   repo = "jjochen/JJFloatingActionButton"
   base = "master"
   release_branch = "release/#{version}"
   title = "Release #{version}"
-  
+
   puts "repo: #{repo}"
   puts "base: #{base}"
   puts "head: #{release_branch}" 
 
   client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
-  
+
   pull_request = client.create_pull_request repo, base, release_branch, title
   puts "#{pull_request.title} created."
   puts pull_request.html_url
-  
+
   client.add_labels_to_an_issue repo, pull_request.number, ['release']
   puts "release label added."
-  
+
   sh "open #{pull_request.html_url}"
 end
 
