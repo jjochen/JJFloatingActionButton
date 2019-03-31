@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
   spec.name     = 'JJFloatingActionButton'
   spec.version  = '1.2.0'
-  spec.swift_version = '4.2'
+  spec.swift_version = '5.0'
   spec.author   = { 'Jochen Pfeiffer' => 'pod@jochen-pfeiffer.com' }
   spec.license  = { :type => 'MIT', :file => 'LICENSE' }
   spec.homepage = 'https://github.com/jjochen/JJFloatingActionButton'
