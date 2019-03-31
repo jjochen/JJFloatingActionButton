@@ -164,7 +164,6 @@ jobs:
     steps:
       - checkout
       - setup-gems
-      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
@@ -175,7 +174,6 @@ jobs:
     steps:
       - checkout
       - setup-gems
-      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
