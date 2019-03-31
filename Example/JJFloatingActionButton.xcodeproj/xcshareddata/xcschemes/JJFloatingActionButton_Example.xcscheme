@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -32,7 +32,7 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F437DF4A7F22FDECCDF603E76D5454DF"
+            BlueprintIdentifier = "68CCF0A4DE908D5813248C27077AE102"
             BuildableName = "JJFloatingActionButton.framework"
             BlueprintName = "JJFloatingActionButton"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">

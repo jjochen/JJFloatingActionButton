@@ -4,15 +4,16 @@ executors:
 
   ios12-iphone-xs-max:
     macos:
-      xcode: 10.1.0
+      xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
-      DESTINATION: platform=iOS Simulator,OS=12.1,name=iPhone XS Max
-      SIMULATOR: iPhone XS Max (12.0) [
+      SIMULATOR_OS: 12.2
+      DESTINATION: platform=iOS Simulator,OS=12.2,name=iPhone XS Max
+      SIMULATOR: iPhone XS Max (12.2) [
 
   ios11-iphone-x:
     macos:
-      xcode: 10.1.0
+      xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
       DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
@@ -20,7 +21,7 @@ executors:
 
   ios10-iphone-7:
     macos:
-      xcode: 10.1.0
+      xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
       DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
@@ -33,7 +34,7 @@ commands:
     description: Update bundler to newest version
     steps:
       - run:
-          name: Update bunder
+          name: Update bundler
           command: gem install bundler
 
   restore-gem-cache:
@@ -229,7 +230,5 @@ workflows:
       - lint-podspec
       - swiftlint
       - build-and-test-ios12-iphonexsmax
-      - build-and-test-ios11-iphonex
-      - build-and-test-ios10-iphone7
       - build-documentation
       - push-podspec: *filter-version-tags-only
