@@ -16,7 +16,6 @@ executors:
       xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
-      SIMULATOR_OS: 11.2
       DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
       SIMULATOR: iPhone X (11.2) [
 
@@ -25,7 +24,6 @@ executors:
       xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
-      SIMULATOR_OS: 10.3.1
       DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
       SIMULATOR: iPhone 7 (10.3.1) [
 
@@ -61,13 +59,6 @@ commands:
           key: v1-gem-cache-{{ checksum "Gemfile.lock" }}
           paths:
           - vendor/bundle
-
-  install-simulator:
-    description: Install simulator
-    steps:
-      - run:
-          name: Install simulator
-          command: xcversion simulators --install="$SIMULATOR_OS" --no-progress
 
   start-simulator:
     description: Start simulator
@@ -241,7 +232,5 @@ workflows:
       - lint-podspec
       - swiftlint
       - build-and-test-ios12-iphonexsmax
-      - build-and-test-ios11-iphonex
-      - build-and-test-ios10-iphone7
       - build-documentation
       - push-podspec: *filter-version-tags-only
