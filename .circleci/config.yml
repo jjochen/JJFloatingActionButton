@@ -66,8 +66,8 @@ commands:
     description: Install simulator
     steps:
       - run:
-        name: Install simulator
-        command: xcversion simulators --install="$SIMULATOR_OS" --no-progress
+          name: Install simulator
+          command: xcversion simulators --install="$SIMULATOR_OS" --no-progress
 
   start-simulator:
     description: Start simulator
