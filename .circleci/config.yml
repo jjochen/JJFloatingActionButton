@@ -7,6 +7,7 @@ executors:
       xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
+      SIMULATOR_OS: 12.2
       DESTINATION: platform=iOS Simulator,OS=12.2,name=iPhone XS Max
       SIMULATOR: iPhone XS Max (12.2) [
 
@@ -15,6 +16,7 @@ executors:
       xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
+      SIMULATOR_OS: 11.2
       DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
       SIMULATOR: iPhone X (11.2) [
 
@@ -23,6 +25,7 @@ executors:
       xcode: 10.2.0
     shell: /bin/bash --login -eo pipefail
     environment:
+      SIMULATOR_OS: 10.3.1
       DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
       SIMULATOR: iPhone 7 (10.3.1) [
 
@@ -33,7 +36,7 @@ commands:
     description: Update bundler to newest version
     steps:
       - run:
-          name: Update bunder
+          name: Update bundler
           command: gem install bundler
 
   restore-gem-cache:
@@ -58,6 +61,13 @@ commands:
           key: v1-gem-cache-{{ checksum "Gemfile.lock" }}
           paths:
           - vendor/bundle
+
+  install-simulator:
+    description: Install simulator
+    steps:
+      - run:
+        name: Install simulator
+        command: xcversion simulators --install="$SIMULATOR_OS" --no-progress
 
   start-simulator:
     description: Start simulator
@@ -163,6 +173,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
+      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
@@ -173,6 +184,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
+      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
