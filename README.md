@@ -47,8 +47,8 @@ Floating Action Button for iOS
 ## <a name="requirements"></a>Requirements
 
 - iOS 9.0+
-- Xcode 10.0+
-- Swift 4.2
+- Xcode 10.2+
+- Swift 5.0
 
 
 ## <a name="installation"></a>Installation
