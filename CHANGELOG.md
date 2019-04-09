@@ -1,5 +1,16 @@
 # Change Log
 
+## [2.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.0.0) (2019-04-09)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/1.2.0...2.0.0)
+
+**Implemented enhancements:**
+
+- Swift 5 support  [\#197](https://github.com/jjochen/JJFloatingActionButton/issues/197)
+
+**Merged pull requests:**
+
+- Migrate to Swift 5 [\#198](https://github.com/jjochen/JJFloatingActionButton/pull/198) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+
 ## [1.2.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.2.0) (2019-02-08)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/1.1.0...1.2.0)
 
