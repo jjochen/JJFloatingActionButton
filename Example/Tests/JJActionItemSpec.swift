@@ -101,6 +101,16 @@ class JJActionItemSpec: QuickSpec {
                 actionItem.titleLabel.text = ""
                 expect(actionItem) == snapshot()
             }
+
+            it("looks correct with smaller image size") {
+                actionItem.imageSize = CGSize(width: 10, height: 10)
+                expect(actionItem) == snapshot()
+            }
+
+            it("looks correct with bigger image size") {
+                actionItem.imageSize = CGSize(width: 30, height: 30)
+                expect(actionItem) == snapshot()
+            }
         }
 
         describe("JJActionItem loaded from xib") {

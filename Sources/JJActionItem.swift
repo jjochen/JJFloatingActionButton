@@ -146,11 +146,22 @@ import UIKit
     }
 
     /// The position of the title label. Default is `-1`.
-    /// When titleSpacing is negative default spacing is used:
+    /// When `titleSpacing` is negative default spacing is used:
     /// Default horizontal spacing is `12`.
     /// Default vertical spaicng is `4`.
     ///
     @objc public dynamic var titleSpacing: CGFloat = -1 {
+        didSet {
+            setNeedsUpdateConstraints()
+        }
+    }
+
+    /// The size of the image view. Default is `(0, 0)`.
+    /// When imageSize is `.zero` the image is shrunken until it fits
+    /// compleately into the circle view. If it already does the actual
+    /// size of the image is used.
+    ///
+    @objc public dynamic var imageSize: CGSize = .zero {
         didSet {
             setNeedsUpdateConstraints()
         }
@@ -247,11 +258,8 @@ fileprivate extension JJActionItem {
         var constraints: [NSLayoutConstraint] = []
         var constraint: NSLayoutConstraint
 
-        let imageSizeMuliplier = CGFloat(1 / sqrt(2))
         constraints.append(imageView.centerXAnchor.constraint(equalTo: circleView.centerXAnchor))
         constraints.append(imageView.centerYAnchor.constraint(equalTo: circleView.centerYAnchor))
-        constraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier))
-        constraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier))
 
         constraints.append(circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor))
 
@@ -324,6 +332,15 @@ fileprivate extension JJActionItem {
         case .hidden:
             dynamicConstraints.append(circleView.centerXAnchor.constraint(equalTo: centerXAnchor))
             dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
+        }
+
+        if imageSize == .zero {
+            let imageSizeMuliplier = CGFloat(1 / sqrt(2))
+            dynamicConstraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier))
+            dynamicConstraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier))
+        } else {
+            dynamicConstraints.append(imageView.widthAnchor.constraint(equalToConstant: imageSize.width))
+            dynamicConstraints.append(imageView.heightAnchor.constraint(equalToConstant: imageSize.height))
         }
     }
 
