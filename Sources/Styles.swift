@@ -107,7 +107,7 @@ fileprivate extension Styles {
     static func drawImage(name: NSString,
                           size: CGSize,
                           fillColor: UIColor = UIColor(red: 0.267, green: 0.267, blue: 0.267, alpha: 1.000),
-                          path: (() -> UIBezierPath)) -> UIImage? {
+                          path: () -> UIBezierPath) -> UIImage? {
         var image = cache.object(forKey: name)
         if image == nil {
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
