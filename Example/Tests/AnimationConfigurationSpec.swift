@@ -123,9 +123,9 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
 
                 it("looks correct when item have background color") {
-                    actionButton.configureDefaultItem({ item in
+                    actionButton.configureDefaultItem { item in
                         item.backgroundColor = .red
-                    })
+                    }
 
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
                     actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
