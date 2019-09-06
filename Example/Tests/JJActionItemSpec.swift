@@ -96,6 +96,11 @@ class JJActionItemSpec: QuickSpec {
                 actionItem.titleSpacing = 42
                 expect(actionItem) == snapshot()
             }
+
+            it("looks correct with empty title") {
+                actionItem.titleLabel.text = ""
+                expect(actionItem) == snapshot()
+            }
         }
 
         describe("JJActionItem loaded from xib") {
