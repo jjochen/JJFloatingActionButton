@@ -358,13 +358,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JJFloatingActionButton_Example/Pods-JJFloatingActionButton_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/JJFloatingActionButton/JJFloatingActionButton.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JJFloatingActionButton_Example/Pods-JJFloatingActionButton_Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JJFloatingActionButton.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JJFloatingActionButton_Example/Pods-JJFloatingActionButton_Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -412,19 +411,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JJFloatingActionButton_Tests/Pods-JJFloatingActionButton_Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
