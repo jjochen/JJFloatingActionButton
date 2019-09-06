@@ -157,6 +157,17 @@ aliases:
 
 jobs:
 
+  build-and-test-ios13-iphonexsmax:
+    executor: ios13-iphone-xs-max
+    steps:
+      - checkout
+      - setup-gems
+      - start-simulator
+      - setup-cocoapods
+      - run-tests
+      - update-codecov
+      - store-reports
+
   build-and-test-ios12-iphonexsmax:
     executor: ios12-iphone-xs-max
     steps:
