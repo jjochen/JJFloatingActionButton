@@ -185,6 +185,16 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 expect(superview) == snapshot()
             }
 
+            it("looks correct with smaller image size") {
+                actionButton.buttonImageSize = CGSize(width: 10, height: 10)
+                expect(superview) == snapshot()
+            }
+
+            it("looks correct with bigger image size") {
+                actionButton.buttonImageSize = CGSize(width: 40, height: 40)
+                expect(superview) == snapshot()
+            }
+
             context("when multiple items are added") {
                 var action = "not done"
                 beforeEach {
