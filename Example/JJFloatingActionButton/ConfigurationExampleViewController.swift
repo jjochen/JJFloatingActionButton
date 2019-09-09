@@ -51,6 +51,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         actionButton.buttonImage = #imageLiteral(resourceName: "Dots")
         actionButton.buttonColor = .red
         actionButton.buttonImageColor = .white
+        actionButton.buttonImageSize = CGSize(width: 30, height: 30)
 
         actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "X"))
         actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 14)
@@ -76,6 +77,10 @@ internal class ConfigurationExampleViewController: UIViewController {
             item.layer.shadowRadius = CGFloat(2)
         }
 
+        addItems()
+    }
+
+    fileprivate func addItems() {
         actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
             Helper.showAlert(for: item)
         }
@@ -98,6 +103,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         heartItem.imageView.image = #imageLiteral(resourceName: "Favourite")
         heartItem.buttonColor = .clear
         heartItem.buttonImageColor = .red
+        heartItem.imageSize = CGSize(width: 30, height: 30)
         heartItem.action = { item in
             Helper.showAlert(for: item)
         }
