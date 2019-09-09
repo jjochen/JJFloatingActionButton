@@ -51,6 +51,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         actionButton.buttonImage = #imageLiteral(resourceName: "Dots")
         actionButton.buttonColor = .red
         actionButton.buttonImageColor = .white
+        actionButton.buttonImageSize = CGSize(width: 30, height: 30)
 
         actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "X"))
         actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 14)
