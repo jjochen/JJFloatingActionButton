@@ -33,3 +33,4 @@ opt_in_rules:
 
 line_length: 140
 file_length: 1000
+function_body_length: 60
