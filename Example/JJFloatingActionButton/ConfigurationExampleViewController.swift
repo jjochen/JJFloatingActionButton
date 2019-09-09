@@ -46,6 +46,7 @@ internal class ConfigurationExampleViewController: UIViewController {
     }
 
     fileprivate func configureActionButton() {
+        actionButton.handleSingleActionDirectly = false
         actionButton.buttonDiameter = 65
         actionButton.overlayView.backgroundColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.10, alpha: 0.30)
         actionButton.buttonImage = #imageLiteral(resourceName: "Dots")

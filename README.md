@@ -117,10 +117,13 @@ actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnc
 Button appearance and behavior can be customized:
 
 ```swift
+actionButton.handleSingleActionDirectly = false
+actionButton.buttonDiameter = 65
 actionButton.overlayView.backgroundColor = UIColor(white: 0, alpha: 0.3)
 actionButton.buttonImage = UIImage(named: "Dots")
 actionButton.buttonColor = .red
 actionButton.buttonImageColor = .white
+actionButton.buttonImageSize = CGSize(width: 30, height: 30)
 
 actionButton.buttonAnimationConfiguration = .transition(toImage: UIImage(named: "X"))
 actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 14)
@@ -154,6 +157,7 @@ item.titleLabel.text = "Owl"
 item.imageView.image = UIImage(named: "Owl")
 item.buttonColor = .black
 item.buttonImageColor = .white
+item.buttonImageColor = CGSize(width: 30, height: 30)
 item.action = { item in
     // Do something
 }
