@@ -295,6 +295,12 @@ fileprivate extension JJActionItem {
     }
 
     func createDynamicConstraints() {
+        dynamicConstraints.append(contentsOf: titleSpacingConstraints)
+        dynamicConstraints.append(contentsOf: imageSizeConstraints)
+    }
+
+    var titleSpacingConstraints: [NSLayoutConstraint] {
+        var constraints: [NSLayoutConstraint] = []
         let horizontalSpacing = titleSpacing(forAxis: .horizontal)
         let verticalSpacing = titleSpacing(forAxis: .vertical)
 
@@ -334,14 +340,20 @@ fileprivate extension JJActionItem {
             dynamicConstraints.append(circleView.centerYAnchor.constraint(equalTo: centerYAnchor))
         }
 
+        return constraints
+    }
+
+    var imageSizeConstraints: [NSLayoutConstraint] {
+        var constraints: [NSLayoutConstraint] = []
         if imageSize == .zero {
-            let imageSizeMuliplier = CGFloat(1 / sqrt(2))
-            dynamicConstraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: imageSizeMuliplier))
-            dynamicConstraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: imageSizeMuliplier))
+            let muliplier = CGFloat(1 / sqrt(2))
+            constraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: muliplier))
+            constraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: muliplier))
         } else {
-            dynamicConstraints.append(imageView.widthAnchor.constraint(equalToConstant: imageSize.width))
-            dynamicConstraints.append(imageView.heightAnchor.constraint(equalToConstant: imageSize.height))
+            constraints.append(imageView.widthAnchor.constraint(equalToConstant: imageSize.width))
+            constraints.append(imageView.heightAnchor.constraint(equalToConstant: imageSize.height))
         }
+        return constraints
     }
 
     func titleSpacing(forAxis axis: NSLayoutConstraint.Axis) -> CGFloat {

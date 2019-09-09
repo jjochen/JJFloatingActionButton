@@ -76,6 +76,10 @@ internal class ConfigurationExampleViewController: UIViewController {
             item.layer.shadowRadius = CGFloat(2)
         }
 
+        addItems()
+    }
+
+    fileprivate func addItems() {
         actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
             Helper.showAlert(for: item)
         }
