@@ -52,6 +52,7 @@ import UIKit
     ///
     @objc public var items: [JJActionItem] = [] {
         didSet {
+            itemsWithSetup = itemsWithSetup.intersection(items)
             items.forEach { item in
                 setupItem(item)
             }
@@ -267,6 +268,7 @@ import UIKit
     internal var openItems: [JJActionItem] = []
 
     fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
+    fileprivate var itemsWithSetup: Set<JJActionItem> = []
 }
 
 // MARK: - Public Methods
@@ -302,8 +304,7 @@ import UIKit
     /// - Returns: The item that was add. Its configuration can be changed after it has been added.
     ///
     func addItem(_ item: JJActionItem) {
-        items.append(item)
-        setupItem(item)
+        items.append(item) // this will call `didSet` of `items`
         configureButtonImage()
     }
 
@@ -420,6 +421,11 @@ fileprivate extension JJFloatingActionButton {
     }
 
     func setupItem(_ item: JJActionItem) {
+        guard !itemsWithSetup.contains(item) else {
+            return
+        }
+        itemsWithSetup.insert(item)
+
         item.imageView.tintColor = buttonColor
 
         item.layer.shadowColor = layer.shadowColor
