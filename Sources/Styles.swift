@@ -48,6 +48,14 @@ internal extension Styles {
     static var defaultOverlayColor: UIColor {
         return UIColor(white: 0, alpha: 0.5)
     }
+
+    static var defaultItemTitleColor: UIColor {
+        return .white
+    }
+
+    static var defaultItemCircleColor: UIColor {
+        return .white
+    }
 }
 
 // MARK: - Images
