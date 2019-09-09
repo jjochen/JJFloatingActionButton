@@ -98,6 +98,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         heartItem.imageView.image = #imageLiteral(resourceName: "Favourite")
         heartItem.buttonColor = .clear
         heartItem.buttonImageColor = .red
+        heartItem.imageSize = CGSize(width: 30, height: 30)
         heartItem.action = { item in
             Helper.showAlert(for: item)
         }
