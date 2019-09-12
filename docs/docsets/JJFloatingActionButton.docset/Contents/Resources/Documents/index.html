@@ -156,8 +156,8 @@
 
 <ul>
 <li>iOS 9.0+</li>
-<li>Xcode 10.0+</li>
-<li>Swift 4.2</li>
+<li>Xcode 10.2+</li>
+<li>Swift 5.0</li>
 </ul>
 <h2 id='a-name-installation-a-installation' class='heading'><a name="installation"></a>Installation</h2>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
@@ -209,10 +209,13 @@
 <h3 id='configuration' class='heading'>Configuration</h3>
 
 <p>Button appearance and behavior can be customized:</p>
-<pre class="highlight swift"><code><span class="n">actionButton</span><span class="o">.</span><span class="n">overlayView</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="n">actionButton</span><span class="o">.</span><span class="n">handleSingleActionDirectly</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonDiameter</span> <span class="o">=</span> <span class="mi">65</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">overlayView</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="kt">UIColor</span><span class="p">(</span><span class="nv">white</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">)</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">buttonImage</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Dots"</span><span class="p">)</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">red</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
+<span class="n">actionButton</span><span class="o">.</span><span class="n">buttonImageSize</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">30</span><span class="p">)</span>
 
 <span class="n">actionButton</span><span class="o">.</span><span class="n">buttonAnimationConfiguration</span> <span class="o">=</span> <span class="o">.</span><span class="nf">transition</span><span class="p">(</span><span class="nv">toImage</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"X"</span><span class="p">))</span>
 <span class="n">actionButton</span><span class="o">.</span><span class="n">itemAnimationConfiguration</span> <span class="o">=</span> <span class="o">.</span><span class="nf">slideIn</span><span class="p">(</span><span class="nv">withInterItemSpacing</span><span class="p">:</span> <span class="mi">14</span><span class="p">)</span>
@@ -246,6 +249,7 @@
 <span class="n">item</span><span class="o">.</span><span class="n">imageView</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kt">UIImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Owl"</span><span class="p">)</span>
 <span class="n">item</span><span class="o">.</span><span class="n">buttonColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">black</span>
 <span class="n">item</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
+<span class="n">item</span><span class="o">.</span><span class="n">buttonImageColor</span> <span class="o">=</span> <span class="kt">CGSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">30</span><span class="p">)</span>
 <span class="n">item</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
     <span class="c1">// Do something</span>
 <span class="p">}</span>
@@ -280,8 +284,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2019-04-09)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2019-09-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

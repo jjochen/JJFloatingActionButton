@@ -8,8 +8,8 @@ executors:
     shell: /bin/bash --login -eo pipefail
     environment:
       SIMULATOR_OS: 13.0
-      DESTINATION: platform=iOS Simulator,OS=13.0,name=iPhone Xs Max
-      SIMULATOR: iPhone Xs Max (13.0) [
+      DESTINATION: platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro Max
+      SIMULATOR: iPhone 11 Pro Max (13.0) [
 
   ios12-iphone-xs-max:
     macos:
@@ -165,7 +165,6 @@ jobs:
       - start-simulator
       - setup-cocoapods
       - run-tests
-      - update-codecov
       - store-reports
 
   build-and-test-ios12-iphonexsmax:

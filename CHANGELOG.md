@@ -1,5 +1,21 @@
 # Change Log
 
+## [2.1.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.1.0) (2019-09-09)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.0.0...2.1.0)
+
+**Implemented enhancements:**
+
+- Add image size property to action items [\#203](https://github.com/jjochen/JJFloatingActionButton/issues/203)
+
+**Merged pull requests:**
+
+- Support dark mode in example project [\#217](https://github.com/jjochen/JJFloatingActionButton/pull/217)
+- Update configuration example in README and example project [\#215](https://github.com/jjochen/JJFloatingActionButton/pull/215)
+- Make image sizes configurable [\#213](https://github.com/jjochen/JJFloatingActionButton/pull/213) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Fix an issue where special action item configuration would not work  [\#212](https://github.com/jjochen/JJFloatingActionButton/pull/212) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Update dependencies [\#210](https://github.com/jjochen/JJFloatingActionButton/pull/210)
+- Get ready for Xcode 11/iOS 13 [\#209](https://github.com/jjochen/JJFloatingActionButton/pull/209)
+
 ## [2.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.0.0) (2019-04-09)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/1.2.0...2.0.0)
 
