@@ -165,7 +165,6 @@ jobs:
       - start-simulator
       - setup-cocoapods
       - run-tests
-      - update-codecov
       - store-reports
 
   build-and-test-ios12-iphonexsmax:
