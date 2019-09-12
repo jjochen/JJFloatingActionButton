@@ -4,7 +4,7 @@ Floating Action Button for iOS
 ----
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Swift-4.2-orange.svg" alt="Swift 4.2" /> 
+  <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" alt="Swift 5.0" /> 
   <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a> 
   <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License" /></a> 
   <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform" /></a> 
