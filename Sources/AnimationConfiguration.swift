@@ -251,6 +251,15 @@ import UIKit
         configuration.closing.interItemDelay = 0.05
         return configuration
     }
+    
+    @objc static func anglePopup(center: CGPoint, radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+        let configuration = JJItemAnimationConfiguration()
+        configuration.itemLayout = .angle(center: center, radius: radius)
+        configuration.closedState = .scale()
+        configuration.opening.interItemDelay = 0.05
+        configuration.closing.interItemDelay = 0.05
+        return configuration
+    }
 
     /// Returns an item animation configuration with
     ///   - `itemLayout = .circular()`
@@ -323,6 +332,25 @@ import UIKit
                 item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor, constant: horizontalDistance).isActive = true
                 item.circleView.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor, constant: verticalDistance).isActive = true
 
+                index += 1
+            }
+        }
+    }
+    
+    @objc static func angle(center: CGPoint, radius: CGFloat = 100) -> JJItemLayout {
+        return JJItemLayout { items, actionButton in
+            let numberOfItems = items.count
+            var index: Int = 0
+
+            for item in items {
+                
+                let angle = JJItemAnimationConfiguration.angleForItemForAngle(at: index, numberOfItems: numberOfItems, actionButton: actionButton)
+                let horizontalDistance = radius * cos(angle)
+                let verticalDistance = radius * sin(angle)
+                
+                item.circleView.centerXAnchor.constraint(equalTo: actionButton.superview!.centerXAnchor, constant: horizontalDistance).isActive = true
+                item.circleView.centerYAnchor.constraint(equalTo: actionButton.superview!.centerYAnchor, constant: verticalDistance).isActive = true
+                
                 index += 1
             }
         }
@@ -465,6 +493,18 @@ internal extension JJItemAnimationConfiguration {
             return startAngle + CGFloat(index) * (endAngle - startAngle) / (CGFloat(numberOfItems) - 1)
         }
     }
+    
+    static func angleForItemForAngle(at index: Int, numberOfItems: Int, actionButton: JJFloatingActionButton) -> CGFloat {
+        precondition(numberOfItems > 0)
+        precondition(index >= 0)
+        precondition(index < numberOfItems)
+
+        let angle: CGFloat = CGFloat(Double.pi / 6.5)
+        let startAngle: CGFloat = -.pi/4
+
+        return startAngle + CGFloat(index+1) * (angle)
+    }
+
 }
 
 fileprivate extension JJActionItem {
