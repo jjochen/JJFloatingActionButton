@@ -252,6 +252,16 @@ import UIKit
         return configuration
     }
     
+     /// Returns an item animation configuration with
+    ///   - `itemLayout = .circular()`
+    ///   - `closedState = .scale()`
+    ///
+    /// - Parameter center: The position point of the button itself.
+    ///
+    /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    ///
+    /// - Returns: An item animation configuration object.
+    ///
     @objc static func anglePopup(center: CGPoint, radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .angle(center: center, radius: radius)
@@ -337,6 +347,12 @@ import UIKit
         }
     }
     
+    /// Returns an item layout object that places the items in angle with given radius.
+    ///
+    /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    ///
+    /// - Returns: An item layout object.
+    ///
     @objc static func angle(center: CGPoint, radius: CGFloat = 100) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             let numberOfItems = items.count
