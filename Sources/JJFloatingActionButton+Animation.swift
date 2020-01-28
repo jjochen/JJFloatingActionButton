@@ -80,7 +80,7 @@ import UIKit
     /// - SeeAlso: `itemAnimationConfiguration`
     ///
     func close(animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard buttonState == .open else {
+        guard buttonState == .open || buttonState == .opening else {
             return
         }
         buttonState = .closing
