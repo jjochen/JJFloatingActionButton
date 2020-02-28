@@ -48,12 +48,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("does not open") {
                 actionButton.open(animated: false)
-                expect(actionButton.buttonState).to(equal(JJFloatingActionButtonState.closed))
+                expect(actionButton.buttonState) == .closed
             }
 
             it("does not open when tapped") {
                 actionButton.sendActions(for: .touchUpInside)
-                expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
+                expect(actionButton.buttonState) == .closed
             }
 
             it("looks correct by default") {
@@ -206,14 +206,15 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 it("opens when tapped") {
                     actionButton.sendActions(for: .touchUpInside)
-                    expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.open))
+                    expect(actionButton.buttonState) == .opening
+                    expect(actionButton.buttonState).toEventually(equal(.open))
                 }
 
                 it("opens when tapped twice") {
                     actionButton.sendActions(for: .touchUpInside)
                     actionButton.sendActions(for: .touchUpInside)
-                    expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.opening))
-                    expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.open))
+                    expect(actionButton.buttonState) == .opening
+                    expect(actionButton.buttonState).toEventually(equal(.open))
                 }
 
                 context("and is opened") {
@@ -222,7 +223,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("has state open") {
-                        expect(actionButton.buttonState) == JJFloatingActionButtonState.open
+                        expect(actionButton.buttonState) == .open
                     }
 
                     it("items look correct") {
@@ -246,7 +247,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("can't be opened again") {
                         actionButton.open(animated: true)
-                        expect(actionButton.buttonState) != JJFloatingActionButtonState.opening
+                        expect(actionButton.buttonState) != .opening
                     }
 
                     context("and overlay is tapped") {
@@ -255,7 +256,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("closes") {
-                            expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
                         }
                     }
 
@@ -265,11 +267,13 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("closes") {
-                            expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
                         }
 
                         it("does not perform action") {
-                            expect(action).toNotEventually(equal("done!"))
+                            waitUntil(timeout: 1.5)
+                            expect(action) != "done!"
                         }
                     }
 
@@ -280,7 +284,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("closes") {
-                            expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
                         }
 
                         it("performs action") {
@@ -344,7 +349,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("can't be closed again") {
                         actionButton.close(animated: true)
-                        expect(actionButton.buttonState) != JJFloatingActionButtonState.closing
+                        expect(actionButton.buttonState) != .closing
                     }
                 }
 
@@ -354,11 +359,11 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("has state opening") {
-                        expect(actionButton.buttonState) == JJFloatingActionButtonState.opening
+                        expect(actionButton.buttonState) == .opening
                     }
 
                     it("has eventually state open") {
-                        expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.open))
+                        expect(actionButton.buttonState).toEventually(equal(.open))
                     }
                 }
 
@@ -369,11 +374,11 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("has state closing") {
-                        expect(actionButton.buttonState) == JJFloatingActionButtonState.closing
+                        expect(actionButton.buttonState) == .closing
                     }
 
                     it("has eventually state closed") {
-                        expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
+                        expect(actionButton.buttonState).toEventually(equal(.closed))
                     }
                 }
 
@@ -435,8 +440,8 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         actionButton.sendActions(for: .touchUpInside)
                     }
 
-                    it("does not open") {
-                        expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
+                    it("stays closed") {
+                        expect(actionButton.buttonState) == .closed
                     }
 
                     it("performs action") {
@@ -450,7 +455,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("has state closed") {
-                        expect(actionButton.buttonState) == JJFloatingActionButtonState.closed
+                        expect(actionButton.buttonState) == .closed
                     }
 
                     it("looks correct") {
@@ -465,7 +470,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("opens") {
-                        expect(actionButton.buttonState) == JJFloatingActionButtonState.open
+                        expect(actionButton.buttonState) == .open
                     }
 
                     it("looks correct") {
@@ -489,9 +494,9 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
                 }
 
-                it("does not open when tapped") {
+                it("stays closed") {
                     actionButton.sendActions(for: .touchUpInside)
-                    expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.open))
+                    expect(actionButton.buttonState) == .closed
                 }
             }
         }
@@ -561,4 +566,13 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
         }
     }
+}
+
+func waitUntil(timeout: TimeInterval = AsyncDefaults.Timeout) {
+    waitUntil(timeout: timeout + 1, action: { done in
+        DispatchQueue.global().async {
+            Thread.sleep(forTimeInterval: timeout)
+            done()
+        }
+    })
 }
