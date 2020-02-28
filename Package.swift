@@ -1,13 +1,18 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.1
 
 import PackageDescription
 
 let package = Package(
     name: "JJFloatingActionButton",
+    platforms: [
+        .iOS(.v9)
+    ],
     products: [
         .library(
             name: "JJFloatingActionButton",
             targets: ["JJFloatingActionButton"]),
+    ],
+    dependencies: [
     ],
     targets: [
         .target(
