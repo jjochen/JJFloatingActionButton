@@ -287,6 +287,49 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             expect(action).toEventually(equal("done!"))
                         }
                     }
+
+                    context("with closeAutomatically disabled") {
+                        beforeEach {
+                            actionButton.closeAutomatically = false
+                        }
+
+                        context("and item is tapped") {
+                            beforeEach {
+                                let item = actionButton.items[0]
+                                item.sendActions(for: .touchUpInside)
+                            }
+
+                            it("stays open") {
+                                expect(actionButton.buttonState) == .open
+                            }
+
+                            it("performs action") {
+                                expect(action).toEventually(equal("done!"))
+                            }
+                        }
+                    }
+
+                    context("with closeAutomatically enabled") {
+                        beforeEach {
+                            actionButton.closeAutomatically = true
+                        }
+
+                        context("and item is tapped") {
+                            beforeEach {
+                                let item = actionButton.items[0]
+                                item.sendActions(for: .touchUpInside)
+                            }
+
+                            it("closes") {
+                                expect(actionButton.buttonState) == .closing
+                                expect(actionButton.buttonState).toEventually(equal(.closed))
+                            }
+
+                            it("performs action") {
+                                expect(action).toEventually(equal("done!"))
+                            }
+                        }
+                    }
                 }
 
                 context("and is opened and closed") {
