@@ -184,10 +184,10 @@ fileprivate extension JJFloatingActionButton {
                          group: group,
                          animated: animated)
         case .transition:
-            transistion(toImage: configuration.image,
-                        settings: configuration.opening,
-                        animated: animated,
-                        group: group)
+            transition(toImage: configuration.image,
+                       settings: configuration.opening,
+                       animated: animated,
+                       group: group)
         }
     }
 
@@ -201,10 +201,10 @@ fileprivate extension JJFloatingActionButton {
                          group: group,
                          animated: animated)
         case .transition:
-            transistion(toImage: currentButtonImage,
-                        settings: configuration.closing,
-                        animated: animated,
-                        group: group)
+            transition(toImage: currentButtonImage,
+                       settings: configuration.closing,
+                       animated: animated,
+                       group: group)
         }
     }
 
@@ -224,10 +224,10 @@ fileprivate extension JJFloatingActionButton {
                        animated: animated)
     }
 
-    func transistion(toImage image: UIImage?,
-                     settings: JJAnimationSettings,
-                     animated: Bool,
-                     group: DispatchGroup) {
+    func transition(toImage image: UIImage?,
+                    settings: JJAnimationSettings,
+                    animated: Bool,
+                    group: DispatchGroup) {
         let transition: () -> Void = {
             self.imageView.image = image
         }

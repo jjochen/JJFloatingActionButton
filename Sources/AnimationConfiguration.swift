@@ -353,7 +353,7 @@ import UIKit
 
     /// Returns an item preparation object that
     ///   - sets `item.alpha` to `1` and
-    ///   - `item.transform` to `identitiy`.
+    ///   - `item.transform` to `identity`.
     ///
     /// - Returns: An item preparation object.
     ///
@@ -405,7 +405,7 @@ import UIKit
     ///                       towards the closest vertical edge of the screen.
     /// - Parameter scale: The factor by which the item is scaled
     ///
-    /// - Remark: The item is offseted towards the closest vertical edge of the screen.
+    /// - Remark: The item is offsetted towards the closest vertical edge of the screen.
     ///
     /// - Returns: An item preparation object.
     ///
@@ -425,7 +425,7 @@ import UIKit
     ///                       towards the action button.
     /// - Parameter scale: The factor by which the item is scaled
     ///
-    /// - Remark: The item is offseted towards the action button.
+    /// - Remark: The item is offsetted towards the action button.
     ///
     /// - Returns: An item preparation object.
     ///

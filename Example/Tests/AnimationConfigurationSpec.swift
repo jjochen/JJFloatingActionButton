@@ -189,7 +189,7 @@ class AnimationConfigurationSpec: QuickSpec {
                     expect(superview) == snapshot()
                 }
 
-                it("it looks correct with items offseted") {
+                it("it looks correct with items offsetted") {
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .offset(translationX: -20, translationY: 10)
 
@@ -289,7 +289,7 @@ class AnimationConfigurationSpec: QuickSpec {
                     expect(superview) == snapshot()
                 }
 
-                it("it looks correct with items offseted") {
+                it("it looks correct with items offsetted") {
                     configuration.itemLayout = .verticalLine(withInterItemSpacing: 10)
                     configuration.closedState = .offset(translationX: -20, translationY: 10)
 
@@ -338,7 +338,7 @@ class AnimationConfigurationSpec: QuickSpec {
                     expect(superview) == snapshot()
                 }
 
-                // disabled for now. Fails on older operating sistems. ToDo!
+                // disabled for now. Fails on older operating systems. ToDo!
                 xit("looks correct with slide in configuration") {
                     let configuration = JJItemAnimationConfiguration()
                     configuration.openState = JJItemPreparation { item, _, _, _ in
