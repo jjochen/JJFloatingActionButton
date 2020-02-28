@@ -236,7 +236,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         expect(superview) == snapshot()
                     }
 
-                    it("items look correct highlighted with custom highligted color") {
+                    it("items look correct highlighted with custom highlighted color") {
                         let item = actionButton.items[0]
                         item.circleView.highlightedColor = .purple
                         item.isHighlighted = true
@@ -255,7 +255,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("closes") {
-                            expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.closed))
+                            expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
                         }
                     }
 
@@ -265,7 +265,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("closes") {
-                            expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.closed))
+                            expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
                         }
 
                         it("does not perform action") {
@@ -280,7 +280,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("closes") {
-                            expect(actionButton.buttonState).toNotEventually(equal(JJFloatingActionButtonState.closed))
+                            expect(actionButton.buttonState).toEventually(equal(JJFloatingActionButtonState.closed))
                         }
 
                         it("performs action") {
@@ -415,7 +415,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
                 }
 
-                context("and is opened with handle single action direclty disabled") {
+                context("and is opened with handle single action directly disabled") {
                     beforeEach {
                         actionButton.handleSingleActionDirectly = false
                         actionButton.open(animated: false)
