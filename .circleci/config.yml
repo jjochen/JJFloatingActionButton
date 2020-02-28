@@ -2,14 +2,14 @@ version: 2.1
 
 executors:
 
-  ios13-iphone-xs-max:
+  ios13-iphone-11-pro-max:
     macos:
-      xcode: 11.0.0
+      xcode: 11.3.1
     shell: /bin/bash --login -eo pipefail
     environment:
-      SIMULATOR_OS: 13.0
-      DESTINATION: platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro Max
-      SIMULATOR: iPhone 11 Pro Max (13.0) [
+      SIMULATOR_OS: 13.3
+      DESTINATION: platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max
+      SIMULATOR: iPhone 11 Pro Max (13.3) [
 
   ios12-iphone-xs-max:
     macos:
@@ -38,6 +38,13 @@ executors:
 
 
 commands:
+
+  change-ruby:
+    description: Select the correct version of ruby
+    steps:
+      - run:
+          name: Set Ruby Version
+          command: echo 'chruby ruby-2.6' >> ~/.bash_profile
 
   update-bundler:
     description: Update bundler to newest version
@@ -131,6 +138,7 @@ commands:
   setup-gems:
     description: Update bundler and install gems
     steps:
+      - change-ruby
       - update-bundler
       - restore-gem-cache
       - bundle-install
@@ -157,8 +165,8 @@ aliases:
 
 jobs:
 
-  build-and-test-ios13-iphonexsmax:
-    executor: ios13-iphone-xs-max
+  build-and-test-ios13-iphone11promax:
+    executor: ios13-iphone-11-pro-max
     steps:
       - checkout
       - setup-gems
@@ -248,7 +256,7 @@ workflows:
     jobs:
       - lint-podspec
       - swiftlint
-      - build-and-test-ios13-iphonexsmax
+      - build-and-test-ios13-iphone11promax
       - build-and-test-ios12-iphonexsmax
       - build-documentation
       - push-podspec: *filter-version-tags-only
