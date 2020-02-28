@@ -38,7 +38,7 @@ class UIColorExtensionsSpec: QuickSpec {
                     highlightedColor = originalColor.highlighted
                 }
 
-                it("has a lower brightness in highligted version") {
+                it("has a lower brightness in highlighted version") {
                     var originalBrightness = CGFloat(0)
                     originalColor.getHue(nil, saturation: nil, brightness: &originalBrightness, alpha: nil)
 
@@ -58,7 +58,7 @@ class UIColorExtensionsSpec: QuickSpec {
                     highlightedColor = originalColor.highlighted
                 }
 
-                it("has a greater brightness in highligted version") {
+                it("has a greater brightness in highlighted version") {
                     var originalBrightness = CGFloat(0)
                     originalColor.getHue(nil, saturation: nil, brightness: &originalBrightness, alpha: nil)
 

@@ -90,7 +90,7 @@ import UIKit
 
     /// The image displayed on the button by default.
     /// When only one `JJActionItem` is added and `handleSingleActionDirectly` is enabled,
-    /// the image from the item is shown istead.
+    /// the image from the item is shown instead.
     /// When set to `nil` an image of a plus sign is used.
     /// Default is `nil`.
     ///
@@ -131,7 +131,7 @@ import UIKit
     }
 
     /// The default diameter of the floating action button.
-    /// This is ignored if the size is defined by autolayout.
+    /// This is ignored if the size is defined by auto-layout.
     /// Default is `56`.
     ///
     @objc @IBInspectable public dynamic var buttonDiameter: CGFloat = 56 {
@@ -358,7 +358,7 @@ import UIKit
         }
     }
 
-    /// All items that will be shown when floating action button ist opened.
+    /// All items that will be shown when floating action button is opened.
     /// This excludes hidden items and items that have user interaction disabled.
     ///
     var enabledItems: [JJActionItem] {
@@ -487,9 +487,9 @@ fileprivate extension JJFloatingActionButton {
     var imageSizeConstraints: [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         if buttonImageSize == .zero {
-            let muliplier = CGFloat(1 / sqrt(2))
-            constraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: muliplier))
-            constraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: muliplier))
+            let multiplier = CGFloat(1 / sqrt(2))
+            constraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: multiplier))
+            constraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: multiplier))
         } else {
             constraints.append(imageView.widthAnchor.constraint(equalToConstant: buttonImageSize.width))
             constraints.append(imageView.heightAnchor.constraint(equalToConstant: buttonImageSize.height))

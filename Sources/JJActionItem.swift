@@ -27,7 +27,7 @@ import UIKit
 /// The item view representing an action.
 ///
 @objc @IBDesignable open class JJActionItem: UIControl {
-    /// The action that is executen when the item is tapped.
+    /// The action that is executed when the item is tapped.
     /// Default is `nil`.
     ///
     /// - Parameter item: The action item that has been tapped.
@@ -148,7 +148,7 @@ import UIKit
     /// The position of the title label. Default is `-1`.
     /// When `titleSpacing` is negative default spacing is used:
     /// Default horizontal spacing is `12`.
-    /// Default vertical spaicng is `4`.
+    /// Default vertical spacing is `4`.
     ///
     @objc public dynamic var titleSpacing: CGFloat = -1 {
         didSet {
@@ -158,7 +158,7 @@ import UIKit
 
     /// The size of the image view. Default is `(0, 0)`.
     /// When imageSize is `.zero` the image is shrunken until it fits
-    /// compleately into the circle view. If it already does the actual
+    /// completely into the circle view. If it already does the actual
     /// size of the image is used.
     ///
     @objc public dynamic var imageSize: CGSize = .zero {
@@ -346,9 +346,9 @@ fileprivate extension JJActionItem {
     var imageSizeConstraints: [NSLayoutConstraint] {
         var constraints: [NSLayoutConstraint] = []
         if imageSize == .zero {
-            let muliplier = CGFloat(1 / sqrt(2))
-            constraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: muliplier))
-            constraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: muliplier))
+            let multiplier = CGFloat(1 / sqrt(2))
+            constraints.append(imageView.widthAnchor.constraint(lessThanOrEqualTo: circleView.widthAnchor, multiplier: multiplier))
+            constraints.append(imageView.heightAnchor.constraint(lessThanOrEqualTo: circleView.heightAnchor, multiplier: multiplier))
         } else {
             constraints.append(imageView.widthAnchor.constraint(equalToConstant: imageSize.width))
             constraints.append(imageView.heightAnchor.constraint(equalToConstant: imageSize.height))
