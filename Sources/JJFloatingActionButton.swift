@@ -162,7 +162,7 @@ import UIKit
     public var itemAnimationConfiguration: JJItemAnimationConfiguration = .popUp()
 
     /// When enabled and only one action item is added, the floating action button will not open,
-    /// but the action from the action item will be executed direclty when the button is tapped.
+    /// but the action from the action item will be executed directly when the button is tapped.
     /// Also the image of the floating action button will be replaced with the one from the action item.
     ///
     /// Default is `true`.
@@ -172,6 +172,15 @@ import UIKit
             configureButtonImage()
         }
     }
+
+    /// When enabled, the floating action button will close after an action item was tapped,
+    /// otherwise the action button will stay open and has to be closed explicitly.
+    ///
+    /// Default is `true`.
+    ///
+    /// - SeeAlso: `close`
+    ///
+    @objc @IBInspectable public var closeAutomatically: Bool = true
 
     /// The current state of the floating action button.
     /// Possible values are
@@ -526,7 +535,9 @@ fileprivate extension JJFloatingActionButton {
     }
 
     @objc func itemWasTapped(sender: JJActionItem) {
-        close()
+        if closeAutomatically {
+            close()
+        }
         sender.callAction()
     }
 
