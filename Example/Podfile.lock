@@ -11,7 +11,7 @@ PODS:
   - Nimble-Snapshots/Core (6.9.1):
     - iOSSnapshotTestCase (~> 5.0)
     - Nimble (~> 7.0)
-  - Quick (2.1.0)
+  - Quick (2.2.0)
 
 DEPENDENCIES:
   - JJFloatingActionButton (from `../`)
@@ -20,7 +20,7 @@ DEPENDENCIES:
   - Quick
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
@@ -35,8 +35,8 @@ SPEC CHECKSUMS:
   JJFloatingActionButton: 26805f87c7e9f68c6a91bd9f3f09c2e6b904a84f
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
-  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
 
 PODFILE CHECKSUM: 8c19971bc03b1102942bae8dc764247c0986032d
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.9.0
