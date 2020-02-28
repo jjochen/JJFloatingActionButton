@@ -248,7 +248,7 @@ workflows:
     jobs:
       - lint-podspec
       - swiftlint
-      - build-and-test-ios13-iphonexsmax
+      - build-and-test-ios13-iphone11promax
       - build-and-test-ios12-iphonexsmax
       - build-documentation
       - push-podspec: *filter-version-tags-only
