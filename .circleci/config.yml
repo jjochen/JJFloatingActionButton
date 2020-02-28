@@ -39,6 +39,13 @@ executors:
 
 commands:
 
+  change-ruby:
+    description: Select the correct version of ruby
+    steps:
+      - run:
+          name: Set Ruby Version
+          command: echo 'chruby ruby-2.6' >> ~/.bash_profile
+
   update-bundler:
     description: Update bundler to newest version
     steps:
@@ -131,6 +138,7 @@ commands:
   setup-gems:
     description: Update bundler and install gems
     steps:
+      - change-ruby
       - update-bundler
       - restore-gem-cache
       - bundle-install
