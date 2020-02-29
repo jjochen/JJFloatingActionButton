@@ -217,6 +217,14 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     expect(actionButton.buttonState).toEventually(equal(.closed))
                 }
 
+                it("closes when tapped thrice") {
+                    actionButton.sendActions(for: .touchUpInside)
+                    actionButton.sendActions(for: .touchUpInside)
+                    actionButton.sendActions(for: .touchUpInside)
+                    expect(actionButton.buttonState) == .closing
+                    expect(actionButton.buttonState).toEventually(equal(.closed))
+                }
+
                 context("and is opened") {
                     beforeEach {
                         actionButton.open(animated: false)
