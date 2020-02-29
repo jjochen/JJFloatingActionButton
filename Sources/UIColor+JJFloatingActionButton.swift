@@ -27,11 +27,11 @@ import UIKit
 internal extension UIColor {
     var highlighted: UIColor {
         var hue = CGFloat(0)
-        var satuaration = CGFloat(0)
+        var saturation = CGFloat(0)
         var brightness = CGFloat(0)
         var alpha = CGFloat(0)
-        getHue(&hue, saturation: &satuaration, brightness: &brightness, alpha: &alpha)
+        getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         let newBrightness = brightness > 0.5 ? brightness - 0.1 : brightness + 0.1
-        return UIColor(hue: hue, saturation: satuaration, brightness: newBrightness, alpha: alpha)
+        return UIColor(hue: hue, saturation: saturation, brightness: newBrightness, alpha: alpha)
     }
 }
