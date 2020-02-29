@@ -60,6 +60,9 @@ import UIKit
         openItems(animated: animated, group: animationGroup)
 
         let groupCompletion: () -> Void = {
+            guard self.buttonState == .opening else {
+                return
+            }
             self.buttonState = .open
             self.delegate?.floatingActionButtonDidOpen?(self)
             completion?()
