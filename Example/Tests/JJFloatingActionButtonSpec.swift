@@ -210,11 +210,11 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     expect(actionButton.buttonState).toEventually(equal(.open))
                 }
 
-                it("opens when tapped twice") {
+                it("closes when tapped twice") {
                     actionButton.sendActions(for: .touchUpInside)
                     actionButton.sendActions(for: .touchUpInside)
-                    expect(actionButton.buttonState) == .opening
-                    expect(actionButton.buttonState).toEventually(equal(.open))
+                    expect(actionButton.buttonState) == .closing
+                    expect(actionButton.buttonState).toEventually(equal(.closed))
                 }
 
                 context("and is opened") {
@@ -364,6 +364,44 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("has eventually state open") {
                         expect(actionButton.buttonState).toEventually(equal(.open))
+                    }
+
+                    context("and button is tapped") {
+                        beforeEach {
+                            actionButton.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+                    }
+
+                    context("and overlay is tapped") {
+                        beforeEach {
+                            actionButton.overlayView.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+                    }
+
+                    context("and item is tapped") {
+                        beforeEach {
+                            let item = actionButton.items[0]
+                            item.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+
+                        it("performs action") {
+                            expect(action).toEventually(equal("done!"))
+                        }
                     }
                 }
 
