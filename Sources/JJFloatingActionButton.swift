@@ -535,6 +535,10 @@ fileprivate extension JJFloatingActionButton {
     }
 
     @objc func itemWasTapped(sender: JJActionItem) {
+        guard buttonState == .open || buttonState == .opening else {
+            return
+        }
+
         if closeAutomatically {
             close()
         }
