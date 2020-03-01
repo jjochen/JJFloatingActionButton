@@ -1,6 +1,28 @@
 # Change Log
 
-## [2.1.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.1.0) (2019-09-09)
+## [2.2.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.2.0) (2020-03-01)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.1.0...2.2.0)
+
+**Implemented enhancements:**
+
+- Leave action items visible [\#221](https://github.com/jjochen/JJFloatingActionButton/issues/221)
+
+**Fixed bugs:**
+
+- Code coverage checks not working in pull requests [\#165](https://github.com/jjochen/JJFloatingActionButton/issues/165)
+
+**Merged pull requests:**
+
+- Fix changelog generation [\#235](https://github.com/jjochen/JJFloatingActionButton/pull/235)
+- Prevent item selection during closing animation [\#234](https://github.com/jjochen/JJFloatingActionButton/pull/234) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Allow item selection during opening animation [\#233](https://github.com/jjochen/JJFloatingActionButton/pull/233) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Fix typos [\#232](https://github.com/jjochen/JJFloatingActionButton/pull/232)
+- Make automatic closing of action button configurable [\#231](https://github.com/jjochen/JJFloatingActionButton/pull/231) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Update dependencies [\#230](https://github.com/jjochen/JJFloatingActionButton/pull/230)
+- Some improvements to test suite [\#229](https://github.com/jjochen/JJFloatingActionButton/pull/229)
+- Support for Swift Package Manager [\#228](https://github.com/jjochen/JJFloatingActionButton/pull/228)
+
+## [2.1.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.1.0) (2019-09-12)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.0.0...2.1.0)
 
 **Implemented enhancements:**
