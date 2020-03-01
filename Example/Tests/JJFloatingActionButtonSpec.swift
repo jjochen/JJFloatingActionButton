@@ -413,6 +413,23 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             expect(actionCount).toEventually(equal(1))
                         }
                     }
+
+                    context("and item is tapped twice") {
+                        beforeEach {
+                            let item = actionButton.items[0]
+                            item.sendActions(for: .touchUpInside)
+                            item.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+
+                        it("performs action once") {
+                            expect(actionCount).toEventually(equal(1))
+                        }
+                    }
                 }
 
                 context("and is closed animated") {
