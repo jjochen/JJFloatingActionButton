@@ -196,10 +196,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             context("when multiple items are added") {
-                var action = "not done"
+                var actionCount = 0
+
                 beforeEach {
+                    actionCount = 0
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { _ in
-                        action = "done!"
+                        actionCount += 1
                     }
                     actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
                 }
@@ -281,7 +283,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                         it("does not perform action") {
                             waitUntil(timeout: 1.5)
-                            expect(action) != "done!"
+                            expect(actionCount) == 0
                         }
                     }
 
@@ -297,7 +299,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("performs action") {
-                            expect(action).toEventually(equal("done!"))
+                            expect(actionCount).toEventually(equal(1))
                         }
                     }
 
@@ -317,7 +319,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             }
 
                             it("performs action") {
-                                expect(action).toEventually(equal("done!"))
+                                expect(actionCount).toEventually(equal(1))
                             }
                         }
                     }
@@ -339,7 +341,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             }
 
                             it("performs action") {
-                                expect(action).toEventually(equal("done!"))
+                                expect(actionCount).toEventually(equal(1))
                             }
                         }
                     }
@@ -408,7 +410,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("performs action") {
-                            expect(action).toEventually(equal("done!"))
+                            expect(actionCount).toEventually(equal(1))
                         }
                     }
                 }
@@ -470,10 +472,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             context("when 1 item is added") {
-                var action = "not done"
+                var actionCount = 0
+
                 beforeEach {
+                    actionCount = 0
                     actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { _ in
-                        action = "done!"
+                        actionCount += 1
                     }
                 }
 
@@ -491,7 +495,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("performs action") {
-                        expect(action).toEventually(equal("done!"))
+                        expect(actionCount).toEventually(equal(1))
                     }
                 }
 
@@ -562,11 +566,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
         describe("JJFloatingActionButton using single item initializer") {
             var actionButton: JJFloatingActionButton!
-            var action = "not done"
+            var actionCount = 0
 
             beforeEach {
+                actionCount = 0
                 actionButton = JJFloatingActionButton(image: #imageLiteral(resourceName: "Favourite"), action: { _ in
-                    action = "done!"
+                    actionCount += 1
                 })
             }
 
@@ -580,7 +585,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("performs action when tapped") {
                 actionButton.sendActions(for: .touchUpInside)
-                expect(action).toEventually(equal("done!"))
+                expect(actionCount).toEventually(equal(1))
             }
         }
 
