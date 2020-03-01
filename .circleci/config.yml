@@ -225,6 +225,15 @@ jobs:
           name: Build Documentation
           command: bundle exec rake generate_documentation
 
+  generate-changelog:
+    executor: ios12-iphone-xs-max
+    steps:
+      - checkout
+      - setup-gems
+      - run:
+          name: Generate Changelog
+          command: bundle exec rake generate_changelog
+
   swiftlint:
     docker:
       - image: dantoml/swiftlint:latest
@@ -259,4 +268,5 @@ workflows:
       - build-and-test-ios13-iphone11promax
       - build-and-test-ios12-iphonexsmax
       - build-documentation
+      - generate-changelog
       - push-podspec: *filter-version-tags-only

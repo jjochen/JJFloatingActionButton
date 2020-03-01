@@ -1,3 +1,5 @@
 exclude_labels=duplicate,invalid,release,support,wontdo,wontfix
 author=false
 issue-line-labels=added,changed,fixed,removed,updated
+user=jjochen
+project=JJFloatingActionButton
