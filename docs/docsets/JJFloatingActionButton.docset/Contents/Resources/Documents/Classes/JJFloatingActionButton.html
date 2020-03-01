@@ -106,7 +106,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>JJFloatingActionButton</h1>
               <div class="declaration">
                 <div class="language">
@@ -284,7 +284,7 @@ Default is <code>nil</code>.</p>
                       <div class="abstract">
                         <p>The image displayed on the button by default.
 When only one <code><a href="../Classes/JJActionItem.html">JJActionItem</a></code> is added and <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)handleSingleActionDirectly">handleSingleActionDirectly</a></code> is enabled,
-the image from the item is shown istead.
+the image from the item is shown instead.
 When set to <code>nil</code> an image of a plus sign is used.
 Default is <code>nil</code>.</p>
 <div class="aside aside-see-also">
@@ -361,8 +361,7 @@ Default is <code>UIColor.white</code>.</p>
     <p class="aside-title">Warning</p>
     <p>Only template images are colored.</p>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <p><code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)imageView">imageView</a></code></p>
 
@@ -396,7 +395,7 @@ Default is <code>UIColor.white</code>.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The default diameter of the floating action button.
-This is ignored if the size is defined by autolayout.
+This is ignored if the size is defined by auto-layout.
 Default is <code>56</code>.</p>
 
                       </div>
@@ -462,8 +461,7 @@ Default is <code>JJButtonAnimationConfiguration.rotation()</code></p>
     <p class="aside-title">See also</p>
     <code><a href="../Classes/JJButtonAnimationConfiguration.html">JJButtonAnimationConfiguration</a></code>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <code><a href="../Classes/JJFloatingActionButton.html#/s:22JJFloatingActionButtonAAC26itemAnimationConfigurationAA06JJItemeF0Cvp">itemAnimationConfiguration</a></code>
 
@@ -500,8 +498,7 @@ Default is <code>JJItemAnimationConfiguration.popUp()</code></p>
     <p class="aside-title">See also</p>
     <code><a href="../Classes/JJItemAnimationConfiguration.html">JJItemAnimationConfiguration</a></code>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <code><a href="../Classes/JJFloatingActionButton.html#/s:22JJFloatingActionButtonAAC28buttonAnimationConfigurationAA08JJButtoneF0Cvp">buttonAnimationConfiguration</a></code>
 
@@ -533,7 +530,7 @@ Default is <code>JJItemAnimationConfiguration.popUp()</code></p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>When enabled and only one action item is added, the floating action button will not open,
-but the action from the action item will be executed direclty when the button is tapped.
+but the action from the action item will be executed directly when the button is tapped.
 Also the image of the floating action button will be replaced with the one from the action item.</p>
 
 <p>Default is <code>true</code>.</p>
@@ -546,6 +543,43 @@ Also the image of the floating action button will be replaced with the one from 
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
 <span class="kd">@IBInspectable</span>
 <span class="kd">public</span> <span class="k">var</span> <span class="nv">handleSingleActionDirectly</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)closeAutomatically"></a>
+                    <a name="//apple_ref/swift/Property/closeAutomatically" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)closeAutomatically">closeAutomatically</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When enabled, the floating action button will close after an action item was tapped,
+otherwise the action button will stay open and has to be closed explicitly.</p>
+
+<p>Default is <code>true</code>.</p>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code>close</code>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">@IBInspectable</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">closeAutomatically</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -607,8 +641,7 @@ Read only.</p>
     <p class="aside-title">See also</p>
     <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonColor">buttonColor</a></code>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)highlightedButtonColor">highlightedButtonColor</a></code>
 
@@ -647,13 +680,11 @@ Read only.</p>
     <p>Setting the image of the <code>imageView</code> directly will not work.
        Use <code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonImage">buttonImage</a></code> instead.</p>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <p><code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonImage">buttonImage</a></code></p>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <p><code><a href="../Classes/JJFloatingActionButton.html#/c:@M@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)buttonImageColor">buttonImageColor</a></code></p>
 
@@ -877,10 +908,6 @@ Read only.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -899,13 +926,11 @@ Read only.</p>
     <p class="aside-title">Remark</p>
     <p>Hidden items and items that have user interaction disabled are omitted.</p>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <p><code><a href="../Classes/JJFloatingActionButton.html#/s:22JJFloatingActionButtonAAC28buttonAnimationConfigurationAA08JJButtoneF0Cvp">buttonAnimationConfiguration</a></code></p>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <p><code><a href="../Classes/JJFloatingActionButton.html#/s:22JJFloatingActionButtonAAC26itemAnimationConfigurationAA06JJItemeF0Cvp">itemAnimationConfiguration</a></code></p>
 
@@ -972,8 +997,7 @@ Read only.</p>
     <p class="aside-title">See also</p>
     <p><code><a href="../Classes/JJFloatingActionButton.html#/s:22JJFloatingActionButtonAAC28buttonAnimationConfigurationAA08JJButtoneF0Cvp">buttonAnimationConfiguration</a></code></p>
 
-</div>
-<div class="aside aside-see-also">
+</div><div class="aside aside-see-also">
     <p class="aside-title">See also</p>
     <p><code><a href="../Classes/JJFloatingActionButton.html#/s:22JJFloatingActionButtonAAC26itemAnimationConfigurationAA06JJItemeF0Cvp">itemAnimationConfiguration</a></code></p>
 
@@ -1022,10 +1046,6 @@ Read only.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1218,9 +1238,11 @@ Read only.</p>
               <div class="task-name-container">
                 <a name="/Public%20Methods"></a>
                 <a name="//apple_ref/swift/Section/Public Methods" class="dashAnchor"></a>
-                <a href="#/Public%20Methods">
-                  <h3 class="section-name">Public Methods</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Methods"></a>
+                  <h3 class="section-name"><p>Public Methods</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -1425,7 +1447,7 @@ Default is <code>nil</code>.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>All items that will be shown when floating action button ist opened.
+                        <p>All items that will be shown when floating action button is opened.
 This excludes hidden items and items that have user interaction disabled.</p>
 
                       </div>
@@ -1446,9 +1468,11 @@ This excludes hidden items and items that have user interaction disabled.</p>
               <div class="task-name-container">
                 <a name="/UIControl"></a>
                 <a name="//apple_ref/swift/Section/UIControl" class="dashAnchor"></a>
-                <a href="#/UIControl">
-                  <h3 class="section-name">UIControl</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/UIControl"></a>
+                  <h3 class="section-name"><p>UIControl</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -1484,9 +1508,11 @@ This excludes hidden items and items that have user interaction disabled.</p>
               <div class="task-name-container">
                 <a name="/UIView"></a>
                 <a name="//apple_ref/swift/Section/UIView" class="dashAnchor"></a>
-                <a href="#/UIView">
-                  <h3 class="section-name">UIView</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/UIView"></a>
+                  <h3 class="section-name"><p>UIView</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -1543,10 +1569,6 @@ This excludes hidden items and items that have user interaction disabled.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -1675,8 +1697,8 @@ Default is <code>2</code>.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2019-09-12)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-03-01)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
