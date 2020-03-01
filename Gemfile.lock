@@ -68,14 +68,14 @@ GEM
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)
     gh_inspector (1.1.3)
-    github_changelog_generator (1.15.0)
+    github_changelog_generator (1.14.3)
       activesupport
       faraday-http-cache
       multi_json
       octokit (~> 4.6)
-      rainbow (>= 2.2.1)
+      rainbow (>= 2.1)
       rake (>= 10.0)
-      retriable (~> 3.0)
+      retriable (~> 2.1)
     httpclient (2.8.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -106,7 +106,7 @@ GEM
     rainbow (3.0.0)
     rake (13.0.1)
     redcarpet (3.5.0)
-    retriable (3.1.2)
+    retriable (2.1.0)
     rouge (2.0.7)
     ruby-macho (1.4.0)
     sassc (2.2.1)
@@ -143,7 +143,7 @@ DEPENDENCIES
   cocoapods-clean!
   cocoapods-deintegrate!
   fileutils!
-  github_changelog_generator!
+  github_changelog_generator (~> 1.14.0)!
   jazzy!
   octokit!
   rake!
@@ -151,4 +151,4 @@ DEPENDENCIES
   xcpretty!
 
 BUNDLED WITH
-   2.0.2
+   2.1.4
