@@ -196,10 +196,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             context("when multiple items are added") {
-                var action = "not done"
+                var actionCount = 0
+
                 beforeEach {
+                    actionCount = 0
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { _ in
-                        action = "done!"
+                        actionCount += 1
                     }
                     actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
                 }
@@ -210,11 +212,19 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     expect(actionButton.buttonState).toEventually(equal(.open))
                 }
 
-                it("opens when tapped twice") {
+                it("closes when tapped twice") {
                     actionButton.sendActions(for: .touchUpInside)
                     actionButton.sendActions(for: .touchUpInside)
-                    expect(actionButton.buttonState) == .opening
-                    expect(actionButton.buttonState).toEventually(equal(.open))
+                    expect(actionButton.buttonState) == .closing
+                    expect(actionButton.buttonState).toEventually(equal(.closed))
+                }
+
+                it("closes when tapped thrice") {
+                    actionButton.sendActions(for: .touchUpInside)
+                    actionButton.sendActions(for: .touchUpInside)
+                    actionButton.sendActions(for: .touchUpInside)
+                    expect(actionButton.buttonState) == .closing
+                    expect(actionButton.buttonState).toEventually(equal(.closed))
                 }
 
                 context("and is opened") {
@@ -273,7 +283,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                         it("does not perform action") {
                             waitUntil(timeout: 1.5)
-                            expect(action) != "done!"
+                            expect(actionCount) == 0
                         }
                     }
 
@@ -289,7 +299,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("performs action") {
-                            expect(action).toEventually(equal("done!"))
+                            expect(actionCount).toEventually(equal(1))
                         }
                     }
 
@@ -309,7 +319,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             }
 
                             it("performs action") {
-                                expect(action).toEventually(equal("done!"))
+                                expect(actionCount).toEventually(equal(1))
                             }
                         }
                     }
@@ -331,7 +341,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             }
 
                             it("performs action") {
-                                expect(action).toEventually(equal("done!"))
+                                expect(actionCount).toEventually(equal(1))
                             }
                         }
                     }
@@ -364,6 +374,44 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("has eventually state open") {
                         expect(actionButton.buttonState).toEventually(equal(.open))
+                    }
+
+                    context("and button is tapped") {
+                        beforeEach {
+                            actionButton.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+                    }
+
+                    context("and overlay is tapped") {
+                        beforeEach {
+                            actionButton.overlayView.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+                    }
+
+                    context("and item is tapped") {
+                        beforeEach {
+                            let item = actionButton.items[0]
+                            item.sendActions(for: .touchUpInside)
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState) == .closing
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+
+                        it("performs action") {
+                            expect(actionCount).toEventually(equal(1))
+                        }
                     }
                 }
 
@@ -424,10 +472,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             context("when 1 item is added") {
-                var action = "not done"
+                var actionCount = 0
+
                 beforeEach {
+                    actionCount = 0
                     actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { _ in
-                        action = "done!"
+                        actionCount += 1
                     }
                 }
 
@@ -445,7 +495,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("performs action") {
-                        expect(action).toEventually(equal("done!"))
+                        expect(actionCount).toEventually(equal(1))
                     }
                 }
 
@@ -516,11 +566,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
         describe("JJFloatingActionButton using single item initializer") {
             var actionButton: JJFloatingActionButton!
-            var action = "not done"
+            var actionCount = 0
 
             beforeEach {
+                actionCount = 0
                 actionButton = JJFloatingActionButton(image: #imageLiteral(resourceName: "Favourite"), action: { _ in
-                    action = "done!"
+                    actionCount += 1
                 })
             }
 
@@ -534,7 +585,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("performs action when tapped") {
                 actionButton.sendActions(for: .touchUpInside)
-                expect(action).toEventually(equal("done!"))
+                expect(actionCount).toEventually(equal(1))
             }
         }
 
