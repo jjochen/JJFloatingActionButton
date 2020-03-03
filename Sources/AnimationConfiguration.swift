@@ -262,9 +262,9 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func anglePopup(center: CGPoint, radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    @objc static func anglePopup(radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = .angle(center: center, radius: radius)
+        configuration.itemLayout = .angle(radius: radius)
         configuration.closedState = .scale()
         configuration.opening.interItemDelay = 0.05
         configuration.closing.interItemDelay = 0.05
@@ -353,14 +353,14 @@ import UIKit
     ///
     /// - Returns: An item layout object.
     ///
-    @objc static func angle(center: CGPoint, radius: CGFloat = 100) -> JJItemLayout {
+    @objc static func angle(radius: CGFloat = 100) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             let numberOfItems = items.count
             var index: Int = 0
 
             for item in items {
                 
-                let angle = JJItemAnimationConfiguration.angleForItemForAngle(at: index, numberOfItems: numberOfItems, actionButton: actionButton)
+                let angle = JJItemAnimationConfiguration.angleForItemForAngle(at: index, numberOfItems: numberOfItems)
                 let horizontalDistance = radius * cos(angle)
                 let verticalDistance = radius * sin(angle)
                 
@@ -510,7 +510,7 @@ internal extension JJItemAnimationConfiguration {
         }
     }
     
-    static func angleForItemForAngle(at index: Int, numberOfItems: Int, actionButton: JJFloatingActionButton) -> CGFloat {
+    static func angleForItemForAngle(at index: Int, numberOfItems: Int) -> CGFloat {
         precondition(numberOfItems > 0)
         precondition(index >= 0)
         precondition(index < numberOfItems)
