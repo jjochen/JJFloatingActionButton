@@ -531,6 +531,59 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         expect(superview) == snapshot()
                     }
                 }
+
+                context("and all but one item are removed") {
+                    beforeEach {
+                        for (index, item) in actionButton.items.enumerated() {
+                            if index > 0 {
+                                actionButton.removeItem(item)
+                            }
+                        }
+                    }
+
+                    it("has the correct number of items") {
+                        expect(actionButton.items.count) == 1
+                    }
+
+                    it("looks correct") {
+                        expect(superview) == snapshot()
+                    }
+
+                    it("looks correct when opened") {
+                        actionButton.open(animated: false)
+                        expect(superview) == snapshot()
+                    }
+                }
+
+                context("and the first item is removed") {
+                    var first: JJActionItem!
+                    var result: JJActionItem?
+                    beforeEach {
+                        first = actionButton.items.first
+                        result = actionButton.removeItem(first)
+                    }
+
+                    it("returns the first item") {
+                        expect(result).notTo(beNil())
+                        expect(result) == first
+                    }
+                }
+
+                context("and an item not from the list is removed") {
+                    var result: JJActionItem?
+                    beforeEach {
+                        let item = JJActionItem()
+                        result = actionButton.removeItem(item)
+                    }
+
+                    it("has the correct number of items") {
+                        expect(actionButton.items.count) == 2
+                    }
+
+                    it("returns nil") {
+                        expect(result).to(beNil())
+                    }
+                }
             }
 
             context("when 1 item is added") {
