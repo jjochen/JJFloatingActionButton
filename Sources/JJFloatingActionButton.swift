@@ -399,6 +399,16 @@ extension JJFloatingActionButton {
         updateDynamicConstraints()
         super.updateConstraints()
     }
+
+    /// Tells the view that its superview changed.
+    ///
+    public override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview == nil {
+            close(animated: false)
+            removeRelatedViewsFromSuperview()
+        }
+    }
 }
 
 // MARK: - Setup

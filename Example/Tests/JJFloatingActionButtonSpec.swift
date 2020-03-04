@@ -345,6 +345,21 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             }
                         }
                     }
+
+                    context("and is removed from superview") {
+                        beforeEach {
+                            actionButton.removeFromSuperview()
+                        }
+
+                        it("removes related views from superview") {
+                            expect(actionButton.overlayView.superview).to(beNil())
+                            expect(actionButton.itemContainerView.superview).to(beNil())
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+                    }
                 }
 
                 context("and is opened and closed") {
@@ -430,6 +445,21 @@ class JJFloatingActionButtonSpec: QuickSpec {
                             expect(actionCount).toEventually(equal(1))
                         }
                     }
+
+                    context("and is removed from superview") {
+                        beforeEach {
+                            actionButton.removeFromSuperview()
+                        }
+
+                        it("removes related views from superview") {
+                            expect(actionButton.overlayView.superview).to(beNil())
+                            expect(actionButton.itemContainerView.superview).to(beNil())
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
+                    }
                 }
 
                 context("and is closed animated") {
@@ -444,6 +474,21 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("has eventually state closed") {
                         expect(actionButton.buttonState).toEventually(equal(.closed))
+                    }
+
+                    context("and is removed from superview") {
+                        beforeEach {
+                            actionButton.removeFromSuperview()
+                        }
+
+                        it("removes related views from superview") {
+                            expect(actionButton.overlayView.superview).to(beNil())
+                            expect(actionButton.itemContainerView.superview).to(beNil())
+                        }
+
+                        it("closes") {
+                            expect(actionButton.buttonState).toEventually(equal(.closed))
+                        }
                     }
                 }
 
