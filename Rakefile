@@ -162,6 +162,8 @@ begin
   desc 'Release version'
   task :release_version, :version do |task, args|
     ensure_clean_git_status
+    checkout_and_pull_master
+    ensure_clean_git_status
     update_version_in_podspec args.version
     update_version_in_example_project args.version
     generate_changelog args.version
@@ -310,6 +312,12 @@ def ensure_clean_git_status
     error_message "Uncommited changes. Commit first."
     exit 1
   end
+end
+
+def checkout_and_pull_master
+  title "Checkout and pull master"
+  sh "git checkout master"
+  sh "git pull"
 end
 
 def update_version_in_example_project(version)
