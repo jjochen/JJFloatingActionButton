@@ -1367,9 +1367,108 @@ The item will be updated with the default configuration values.</p>
                           </tbody>
                         </table>
                       </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)removeItem:"></a>
+                    <a name="//apple_ref/swift/Method/removeItem(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)removeItem:">removeItem(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove an action item from the list of items.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">removeItem</span><span class="p">(</span><span class="n">_</span> <span class="nv">item</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>item</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The action item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The item that was add. Its configuration can be changed after it has been added.</p>
+                        <p>The item that was removed. <code>nil</code> if <code>item</code> was not found.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)removeItemAt:"></a>
+                    <a name="//apple_ref/swift/Method/removeItem(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)removeItemAt:">removeItem(at:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Remove and returns the action item at the specified position in the list of items.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">removeItem</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/JJActionItem.html">JJActionItem</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the action item. <code>index</code> must
+be a valid index of the list of items.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The item that was removed.</p>
                       </div>
                     </section>
                   </div>
@@ -1572,6 +1671,33 @@ This excludes hidden items and items that have user interaction disabled.</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)didMoveToSuperview"></a>
+                    <a name="//apple_ref/swift/Method/didMoveToSuperview()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(im)didMoveToSuperview">didMoveToSuperview()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the view that its superview changed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">didMoveToSuperview</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowColor"></a>
                     <a name="//apple_ref/swift/Property/shadowColor" class="dashAnchor"></a>
                     <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJFloatingActionButton(py)shadowColor">shadowColor</a>
@@ -1697,7 +1823,7 @@ Default is <code>2</code>.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-03-01)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-03-05)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
