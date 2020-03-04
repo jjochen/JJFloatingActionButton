@@ -324,11 +324,32 @@ import UIKit
     ///
     /// - Parameter item: The action item.
     ///
-    /// - Returns: The item that was add. Its configuration can be changed after it has been added.
-    ///
     func addItem(_ item: JJActionItem) {
         items.append(item) // this will call `didSet` of `items`
-        configureButtonImage()
+    }
+
+    /// Remove an action item from the list of items.
+    ///
+    /// - Parameter item: The action item.
+    ///
+    /// - Returns: The item that was removed. `nil` if `item` was not found.
+    ///
+    @discardableResult func removeItem(_ item: JJActionItem) -> JJActionItem? {
+        guard let index = items.firstIndex(of: item) else {
+            return nil
+        }
+        return removeItem(at: index)
+    }
+
+    /// Remove and returns the action item at the specified position in the list of items.
+    ///
+    /// - Parameter index: The index of the action item. `index` must
+    ///   be a valid index of the list of items.
+    ///
+    /// - Returns: The item that was removed.
+    ///
+    @discardableResult func removeItem(at index: Int) -> JJActionItem {
+        return items.remove(at: index)
     }
 
     /// Calls the given closure on each item that is or was added to the floating action button.
