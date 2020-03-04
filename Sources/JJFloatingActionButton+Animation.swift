@@ -116,6 +116,18 @@ import UIKit
     }
 }
 
+internal extension JJFloatingActionButton {
+    func removeRelatedViewsFromSuperview() {
+        if overlayView.superview != nil {
+            overlayView.removeFromSuperview()
+        }
+
+        if itemContainerView.superview != nil {
+            itemContainerView.removeFromSuperview()
+        }
+    }
+}
+
 // MARK: - Animation State
 
 fileprivate extension JJFloatingActionButton {
