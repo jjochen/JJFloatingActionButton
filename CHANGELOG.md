@@ -1,5 +1,22 @@
 # Change Log
 
+## [2.3.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.3.0) (2020-03-05)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.2.0...2.3.0)
+
+**Implemented enhancements:**
+
+- Add method to remove action item [\#239](https://github.com/jjochen/JJFloatingActionButton/issues/239)
+
+**Fixed bugs:**
+
+- Need to remove animation while closing items [\#223](https://github.com/jjochen/JJFloatingActionButton/issues/223)
+
+**Merged pull requests:**
+
+- Improve deployment [\#241](https://github.com/jjochen/JJFloatingActionButton/pull/241)
+- Add convenience methods to remove action items from the button [\#240](https://github.com/jjochen/JJFloatingActionButton/pull/240) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Remove related views when button is removed from superview [\#238](https://github.com/jjochen/JJFloatingActionButton/pull/238) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+
 ## [2.2.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.2.0) (2020-03-01)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.1.0...2.2.0)
 
