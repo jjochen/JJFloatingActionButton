@@ -153,16 +153,6 @@ commands:
       - save-pods-cache
 
 
-aliases:
-
-  - &filter-version-tags-only
-    filters:
-      tags:
-        only: /^[0-9]+\.[0-9]+\.[0-9]+$/
-      branches:
-        ignore: /.*/
-
-
 jobs:
 
   build-and-test-ios13-iphone11promax:
@@ -269,4 +259,23 @@ workflows:
       - build-and-test-ios12-iphonexsmax
       - build-documentation
       - generate-changelog
-      - push-podspec: *filter-version-tags-only
+      - create-version-tag
+          requires:
+            - lint-podspec
+            - swiftlint
+            - build-and-test-ios13-iphone11promax
+            - build-and-test-ios12-iphonexsmax
+            - build-documentation
+            - generate-changelog
+          filters:
+            branches:
+              only: /^master$/
+
+  deploy:
+    jobs:
+      - push-podspec
+          filters:
+            tags:
+              only: /^[0-9]+\.[0-9]+\.[0-9]+$/
+            branches:
+              ignore: /.*/
