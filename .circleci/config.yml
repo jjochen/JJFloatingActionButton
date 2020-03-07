@@ -279,3 +279,21 @@ workflows:
               only: /^[0-9]+\.[0-9]+\.[0-9]+$/
             branches:
               ignore: /.*/
+      - create-major-release-pull-request
+          filters:
+            tags:
+              only: /^release-major$/
+            branches:
+              ignore: /.*/
+      - create-minor-release-pull-request
+          filters:
+            tags:
+              only: /^release-minor$/
+            branches:
+              ignore: /.*/
+      - create-patch-release-pull-request
+          filters:
+            tags:
+              only: /^release-patch$/
+            branches:
+              ignore: /.*/
