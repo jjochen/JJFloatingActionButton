@@ -247,7 +247,7 @@ jobs:
           name: Create major release pull request
           command: bundle exec rake release_major_version
 
-  create-mainor-release-pull-request:
+  create-minor-release-pull-request:
     executor: ios13-iphone-11-pro-max
     steps:
       - checkout
