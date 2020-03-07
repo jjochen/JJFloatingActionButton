@@ -161,37 +161,22 @@ begin
 
   desc 'Release major version'
   task :release_major_version
-    version = version_from_podspec
-    new_version = increment_semver(version, "major")
-    release_version new_version
+    release_next_version "major"
   end
   
   desc 'Release minor version'
   task :release_minor_version
-    version = version_from_podspec
-    new_version = increment_semver(version, "minor")
-    release_version new_version
+    release_next_version "minor"
   end
   
   desc 'Release patch version'
   task :release_patch_version
-    version = version_from_podspec
-    new_version = increment_semver(version, "patch")
-    release_version new_version
+    release_next_version "patch"
   end
   
   desc 'Release version'
   task :release_version, :version do |task, args|
-    ensure_clean_git_status
-    checkout_and_pull_master
-    ensure_clean_git_status
-    update_version_in_podspec args.version
-    update_version_in_example_project args.version
-    generate_changelog args.version
-    install_cocoapods
-    generate_documentation
-    create_release_branch_and_commit args.version
-    open_pull_request args.version
+    release_version args.version
   end
 
   desc 'Push podspec'
@@ -349,6 +334,25 @@ def xcodebuild_test(destination)
     "  CODE_SIGN_IDENTITY=" \
     "  PROVISIONING_PROFILE=" \
     " | xcpretty --report junit && exit ${PIPESTATUS[0]}"
+end
+
+def release_next_version(type)
+  version = version_from_podspec
+  new_version = increment_semver(version, type)
+  release_version new_version
+end
+
+def release_version(version)
+  ensure_clean_git_status
+  checkout_and_pull_master
+  ensure_clean_git_status
+  update_version_in_podspec version
+  update_version_in_example_project version
+  generate_changelog version
+  install_cocoapods
+  generate_documentation
+  create_release_branch_and_commit version
+  open_pull_request version
 end
 
 def ensure_clean_git_status
