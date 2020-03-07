@@ -298,7 +298,7 @@ workflows:
       - build-and-test-ios12-iphonexsmax
       - build-documentation
       - generate-changelog
-      - create-version-tag
+      - create-version-tag:
           requires:
             - lint-podspec
             - swiftlint
@@ -312,25 +312,25 @@ workflows:
 
   deploy:
     jobs:
-      - push-podspec
+      - push-podspec:
           filters:
             tags:
               only: /^[0-9]+\.[0-9]+\.[0-9]+$/
             branches:
               ignore: /.*/
-      - create-major-release-pull-request
+      - create-major-release-pull-request:
           filters:
             tags:
               only: /^release-major$/
             branches:
               ignore: /.*/
-      - create-minor-release-pull-request
+      - create-minor-release-pull-request:
           filters:
             tags:
               only: /^release-minor$/
             branches:
               ignore: /.*/
-      - create-patch-release-pull-request
+      - create-patch-release-pull-request:
           filters:
             tags:
               only: /^release-patch$/
