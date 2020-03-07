@@ -160,17 +160,17 @@ begin
   #-- Release ----------------------------------------------------------------#
 
   desc 'Release major version'
-  task :release_major_version
+  task :release_major_version do
     release_next_version "major"
   end
   
   desc 'Release minor version'
-  task :release_minor_version
+  task :release_minor_version do
     release_next_version "minor"
   end
   
   desc 'Release patch version'
-  task :release_patch_version
+  task :release_patch_version do
     release_next_version "patch"
   end
   
