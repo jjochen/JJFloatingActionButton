@@ -159,6 +159,27 @@ begin
 
   #-- Release ----------------------------------------------------------------#
 
+  desc 'Release major version'
+  task :release_major_version
+    version = version_from_podspec
+    new_version = increment_semver(version, "major")
+    release_version new_version
+  end
+  
+  desc 'Release minor version'
+  task :release_minor_version
+    version = version_from_podspec
+    new_version = increment_semver(version, "minor")
+    release_version new_version
+  end
+  
+  desc 'Release patch version'
+  task :release_patch_version
+    version = version_from_podspec
+    new_version = increment_semver(version, "patch")
+    release_version new_version
+  end
+  
   desc 'Release version'
   task :release_version, :version do |task, args|
     ensure_clean_git_status
@@ -270,6 +291,30 @@ def check_parameter(parameter)
     error_message "parameter can't be empty."
     exit 1
   end
+end
+
+def increment_semver(semver, increment_type = "patch")
+  if not (/\d+\.\d+\.\d+/).match(semver)
+    raise "Your semantic version must match the format 'X.X.X'."
+  end
+  if not ["patch", "minor", "major"].include?(increment_type)
+    raise "Only 'patch', 'minor', and 'major' are supported increment types."
+  end
+
+  major, minor, patch = semver.split(".")
+  case increment_type
+    when "patch"
+      patch = patch.to_i + 1
+    when "minor"
+      minor = minor.to_i + 1
+      patch = 0
+    when "major"
+      major = major.to_i + 1
+      minor = 0
+      patch = 0
+  end
+
+  return "#{major}.#{minor}.#{patch}"
 end
 
 def install_gems

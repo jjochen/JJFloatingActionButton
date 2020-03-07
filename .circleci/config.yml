@@ -197,7 +197,7 @@ jobs:
       - store-reports
 
   lint-podspec:
-    executor: ios12-iphone-xs-max
+    executor: ios13-iphone-11-pro-max
     steps:
       - checkout
       - setup-gems
@@ -206,7 +206,7 @@ jobs:
           command: bundle exec rake lint_podspec
 
   build-documentation:
-    executor: ios12-iphone-xs-max
+    executor: ios13-iphone-11-pro-max
     steps:
       - checkout
       - setup-gems
@@ -216,7 +216,7 @@ jobs:
           command: bundle exec rake generate_documentation
 
   generate-changelog:
-    executor: ios12-iphone-xs-max
+    executor: ios13-iphone-11-pro-max
     steps:
       - checkout
       - setup-gems
@@ -237,8 +237,47 @@ jobs:
       - store_test_results:
           path: result.xml
 
+  create-major-release-pull-request:
+    executor: ios13-iphone-11-pro-max
+    steps:
+      - checkout
+      - setup-gems
+      - setup-cocoapods
+      - run:
+          name: Create major release pull request
+          command: bundle exec rake release_major_version
+
+  create-mainor-release-pull-request:
+    executor: ios13-iphone-11-pro-max
+    steps:
+      - checkout
+      - setup-gems
+      - setup-cocoapods
+      - run:
+          name: Create minor release pull request
+          command: bundle exec rake release_minor_version
+
+  create-patch-release-pull-request:
+    executor: ios13-iphone-11-pro-max
+    steps:
+      - checkout
+      - setup-gems
+      - setup-cocoapods
+      - run:
+          name: Create patch release pull request
+          command: bundle exec rake release_patch_version
+
+  create-version-tag:
+    executor: ios13-iphone-11-pro-max
+    steps:
+      - checkout
+      - setup-gems
+      - run:
+          name: Create version tag on github
+          command: bundle exec rake create_github_release
+
   push-podspec:
-    executor: ios12-iphone-xs-max
+    executor: ios13-iphone-11-pro-max
     steps:
       - checkout
       - setup-gems
