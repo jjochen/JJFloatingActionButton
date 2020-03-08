@@ -187,9 +187,15 @@ begin
 
   desc 'Create release on github'
   task :create_github_release do
+    version = version_from_podspec
+    
+    unless is_release_commit_for_version version
+      puts "Not a release commit."
+      next
+    end
+    
     title "Creating release on github"
     repo = "jjochen/JJFloatingActionButton"
-    version = version_from_podspec
     body = changelog_for_version version
     options = {
       :name => version,
@@ -361,6 +367,11 @@ def ensure_clean_git_status
     error_message "Uncommited changes. Commit first."
     exit 1
   end
+end
+
+def is_release_commit_for_version(version)
+  commit_message = `git log -1 --pretty=%B 2> /dev/null`
+  return commit_message.match(/^Release #{version} \(.*\)$/)
 end
 
 def checkout_and_pull_master
