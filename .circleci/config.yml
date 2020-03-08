@@ -308,7 +308,7 @@ workflows:
             - generate-changelog
           filters:
             branches:
-              only: /^test-master$/
+              only: test-master
 
   deploy:
     jobs:
@@ -321,18 +321,18 @@ workflows:
       - create-major-release-pull-request:
           filters:
             tags:
-              only: /^release-major$/
+              only: major-release
             branches:
               ignore: /.*/
       - create-minor-release-pull-request:
           filters:
             tags:
-              only: /^release-minor$/
+              only: minor-release
             branches:
               ignore: /.*/
       - create-patch-release-pull-request:
           filters:
             tags:
-              only: /^release-patch$/
+              only: patch-release
             branches:
               ignore: /.*/
