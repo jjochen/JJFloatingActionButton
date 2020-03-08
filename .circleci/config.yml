@@ -308,7 +308,7 @@ workflows:
             - generate-changelog
           filters:
             branches:
-              only: /^master$/
+              only: /^test-master$/
 
   deploy:
     jobs:

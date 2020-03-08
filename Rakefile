@@ -182,7 +182,8 @@ begin
   desc 'Push podspec'
   task :push_podspec do
     title "Pushing podspec"
-    sh 'bundle exec pod trunk push'
+    puts 'skipped'
+    #sh 'bundle exec pod trunk push'
   end
 
   desc 'Create release on github'
@@ -376,7 +377,7 @@ end
 
 def checkout_and_pull_master
   title "Checkout and pull master"
-  sh "git checkout master"
+  sh "git checkout test-master"
   sh "git pull"
 end
 
@@ -471,7 +472,7 @@ def open_pull_request(version)
   check_parameter(version)
 
   repo = "jjochen/JJFloatingActionButton"
-  base = "master"
+  base = "test-master"
   release_branch = "release/#{version}"
   title = "Release #{version}"
 
