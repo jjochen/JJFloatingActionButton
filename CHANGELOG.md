@@ -1,5 +1,8 @@
 # Change Log
 
+## [minor-release](https://github.com/jjochen/JJFloatingActionButton/tree/minor-release) (2020-03-08)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.3.0...minor-release)
+
 ## [2.3.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.3.0) (2020-03-05)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.2.0...2.3.0)
 
