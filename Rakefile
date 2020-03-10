@@ -450,7 +450,7 @@ def changelog_for_version(version)
     end
   end
   if changelog.nil? || changelog.empty?
-    error_message "changelog for version #{verion} not found."
+    error_message "changelog for version #{version} not found."
     exit 1
   end
   return changelog
