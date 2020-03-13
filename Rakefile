@@ -213,6 +213,29 @@ begin
     puts "#{release.name} created."
   end
 
+  desc 'Close milestone on github'
+  task :close_github_milestone do
+    title "Closing milestone on github"
+
+    repo = "jjochen/JJFloatingActionButton"
+    version = version_from_podspec
+
+    puts "repo: #{repo}"
+    puts "version: #{version}"
+
+    client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
+    open_milestones = client.list_milestones repo, {:state => 'open'}
+    open_milestones.each do |milestone|
+      next unless milestone.title == version
+
+      number = milestone.number
+      puts "number: #{number}"
+
+      client.update_milestone repo, number, {:state => 'closed'}
+      puts "#{milestone.title} closed."
+    end
+  end
+
   desc 'Update github releases'
   task :update_github_releases do
     title "Updating releases on github"
@@ -490,4 +513,3 @@ def open_pull_request(version)
 
   sh "open #{pull_request.html_url}"
 end
-

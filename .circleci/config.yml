@@ -276,6 +276,15 @@ jobs:
           name: Create version tag on github
           command: bundle exec rake create_github_release
 
+  close-milestone:
+    executor: ios13-iphone-11-pro-max
+    steps:
+      - checkout
+      - setup-gems
+      - run:
+          name: Close milestone on github
+          command: bundle exec rake close_github_milestone
+
   push-podspec:
     executor: ios13-iphone-11-pro-max
     steps:
@@ -312,6 +321,12 @@ workflows:
 
   deploy:
     jobs:
+      - close-milestone:
+          filters:
+            tags:
+              only: /^[0-9]+\.[0-9]+\.[0-9]+$/
+            branches:
+              ignore: /.*/
       - push-podspec:
           filters:
             tags:
