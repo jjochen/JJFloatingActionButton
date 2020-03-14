@@ -502,8 +502,9 @@ end
 def create_github_release_tag(type)
   title "Creating release tag"
   tag = release_tag(type)
-  sh "git tag -a #{release_tag} -m 'Initiating #{type} release'"
+  sh "git tag -a #{tag} -m 'Initiating #{type} release'"
   sh "git push --set-upstream origin #{tag}"
+  sh "git tag -ad#{tag}"
 end
 
 def delete_github_release_tag(type)
