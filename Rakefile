@@ -159,24 +159,26 @@ begin
 
   #-- Release ----------------------------------------------------------------#
 
-  desc 'Release major version'
-  task :release_major_version do
-    release_next_version "major"
+  desc 'Initiate release workflow of type'
+  task :initiate_release, :type do |task, args|
+    ensure_clean_git_status
+    checkout_and_pull_master
+    create_github_release_tag args.type
   end
-  
-  desc 'Release minor version'
-  task :release_minor_version do
-    release_next_version "minor"
-  end
-  
-  desc 'Release patch version'
-  task :release_patch_version do
-    release_next_version "patch"
+
+  desc 'Release next version of type'
+  task :release_next_version, :type do |task, args|
+    release_next_version args.type
   end
   
   desc 'Release version'
   task :release_version, :version do |task, args|
     release_version args.version
+  end
+  
+  desc 'Delete GitHub release tag of type'
+  task :delete_github_release_tag, :type do |task, args|
+    delete_github_release_tag args.type
   end
 
   desc 'Push podspec'
@@ -369,6 +371,7 @@ def release_next_version(type)
   version = version_from_podspec
   new_version = increment_semver(version, type)
   release_version new_version
+  delete_github_release_tag(type)
 end
 
 def release_version(version)
@@ -487,6 +490,26 @@ def create_release_branch_and_commit(version)
   sh "git add --all"
   sh "git commit -v -m 'Release #{version}'"
   sh "git push --set-upstream origin #{release_branch}"
+end
+
+def release_tag(type)
+  if not ["patch", "minor", "major"].include?(type)
+    raise "Only 'patch', 'minor', and 'major' are supported types. '#{type}' is not."
+  end
+  return "#{type}-release"
+end
+
+def create_github_release_tag(type)
+  title "Creating release tag"
+  tag = release_tag(type)
+  sh "git tag -a #{release_tag} -m 'Initiating #{type} release'"
+  sh "git push --set-upstream origin #{tag}"
+end
+
+def delete_github_release_tag(type)
+  title "Deleting release tag"
+  tag = release_tag(type)
+  sh "git push origin --delete #{tag} || true"
 end
 
 def open_pull_request(version)

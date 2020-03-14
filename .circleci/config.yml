@@ -245,7 +245,7 @@ jobs:
       - setup-cocoapods
       - run:
           name: Create major release pull request
-          command: bundle exec rake release_major_version
+          command: bundle exec rake release_next_version 'major'
 
   create-minor-release-pull-request:
     executor: ios13-iphone-11-pro-max
@@ -255,7 +255,7 @@ jobs:
       - setup-cocoapods
       - run:
           name: Create minor release pull request
-          command: bundle exec rake release_minor_version
+          command: bundle exec rake release_next_version 'minor'
 
   create-patch-release-pull-request:
     executor: ios13-iphone-11-pro-max
@@ -265,7 +265,7 @@ jobs:
       - setup-cocoapods
       - run:
           name: Create patch release pull request
-          command: bundle exec rake release_patch_version
+          command: bundle exec rake release_next_version 'patch'
 
   create-version-tag:
     executor: ios13-iphone-11-pro-max
