@@ -163,7 +163,7 @@ begin
   task :initiate_release, :type do |task, args|
     ensure_clean_git_status
     checkout_and_pull_master
-    create_github_release_tag args.type
+    create_github_release_trigger_tag args.type
   end
 
   desc 'Release next version of type'
@@ -177,8 +177,8 @@ begin
   end
   
   desc 'Delete GitHub release tag of type'
-  task :delete_github_release_tag, :type do |task, args|
-    delete_github_release_tag args.type
+  task :delete_github_release_trigger_tag, :type do |task, args|
+    delete_github_release_trigger_tag args.type
   end
 
   desc 'Push podspec'
@@ -371,7 +371,7 @@ def release_next_version(type)
   version = version_from_podspec
   new_version = increment_semver(version, type)
   release_version new_version
-  delete_github_release_tag(type)
+  delete_github_release_trigger_tag(type)
 end
 
 def release_version(version)
@@ -492,24 +492,24 @@ def create_release_branch_and_commit(version)
   sh "git push --set-upstream origin #{release_branch}"
 end
 
-def release_tag(type)
+def release_trigger_tag(type)
   if not ["patch", "minor", "major"].include?(type)
     raise "Only 'patch', 'minor', and 'major' are supported types. '#{type}' is not."
   end
   return "#{type}-release"
 end
 
-def create_github_release_tag(type)
+def create_github_release_trigger_tag(type)
   title "Creating release tag"
-  tag = release_tag(type)
+  tag = release_trigger_tag(type)
   sh "git tag -a #{tag} -m 'Initiating #{type} release'"
   sh "git push --set-upstream origin #{tag}"
   sh "git tag -ad#{tag}"
 end
 
-def delete_github_release_tag(type)
+def delete_github_release_trigger_tag(type)
   title "Deleting release tag"
-  tag = release_tag(type)
+  tag = release_trigger_tag(type)
   sh "git push origin --delete #{tag} || true"
 end
 
