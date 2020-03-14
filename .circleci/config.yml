@@ -153,6 +153,37 @@ commands:
       - save-pods-cache
 
 
+aliases:
+
+  - &filter-version-tags-only
+    filters:
+      tags:
+        only: /^[0-9]+\.[0-9]+\.[0-9]+$/
+      branches:
+        ignore: /.*/
+
+  - &filter-major-release-tags-only
+    filters:
+      tags:
+        only: major-release
+      branches:
+        ignore: /.*/
+
+  - &filter-minor-release-tags-only
+    filters:
+      tags:
+        only: minor-release
+      branches:
+        ignore: /.*/
+
+  - &filter-patch-release-tags-only
+    filters:
+      tags:
+        only: patch-release
+      branches:
+        ignore: /.*/
+
+
 jobs:
 
   build-and-test-ios13-iphone11promax:
@@ -321,33 +352,8 @@ workflows:
 
   deploy:
     jobs:
-      - close-milestone:
-          filters:
-            tags:
-              only: /^[0-9]+\.[0-9]+\.[0-9]+$/
-            branches:
-              ignore: /.*/
-      - push-podspec:
-          filters:
-            tags:
-              only: /^[0-9]+\.[0-9]+\.[0-9]+$/
-            branches:
-              ignore: /.*/
-      - create-major-release-pull-request:
-          filters:
-            tags:
-              only: major-release
-            branches:
-              ignore: /.*/
-      - create-minor-release-pull-request:
-          filters:
-            tags:
-              only: minor-release
-            branches:
-              ignore: /.*/
-      - create-patch-release-pull-request:
-          filters:
-            tags:
-              only: patch-release
-            branches:
-              ignore: /.*/
+      - close-milestone: *filter-version-tags-only
+      - push-podspec: *filter-version-tags-only
+      - create-major-release-pull-request: *filter-major-release-tags-only
+      - create-minor-release-pull-request: *filter-minor-release-tags-only
+      - create-patch-release-pull-request: *filter-patch-release-tags-only
