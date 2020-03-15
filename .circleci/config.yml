@@ -2,33 +2,39 @@ version: 2.1
 
 executors:
 
-  ios13-iphone-11-pro-max:
+  default: &default
     macos:
       xcode: 11.3.1
     shell: /bin/bash --login -eo pipefail
+
+  ios13-iphone-11-pro-max:
+    <<: *default
+    macos:
+      xcode: 11.3.1
     environment:
       SIMULATOR_OS: 13.3
       DESTINATION: platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max
       SIMULATOR: iPhone 11 Pro Max (13.3) [
 
   ios12-iphone-xs-max:
+    <<: *default
     macos:
       xcode: 10.3.0
-    shell: /bin/bash --login -eo pipefail
     environment:
       SIMULATOR_OS: 12.4
       DESTINATION: platform=iOS Simulator,OS=12.4,name=iPhone Xs Max
       SIMULATOR: iPhone Xs Max (12.4) [
 
   ios11-iphone-x:
+    <<: *default
     macos:
       xcode: 10.3.0
-    shell: /bin/bash --login -eo pipefail
     environment:
       DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
       SIMULATOR: iPhone X (11.2) [
 
   ios10-iphone-7:
+    <<: *default
     macos:
       xcode: 10.3.0
     shell: /bin/bash --login -eo pipefail
@@ -228,7 +234,7 @@ jobs:
       - store-reports
 
   lint-podspec:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -237,7 +243,7 @@ jobs:
           command: bundle exec rake lint_podspec
 
   build-documentation:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -247,7 +253,7 @@ jobs:
           command: bundle exec rake generate_documentation
 
   generate-changelog:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -269,7 +275,7 @@ jobs:
           path: result.xml
 
   create-major-release-pull-request:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -279,7 +285,7 @@ jobs:
           command: bundle exec rake release_next_version 'major'
 
   create-minor-release-pull-request:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -289,7 +295,7 @@ jobs:
           command: bundle exec rake release_next_version 'minor'
 
   create-patch-release-pull-request:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -299,7 +305,7 @@ jobs:
           command: bundle exec rake release_next_version 'patch'
 
   create-version-tag:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -308,7 +314,7 @@ jobs:
           command: bundle exec rake create_github_release
 
   close-milestone:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
@@ -317,7 +323,7 @@ jobs:
           command: bundle exec rake close_github_milestone
 
   push-podspec:
-    executor: ios13-iphone-11-pro-max
+    executor: default
     steps:
       - checkout
       - setup-gems
