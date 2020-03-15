@@ -159,18 +159,26 @@ begin
 
   #-- Release ----------------------------------------------------------------#
 
-  desc 'Release version'
-  task :release_version, :version do |task, args|
+  desc 'Initiate release workflow of type'
+  task :initiate_release, :type do |task, args|
     ensure_clean_git_status
     checkout_and_pull_master
-    ensure_clean_git_status
-    update_version_in_podspec args.version
-    update_version_in_example_project args.version
-    generate_changelog args.version
-    install_cocoapods
-    generate_documentation
-    create_release_branch_and_commit args.version
-    open_pull_request args.version
+    create_github_release_trigger_tag args.type
+  end
+
+  desc 'Release next version of type'
+  task :release_next_version, :type do |task, args|
+    release_next_version args.type
+  end
+  
+  desc 'Release version'
+  task :release_version, :version do |task, args|
+    release_version args.version
+  end
+  
+  desc 'Delete GitHub release tag of type'
+  task :delete_github_release_trigger_tag, :type do |task, args|
+    delete_github_release_trigger_tag args.type
   end
 
   desc 'Push podspec'
@@ -181,9 +189,15 @@ begin
 
   desc 'Create release on github'
   task :create_github_release do
+    version = version_from_podspec
+    
+    unless is_release_commit_for_version version
+      puts "Not a release commit."
+      next
+    end
+    
     title "Creating release on github"
     repo = "jjochen/JJFloatingActionButton"
-    version = version_from_podspec
     body = changelog_for_version version
     options = {
       :name => version,
@@ -199,6 +213,29 @@ begin
     client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
     release = client.create_release repo, version, options
     puts "#{release.name} created."
+  end
+
+  desc 'Close milestone on github'
+  task :close_github_milestone do
+    title "Closing milestone on github"
+
+    repo = "jjochen/JJFloatingActionButton"
+    version = version_from_podspec
+
+    puts "repo: #{repo}"
+    puts "version: #{version}"
+
+    client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
+    open_milestones = client.list_milestones repo, {:state => 'open'}
+    open_milestones.each do |milestone|
+      next unless milestone.title == version
+
+      number = milestone.number
+      puts "number: #{number}"
+
+      client.update_milestone repo, number, {:state => 'closed'}
+      puts "#{milestone.title} closed."
+    end
   end
 
   desc 'Update github releases'
@@ -272,6 +309,30 @@ def check_parameter(parameter)
   end
 end
 
+def increment_semver(semver, increment_type = "patch")
+  if not (/\d+\.\d+\.\d+/).match(semver)
+    raise "Your semantic version must match the format 'X.X.X'."
+  end
+  if not ["patch", "minor", "major"].include?(increment_type)
+    raise "Only 'patch', 'minor', and 'major' are supported increment types."
+  end
+
+  major, minor, patch = semver.split(".")
+  case increment_type
+    when "patch"
+      patch = patch.to_i + 1
+    when "minor"
+      minor = minor.to_i + 1
+      patch = 0
+    when "major"
+      major = major.to_i + 1
+      minor = 0
+      patch = 0
+  end
+
+  return "#{major}.#{minor}.#{patch}"
+end
+
 def install_gems
   title 'Installing gems'
   sh 'bundle install'
@@ -306,12 +367,37 @@ def xcodebuild_test(destination)
     " | xcpretty --report junit && exit ${PIPESTATUS[0]}"
 end
 
+def release_next_version(type)
+  version = version_from_podspec
+  new_version = increment_semver(version, type)
+  release_version new_version
+  delete_github_release_trigger_tag(type)
+end
+
+def release_version(version)
+  ensure_clean_git_status
+  checkout_and_pull_master
+  ensure_clean_git_status
+  update_version_in_podspec version
+  update_version_in_example_project version
+  generate_changelog version
+  install_cocoapods
+  generate_documentation
+  create_release_branch_and_commit version
+  open_pull_request version
+end
+
 def ensure_clean_git_status
   title "Ensuring clean git status"
   unless `git diff --shortstat 2> /dev/null | tail -n1` == ''
     error_message "Uncommited changes. Commit first."
     exit 1
   end
+end
+
+def is_release_commit_for_version(version)
+  commit_message = `git log -1 --pretty=%B 2> /dev/null`
+  return commit_message.match(/^Release #{version} \(.*\)$/)
 end
 
 def checkout_and_pull_master
@@ -390,7 +476,7 @@ def changelog_for_version(version)
     end
   end
   if changelog.nil? || changelog.empty?
-    error_message "changelog for version #{verion} not found."
+    error_message "changelog for version #{version} not found."
     exit 1
   end
   return changelog
@@ -404,6 +490,27 @@ def create_release_branch_and_commit(version)
   sh "git add --all"
   sh "git commit -v -m 'Release #{version}'"
   sh "git push --set-upstream origin #{release_branch}"
+end
+
+def release_trigger_tag(type)
+  if not ["patch", "minor", "major"].include?(type)
+    raise "Only 'patch', 'minor', and 'major' are supported types. '#{type}' is not."
+  end
+  return "#{type}-release"
+end
+
+def create_github_release_trigger_tag(type)
+  title "Creating release tag"
+  tag = release_trigger_tag(type)
+  sh "git tag -a #{tag} -m 'Initiating #{type} release'"
+  sh "git push --set-upstream origin #{tag}"
+  sh "git tag -ad#{tag}"
+end
+
+def delete_github_release_trigger_tag(type)
+  title "Deleting release tag"
+  tag = release_trigger_tag(type)
+  sh "git push origin --delete #{tag} || true"
 end
 
 def open_pull_request(version)
@@ -430,4 +537,3 @@ def open_pull_request(version)
 
   sh "open #{pull_request.html_url}"
 end
-
