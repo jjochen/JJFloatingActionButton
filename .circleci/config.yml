@@ -184,7 +184,15 @@ commands:
     steps:
       - run:
           name: Swiftlint
-          command: swiftlint lint --reporter junit | tee build/reports/junit.xml
+          command: swiftlint lint --reporter junit | tee junit.xml
+
+  store-lint-reports:
+    description: Store reports
+    steps:
+      - store_artifacts:
+          path: junit.xml
+      - store_test_results:
+          path: junit.xml
 
   release-next-major-version:
     description: Create major release pull request
@@ -331,7 +339,7 @@ jobs:
     steps:
       - checkout
       - swiftlint
-      - store-test-reports
+      - store-lint-reports
 
   create-major-release-pull-request:
     executor: default
