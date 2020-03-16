@@ -2,45 +2,26 @@ version: 2.1
 
 executors:
 
-  default: &default
+  simulator:
+    parameters:
+      xcode:
+        type: string
+        default: '11.3.1'
+      os:
+        type: string
+        default: '13.3'
+      device:
+        type: string
+        default: iPhone 11 Pro Max
     macos:
-      xcode: 11.3.1
-    shell: /bin/bash --login -eo pipefail
-
-  ios13-iphone-11-pro-max:
-    <<: *default
-    macos:
-      xcode: 11.3.1
-    environment:
-      SIMULATOR_OS: 13.3
-      DESTINATION: platform=iOS Simulator,OS=13.3,name=iPhone 11 Pro Max
-      SIMULATOR: iPhone 11 Pro Max (13.3) [
-
-  ios12-iphone-xs-max:
-    <<: *default
-    macos:
-      xcode: 10.3.0
-    environment:
-      SIMULATOR_OS: 12.4
-      DESTINATION: platform=iOS Simulator,OS=12.4,name=iPhone Xs Max
-      SIMULATOR: iPhone Xs Max (12.4) [
-
-  ios11-iphone-x:
-    <<: *default
-    macos:
-      xcode: 10.3.0
-    environment:
-      DESTINATION: platform=iOS Simulator,OS=11.2,name=iPhone X
-      SIMULATOR: iPhone X (11.2) [
-
-  ios10-iphone-7:
-    <<: *default
-    macos:
-      xcode: 10.3.0
+      xcode: << parameters.xcode >>
     shell: /bin/bash --login -eo pipefail
     environment:
-      DESTINATION: platform=iOS Simulator,OS=10.3.1,name=iPhone 7
-      SIMULATOR: iPhone 7 (10.3.1) [
+      SIMULATOR_OS: << parameters.os >>
+      DESTINATION: platform=iOS Simulator,OS=<< parameters.os >>,name=<< parameters.device >>
+      SIMULATOR: << parameters.device >> (<< parameters.os >>) [
+
+  default: simulator
 
 
 commands:
@@ -287,7 +268,11 @@ aliases:
 jobs:
 
   build-and-test-ios13-iphone11promax:
-    executor: ios13-iphone-11-pro-max
+    executor:
+      name: simulator
+      xcode: '11.3.1'
+      os: '13.3'
+      device: iPhone 11 Pro Max
     steps:
       - checkout
       - setup-gems
@@ -297,7 +282,11 @@ jobs:
       - store-test-reports
 
   build-and-test-ios12-iphonexsmax:
-    executor: ios12-iphone-xs-max
+    executor:
+      name: simulator
+      xcode: '10.3.0'
+      os: '12.4'
+      device: iPhone Xs Max
     steps:
       - checkout
       - setup-gems
@@ -308,7 +297,11 @@ jobs:
       - store-test-reports
 
   build-and-test-ios11-iphonex:
-    executor: ios11-iphone-x
+    executor:
+      name: simulator
+      xcode: '10.3.0'
+      os: '11.2'
+      device: iPhone X
     steps:
       - checkout
       - setup-gems
@@ -318,7 +311,11 @@ jobs:
       - store-test-reports
 
   build-and-test-ios10-iphone7:
-    executor: ios10-iphone-7
+    executor:
+      name: simulator
+      xcode: '10.3.0'
+      os: '10.3.1'
+      device: iPhone 7
     steps:
       - checkout
       - setup-gems
