@@ -133,7 +133,7 @@ commands:
           name: Update Codecov
           command: bash <(curl -s https://codecov.io/bash)
 
-  store-reports:
+  store-test-reports:
     description: Store reports
     steps:
       - store_artifacts:
@@ -157,6 +157,76 @@ commands:
       - restore-pods-cache
       - install-cocoapods
       - save-pods-cache
+
+  lint-podspec:
+    description: Lint Podspec
+    steps:
+      - run:
+          name: Lint Podspec
+          command: bundle exec rake lint_podspec
+
+  generate-documentation:
+    description: Build Documentation
+    steps:
+      - run:
+          name: Build Documentation
+          command: bundle exec rake generate_documentation
+
+  generate-changelog:
+    description: Generate Changelog
+    steps:
+      - run:
+          name: Generate Changelog
+          command: bundle exec rake generate_changelog
+
+  swiftlint:
+    description: Run Swiftlint
+    steps:
+      - run:
+          name: Swiftlint
+          command: swiftlint lint --reporter junit | tee build/reports/junit.xml
+
+  release-next-major-version:
+    description: Create major release pull request
+    steps:
+      - run:
+          name: Create major release pull request
+          command: bundle exec rake release_next_version 'major'
+
+  release-next-minor-version:
+    description: Create minor release pull request
+    steps:
+      - run:
+          name: Create minor release pull request
+          command: bundle exec rake release_next_version 'minor'
+
+  release-next-patch-version:
+    description: Create patch release pull request
+    steps:
+      - run:
+          name: Create patch release pull request
+          command: bundle exec rake release_next_version 'patch'
+
+  create-github-release:
+    description: Create version tag on github
+    steps:
+      - run:
+          name: Create version tag on github
+          command: bundle exec rake create_github_release
+
+  close-github-milestone:
+    description: Close milestone on github
+    steps:
+      - run:
+          name: Close milestone on github
+          command: bundle exec rake close_github_milestone
+
+  push-podspec:
+    description: Push Podspec to trunk
+    steps:
+      - run:
+          name: Push Podspec to trunk
+          command: bundle exec rake push_podspec
 
 
 aliases:
@@ -200,7 +270,7 @@ jobs:
       - start-simulator
       - setup-cocoapods
       - run-tests
-      - store-reports
+      - store-test-reports
 
   build-and-test-ios12-iphonexsmax:
     executor: ios12-iphone-xs-max
@@ -211,7 +281,7 @@ jobs:
       - setup-cocoapods
       - run-tests
       - update-codecov
-      - store-reports
+      - store-test-reports
 
   build-and-test-ios11-iphonex:
     executor: ios11-iphone-x
@@ -221,7 +291,7 @@ jobs:
       - start-simulator
       - setup-cocoapods
       - run-tests
-      - store-reports
+      - store-test-reports
 
   build-and-test-ios10-iphone7:
     executor: ios10-iphone-7
@@ -231,16 +301,14 @@ jobs:
       - start-simulator
       - setup-cocoapods
       - run-tests
-      - store-reports
+      - store-test-reports
 
   lint-podspec:
     executor: default
     steps:
       - checkout
       - setup-gems
-      - run:
-          name: Lint Podspec
-          command: bundle exec rake lint_podspec
+      - lint-podspec
 
   build-documentation:
     executor: default
@@ -248,31 +316,22 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - run:
-          name: Build Documentation
-          command: bundle exec rake generate_documentation
+      - generate-documentation
 
   generate-changelog:
     executor: default
     steps:
       - checkout
       - setup-gems
-      - run:
-          name: Generate Changelog
-          command: bundle exec rake generate_changelog
+      - generate-changelog
 
   swiftlint:
     docker:
       - image: dantoml/swiftlint:latest
     steps:
       - checkout
-      - run:
-          name: Swiftlint
-          command: swiftlint lint --reporter junit | tee result.xml
-      - store_artifacts:
-          path: result.xml
-      - store_test_results:
-          path: result.xml
+      - swiftlint
+      - store-test-reports
 
   create-major-release-pull-request:
     executor: default
@@ -280,9 +339,7 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - run:
-          name: Create major release pull request
-          command: bundle exec rake release_next_version 'major'
+      - release-next-major-version
 
   create-minor-release-pull-request:
     executor: default
@@ -290,9 +347,7 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - run:
-          name: Create minor release pull request
-          command: bundle exec rake release_next_version 'minor'
+      - release-next-minor-version
 
   create-patch-release-pull-request:
     executor: default
@@ -300,27 +355,21 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - run:
-          name: Create patch release pull request
-          command: bundle exec rake release_next_version 'patch'
+      - release-next-patch-version
 
   create-version-tag:
     executor: default
     steps:
       - checkout
       - setup-gems
-      - run:
-          name: Create version tag on github
-          command: bundle exec rake create_github_release
+      - create-github-release
 
   close-milestone:
     executor: default
     steps:
       - checkout
       - setup-gems
-      - run:
-          name: Close milestone on github
-          command: bundle exec rake close_github_milestone
+      - close-github-milestone
 
   push-podspec:
     executor: default
@@ -328,9 +377,7 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - run:
-          name: Push Podspec to trunk
-          command: bundle exec rake push_podspec
+      - push-podspec
 
 
 workflows:
