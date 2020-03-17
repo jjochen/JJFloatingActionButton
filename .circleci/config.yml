@@ -26,6 +26,8 @@ executors:
 
 commands:
 
+# Helper
+
   run-rake-task:
     description: Run rake task
     parameters:
@@ -46,6 +48,9 @@ commands:
           path: << parameters.path >>
       - store_test_results:
           path: << parameters.path >>
+
+
+# System steps
 
   change-ruby:
     description: Select the correct version of ruby
@@ -121,17 +126,43 @@ commands:
           paths:
             - Example/Pods
 
-  run-tests:
-    description: Run tests on sepcific device
-    steps:
-      - run-rake-task:
-          task: test_destination
-
   store-test-reports:
     description: Store test reports
     steps:
       - store-reports:
           path: build/reports/junit.xml
+
+  store-lint-reports:
+    description: Store lint reports
+    steps:
+      - store-reports:
+          path: junit.xml
+
+  setup-gems:
+    description: Update bundler and install gems
+    steps:
+      - change-ruby
+      - update-bundler
+      - restore-gem-cache
+      - bundle-install
+      - save-gem-cache
+
+  setup-cocoapods:
+    description: Fetch specs and install cocoapods
+    steps:
+      - fetch-cocoapods-specs
+      - restore-pods-cache
+      - install-cocoapods
+      - save-pods-cache
+
+
+# Rake tasks
+
+  run-tests:
+    description: Run tests on sepcific device
+    steps:
+      - run-rake-task:
+          task: test_destination
 
   update-codecov:
     description: Upload coverage information to Codecov
@@ -157,19 +188,6 @@ commands:
     steps:
       - run-rake-task:
           task: generate_changelog
-
-  swiftlint:
-    description: Run Swiftlint
-    steps:
-      - run:
-          name: Swiftlint
-          command: swiftlint lint --reporter junit | tee junit.xml
-
-  store-lint-reports:
-    description: Store lint reports
-    steps:
-      - store-reports:
-          path: junit.xml
 
   release-next-version:
     description: Create release pull request
@@ -216,22 +234,16 @@ commands:
       - run-rake-task:
           task:  push_podspec
 
-  setup-gems:
-    description: Update bundler and install gems
-    steps:
-      - change-ruby
-      - update-bundler
-      - restore-gem-cache
-      - bundle-install
-      - save-gem-cache
 
-  setup-cocoapods:
-    description: Fetch specs and install cocoapods
+# Tests
+
+  swiftlint:
+    description: Run Swiftlint
     steps:
-      - fetch-cocoapods-specs
-      - restore-pods-cache
-      - install-cocoapods
-      - save-pods-cache
+      - run:
+          name: Swiftlint
+          command: swiftlint lint --reporter junit | tee junit.xml
+
 
 
 aliases:
