@@ -311,8 +311,8 @@ jobs:
   build-and-test-ios11-iphonex:
     executor:
       name: simulator
-      xcode: '10.3.0'
-      os: '11.2'
+      xcode: '10.2.1'
+      os: '11.4'
       device: iPhone X
     steps:
       - checkout
@@ -325,8 +325,8 @@ jobs:
   build-and-test-ios10-iphone7:
     executor:
       name: simulator
-      xcode: '10.3.0'
-      os: '10.3.1'
+      xcode: '10.2.1'
+      os: '10.3.0'
       device: iPhone 7
     steps:
       - checkout
@@ -422,6 +422,8 @@ workflows:
       - swiftlint
       - build-and-test-ios13-iphone11promax
       - build-and-test-ios12-iphonexsmax
+      - build-and-test-ios11-iphonex
+      - build-and-test-ios10-iphone7
       - build-documentation
       - generate-changelog
       - create-version-tag:
@@ -430,6 +432,8 @@ workflows:
             - swiftlint
             - build-and-test-ios13-iphone11promax
             - build-and-test-ios12-iphonexsmax
+            - build-and-test-ios11-iphonex
+            - build-and-test-ios10-iphone7
             - build-documentation
             - generate-changelog
           filters:
