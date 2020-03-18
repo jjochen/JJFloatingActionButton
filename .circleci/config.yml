@@ -311,7 +311,6 @@ jobs:
   build-and-test-ios11-iphonex:
     executor:
       name: simulator
-      xcode: '10.2.1'
       os: '11.4'
       device: iPhone X
     steps:
@@ -325,7 +324,6 @@ jobs:
   build-and-test-ios10-iphone7:
     executor:
       name: simulator
-      xcode: '10.2.1'
       os: '10.3.0'
       device: iPhone 7
     steps:
