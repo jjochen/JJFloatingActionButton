@@ -164,6 +164,15 @@ commands:
       - run-rake-task:
           task: test_destination
 
+  install-simulator:
+    description: Install simulator runtime
+    parameters:
+      version: 
+        type: string
+    steps:
+      - run-rake-task:
+          task: install_simulator << parameters.version >>
+
   update-codecov:
     description: Upload coverage information to Codecov
     steps:

@@ -9,5 +9,6 @@ source 'https://rubygems.org' do
   gem 'rake'
   gem 'fileutils'
   gem 'octokit'
+  gem 'xcode-install'
 end
 
