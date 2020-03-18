@@ -93,8 +93,14 @@ commands:
     description: Install simulator runtime
     steps:
       - run:
+          name: Update xcversion
+          command: bundle exec xcversion update
+      - run:
+          name: List simulators
+          command: bundle exec xcversion simulators
+      - run:
           name: Install simulator
-          command: bundle exec xcversion simulators --install="$SIMULATOR_OS" --no-progress
+          command: bundle exec xcversion simulators --install="iOS $SIMULATOR_OS Simulator" --no-progress
 
   start-simulator:
     description: Start simulator
