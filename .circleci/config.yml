@@ -101,7 +101,7 @@ commands:
     steps:
       - run:
           name: Start simulator
-          command: xcrun instruments -w "$SIMULATOR_OS" || true
+          command: xcrun instruments -w "$SIMULATOR" || true
 
   fetch-cocoapods-specs:
     description: Fetch CocoaPods repository from S3
