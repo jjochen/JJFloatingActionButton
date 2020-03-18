@@ -89,12 +89,19 @@ commands:
           paths:
           - vendor/bundle
 
+  install-simulator:
+    description: Install simulator runtime
+    steps:
+      - run:
+          name: Install simulator
+          command: bundle exec xcversion simulators --install="$SIMULATOR_OS" --no-progress
+
   start-simulator:
     description: Start simulator
     steps:
       - run:
           name: Start simulator
-          command: xcrun instruments -w "$SIMULATOR" || true
+          command: xcrun instruments -w "$SIMULATOR_OS" || true
 
   fetch-cocoapods-specs:
     description: Fetch CocoaPods repository from S3
@@ -163,15 +170,6 @@ commands:
     steps:
       - run-rake-task:
           task: test_destination
-
-  install-simulator:
-    description: Install simulator runtime
-    parameters:
-      version: 
-        type: string
-    steps:
-      - run-rake-task:
-          task: install_simulator << parameters.version >>
 
   update-codecov:
     description: Upload coverage information to Codecov
@@ -297,6 +295,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
+      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
@@ -311,6 +310,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
+      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
@@ -325,6 +325,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
+      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
@@ -338,6 +339,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
+      - install-simulator
       - start-simulator
       - setup-cocoapods
       - run-tests
