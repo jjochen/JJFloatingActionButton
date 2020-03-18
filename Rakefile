@@ -74,7 +74,7 @@ begin
 
   desc 'Install simulator version'
   task :install_simulator, :os_version do |task, args|
-    sh "bundle exec xcversion simulators --install='#{args.os_version}' --no-progress 
+    sh "bundle exec xcversion simulators --install='#{args.os_version}' --no-progress"
   end
 
 
