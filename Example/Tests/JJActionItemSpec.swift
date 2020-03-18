@@ -103,11 +103,13 @@ class JJActionItemSpec: QuickSpec {
             }
 
             it("looks correct with smaller image size") {
+                setNimbleTolerance(0.005)
                 actionItem.imageSize = CGSize(width: 10, height: 10)
                 expect(actionItem) == snapshot()
             }
 
             it("looks correct with bigger image size") {
+                setNimbleTolerance(0.025)
                 actionItem.imageSize = CGSize(width: 30, height: 30)
                 expect(actionItem) == snapshot()
             }
