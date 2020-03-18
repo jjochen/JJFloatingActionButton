@@ -97,7 +97,7 @@ commands:
           command: bundle exec xcversion simulators
       - run:
           name: Install simulator
-          command: bundle exec xcversion simulators --install="iOS $SIMULATOR_OS Simulator" --no-progress
+          command: bundle exec xcversion simulators --install="iOS $SIMULATOR_OS Simulator" --no-progress || true
 
   start-simulator:
     description: Start simulator
@@ -337,7 +337,7 @@ jobs:
   build-and-test-ios10-iphone7:
     executor:
       name: simulator
-      os: '10.3.0'
+      os: '10.3.1'
       device: iPhone 7
     steps:
       - checkout
