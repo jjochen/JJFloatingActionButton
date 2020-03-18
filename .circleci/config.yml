@@ -93,9 +93,6 @@ commands:
     description: Install simulator runtime
     steps:
       - run:
-          name: Update xcversion
-          command: bundle exec xcversion update
-      - run:
           name: List simulators
           command: bundle exec xcversion simulators
       - run:
