@@ -368,6 +368,7 @@ def xcodebuild_test(destination)
 end
 
 def release_next_version(type)
+  title "Releasing #{type} version"
   version = version_from_podspec
   new_version = increment_semver(version, type)
   release_version new_version
@@ -504,7 +505,7 @@ def create_github_release_trigger_tag(type)
   tag = release_trigger_tag(type)
   sh "git tag -a #{tag} -m 'Initiating #{type} release'"
   sh "git push --set-upstream origin #{tag}"
-  sh "git tag -ad#{tag}"
+  sh "git tag -d #{tag}"
 end
 
 def delete_github_release_trigger_tag(type)
