@@ -206,7 +206,7 @@ commands:
         type: string
     steps:
       - run-rake-task:
-          task: release_next_version << parameters.type >>
+          task: release_next_version[<< parameters.type >>]
 
   release-next-major-version:
     description: Create major release pull request
