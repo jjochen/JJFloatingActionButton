@@ -1,15 +1,12 @@
 # Change Log
 
-## [minor-release](https://github.com/jjochen/JJFloatingActionButton/tree/minor-release) (2020-03-19)
-[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.3.0...minor-release)
+## [2.4.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.4.0) (2020-03-20)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.3.0...2.4.0)
 
 **Implemented enhancements:**
 
 - CircleCI config could be simplified  [\#249](https://github.com/jjochen/JJFloatingActionButton/issues/249)
 - Run 'release new version' task on CircleCI/GitHub [\#248](https://github.com/jjochen/JJFloatingActionButton/issues/248)
-
-**Closed issues:**
-
 - Automatically close milestone when version is released [\#246](https://github.com/jjochen/JJFloatingActionButton/issues/246)
 
 **Merged pull requests:**

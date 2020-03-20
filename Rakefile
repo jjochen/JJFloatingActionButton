@@ -369,10 +369,10 @@ end
 
 def release_next_version(type)
   title "Releasing #{type} version"
+  delete_github_release_trigger_tag(type)
   version = version_from_podspec
   new_version = increment_semver(version, type)
   release_version new_version
-  delete_github_release_trigger_tag(type)
 end
 
 def release_version(version)
