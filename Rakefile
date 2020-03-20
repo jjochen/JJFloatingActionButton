@@ -398,7 +398,7 @@ end
 
 def is_release_commit_for_version(version)
   commit_message = `git log -1 --pretty=%B 2> /dev/null`
-  return commit_message.match(/^Release #{version} .*/)
+  return commit_message.start_with?("Release #{version} ")
 end
 
 def checkout_and_pull_master
