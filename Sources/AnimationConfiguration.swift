@@ -146,7 +146,7 @@ import UIKit
     ///
     /// - Returns: A button animation configuration object.
     ///
-    @objc public static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
+    @objc static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .rotation)
         configuration.angle = angle
         return configuration
@@ -158,7 +158,7 @@ import UIKit
     ///
     /// - Returns: A button animation configuration object.
     ///
-    @objc public static func transition(toImage image: UIImage) -> JJButtonAnimationConfiguration {
+    @objc static func transition(toImage image: UIImage) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .transition)
         configuration.image = image
         return configuration
@@ -213,7 +213,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc public static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
+    @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
         configuration.closedState = .scale()
@@ -228,7 +228,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc public static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
+    @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
         configuration.closedState = .horizontalOffset()
@@ -243,7 +243,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc public static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    @objc static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
         configuration.closedState = .scale()
@@ -260,7 +260,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc public static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    @objc static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
         configuration.closedState = .circularOffset(distance: radius * 0.75)
