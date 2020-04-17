@@ -146,7 +146,7 @@ import UIKit
     ///
     /// - Returns: A button animation configuration object.
     ///
-    @objc static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
+    @objc public static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .rotation)
         configuration.angle = angle
         return configuration
@@ -158,7 +158,7 @@ import UIKit
     ///
     /// - Returns: A button animation configuration object.
     ///
-    @objc static func transition(toImage image: UIImage) -> JJButtonAnimationConfiguration {
+    @objc public static func transition(toImage image: UIImage) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .transition)
         configuration.image = image
         return configuration
@@ -213,7 +213,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
+    @objc public static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
         configuration.closedState = .scale()
@@ -228,7 +228,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
+    @objc public static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
         configuration.closedState = .horizontalOffset()
@@ -243,7 +243,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    @objc public static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
         configuration.closedState = .scale()
@@ -260,7 +260,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    @objc public static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
         configuration.closedState = .circularOffset(distance: radius * 0.75)
@@ -293,7 +293,7 @@ import UIKit
     ///
     /// - Returns: An item layout object.
     ///
-    @objc static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemLayout {
+    @objc public static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             var previousItem: JJActionItem?
             for item in items {
@@ -311,7 +311,7 @@ import UIKit
     ///
     /// - Returns: An item layout object.
     ///
-    @objc static func circular(withRadius radius: CGFloat = 100) -> JJItemLayout {
+    @objc public static func circular(withRadius radius: CGFloat = 100) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             let numberOfItems = items.count
             var index: Int = 0
@@ -357,7 +357,7 @@ import UIKit
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc static func identity() -> JJItemPreparation {
+    @objc public static func identity() -> JJItemPreparation {
         return JJItemPreparation { item, _, _, _ in
             item.transform = .identity
             item.alpha = 1
@@ -372,7 +372,7 @@ import UIKit
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc static func scale(by ratio: CGFloat = 0.4) -> JJItemPreparation {
+    @objc public static func scale(by ratio: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, _ in
             item.scale(by: ratio)
             item.alpha = 0
@@ -390,7 +390,7 @@ import UIKit
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc static func offset(translationX: CGFloat, translationY: CGFloat, scale: CGFloat = 0.4) -> JJItemPreparation {
+    @objc public static func offset(translationX: CGFloat, translationY: CGFloat, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, _ in
             item.scale(by: scale, translationX: translationX, translationY: translationY)
             item.alpha = 0
@@ -409,7 +409,7 @@ import UIKit
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
+    @objc public static func horizontalOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, _, _, actionButton in
             let translationX = actionButton.isOnLeftSideOfScreen ? -distance : distance
             item.scale(by: scale, translationX: translationX)
@@ -429,7 +429,7 @@ import UIKit
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
+    @objc public static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
         return JJItemPreparation { item, index, numberOfItems, actionButton in
             let itemAngle = JJItemAnimationConfiguration.angleForItem(at: index,
                                                                       numberOfItems: numberOfItems,
