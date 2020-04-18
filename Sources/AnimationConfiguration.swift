@@ -479,7 +479,9 @@ internal extension JJItemAnimationConfiguration {
             return startAngle + CGFloat(index) * (endAngle - startAngle) / (CGFloat(numberOfItems) - 1)
         }
     }
-    
+}
+
+fileprivate extension JJItemLayout {
     static func selectSpacing(forFirstItem isFirstItem: Bool, defaultSpacing: CGFloat, firstItemSpacing: CGFloat) -> CGFloat {
         if isFirstItem && firstItemSpacing > 0 {
             return firstItemSpacing
