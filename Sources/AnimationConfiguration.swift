@@ -309,12 +309,10 @@ import UIKit
         return JJItemLayout { items, actionButton in
             var previousItem: JJActionItem?
             for item in items {
-                if let previousItem = previousItem {
-                    item.bottomAnchor.constraint(equalTo: previousItem.topAnchor, constant: -interItemSpacing).isActive = true
-                } else {
-                    let spacing = firstItemSpacing > 0 ? firstItemSpacing : interItemSpacing
-                    item.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -spacing).isActive = true
-                }
+                let previousView = previousItem ?? actionButton
+                let isFirstItem = (previousItem == nil)
+                let spacing = spacing(forFirstItem: isFirstItem, defaultSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
+                item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -spacing).isActive = true
                 item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor).isActive = true
                 previousItem = item
             }
@@ -480,6 +478,13 @@ internal extension JJItemAnimationConfiguration {
         default:
             return startAngle + CGFloat(index) * (endAngle - startAngle) / (CGFloat(numberOfItems) - 1)
         }
+    }
+    
+    static func spacing(forFirstItem isFirstItem: Bool, defaultSpacing: CGFloat, firstItemSpacing: CGFloat) -> CGFloat {
+        if isFirstItem && firstItemSpacing > 0 {
+            return firstItemSpacing
+        }
+        return defaultSpacing
     }
 }
 
