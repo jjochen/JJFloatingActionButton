@@ -75,6 +75,19 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
             }
 
+            context("when using pop up style with separate first item spacing") {
+                beforeEach {
+                    actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 10, firstItemSpacing: 50)
+                    actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Owl"))
+                }
+
+                it("it looks correct") {
+                    actionButton.open(animated: false)
+
+                    expect(superview) == snapshot()
+                }
+            }
+
             context("when using slide in style") {
                 beforeEach {
                     actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 10)

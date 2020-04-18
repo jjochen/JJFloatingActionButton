@@ -209,13 +209,17 @@ import UIKit
     ///   - `itemLayout = .verticalLine()`
     ///   - `closedState = .scale()`
     ///
-    /// - Parameter interItemSpacing: The distance between two adjacent items.
+    /// - Parameter interItemSpacing: The distance between two adjacent items. Default is `12`.
+    /// - Parameter firstItemSpacing: The distance between the action button and the first action item.
+    ///                               When `firstItemSpacing` is `0` or less `interItemSpacing` is used instead.
+    ///                               Default is `0`.
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
+    @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12,
+                            firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
+        configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
         configuration.closedState = .scale()
         return configuration
     }
@@ -224,13 +228,17 @@ import UIKit
     ///   - `itemLayout = .verticalLine()`
     ///   - `closedState = .horizontalOffset()`
     ///
-    /// - Parameter interItemSpacing: The distance between two adjacent items.
+    /// - Parameter interItemSpacing: The distance between two adjacent items. Default is `12`.
+    /// - Parameter firstItemSpacing: The distance between the action button and the first action item.
+    ///                               When `firstItemSpacing` is `0` or less `interItemSpacing` is used instead.
+    ///                               Default is `0`.
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemAnimationConfiguration {
+    @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12,
+                              firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing)
+        configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
         configuration.closedState = .horizontalOffset()
         return configuration
     }
@@ -290,15 +298,21 @@ import UIKit
     /// Returns an item layout object that places the items in a vertical line with given inter item spacing.
     ///
     /// - Parameter interItemSpacing: The distance between two adjacent items.
+    /// - Parameter firstItemSpacing: The distance between the action button and the first action item.
+    ///                               When `firstItemSpacing` is 0 or less `interItemSpacing` is used instead.
+    ///                               Default is 0.
     ///
     /// - Returns: An item layout object.
     ///
-    @objc public static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12) -> JJItemLayout {
+    @objc public static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12,
+                                          firstItemSpacing: CGFloat = 0) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             var previousItem: JJActionItem?
             for item in items {
                 let previousView = previousItem ?? actionButton
-                item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -interItemSpacing).isActive = true
+                let isFirstItem = (previousItem == nil)
+                let spacing = selectSpacing(forFirstItem: isFirstItem, defaultSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
+                item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -spacing).isActive = true
                 item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor).isActive = true
                 previousItem = item
             }
@@ -464,6 +478,15 @@ internal extension JJItemAnimationConfiguration {
         default:
             return startAngle + CGFloat(index) * (endAngle - startAngle) / (CGFloat(numberOfItems) - 1)
         }
+    }
+}
+
+fileprivate extension JJItemLayout {
+    static func selectSpacing(forFirstItem isFirstItem: Bool, defaultSpacing: CGFloat, firstItemSpacing: CGFloat) -> CGFloat {
+        if isFirstItem && firstItemSpacing > 0 {
+            return firstItemSpacing
+        }
+        return defaultSpacing
     }
 }
 
