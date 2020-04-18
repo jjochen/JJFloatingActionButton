@@ -78,8 +78,11 @@ commands:
     description: Install gems
     steps:
       - run:
+          name: Configure bundler
+          command: bundle config set path 'vendor/bundle'
+      - run:
           name: Bundle install
-          command: bundle install --path vendor/bundle
+          command: bundle install
 
   save-gem-cache:
     description: Save gems to cache
