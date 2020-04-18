@@ -311,7 +311,7 @@ import UIKit
             for item in items {
                 let previousView = previousItem ?? actionButton
                 let isFirstItem = (previousItem == nil)
-                let spacing = spacing(forFirstItem: isFirstItem, defaultSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
+                let spacing = selectSpacing(forFirstItem: isFirstItem, defaultSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
                 item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -spacing).isActive = true
                 item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor).isActive = true
                 previousItem = item
@@ -480,7 +480,7 @@ internal extension JJItemAnimationConfiguration {
         }
     }
     
-    static func spacing(forFirstItem isFirstItem: Bool, defaultSpacing: CGFloat, firstItemSpacing: CGFloat) -> CGFloat {
+    static func selectSpacing(forFirstItem isFirstItem: Bool, defaultSpacing: CGFloat, firstItemSpacing: CGFloat) -> CGFloat {
         if isFirstItem && firstItemSpacing > 0 {
             return firstItemSpacing
         }
