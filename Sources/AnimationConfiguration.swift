@@ -304,7 +304,8 @@ import UIKit
     ///
     /// - Returns: An item layout object.
     ///
-    @objc public static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12, firstItemSpacing: CGFloat = 0) -> JJItemLayout {
+    @objc public static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12,
+                                          firstItemSpacing: CGFloat = 0) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             var previousItem: JJActionItem?
             for item in items {
