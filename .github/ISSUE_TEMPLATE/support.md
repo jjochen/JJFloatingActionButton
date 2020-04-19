@@ -1,20 +1,21 @@
 ---
-name: Support
-about: Ask a question 
+name: 🤗 Support
+about: Ask any question you might have about JJFloatingActionButton
 title: ''
 labels: 'support'
 assignees: ''
 
 ---
 
-## Version of `JJFloatingActionButton`
-
-<!-- Which version of the library are you currently using. -->
-
-## Details
-
 <!--
-Please provide as much detail as possible.
+What can we help you with?
 
-If it’s a question about something that is happening within your code base, either post a small amount of code, or post an example project where I can try to assist.
+In some cases it can be really helpful to provide a short example of your code.
+If so, please wrap these code blocks in backticks, like this:
+
+```swift
+*your code goes here*
+```
+
+The code will automatically get its syntax highlighted, and doesn't need to be indented 4 spaces to be shown as code.
 -->
