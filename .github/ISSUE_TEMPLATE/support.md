@@ -1,6 +1,6 @@
 ---
 name: 🤗 Support
-about: Ask any question you might have about JJFloatingActionButton
+about: Ask a question you might have about JJFloatingActionButton
 title: ''
 labels: 'support'
 assignees: ''
