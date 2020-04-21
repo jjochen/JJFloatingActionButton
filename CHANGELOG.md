@@ -1,5 +1,26 @@
 # Change Log
 
+## [2.5.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.5.0) (2020-04-21)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.4.0...2.5.0)
+
+**Implemented enhancements:**
+
+- Spacing Betwens Items  [\#258](https://github.com/jjochen/JJFloatingActionButton/issues/258)
+- Create issue templates [\#257](https://github.com/jjochen/JJFloatingActionButton/issues/257)
+
+**Fixed bugs:**
+
+- bundle —path is deprecated  [\#247](https://github.com/jjochen/JJFloatingActionButton/issues/247)
+
+**Merged pull requests:**
+
+- Create issue templates [\#263](https://github.com/jjochen/JJFloatingActionButton/pull/263)
+- Separate spacing between action button and first action item  [\#262](https://github.com/jjochen/JJFloatingActionButton/pull/262) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Update dependencies [\#261](https://github.com/jjochen/JJFloatingActionButton/pull/261)
+- Use `bundle config` to set path for bundler [\#260](https://github.com/jjochen/JJFloatingActionButton/pull/260)
+- Fix access to functions in AnimationConfiguration [\#259](https://github.com/jjochen/JJFloatingActionButton/pull/259) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Less restricted filter for release commit messages [\#253](https://github.com/jjochen/JJFloatingActionButton/pull/253)
+
 ## [2.4.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.4.0) (2020-03-20)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.3.0...2.4.0)
 

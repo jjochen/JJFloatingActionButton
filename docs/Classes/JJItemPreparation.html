@@ -157,7 +157,7 @@
                     <code>
                     <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(im)initWithPrepare:"></a>
                     <a name="//apple_ref/swift/Method/init(prepare:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(im)initWithPrepare:">init(prepare:)</a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(im)initWithPrepare:">init(prepare:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -206,6 +206,328 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)identity"></a>
+                    <a name="//apple_ref/swift/Method/identity()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)identity">identity()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an item preparation object that</p>
+
+<ul>
+<li>sets <code>item.alpha</code> to <code>1</code> and</li>
+<li><p><code>item.transform</code> to <code>identity</code>.</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">identity</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">JJItemPreparation</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An item preparation object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)scaleBy:"></a>
+                    <a name="//apple_ref/swift/Method/scale(by:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)scaleBy:">scale(by:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an item preparation object that</p>
+
+<ul>
+<li>sets <code>item.alpha</code> to <code>0</code> and</li>
+<li><p>scales the item by given ratio.</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">scale</span><span class="p">(</span><span class="n">by</span> <span class="nv">ratio</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemPreparation</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ratio</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The factor by which the item is scaled</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An item preparation object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)offsetWithTranslationX:translationY:scale:"></a>
+                    <a name="//apple_ref/swift/Method/offset(translationX:translationY:scale:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)offsetWithTranslationX:translationY:scale:">offset(translationX:<wbr>translationY:<wbr>scale:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an item preparation object that</p>
+
+<ul>
+<li>sets <code>item.alpha</code> to <code>0</code>,</li>
+<li>offsets the item by given values and</li>
+<li><p>scales the item by given ratio.</p></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">offset</span><span class="p">(</span><span class="nv">translationX</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">translationY</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemPreparation</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>translationX</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value in points by which the item is offsetted horizontally</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>translationY</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value in points by which the item is offsetted vertically</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scale</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The factor by which the item is scaled</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An item preparation object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)horizontalOffsetWithDistance:scale:"></a>
+                    <a name="//apple_ref/swift/Method/horizontalOffset(distance:scale:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)horizontalOffsetWithDistance:scale:">horizontalOffset(distance:<wbr>scale:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an item preparation object that</p>
+
+<ul>
+<li>sets <code>item.alpha</code> to <code>0</code>,</li>
+<li><p>offsets the item horizontally by given values.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    The item is offsetted towards the closest vertical edge of the screen.
+
+</div></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">horizontalOffset</span><span class="p">(</span><span class="nv">distance</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemPreparation</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>distance</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value in points by which the item is offsetted horizontally
+              towards the closest vertical edge of the screen.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scale</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The factor by which the item is scaled</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An item preparation object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)circularOffsetWithDistance:scale:"></a>
+                    <a name="//apple_ref/swift/Method/circularOffset(distance:scale:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemPreparation(cm)circularOffsetWithDistance:scale:">circularOffset(distance:<wbr>scale:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an item preparation object that</p>
+
+<ul>
+<li>sets <code>item.alpha</code> to <code>0</code>,</li>
+<li><p>offsets the item horizontally by given values.</p>
+<div class="aside aside-remark">
+    <p class="aside-title">Remark</p>
+    The item is offsetted towards the action button.
+
+</div></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">circularOffset</span><span class="p">(</span><span class="nv">distance</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemPreparation</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>distance</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value in points by which the item is offsetted
+              towards the action button.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scale</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The factor by which the item is scaled</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An item preparation object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -214,8 +536,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-03-19)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-04-21)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
