@@ -299,9 +299,9 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)popUpWithInterItemSpacing:"></a>
-                    <a name="//apple_ref/swift/Method/popUp(withInterItemSpacing:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)popUpWithInterItemSpacing:">popUp(withInterItemSpacing:)</a>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)popUpWithInterItemSpacing:firstItemSpacing:"></a>
+                    <a name="//apple_ref/swift/Method/popUp(withInterItemSpacing:firstItemSpacing:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)popUpWithInterItemSpacing:firstItemSpacing:">popUp(withInterItemSpacing:<wbr>firstItemSpacing:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -322,7 +322,8 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">static</span> <span class="kd">func</span> <span class="nf">popUp</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">popUp</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+                  <span class="nv">firstItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
 
                         </div>
                       </div>
@@ -338,7 +339,21 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                               </td>
                               <td>
                                 <div>
-                                  <p>The distance between two adjacent items.</p>
+                                  <p>The distance between two adjacent items. Default is <code>12</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>firstItemSpacing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The distance between the action button and the first action item.
+                      When <code>firstItemSpacing</code> is <code>0</code> or less <code>interItemSpacing</code> is used instead.
+                      Default is <code>0</code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -355,9 +370,9 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)slideInWithInterItemSpacing:"></a>
-                    <a name="//apple_ref/swift/Method/slideIn(withInterItemSpacing:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)slideInWithInterItemSpacing:">slideIn(withInterItemSpacing:)</a>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)slideInWithInterItemSpacing:firstItemSpacing:"></a>
+                    <a name="//apple_ref/swift/Method/slideIn(withInterItemSpacing:firstItemSpacing:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)slideInWithInterItemSpacing:firstItemSpacing:">slideIn(withInterItemSpacing:<wbr>firstItemSpacing:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -378,7 +393,8 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">static</span> <span class="kd">func</span> <span class="nf">slideIn</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">slideIn</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+                    <span class="nv">firstItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
 
                         </div>
                       </div>
@@ -394,7 +410,21 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                               </td>
                               <td>
                                 <div>
-                                  <p>The distance between two adjacent items.</p>
+                                  <p>The distance between two adjacent items. Default is <code>12</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>firstItemSpacing</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The distance between the action button and the first action item.
+                      When <code>firstItemSpacing</code> is <code>0</code> or less <code>interItemSpacing</code> is used instead.
+                      Default is <code>0</code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -413,7 +443,7 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                     <code>
                     <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularPopUpWithRadius:"></a>
                     <a name="//apple_ref/swift/Method/circularPopUp(withRadius:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularPopUpWithRadius:">circularPopUp(withRadius:)</a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularPopUpWithRadius:">circularPopUp(withRadius:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -469,7 +499,7 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                     <code>
                     <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularSlideInWithRadius:"></a>
                     <a name="//apple_ref/swift/Method/circularSlideIn(withRadius:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularSlideInWithRadius:">circularSlideIn(withRadius:)</a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularSlideInWithRadius:">circularSlideIn(withRadius:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -528,8 +558,8 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-03-19)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-04-21)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
