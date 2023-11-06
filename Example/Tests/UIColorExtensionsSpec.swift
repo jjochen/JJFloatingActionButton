@@ -27,7 +27,7 @@ import Nimble
 import Quick
 
 class UIColorExtensionsSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("UIColor") {
             context("when light") {
                 var originalColor: UIColor!

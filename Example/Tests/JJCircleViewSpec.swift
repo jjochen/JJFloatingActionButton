@@ -28,13 +28,13 @@ import Nimble_Snapshots
 import Quick
 
 class JJCircleViewSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJCircleView") {
             var circleView: JJCircleView?
 
             context("loaded from xib") {
                 beforeEach {
-                    let bundle = Bundle(for: type(of: self))
+                    let bundle = Bundle(for: Self.self)
                     circleView = bundle.loadNibNamed("JJCircleView", owner: nil, options: nil)?.first as? JJCircleView
                 }
 

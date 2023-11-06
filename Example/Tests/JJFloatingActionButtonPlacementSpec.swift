@@ -29,7 +29,7 @@ import Nimble_Snapshots
 import Quick
 
 class JJFloatingActionButtonPlacementSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJFloatingActionButton") {
             var actionButton: JJFloatingActionButton!
             var viewController: UIViewController!

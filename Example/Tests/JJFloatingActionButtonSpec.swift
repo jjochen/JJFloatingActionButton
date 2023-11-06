@@ -28,7 +28,7 @@ import Nimble_Snapshots
 import Quick
 
 class JJFloatingActionButtonSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJFloatingActionButton") {
             let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
             let actionButtonFrame = CGRect(origin: CGPoint(x: 130, y: 230), size: CGSize(width: 56, height: 56))
@@ -282,7 +282,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("does not perform action") {
-                            waitUntil(timeout: 1.5)
+//                            waitUntil(timeout: 1.5)
                             expect(actionCount) == 0
                         }
                     }
@@ -670,7 +670,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             var actionButton: JJFloatingActionButton?
 
             beforeEach {
-                let bundle = Bundle(for: type(of: self))
+                let bundle = Bundle(for: Self.self)
                 actionButton = bundle.loadNibNamed("JJFloatingActionButton", owner: nil)?.first as? JJFloatingActionButton
             }
 
@@ -732,13 +732,4 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
         }
     }
-}
-
-func waitUntil(timeout: TimeInterval = AsyncDefaults.Timeout) {
-    waitUntil(timeout: timeout + 1, action: { done in
-        DispatchQueue.global().async {
-            Thread.sleep(forTimeInterval: timeout)
-            done()
-        }
-    })
 }

@@ -28,7 +28,7 @@ import Nimble_Snapshots
 import Quick
 
 class JJActionItemSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJActionItem") {
             var actionItem: JJActionItem!
 
@@ -119,7 +119,7 @@ class JJActionItemSpec: QuickSpec {
             var actionItem: JJActionItem?
 
             beforeEach {
-                let bundle = Bundle(for: type(of: self))
+                let bundle = Bundle(for: Self.self)
                 actionItem = bundle.loadNibNamed("JJActionItem", owner: nil)?.first as? JJActionItem
 
                 actionItem?.titleLabel.font = UIFont(name: "Courier", size: 12)

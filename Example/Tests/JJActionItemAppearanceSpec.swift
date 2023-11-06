@@ -29,7 +29,7 @@ import Nimble_Snapshots
 import Quick
 
 class JJActionItemAppearanceSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJActionItem") {
             var item: JJActionItem!
 

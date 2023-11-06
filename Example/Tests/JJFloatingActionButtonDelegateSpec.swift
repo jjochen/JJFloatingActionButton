@@ -28,7 +28,7 @@ import Nimble_Snapshots
 import Quick
 
 class JJFloatingActionButtonDelegateSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJFloatingActionButton") {
             var superview: UIView!
             var actionButton: JJFloatingActionButton!
