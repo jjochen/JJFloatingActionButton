@@ -9,6 +9,10 @@
 #           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGONRE THE LOCK FILE
 Pods/
 
+### Homebrew ###
+# Homebrew lock file
+Brewfile.lock.json
+
 ### fastlane ###
 # fastlane - A streamlined workflow tool for Cocoa deployment
 #
