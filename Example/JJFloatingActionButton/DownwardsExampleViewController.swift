@@ -44,15 +44,15 @@ internal class DownwardsExampleViewController: UIViewController {
         actionButton.itemAnimationConfiguration = configuration
 
         actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         view.addSubview(actionButton)

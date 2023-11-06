@@ -83,11 +83,11 @@ internal class ConfigurationExampleViewController: UIViewController {
 
     fileprivate func addItems() {
         actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         let owlItem = actionButton.addItem()
@@ -96,7 +96,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         owlItem.buttonColor = .black
         owlItem.buttonImageColor = .white
         owlItem.action = { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         let heartItem = actionButton.addItem()
@@ -106,7 +106,7 @@ internal class ConfigurationExampleViewController: UIViewController {
         heartItem.buttonImageColor = .red
         heartItem.imageSize = CGSize(width: 30, height: 30)
         heartItem.action = { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
     }
 }

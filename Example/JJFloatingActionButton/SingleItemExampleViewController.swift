@@ -34,7 +34,7 @@ internal class SingleItemExampleViewController: UIViewController {
         actionButton.buttonColor = .red
 
         actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         actionButton.display(inViewController: self)
