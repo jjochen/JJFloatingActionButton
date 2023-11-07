@@ -521,7 +521,7 @@ fileprivate extension JJActionItem {
 
 internal extension UIView {
     var isOnLeftSideOfScreen: Bool {
-        return isOnLeftSide(ofView: UIApplication.shared.keyWindow)
+        return isOnLeftSide(ofView: UIWindow.key)
     }
 
     func isOnLeftSide(ofView superview: UIView?) -> Bool {

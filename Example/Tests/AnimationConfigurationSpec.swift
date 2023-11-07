@@ -34,9 +34,7 @@ class AnimationConfigurationSpec: QuickSpec {
             var superview: UIView!
 
             beforeEach {
-                assert(UIApplication.shared.keyWindow != nil)
-                let windowWidth = UIApplication.shared.keyWindow!.bounds.size.width
-
+                let windowWidth = UIWindow.key?.bounds.size.width ?? 0
                 var superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
                 superviewFrame.origin.x = windowWidth - superviewFrame.size.width
                 let actionButtonFrame = CGRect(origin: CGPoint(x: 130, y: 230), size: CGSize(width: 56, height: 56))
