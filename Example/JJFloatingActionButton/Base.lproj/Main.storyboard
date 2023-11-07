@@ -487,8 +487,11 @@
         <segue reference="gA0-Dp-YWD"/>
         <segue reference="RKB-e2-gN3"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <color key="tintColor" name="Main"/>
     <resources>
+        <namedColor name="Main">
+            <color red="0.52549019607843139" green="0.75686274509803919" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
