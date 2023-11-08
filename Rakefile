@@ -42,7 +42,7 @@ begin
 
   desc 'Run tests'
   task :test do
-    xcodebuild_test "platform=iOS Simulator,name=iPhone X"
+    xcodebuild_test "platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0"
   end
 
   desc 'Run tests for DESTINATION env'
@@ -170,12 +170,12 @@ begin
   task :release_next_version, :type do |task, args|
     release_next_version args.type
   end
-  
+
   desc 'Release version'
   task :release_version, :version do |task, args|
     release_version args.version
   end
-  
+
   desc 'Delete GitHub release tag of type'
   task :delete_github_release_trigger_tag, :type do |task, args|
     delete_github_release_trigger_tag args.type
@@ -190,12 +190,12 @@ begin
   desc 'Create release on github'
   task :create_github_release do
     version = version_from_podspec
-    
+
     unless is_release_commit_for_version version
       puts "Not a release commit."
       next
     end
-    
+
     title "Creating release on github"
     repo = "jjochen/JJFloatingActionButton"
     body = changelog_for_version version
@@ -208,7 +208,7 @@ begin
 
     puts "repo: #{repo}"
     puts "version: #{version}"
-    puts "body: \n#{body}" 
+    puts "body: \n#{body}"
 
     client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
     release = client.create_release repo, version, options
@@ -364,7 +364,7 @@ def xcodebuild_test(destination)
     "  -enableCodeCoverage YES" \
     "  CODE_SIGN_IDENTITY=" \
     "  PROVISIONING_PROFILE=" \
-    " | xcpretty --report junit && exit ${PIPESTATUS[0]}"
+    "  | xcbeautify && exit ${PIPESTATUS[0]}"
 end
 
 def release_next_version(type)
@@ -525,7 +525,7 @@ def open_pull_request(version)
 
   puts "repo: #{repo}"
   puts "base: #{base}"
-  puts "head: #{release_branch}" 
+  puts "head: #{release_branch}"
 
   client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
 
