@@ -1,3 +1,9 @@
+# file options
+
+--exclude Example/Pods
+
+# format options
+
 --allman false
 --binarygrouping none
 --closingparen balanced
@@ -7,7 +13,6 @@
 --disable redundantFileprivate, redundantObjc
 --elseposition same-line
 --empty void
---exclude Example/Pods, Package.swift
 --exponentcase lowercase
 --exponentgrouping disabled
 --fractiongrouping disabled
@@ -27,7 +32,12 @@
 --selfrequired 
 --semicolons inline
 --stripunusedargs always
---swiftversion 4.2
+--swiftversion 5.0
 --trimwhitespace always
---wraparguments after-first
+--wraparguments preserve
 --wrapcollections preserve
+
+
+# rules
+
+--enable isEmpty

@@ -25,7 +25,7 @@
 import JJFloatingActionButton
 import UIKit
 
-internal class SingleItemExampleViewController: UIViewController {
+class SingleItemExampleViewController: UIViewController {
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {

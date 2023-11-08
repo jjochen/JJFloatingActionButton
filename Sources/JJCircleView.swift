@@ -29,7 +29,7 @@ import UIKit
 @objc @IBDesignable public class JJCircleView: UIView {
     /// The color of the circle.
     ///
-    @objc @IBInspectable public dynamic var color: UIColor = Styles.defaultButtonColor {
+    @IBInspectable public dynamic var color: UIColor = Styles.defaultButtonColor {
         didSet {
             updateHighlightedColorFallback()
             setNeedsDisplay()
@@ -38,7 +38,7 @@ import UIKit
 
     /// The color of the circle when highlighted. Default is `nil`.
     ///
-    @objc @IBInspectable public dynamic var highlightedColor: UIColor? {
+    @IBInspectable public dynamic var highlightedColor: UIColor? {
         didSet {
             setNeedsDisplay()
         }
@@ -53,7 +53,7 @@ import UIKit
         }
     }
 
-    internal override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -72,7 +72,7 @@ import UIKit
     /// Draws the receiver’s image within the passed-in rectangle
     /// Overrides `draw(rect: CGRect)` from `UIView`.
     ///
-    public override func draw(_: CGRect) {
+    override public func draw(_: CGRect) {
         drawCircle(inRect: bounds)
     }
 
@@ -81,7 +81,7 @@ import UIKit
 
 // MARK: - Private Methods
 
-fileprivate extension JJCircleView {
+private extension JJCircleView {
     func setup() {
         backgroundColor = .clear
     }

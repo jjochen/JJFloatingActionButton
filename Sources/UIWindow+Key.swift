@@ -22,10 +22,9 @@
 //  THE SOFTWARE.
 //
 
-
 import Foundation
 
-internal extension UIWindow {
+extension UIWindow {
     static var key: UIWindow? {
         return UIApplication.shared.windows.first { $0.isKeyWindow }
     }

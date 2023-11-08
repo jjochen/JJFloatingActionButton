@@ -1,5 +1,5 @@
 //
-//  JJFloatingActionButtonPlacementSpecs.swift
+//  JJFloatingActionButtonPlacementSpec.swift
 //
 //  Copyright (c) 2017-Present Jochen Pfeiffer
 //
