@@ -41,3 +41,4 @@
 # rules
 
 --enable isEmpty
+--disable wrapMultilineStatementBraces

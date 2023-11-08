@@ -67,8 +67,7 @@ import UIKit
     @objc public convenience init(duration: TimeInterval = 0.3,
                                   dampingRatio: CGFloat = 0.55,
                                   initialVelocity: CGFloat = 0.3,
-                                  interItemDelay: TimeInterval = 0.1)
-    {
+                                  interItemDelay: TimeInterval = 0.1) {
         self.init()
         self.duration = duration
         self.dampingRatio = dampingRatio
@@ -218,8 +217,7 @@ import UIKit
     /// - Returns: An item animation configuration object.
     ///
     static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12,
-                      firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration
-    {
+                      firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
         configuration.closedState = .scale()
@@ -238,8 +236,7 @@ import UIKit
     /// - Returns: An item animation configuration object.
     ///
     static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12,
-                        firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration
-    {
+                        firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
         configuration.closedState = .horizontalOffset()
@@ -308,8 +305,7 @@ import UIKit
     /// - Returns: An item layout object.
     ///
     @objc public static func verticalLine(withInterItemSpacing interItemSpacing: CGFloat = 12,
-                                          firstItemSpacing: CGFloat = 0) -> JJItemLayout
-    {
+                                          firstItemSpacing: CGFloat = 0) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             var previousItem: JJActionItem?
             for item in items {
@@ -365,8 +361,7 @@ import UIKit
     @objc public init(prepare: @escaping (_ item: JJActionItem,
                                           _ index: Int,
                                           _ numberOfItems: Int,
-                                          _ actionButton: JJFloatingActionButton) -> Void)
-    {
+                                          _ actionButton: JJFloatingActionButton) -> Void) {
         self.prepare = prepare
     }
 

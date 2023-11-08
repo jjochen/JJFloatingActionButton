@@ -308,8 +308,7 @@ import UIKit
     ///
     @discardableResult func addItem(title: String? = nil,
                                     image: UIImage? = nil,
-                                    action: ((JJActionItem) -> Void)? = nil) -> JJActionItem
-    {
+                                    action: ((JJActionItem) -> Void)? = nil) -> JJActionItem {
         let item = JJActionItem()
         item.titleLabel.text = title
         item.imageView.image = image
@@ -396,12 +395,12 @@ extension JJFloatingActionButton {
     /// A Boolean value indicating whether the action button draws a highlight.
     ///
     override open var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
         set {
             super.isHighlighted = newValue
             circleView.isHighlighted = newValue
-        }
-        get {
-            return super.isHighlighted
         }
     }
 }

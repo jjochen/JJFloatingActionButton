@@ -210,12 +210,12 @@ extension JJActionItem {
     /// A Boolean value indicating whether the action item draws a highlight.
     ///
     override open var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
         set {
             super.isHighlighted = newValue
             circleView.isHighlighted = newValue
-        }
-        get {
-            return super.isHighlighted
         }
     }
 }

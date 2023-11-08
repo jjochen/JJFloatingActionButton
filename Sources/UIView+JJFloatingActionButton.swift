@@ -33,8 +33,7 @@ extension UIView {
                        animations: @escaping () -> Void,
                        completion: ((Bool) -> Void)? = nil,
                        group: DispatchGroup? = nil,
-                       animated: Bool = true)
-    {
+                       animated: Bool = true) {
         let groupedAnimations: () -> Void = {
             group?.enter()
             animations()
@@ -64,8 +63,7 @@ extension UIView {
                           animations: (() -> Swift.Void)?,
                           completion: ((Bool) -> Swift.Void)? = nil,
                           group: DispatchGroup? = nil,
-                          animated: Bool = true)
-    {
+                          animated: Bool = true) {
         let groupedAnimations: () -> Void = {
             group?.enter()
             animations?()

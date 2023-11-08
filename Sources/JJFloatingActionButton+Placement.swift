@@ -40,8 +40,7 @@ import UIKit
     func display(inView superview: UIView,
                  bottomInset: CGFloat = 16,
                  trailingInset: CGFloat = 16,
-                 safeAreaInset: CGFloat = 0)
-    {
+                 safeAreaInset: CGFloat = 0) {
         superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -101,8 +100,7 @@ import UIKit
     func display(inViewController viewController: UIViewController,
                  bottomInset: CGFloat = 16,
                  trailingInset: CGFloat = 16,
-                 safeAreaInset: CGFloat = 0)
-    {
+                 safeAreaInset: CGFloat = 0) {
         if let superview = viewController.view {
             display(inView: superview, bottomInset: bottomInset, trailingInset: trailingInset, safeAreaInset: safeAreaInset)
             var bottom: NSLayoutConstraint

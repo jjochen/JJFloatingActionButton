@@ -191,8 +191,7 @@ private extension JJFloatingActionButton {
 private extension JJFloatingActionButton {
     func openButton(withConfiguration configuration: JJButtonAnimationConfiguration,
                     animated: Bool,
-                    group: DispatchGroup)
-    {
+                    group: DispatchGroup) {
         switch configuration.style {
         case .rotation:
             rotateButton(toAngle: configuration.angle,
@@ -209,8 +208,7 @@ private extension JJFloatingActionButton {
 
     func closeButton(withConfiguration configuration: JJButtonAnimationConfiguration,
                      animated: Bool,
-                     group: DispatchGroup)
-    {
+                     group: DispatchGroup) {
         switch configuration.style {
         case .rotation:
             rotateButton(toAngle: 0,
@@ -228,8 +226,7 @@ private extension JJFloatingActionButton {
     func rotateButton(toAngle angle: CGFloat,
                       settings: JJAnimationSettings,
                       group: DispatchGroup,
-                      animated: Bool)
-    {
+                      animated: Bool) {
         let animation: () -> Void = {
             self.circleView.transform = CGAffineTransform(rotationAngle: angle)
         }
@@ -245,8 +242,7 @@ private extension JJFloatingActionButton {
     func transition(toImage image: UIImage?,
                     settings: JJAnimationSettings,
                     animated: Bool,
-                    group: DispatchGroup)
-    {
+                    group: DispatchGroup) {
         let transition: () -> Void = {
             self.imageView.image = image
         }
