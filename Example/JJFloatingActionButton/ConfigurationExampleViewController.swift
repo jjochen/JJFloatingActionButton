@@ -36,13 +36,14 @@ class ConfigurationExampleViewController: UIViewController {
         view.addSubview(actionButton)
 
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            actionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
-        } else {
-            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
-        }
+        actionButton.leadingAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+            constant: 16
+        ).isActive = true
+        actionButton.bottomAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            constant: -16
+        ).isActive = true
     }
 
     fileprivate func configureActionButton() {
