@@ -54,15 +54,13 @@ import UIKit
         trailing.priority = .required
         trailing.isActive = true
 
-        if #available(iOS 11.0, *) {
-            trailing = trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -safeAreaInset)
-            trailing.priority = UILayoutPriority(750)
-            trailing.isActive = true
+        trailing = trailingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -safeAreaInset)
+        trailing.priority = UILayoutPriority(750)
+        trailing.isActive = true
 
-            trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -safeAreaInset)
-            trailing.priority = .required
-            trailing.isActive = true
-        }
+        trailing = trailingAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.trailingAnchor, constant: -safeAreaInset)
+        trailing.priority = .required
+        trailing.isActive = true
 
         var bottom: NSLayoutConstraint
 
@@ -74,15 +72,13 @@ import UIKit
         bottom.priority = .required
         bottom.isActive = true
 
-        if #available(iOS 11.0, *) {
-            bottom = bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -safeAreaInset)
-            bottom.priority = UILayoutPriority(750)
-            bottom.isActive = true
+        bottom = bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -safeAreaInset)
+        bottom.priority = UILayoutPriority(750)
+        bottom.isActive = true
 
-            bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -safeAreaInset)
-            bottom.priority = .required
-            bottom.isActive = true
-        }
+        bottom = bottomAnchor.constraint(lessThanOrEqualTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: -safeAreaInset)
+        bottom.priority = .required
+        bottom.isActive = true
     }
 
     /// Add floating action button to a view of a given view controller and place in trailing bottom corner.
