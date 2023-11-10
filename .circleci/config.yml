@@ -50,6 +50,13 @@ commands:
 
 # System steps
 
+  setup-homebrew:
+    description: Bundle homebrew packages
+    steps:
+      - run:
+          name: Run brew bundle
+          command: brew bundle
+
   update-bundler:
     description: Update bundler to newest version
     steps:
@@ -87,11 +94,8 @@ commands:
     description: Install simulator runtime
     steps:
       - run:
-          name: List simulators
-          command: bundle exec xcversion simulators
-      - run:
           name: Install simulator
-          command: bundle exec xcversion simulators --install="iOS $SIMULATOR_OS Simulator" --no-progress || true
+          command: xcodes runtimes install "iOS $SIMULATOR_OS"
 
   start-simulator:
     description: Start simulator
@@ -276,8 +280,9 @@ jobs:
       device: iPhone 15 Pro Max
     steps:
       - checkout
+      - setup-homebrew
       - setup-gems
-      # - install-simulator
+      - install-simulator
       # - start-simulator
       - setup-cocoapods
       - run-tests-task
