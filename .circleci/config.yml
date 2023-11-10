@@ -6,13 +6,13 @@ executors:
     parameters:
       xcode:
         type: string
-        default: '11.3.1'
+        default: '15.0.0'
       os:
         type: string
-        default: '13.3'
+        default: '13.5.1'
       device:
         type: string
-        default: iPhone 11 Pro Max
+        default: iPhone 15 Pro Max
     macos:
       xcode: << parameters.xcode >>
     shell: /bin/bash --login -eo pipefail
@@ -292,6 +292,21 @@ aliases:
 
 jobs:
 
+  build-and-test-ios17-iphone15promax:
+    executor:
+      name: simulator
+      xcode: '15.0.0'
+      os: '17.0'
+      device: iPhone 15 Pro Max
+    steps:
+      - checkout
+      - setup-gems
+      - install-simulator
+      - start-simulator
+      - setup-cocoapods
+      - run-tests
+      - store-test-reports
+
   build-and-test-ios13-iphone11promax:
     executor:
       name: simulator
@@ -435,16 +450,18 @@ workflows:
     jobs:
       - lint-podspec
       - swiftlint
-      - build-and-test-ios13-iphone11promax
-      - build-and-test-ios12-iphonexsmax
-      - build-and-test-ios11-iphonex
-      - build-and-test-ios10-iphone7
+      - build-and-test-ios17-iphone15promax
+#      - build-and-test-ios13-iphone11promax
+#      - build-and-test-ios12-iphonexsmax
+#      - build-and-test-ios11-iphonex
+#      - build-and-test-ios10-iphone7
       - build-documentation
       - generate-changelog
       - create-version-tag:
           requires:
             - lint-podspec
             - swiftlint
+            - build-and-test-ios17-iphone15promax
             - build-and-test-ios13-iphone11promax
             - build-and-test-ios12-iphonexsmax
             - build-and-test-ios11-iphonex
