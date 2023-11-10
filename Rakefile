@@ -56,7 +56,7 @@ begin
     title 'Debug info'
     sh 'xcodebuild -version'
     sh 'xcodebuild -showsdks'
-    sh 'instruments -s devices'
+    sh ' xcrun xctrace list devices'
   end
 
   desc 'Lint swift'

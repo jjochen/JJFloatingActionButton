@@ -98,7 +98,7 @@ commands:
     steps:
       - run:
           name: Start simulator
-          command: xcrun instruments -w "$SIMULATOR" || true
+          command: open -a Simulator.app --args -CurrentDeviceUDID "$SIMULATOR" &> /dev/null 
 
   restore-pods-cache:
     description: Restore pods directory from cache
