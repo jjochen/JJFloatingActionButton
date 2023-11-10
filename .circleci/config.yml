@@ -158,7 +158,7 @@ commands:
   setup-gems:
     description: Update bundler and install gems
     steps:
-      - change-ruby
+      #- change-ruby
       - update-bundler
       - restore-gem-cache
       - bundle-install
