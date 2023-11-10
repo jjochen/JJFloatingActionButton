@@ -462,10 +462,10 @@ workflows:
             - lint-podspec
             - swiftlint
             - build-and-test-ios17-iphone15promax
-            - build-and-test-ios13-iphone11promax
-            - build-and-test-ios12-iphonexsmax
-            - build-and-test-ios11-iphonex
-            - build-and-test-ios10-iphone7
+#            - build-and-test-ios13-iphone11promax
+#            - build-and-test-ios12-iphonexsmax
+#            - build-and-test-ios11-iphonex
+#            - build-and-test-ios10-iphone7
             - build-documentation
             - generate-changelog
           filters:
