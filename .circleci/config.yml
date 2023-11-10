@@ -59,7 +59,8 @@ commands:
   change-ruby:
     description: Select the correct version of ruby
     steps:
-      - macos/switch-ruby
+      - macos/switch-ruby:
+          version: 3.1.3
 
   update-bundler:
     description: Update bundler to newest version
