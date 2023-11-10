@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'cocoapods'
+gem 'xcode-install'
 gem 'synx'
 gem 'github_changelog_generator'
 gem 'jazzy'

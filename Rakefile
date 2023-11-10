@@ -364,7 +364,7 @@ def xcodebuild_test(destination)
     "  -enableCodeCoverage YES" \
     "  CODE_SIGN_IDENTITY=" \
     "  PROVISIONING_PROFILE=" \
-    "  | xcbeautify && exit ${PIPESTATUS[0]}"
+    " | xcpretty --report junit && exit ${PIPESTATUS[0]}"
 end
 
 def release_next_version(type)
