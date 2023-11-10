@@ -100,13 +100,6 @@ commands:
           name: Start simulator
           command: xcrun instruments -w "$SIMULATOR" || true
 
-  fetch-cocoapods-specs:
-    description: Fetch CocoaPods repository from S3
-    steps:
-      - run:
-          name: Fetch CocoaPods Specs
-          command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-
   restore-pods-cache:
     description: Restore pods directory from cache
     steps:
@@ -145,7 +138,6 @@ commands:
   setup-gems:
     description: Update bundler and install gems
     steps:
-      #- change-ruby
       - update-bundler
       - restore-gem-cache
       - bundle-install
@@ -154,7 +146,6 @@ commands:
   setup-cocoapods:
     description: Fetch specs and install cocoapods
     steps:
-      - fetch-cocoapods-specs
       - restore-pods-cache
       - install-cocoapods
       - save-pods-cache
