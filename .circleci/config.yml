@@ -9,7 +9,7 @@ executors:
         default: '15.0.0'
       os:
         type: string
-        default: '13.5.1'
+        default: '17.0'
       device:
         type: string
         default: iPhone 15 Pro Max
@@ -277,8 +277,8 @@ jobs:
     steps:
       - checkout
       - setup-gems
-      - install-simulator
-      - start-simulator
+      # - install-simulator
+      # - start-simulator
       - setup-cocoapods
       - run-tests-task
       - store-test-reports
