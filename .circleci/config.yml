@@ -150,10 +150,7 @@ commands:
       - install-cocoapods
       - save-pods-cache
 
-
-# Rake tasks
-
-  run-tests:
+  run-tests-task:
     description: Run tests on sepcific device
     steps:
       - run-rake-task:
@@ -166,19 +163,19 @@ commands:
           name: Update Codecov
           command: bash <(curl -s https://codecov.io/bash)
 
-  lint-podspec:
+  run-lint-podspec-task:
     description: Lint Podspec
     steps:
       - run-rake-task:
           task: lint_podspec
 
-  generate-documentation:
+  run-generate-documentation-task:
     description: Build Documentation
     steps:
       - run-rake-task:
           task: generate_documentation
 
-  generate-changelog:
+  run-generate-changelog-task:
     description: Generate Changelog
     steps:
       - run-rake-task:
@@ -223,16 +220,13 @@ commands:
       - run-rake-task:
           task: close_github_milestone
 
-  push-podspec:
+  run-push-podspec-task:
     description: Push Podspec to trunk
     steps:
       - run-rake-task:
           task:  push_podspec
 
-
-# Tests
-
-  swiftlint:
+  run-swiftlint:
     description: Run Swiftlint
     steps:
       - run:
@@ -286,7 +280,7 @@ jobs:
       - install-simulator
       - start-simulator
       - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - store-test-reports
 
   build-and-test-ios13-iphone11promax:
@@ -301,7 +295,7 @@ jobs:
       - install-simulator
       - start-simulator
       - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - store-test-reports
 
   build-and-test-ios12-iphonexsmax:
@@ -316,7 +310,7 @@ jobs:
       - install-simulator
       - start-simulator
       - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - update-codecov
       - store-test-reports
 
@@ -331,7 +325,7 @@ jobs:
       - install-simulator
       - start-simulator
       - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - store-test-reports
 
   build-and-test-ios10-iphone7:
@@ -345,7 +339,7 @@ jobs:
       - install-simulator
       - start-simulator
       - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - store-test-reports
 
   lint-podspec:
@@ -353,7 +347,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
-      - lint-podspec
+      - run-lint-podspec-task
 
   build-documentation:
     executor: default
@@ -361,21 +355,21 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - generate-documentation
+      - run-generate-documentation-task
 
   generate-changelog:
     executor: default
     steps:
       - checkout
       - setup-gems
-      - generate-changelog
+      - run-generate-changelog-task
 
   swiftlint:
     docker:
       - image: dantoml/swiftlint:latest
     steps:
       - checkout
-      - swiftlint
+      - run-swiftlint
       - store-lint-reports
 
   create-major-release-pull-request:
@@ -422,7 +416,7 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - push-podspec
+      - run-push-podspec-task
 
 
 workflows:
