@@ -275,8 +275,8 @@ jobs:
   build-and-test-ios17-iphone15promax:
     executor:
       name: default
-      xcode: '15.0.0'
-      os: '17.0'
+      xcode: '15.0.1'
+      os: '17.0.1'
       device: iPhone 15 Pro Max
     steps:
       - checkout
