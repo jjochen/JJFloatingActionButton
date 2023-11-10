@@ -1,5 +1,9 @@
 version: 2.1
 
+orbs:
+  macos: circleci/macos@2
+
+
 executors:
 
   simulator:
@@ -55,9 +59,7 @@ commands:
   change-ruby:
     description: Select the correct version of ruby
     steps:
-      - run:
-          name: Set Ruby Version
-          command: echo 'chruby ruby-2.6' >> ~/.bash_profile
+      - macos/switch-ruby
 
   update-bundler:
     description: Update bundler to newest version
