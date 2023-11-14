@@ -3,7 +3,7 @@ GEM
   specs:
     CFPropertyList (3.0.6)
       rexml
-    activesupport (7.1.1)
+    activesupport (7.1.2)
       base64
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -21,7 +21,7 @@ GEM
     artifactory (3.0.15)
     atomos (0.1.3)
     aws-eventstream (1.2.0)
-    aws-partitions (1.848.0)
+    aws-partitions (1.849.0)
     aws-sdk-core (3.186.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -184,7 +184,7 @@ GEM
       github_api (>= 0.14)
       rainbow (>= 2.1)
       rake (>= 10.0)
-    google-apis-androidpublisher_v3 (0.51.0)
+    google-apis-androidpublisher_v3 (0.52.0)
       google-apis-core (>= 0.11.0, < 2.a)
     google-apis-core (0.11.2)
       addressable (~> 2.5, >= 2.5.1)
@@ -318,7 +318,7 @@ GEM
     uber (0.1.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.2)
+    unf_ext (0.0.9)
     unicode-display_width (2.5.0)
     webrick (1.8.1)
     word_wrap (1.0.0)
@@ -340,7 +340,7 @@ GEM
       xcpretty (~> 0.2, >= 0.0.7)
 
 PLATFORMS
-  arm64-darwin-22
+  arm64-darwin-23
 
 DEPENDENCIES
   cocoapods
@@ -353,4 +353,4 @@ DEPENDENCIES
   xcode-install
 
 BUNDLED WITH
-   2.4.21
+   2.4.22
