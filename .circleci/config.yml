@@ -6,10 +6,10 @@ executors:
     parameters:
       xcode:
         type: string
-        default: '15.0.0'
+        default: '15.0.1'
       os:
         type: string
-        default: '17.0'
+        default: '17.0.1'
       device:
         type: string
         default: iPhone 15 Pro Max
@@ -282,7 +282,7 @@ jobs:
       - checkout
       - setup-homebrew
       - setup-gems
-      - install-simulator
+      # - install-simulator
       # - start-simulator
       - setup-cocoapods
       - run-tests-task
