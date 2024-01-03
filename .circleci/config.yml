@@ -6,10 +6,10 @@ executors:
     parameters:
       xcode:
         type: string
-        default: 15.1.0
+        default: '15.1.0'
       os:
         type: string
-        default: 17.2
+        default: '17.2'
       device:
         type: string
         default: iPhone 15 Pro Max
@@ -275,8 +275,8 @@ jobs:
   build-and-test-ios17-iphone15promax:
     executor:
       name: default
-      xcode: 15.1.0
-      os: 17.2
+      xcode: '15.1.0'
+      os: '17.2'
       device: iPhone 15 Pro Max
     steps:
       - checkout
@@ -291,8 +291,8 @@ jobs:
   build-and-test-ios13-iphone11promax:
     executor:
       name: default
-      xcode: 11.3.1
-      os: 13.3
+      xcode: '11.3.1'
+      os: '13.3'
       device: iPhone 11 Pro Max
     steps:
       - checkout
@@ -306,8 +306,8 @@ jobs:
   build-and-test-ios12-iphonexsmax:
     executor:
       name: default
-      xcode: 10.3.0
-      os: 12.4
+      xcode: '10.3.0'
+      os: '12.4'
       device: iPhone Xs Max
     steps:
       - checkout
@@ -322,7 +322,7 @@ jobs:
   build-and-test-ios11-iphonex:
     executor:
       name: default
-      os: 11.4
+      os: '11.4'
       device: iPhone X
     steps:
       - checkout
@@ -336,7 +336,7 @@ jobs:
   build-and-test-ios10-iphone7:
     executor:
       name: default
-      os: 10.3.1
+      os: '10.3.1'
       device: iPhone 7
     steps:
       - checkout
