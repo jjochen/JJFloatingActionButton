@@ -297,12 +297,12 @@ jobs:
       - run-tests-task
       - store-test-reports
 
-  build-and-test-ios16-iphonexsmax:
+  build-and-test-ios16-iphone14:
     executor:
       name: default
       xcode: '14.3.1'
       os: '16.4'
-      device: iPhone Xs Max
+      device: iPhone 14
     steps:
       - checkout
       - setup-gems
@@ -412,7 +412,7 @@ workflows:
       - lint-podspec
       - swiftlint
       - build-and-test-ios17-iphone15promax
-      - build-and-test-ios16-iphonexsmax
+      - build-and-test-ios16-iphone14
       - build-and-test-ios15-iphonese
       - build-documentation
       - generate-changelog
@@ -421,7 +421,7 @@ workflows:
             - lint-podspec
             - swiftlint
             - build-and-test-ios17-iphone15promax
-            - build-and-test-ios16-iphonexsmax
+            - build-and-test-ios16-iphone14
             - build-and-test-ios15-iphonese
             - build-documentation
             - generate-changelog
