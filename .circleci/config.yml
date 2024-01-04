@@ -312,12 +312,12 @@ jobs:
       - run-tests-task
       - store-test-reports
 
-  build-and-test-ios15-iphone7:
+  build-and-test-ios15-iphonese:
     executor:
       name: default
       xcode: '14.3.1'
       os: '15.5'
-      device: iPhone 7
+      device: iPhone SE (3rd generation)
     steps:
       - checkout
       - setup-gems
@@ -413,7 +413,7 @@ workflows:
       - swiftlint
       - build-and-test-ios17-iphone15promax
       - build-and-test-ios16-iphonexsmax
-      - build-and-test-ios15-iphone7
+      - build-and-test-ios15-iphonese
       - build-documentation
       - generate-changelog
       - create-version-tag:
@@ -422,7 +422,7 @@ workflows:
             - swiftlint
             - build-and-test-ios17-iphone15promax
             - build-and-test-ios16-iphonexsmax
-            - build-and-test-ios15-iphone7
+            - build-and-test-ios15-iphonese
             - build-documentation
             - generate-changelog
           filters:
