@@ -25,6 +25,7 @@
 @testable import JJFloatingActionButton
 import Nimble
 import Quick
+import XCTest
 
 class UIColorExtensionsSpec: QuickSpec {
     override class func spec() {

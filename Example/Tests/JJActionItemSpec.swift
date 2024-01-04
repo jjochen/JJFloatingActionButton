@@ -26,6 +26,7 @@
 import Nimble
 import Nimble_Snapshots
 import Quick
+import XCTest
 
 class JJActionItemSpec: QuickSpec {
     override class func spec() {

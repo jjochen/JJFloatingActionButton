@@ -26,6 +26,7 @@
 import Nimble
 import Nimble_Snapshots
 import Quick
+import XCTest
 
 class JJFloatingActionButtonSpec: QuickSpec {
     override class func spec() {
