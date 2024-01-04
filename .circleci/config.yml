@@ -60,7 +60,7 @@ commands:
           command: brew bundle
 
   install-ruby:
-    description: Install ruby 3.1.4
+    description: Switch to ruby 3.1.4
     steps:
       - macos/switch-ruby:
           version: "3.1.4"
@@ -312,27 +312,11 @@ jobs:
       - run-tests-task
       - store-test-reports
 
-  build-and-test-ios15-iphonex:
+  build-and-test-ios15-iphone7:
     executor:
       name: default
-      xcode: '13.4.1'
+      xcode: '14.3.1'
       os: '15.5'
-      device: iPhone X
-    steps:
-      - checkout
-      - setup-gems
-      # - install-simulator
-      # - start-simulator
-      - setup-cocoapods
-      - run-tests-task
-      - update-codecov
-      - store-test-reports
-
-  build-and-test-ios14-iphone7:
-    executor:
-      name: default
-      xcode: '12.5.1'
-      os: '14.5'
       device: iPhone 7
     steps:
       - checkout
@@ -341,6 +325,7 @@ jobs:
       # - start-simulator
       - setup-cocoapods
       - run-tests-task
+      - update-codecov
       - store-test-reports
 
   lint-podspec:
@@ -428,8 +413,7 @@ workflows:
       - swiftlint
       - build-and-test-ios17-iphone15promax
       - build-and-test-ios16-iphonexsmax
-      - build-and-test-ios15-iphonex
-      - build-and-test-ios14-iphone7
+      - build-and-test-ios15-iphone7
       - build-documentation
       - generate-changelog
       - create-version-tag:
@@ -438,8 +422,7 @@ workflows:
             - swiftlint
             - build-and-test-ios17-iphone15promax
             - build-and-test-ios16-iphonexsmax
-            - build-and-test-ios15-iphonex
-            - build-and-test-ios14-iphone7
+            - build-and-test-ios15-iphone7
             - build-documentation
             - generate-changelog
           filters:
