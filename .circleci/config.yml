@@ -59,7 +59,7 @@ commands:
           name: Run brew bundle
           command: brew bundle
 
-  install-ruby:
+  switch-ruby:
     description: Switch to ruby 3.1.4
     steps:
       - macos/switch-ruby:
@@ -150,7 +150,7 @@ commands:
   setup-gems:
     description: Update bundler and install gems
     steps:
-      - install-ruby
+      - switch-ruby
       - update-bundler
       - restore-gem-cache
       - bundle-install
