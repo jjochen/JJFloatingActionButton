@@ -48,71 +48,71 @@ class JJActionItemSpec: QuickSpec {
             }
 
             it("looks correct") {
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with title position leading") {
                 actionItem.titlePosition = .leading
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with title position trailing") {
                 actionItem.titlePosition = .trailing
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with title position left") {
                 actionItem.titlePosition = .left
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with title position right") {
                 actionItem.titlePosition = .right
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with title position top") {
                 actionItem.titlePosition = .top
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with title position bottom") {
                 actionItem.titlePosition = .bottom
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with title position hidden") {
                 actionItem.titlePosition = .hidden
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with horizontal title spacing configured") {
                 actionItem.titlePosition = .leading
                 actionItem.titleSpacing = 42
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with vertical title spacing configured") {
                 actionItem.titlePosition = .bottom
                 actionItem.titleSpacing = 42
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with empty title") {
                 actionItem.titleLabel.text = ""
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with smaller image size") {
                 setNimbleTolerance(0.005)
                 actionItem.imageSize = CGSize(width: 10, height: 10)
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with bigger image size") {
                 setNimbleTolerance(0.025)
                 actionItem.imageSize = CGSize(width: 30, height: 30)
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
         }
 
@@ -136,7 +136,7 @@ class JJActionItemSpec: QuickSpec {
             }
 
             it("looks correct") {
-                expect(actionItem) == snapshot()
+                expect(actionItem).to(haveValidSnapshot())
             }
         }
     }

@@ -44,7 +44,7 @@ class JJCircleViewSpec: QuickSpec {
                 }
 
                 it("looks correct") {
-                    expect(circleView) == snapshot()
+                    expect(circleView).to(haveValidSnapshot())
                 }
             }
 
@@ -58,7 +58,7 @@ class JJCircleViewSpec: QuickSpec {
                 }
 
                 it("looks correct") {
-                    expect(circleView) == snapshot()
+                    expect(circleView).to(haveValidSnapshot())
                 }
             }
         }
