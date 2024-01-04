@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  ruby: circleci/ruby@2.1.0
 
 executors:
 
@@ -62,8 +60,11 @@ commands:
   install-ruby:
     description: Install ruby 3.1.4
     steps:
-      - ruby/install:
-          version: '3.1.4'
+        - run:
+           name: Set ruby version
+           command: |
+                rvm install 3.1.4
+                echo . $(rvm 3.1.4 do rvm env --path) >> $BASH_ENV
 
   update-bundler:
     description: Update bundler to newest version
