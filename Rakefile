@@ -42,7 +42,7 @@ begin
 
   desc 'Run tests'
   task :test do
-    xcodebuild_test "platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0"
+    xcodebuild_test "platform=iOS Simulator,name=iPhone 15 Pro,OS=17.2"
   end
 
   desc 'Run tests for DESTINATION env'
