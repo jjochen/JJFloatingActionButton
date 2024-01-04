@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  ruby: circleci/ruby@2.1.0
 
 executors:
 
@@ -56,6 +58,12 @@ commands:
       - run:
           name: Run brew bundle
           command: brew bundle
+
+  install-ruby:
+    description: Install ruby 3.1.4
+    steps:
+      - ruby/install:
+          version: '3.1.4'
 
   update-bundler:
     description: Update bundler to newest version
@@ -142,6 +150,7 @@ commands:
   setup-gems:
     description: Update bundler and install gems
     steps:
+      - install-ruby
       - update-bundler
       - restore-gem-cache
       - bundle-install
