@@ -298,6 +298,7 @@ jobs:
       # - start-simulator
       - setup-cocoapods
       - run-tests-task
+      - update-codecov
       - store-test-reports
 
   build-and-test-ios16-iphone14:
@@ -328,7 +329,6 @@ jobs:
       # - start-simulator
       - setup-cocoapods
       - run-tests-task
-      - update-codecov
       - store-test-reports
 
   lint-podspec:
