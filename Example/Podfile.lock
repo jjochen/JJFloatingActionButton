@@ -20,7 +20,7 @@ DEPENDENCIES:
   - Quick
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - iOSSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
@@ -37,6 +37,6 @@ SPEC CHECKSUMS:
   Nimble-Snapshots: 4988d1cf2fe062f13bd2eb87c4279770785e682b
   Quick: d32871931c05547cb4e0bc9009d66a18b50d8558
 
-PODFILE CHECKSUM: 735b9c455f055ba3c799ee50c90a2eb640d6fffc
+PODFILE CHECKSUM: 5d5324029f5754abc86b08c38bafd3135e1b98f9
 
 COCOAPODS: 1.14.3
