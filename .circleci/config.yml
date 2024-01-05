@@ -294,8 +294,6 @@ jobs:
       - checkout
       - setup-homebrew
       - setup-gems
-      # - install-simulator
-      # - start-simulator
       - setup-cocoapods
       - run-tests-task
       - update-codecov
@@ -310,8 +308,6 @@ jobs:
     steps:
       - checkout
       - setup-gems
-      # - install-simulator
-      # - start-simulator
       - setup-cocoapods
       - run-tests-task
       - store-test-reports
@@ -325,8 +321,6 @@ jobs:
     steps:
       - checkout
       - setup-gems
-      # - install-simulator
-      # - start-simulator
       - setup-cocoapods
       - run-tests-task
       - store-test-reports
