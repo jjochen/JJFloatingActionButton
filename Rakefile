@@ -48,12 +48,7 @@ begin
   desc 'Run tests for DESTINATION env'
   task :test_destination do
     Rake::Task[:print_debug_info].invoke
-    begin
-      xcodebuild_test ENV['DESTINATION']
-    rescue
-      Rake::Task[:copy_snapshots].invoke
-      raise
-    end
+    xcodebuild_test ENV['DESTINATION']
   end
 
   desc 'Copy snapshot artifacts'

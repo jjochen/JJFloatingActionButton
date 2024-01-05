@@ -138,13 +138,6 @@ commands:
           paths:
             - Example/Pods
 
-  store-snapshots-test-results:
-    description: Store snapshots test results
-    steps:
-      - store_artifacts:
-          path: /tmp/snapshots
-          destination: snapshots
-
   store-test-reports:
     description: Store test reports
     steps:
@@ -306,7 +299,6 @@ jobs:
       - setup-cocoapods
       - run-tests-task
       - store-test-reports
-      - store-snapshots-test-results
 
   build-and-test-ios16-iphone14:
     executor:
@@ -322,7 +314,6 @@ jobs:
       - setup-cocoapods
       - run-tests-task
       - store-test-reports
-      - store-snapshots-test-results
 
   build-and-test-ios15-iphonese:
     executor:
@@ -339,7 +330,6 @@ jobs:
       - run-tests-task
       - update-codecov
       - store-test-reports
-      - store-snapshots-test-results
 
   lint-podspec:
     executor: default
