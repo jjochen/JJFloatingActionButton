@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private
     func customizeAppearance() {
-        let mainColor = UIColor(named: "main")
+        let mainColor = UIColor(named: "Main")
         let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
         window?.tintColor = mainColor
