@@ -27,9 +27,10 @@ import Foundation
 import Nimble
 import Nimble_Snapshots
 import Quick
+import XCTest
 
 class JJFloatingActionButtonAppearanceSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJFloatingActionButton") {
             var actionButton: JJFloatingActionButton!
 

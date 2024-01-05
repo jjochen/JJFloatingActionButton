@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   spec.documentation_url = 'https://jjochen.github.io/JJFloatingActionButton'
 
   spec.platform = :ios
-  spec.ios.deployment_target = '9.0'
+  spec.ios.deployment_target = '13.0'
 
   spec.requires_arc = true
   spec.frameworks   = 'UIKit'

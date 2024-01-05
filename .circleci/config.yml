@@ -1,27 +1,29 @@
 version: 2.1
+orbs:
+  macos: circleci/macos@2
 
 executors:
 
-  simulator:
+  default:
     parameters:
       xcode:
         type: string
-        default: '11.3.1'
+        default: '15.1.0'
       os:
         type: string
-        default: '13.3'
+        default: '17.2'
       device:
         type: string
-        default: iPhone 11 Pro Max
+        default: iPhone 15 Pro Max
     macos:
       xcode: << parameters.xcode >>
     shell: /bin/bash --login -eo pipefail
     environment:
       SIMULATOR_OS: << parameters.os >>
-      DESTINATION: platform=iOS Simulator,OS=<< parameters.os >>,name=<< parameters.device >>
+      SIMULATOR_DEVICE: << parameters.device >>
+      DESTINATION: platform=iOS Simulator,name=<< parameters.device >>,OS=<< parameters.os >>
       SIMULATOR: << parameters.device >> (<< parameters.os >>) [
-
-  default: simulator
+      HOMEBREW_NO_AUTO_UPDATE: 1
 
 
 commands:
@@ -52,12 +54,18 @@ commands:
 
 # System steps
 
-  change-ruby:
-    description: Select the correct version of ruby
+  setup-homebrew:
+    description: Bundle homebrew packages
     steps:
       - run:
-          name: Set Ruby Version
-          command: echo 'chruby ruby-2.6' >> ~/.bash_profile
+          name: Run brew bundle
+          command: brew bundle
+
+  switch-ruby:
+    description: Switch to ruby 3.1.4
+    steps:
+      - macos/switch-ruby:
+          version: "3.1.4"
 
   update-bundler:
     description: Update bundler to newest version
@@ -92,29 +100,20 @@ commands:
           paths:
           - vendor/bundle
 
-  install-simulator:
-    description: Install simulator runtime
-    steps:
-      - run:
-          name: List simulators
-          command: bundle exec xcversion simulators
-      - run:
-          name: Install simulator
-          command: bundle exec xcversion simulators --install="iOS $SIMULATOR_OS Simulator" --no-progress || true
+  # install-simulator:
+  #   description: Install simulator runtime
+  #   steps:
+  #     - run:
+  #         name: Install simulator
+  #         command: xcodes runtimes install "iOS $SIMULATOR_OS"
 
-  start-simulator:
-    description: Start simulator
-    steps:
-      - run:
-          name: Start simulator
-          command: xcrun instruments -w "$SIMULATOR" || true
-
-  fetch-cocoapods-specs:
-    description: Fetch CocoaPods repository from S3
-    steps:
-      - run:
-          name: Fetch CocoaPods Specs
-          command: curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+  # start-simulator:
+  #   description: Start simulator
+  #   steps:
+  #     - macos/preboot-simulator:
+  #         version: {{ $SIMULATOR_OS }}
+  #         platform: "iOS"
+  #         device: {{ $SIMULATOR_DEVICE }}
 
   restore-pods-cache:
     description: Restore pods directory from cache
@@ -154,7 +153,7 @@ commands:
   setup-gems:
     description: Update bundler and install gems
     steps:
-      - change-ruby
+      - switch-ruby
       - update-bundler
       - restore-gem-cache
       - bundle-install
@@ -163,15 +162,11 @@ commands:
   setup-cocoapods:
     description: Fetch specs and install cocoapods
     steps:
-      - fetch-cocoapods-specs
       - restore-pods-cache
       - install-cocoapods
       - save-pods-cache
 
-
-# Rake tasks
-
-  run-tests:
+  run-tests-task:
     description: Run tests on sepcific device
     steps:
       - run-rake-task:
@@ -184,19 +179,19 @@ commands:
           name: Update Codecov
           command: bash <(curl -s https://codecov.io/bash)
 
-  lint-podspec:
+  run-lint-podspec-task:
     description: Lint Podspec
     steps:
       - run-rake-task:
           task: lint_podspec
 
-  generate-documentation:
+  run-generate-documentation-task:
     description: Build Documentation
     steps:
       - run-rake-task:
           task: generate_documentation
 
-  generate-changelog:
+  run-generate-changelog-task:
     description: Generate Changelog
     steps:
       - run-rake-task:
@@ -241,16 +236,13 @@ commands:
       - run-rake-task:
           task: close_github_milestone
 
-  push-podspec:
+  run-push-podspec-task:
     description: Push Podspec to trunk
     steps:
       - run-rake-task:
           task:  push_podspec
 
-
-# Tests
-
-  swiftlint:
+  run-swiftlint:
     description: Run Swiftlint
     steps:
       - run:
@@ -292,63 +284,45 @@ aliases:
 
 jobs:
 
-  build-and-test-ios13-iphone11promax:
+  build-and-test-ios17-iphone15promax:
     executor:
-      name: simulator
-      xcode: '11.3.1'
-      os: '13.3'
-      device: iPhone 11 Pro Max
+      name: default
+      xcode: '15.1.0'
+      os: '17.2'
+      device: iPhone 15 Pro Max
     steps:
       - checkout
+      - setup-homebrew
       - setup-gems
-      - install-simulator
-      - start-simulator
       - setup-cocoapods
-      - run-tests
-      - store-test-reports
-
-  build-and-test-ios12-iphonexsmax:
-    executor:
-      name: simulator
-      xcode: '10.3.0'
-      os: '12.4'
-      device: iPhone Xs Max
-    steps:
-      - checkout
-      - setup-gems
-      - install-simulator
-      - start-simulator
-      - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - update-codecov
       - store-test-reports
 
-  build-and-test-ios11-iphonex:
+  build-and-test-ios16-iphone14:
     executor:
-      name: simulator
-      os: '11.4'
-      device: iPhone X
+      name: default
+      xcode: '14.3.1'
+      os: '16.4'
+      device: iPhone 14
     steps:
       - checkout
       - setup-gems
-      - install-simulator
-      - start-simulator
       - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - store-test-reports
 
-  build-and-test-ios10-iphone7:
+  build-and-test-ios15-iphonese:
     executor:
-      name: simulator
-      os: '10.3.1'
-      device: iPhone 7
+      name: default
+      xcode: '14.3.1'
+      os: '15.5'
+      device: iPhone SE (3rd generation)
     steps:
       - checkout
       - setup-gems
-      - install-simulator
-      - start-simulator
       - setup-cocoapods
-      - run-tests
+      - run-tests-task
       - store-test-reports
 
   lint-podspec:
@@ -356,7 +330,7 @@ jobs:
     steps:
       - checkout
       - setup-gems
-      - lint-podspec
+      - run-lint-podspec-task
 
   build-documentation:
     executor: default
@@ -364,21 +338,21 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - generate-documentation
+      - run-generate-documentation-task
 
   generate-changelog:
     executor: default
     steps:
       - checkout
       - setup-gems
-      - generate-changelog
+      - run-generate-changelog-task
 
   swiftlint:
     docker:
       - image: dantoml/swiftlint:latest
     steps:
       - checkout
-      - swiftlint
+      - run-swiftlint
       - store-lint-reports
 
   create-major-release-pull-request:
@@ -425,30 +399,27 @@ jobs:
       - checkout
       - setup-gems
       - setup-cocoapods
-      - push-podspec
+      - run-push-podspec-task
 
 
 workflows:
-  version: 2.1
 
   run-tests:
     jobs:
       - lint-podspec
       - swiftlint
-      - build-and-test-ios13-iphone11promax
-      - build-and-test-ios12-iphonexsmax
-      - build-and-test-ios11-iphonex
-      - build-and-test-ios10-iphone7
+      - build-and-test-ios17-iphone15promax
+      - build-and-test-ios16-iphone14
+      - build-and-test-ios15-iphonese
       - build-documentation
       - generate-changelog
       - create-version-tag:
           requires:
             - lint-podspec
             - swiftlint
-            - build-and-test-ios13-iphone11promax
-            - build-and-test-ios12-iphonexsmax
-            - build-and-test-ios11-iphonex
-            - build-and-test-ios10-iphone7
+            - build-and-test-ios17-iphone15promax
+            - build-and-test-ios16-iphone14
+            - build-and-test-ios15-iphonese
             - build-documentation
             - generate-changelog
           filters:

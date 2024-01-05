@@ -25,7 +25,7 @@
 import JJFloatingActionButton
 import UIKit
 
-internal class ConfigurationExampleViewController: UIViewController {
+class ConfigurationExampleViewController: UIViewController {
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
@@ -36,13 +36,14 @@ internal class ConfigurationExampleViewController: UIViewController {
         view.addSubview(actionButton)
 
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            actionButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
-        } else {
-            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-            actionButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -16).isActive = true
-        }
+        actionButton.leadingAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.leadingAnchor,
+            constant: 16
+        ).isActive = true
+        actionButton.bottomAnchor.constraint(
+            equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+            constant: -16
+        ).isActive = true
     }
 
     fileprivate func configureActionButton() {
@@ -82,12 +83,12 @@ internal class ConfigurationExampleViewController: UIViewController {
     }
 
     fileprivate func addItems() {
-        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Balloon")) { item in
+            self.showAlert(for: item)
         }
 
         actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         let owlItem = actionButton.addItem()
@@ -96,17 +97,17 @@ internal class ConfigurationExampleViewController: UIViewController {
         owlItem.buttonColor = .black
         owlItem.buttonImageColor = .white
         owlItem.action = { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         let heartItem = actionButton.addItem()
         heartItem.titleLabel.text = "Heart"
-        heartItem.imageView.image = #imageLiteral(resourceName: "Favourite")
+        heartItem.imageView.image = #imageLiteral(resourceName: "Favorite")
         heartItem.buttonColor = .clear
         heartItem.buttonImageColor = .red
         heartItem.imageSize = CGSize(width: 30, height: 30)
         heartItem.action = { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1500"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -41,7 +41,7 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "68CCF0A4DE908D5813248C27077AE102"
+            BlueprintIdentifier = "E109C6B6B466F202BA0B94E76B45D72B"
             BuildableName = "JJFloatingActionButton.framework"
             BlueprintName = "JJFloatingActionButton"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -55,16 +55,6 @@
                BlueprintIdentifier = "198B66121FBAE904009A17F2"
                BuildableName = "JJFloatingActionButton_Tests.xctest"
                BlueprintName = "JJFloatingActionButton_Tests"
-               ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "19037EFD1FBE2D2200138594"
-               BuildableName = "JJFloatingActionButton_UITests.xctest"
-               BlueprintName = "JJFloatingActionButton_UITests"
                ReferencedContainer = "container:JJFloatingActionButton.xcodeproj">
             </BuildableReference>
          </TestableReference>

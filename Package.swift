@@ -5,18 +5,20 @@ import PackageDescription
 let package = Package(
     name: "JJFloatingActionButton",
     platforms: [
-        .iOS(.v9)
+        .iOS(.v9),
     ],
     products: [
         .library(
             name: "JJFloatingActionButton",
-            targets: ["JJFloatingActionButton"]),
+            targets: ["JJFloatingActionButton"]
+        ),
     ],
     dependencies: [
     ],
     targets: [
         .target(
             name: "JJFloatingActionButton",
-            path: "Sources")
+            path: "Sources"
+        ),
     ]
 )

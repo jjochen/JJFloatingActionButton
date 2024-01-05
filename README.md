@@ -1,17 +1,20 @@
+<!-- markdownlint-disable MD033 -->
+
 # JJFloatingActionButton
+
 Floating Action Button for iOS
 
 ----
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" alt="Swift 5.0" /> 
-  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a> 
-  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License" /></a> 
-  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform" /></a> 
-  <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status" /></a> 
-  <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov" /></a> 
-  <a href="https://codeclimate.com/github/jjochen/JJFloatingActionButton"><img src="https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg" alt="Code Climate" /></a> 
-  <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation" /></a> 
+  <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" alt="Swift 5.0" />
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a>
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License" /></a>
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform" /></a>
+  <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov" /></a>
+  <a href="https://codeclimate.com/github/jjochen/JJFloatingActionButton"><img src="https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg" alt="Code Climate" /></a>
+  <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation" /></a>
   <a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome" /></a>
 </p>
 
@@ -31,25 +34,22 @@ Floating Action Button for iOS
 - Comprehensive Test Coverage  ✓
 - [Complete Documentation](https://jjochen.github.io/JJFloatingActionButton)  ✓
 
-
 ## <a name="preview"></a>Preview
 
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonBasics.gif" width='250' alt="Preview Basics"> 
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonBasics.gif" width='250' alt="Preview Basics">
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration">
 </p>
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircular.gif" width='250' alt="Preview Circular"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircular.gif" width='250' alt="Preview Circular">
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
 
-
 ## <a name="requirements"></a>Requirements
 
-- iOS 9.0+
-- Xcode 10.2+
+- iOS 13.0+
+- Xcode 14+
 - Swift 5.0
-
 
 ## <a name="installation"></a>Installation
 
@@ -58,14 +58,14 @@ Floating Action Button for iOS
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
 ```bash
-$ gem install cocoapods
+gem install cocoapods
 ```
 
 To integrate JJFloatingActionButton into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+source 'https://cdn.cocoapods.org/'
+platform :ios, '13.0'
 use_frameworks!
 
 target '<Your Target Name>' do
@@ -76,13 +76,12 @@ end
 Then, run the following command:
 
 ```bash
-$ pod install
+pod install
 ```
 
 ### Manually
 
 If you prefer not to use a dependency manager, you can integrate JJFloatingActionButton into your project manually.
-
 
 ## <a name="usage"></a>Usage
 
@@ -148,7 +147,7 @@ actionButton.configureDefaultItem { item in
     item.layer.shadowRadius = CGFloat(2)
 }
 
-actionButton.addItem(title: "Balloon", image: UIImage(named: "Baloon")) { item in
+actionButton.addItem(title: "Balloon", image: UIImage(named: "Balloon")) { item in
     // Do something
 }
 
@@ -177,18 +176,16 @@ optional func floatingActionButtonDidClose(_ button: JJFloatingActionButton)
 To run the example project, just run the following command:
 
 ```bash
-$ pod try JJFloatingActionButton
+pod try JJFloatingActionButton
 ```
 
 ### Resources
 
 - [Documentation](https://jjochen.github.io/JJFloatingActionButton/)
 
-
 ## <a name="author"></a>Author
 
 Jochen Pfeiffer [https://github.com/jjochen](https://github.com/jjochen)
-
 
 ## <a name="license"></a>License
 

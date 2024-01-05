@@ -28,7 +28,7 @@ public extension JJFloatingActionButton {
     /// The shadow color of the floating action button.
     /// Default is `UIColor.black`.
     ///
-    @objc @IBInspectable dynamic var shadowColor: UIColor? {
+    @IBInspectable dynamic var shadowColor: UIColor? {
         get {
             guard let cgColor = layer.shadowColor else {
                 return nil
@@ -43,7 +43,7 @@ public extension JJFloatingActionButton {
     /// The shadow offset of the floating action button.
     /// Default is `CGSize(width: 0, height: 1)`.
     ///
-    @objc @IBInspectable dynamic var shadowOffset: CGSize {
+    @IBInspectable dynamic var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
         }
@@ -55,7 +55,7 @@ public extension JJFloatingActionButton {
     /// The shadow opacity of the floating action button.
     /// Default is `0.4`.
     ///
-    @objc @IBInspectable dynamic var shadowOpacity: Float {
+    @IBInspectable dynamic var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         }
@@ -67,7 +67,7 @@ public extension JJFloatingActionButton {
     /// The shadow radius of the floating action button.
     /// Default is `2`.
     ///
-    @objc @IBInspectable dynamic var shadowRadius: CGFloat {
+    @IBInspectable dynamic var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         }
@@ -81,7 +81,7 @@ extension JJActionItem {
     /// The shadow color of the action item.
     /// Default is `UIColor.black`.
     ///
-    @objc @IBInspectable dynamic var shadowColor: UIColor? {
+    @IBInspectable dynamic var shadowColor: UIColor? {
         get {
             guard let cgColor = layer.shadowColor else {
                 return nil
@@ -96,7 +96,7 @@ extension JJActionItem {
     /// The shadow offset of the action item.
     /// Default is `CGSize(width: 0, height: 1)`.
     ///
-    @objc @IBInspectable dynamic var shadowOffset: CGSize {
+    @IBInspectable dynamic var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
         }
@@ -108,7 +108,7 @@ extension JJActionItem {
     /// The shadow opacity of the action item.
     /// Default is `0.4`.
     ///
-    @objc @IBInspectable dynamic var shadowOpacity: Float {
+    @IBInspectable dynamic var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         }
@@ -120,7 +120,7 @@ extension JJActionItem {
     /// The shadow radius of the action item.
     /// Default is `2`.
     ///
-    @objc @IBInspectable dynamic var shadowRadius: CGFloat {
+    @IBInspectable dynamic var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         }

@@ -1,5 +1,8 @@
+source 'https://cdn.cocoapods.org/'
 project 'JJFloatingActionButton.xcodeproj'
-platform :ios, '9.3'
+
+deployment_target = '13.0'
+platform :ios, deployment_target
 
 target 'JJFloatingActionButton_Example' do
   use_frameworks!
@@ -16,4 +19,13 @@ target 'JJFloatingActionButton_Example' do
 
   end
   
+end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = deployment_target
+    end
+  end
 end

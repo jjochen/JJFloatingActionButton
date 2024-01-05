@@ -1,17 +1,17 @@
 PODS:
-  - iOSSnapshotTestCase (5.0.2):
-    - iOSSnapshotTestCase/SwiftSupport (= 5.0.2)
-  - iOSSnapshotTestCase/Core (5.0.2)
-  - iOSSnapshotTestCase/SwiftSupport (5.0.2):
+  - iOSSnapshotTestCase (8.0.0):
+    - iOSSnapshotTestCase/SwiftSupport (= 8.0.0)
+  - iOSSnapshotTestCase/Core (8.0.0)
+  - iOSSnapshotTestCase/SwiftSupport (8.0.0):
     - iOSSnapshotTestCase/Core
   - JJFloatingActionButton (2.5.0)
-  - Nimble (7.3.4)
-  - Nimble-Snapshots (6.9.1):
-    - Nimble-Snapshots/Core (= 6.9.1)
-  - Nimble-Snapshots/Core (6.9.1):
-    - iOSSnapshotTestCase (~> 5.0)
-    - Nimble (~> 7.0)
-  - Quick (2.2.0)
+  - Nimble (12.3.0)
+  - Nimble-Snapshots (9.6.1):
+    - Nimble-Snapshots/Core (= 9.6.1)
+  - Nimble-Snapshots/Core (9.6.1):
+    - iOSSnapshotTestCase (~> 8.0)
+    - Nimble (~> 12.0)
+  - Quick (7.3.0)
 
 DEPENDENCIES:
   - JJFloatingActionButton (from `../`)
@@ -31,12 +31,12 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
-  JJFloatingActionButton: fdc3aefb0f28f04d0f988fa25d5fac97028a9ea7
-  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
-  Nimble-Snapshots: bbd1ab264bacc24a9ce24a8363bc05aac783aeb0
-  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  iOSSnapshotTestCase: a670511f9ee3829c2b9c23e6e68f315fd7b6790f
+  JJFloatingActionButton: c65b1208dee78ae5a2eac788e7fed813b8c20899
+  Nimble: f8a8219d16f176429b951e8f7e72df5c23ceddc0
+  Nimble-Snapshots: 4988d1cf2fe062f13bd2eb87c4279770785e682b
+  Quick: d32871931c05547cb4e0bc9009d66a18b50d8558
 
-PODFILE CHECKSUM: 8c19971bc03b1102942bae8dc764247c0986032d
+PODFILE CHECKSUM: 5d5324029f5754abc86b08c38bafd3135e1b98f9
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.14.3

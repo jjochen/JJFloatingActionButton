@@ -146,7 +146,7 @@ import UIKit
     ///
     /// - Returns: A button animation configuration object.
     ///
-    @objc static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
+    static func rotation(toAngle angle: CGFloat = -.pi / 4) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .rotation)
         configuration.angle = angle
         return configuration
@@ -158,7 +158,7 @@ import UIKit
     ///
     /// - Returns: A button animation configuration object.
     ///
-    @objc static func transition(toImage image: UIImage) -> JJButtonAnimationConfiguration {
+    static func transition(toImage image: UIImage) -> JJButtonAnimationConfiguration {
         let configuration = JJButtonAnimationConfiguration(withStyle: .transition)
         configuration.image = image
         return configuration
@@ -216,8 +216,8 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12,
-                            firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
+    static func popUp(withInterItemSpacing interItemSpacing: CGFloat = 12,
+                      firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
         configuration.closedState = .scale()
@@ -235,8 +235,8 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12,
-                              firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
+    static func slideIn(withInterItemSpacing interItemSpacing: CGFloat = 12,
+                        firstItemSpacing: CGFloat = 0) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .verticalLine(withInterItemSpacing: interItemSpacing, firstItemSpacing: firstItemSpacing)
         configuration.closedState = .horizontalOffset()
@@ -251,7 +251,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
         configuration.closedState = .scale()
@@ -268,7 +268,7 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    @objc static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius)
         configuration.closedState = .circularOffset(distance: radius * 0.75)
@@ -459,7 +459,7 @@ import UIKit
 
 // MARK: - Helper
 
-internal extension JJItemAnimationConfiguration {
+extension JJItemAnimationConfiguration {
     static func angleForItem(at index: Int, numberOfItems: Int, actionButton: JJFloatingActionButton) -> CGFloat {
         precondition(numberOfItems > 0)
         precondition(index >= 0)
@@ -481,7 +481,7 @@ internal extension JJItemAnimationConfiguration {
     }
 }
 
-fileprivate extension JJItemLayout {
+private extension JJItemLayout {
     static func selectSpacing(forFirstItem isFirstItem: Bool, defaultSpacing: CGFloat, firstItemSpacing: CGFloat) -> CGFloat {
         if isFirstItem && firstItemSpacing > 0 {
             return firstItemSpacing
@@ -490,7 +490,7 @@ fileprivate extension JJItemLayout {
     }
 }
 
-fileprivate extension JJActionItem {
+private extension JJActionItem {
     func scale(by factor: CGFloat, translationX: CGFloat = 0, translationY: CGFloat = 0) {
         let scale = scaleTransformation(factor: factor)
         let translation = CGAffineTransform(translationX: translationX, y: translationY)
@@ -498,7 +498,7 @@ fileprivate extension JJActionItem {
     }
 }
 
-fileprivate extension JJActionItem {
+private extension JJActionItem {
     func scaleTransformation(factor: CGFloat) -> CGAffineTransform {
         let scale = CGAffineTransform(scaleX: factor, y: factor)
 
@@ -519,9 +519,9 @@ fileprivate extension JJActionItem {
     }
 }
 
-internal extension UIView {
+extension UIView {
     var isOnLeftSideOfScreen: Bool {
-        return isOnLeftSide(ofView: UIApplication.shared.keyWindow)
+        return isOnLeftSide(ofView: UIWindow.key)
     }
 
     func isOnLeftSide(ofView superview: UIView?) -> Bool {

@@ -29,8 +29,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window?.tintColor = UIColor(hue: 0.31, saturation: 0.37, brightness: 0.76, alpha: 1.00)
-        UINavigationBar.appearance().tintColor = UIColor.white
+        customizeAppearance()
+
         return true
+    }
+
+    private
+    func customizeAppearance() {
+        let mainColor = UIColor(named: "Main")
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        window?.tintColor = mainColor
+
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = mainColor
+        UINavigationBar.appearance().tintColor = .white
+
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = mainColor
+        navigationBarAppearance.titleTextAttributes = titleAttributes
+        navigationBarAppearance.titleTextAttributes = titleAttributes
+
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        if #available(iOS 15.0, *) {
+            UINavigationBar.appearance().compactScrollEdgeAppearance = navigationBarAppearance
+        }
     }
 }

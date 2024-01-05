@@ -25,9 +25,10 @@
 @testable import JJFloatingActionButton
 import Nimble
 import Quick
+import XCTest
 
 class UIColorExtensionsSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("UIColor") {
             context("when light") {
                 var originalColor: UIColor!

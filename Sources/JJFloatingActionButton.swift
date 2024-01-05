@@ -65,7 +65,7 @@ import UIKit
     ///
     /// - SeeAlso: `circleView`
     ///
-    @objc @IBInspectable public dynamic var buttonColor: UIColor {
+    @IBInspectable public dynamic var buttonColor: UIColor {
         get {
             return circleView.color
         }
@@ -79,7 +79,7 @@ import UIKit
     ///
     /// - SeeAlso: `circleView`
     ///
-    @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
+    @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
         get {
             return circleView.highlightedColor
         }
@@ -96,7 +96,7 @@ import UIKit
     ///
     /// - SeeAlso: `imageView`
     ///
-    @objc @IBInspectable public dynamic var buttonImage: UIImage? {
+    @IBInspectable public dynamic var buttonImage: UIImage? {
         didSet {
             configureButtonImage()
         }
@@ -121,7 +121,7 @@ import UIKit
     ///
     /// - SeeAlso: `imageView`
     ///
-    @objc @IBInspectable public dynamic var buttonImageColor: UIColor {
+    @IBInspectable public dynamic var buttonImageColor: UIColor {
         get {
             return imageView.tintColor
         }
@@ -134,7 +134,7 @@ import UIKit
     /// This is ignored if the size is defined by auto-layout.
     /// Default is `56`.
     ///
-    @objc @IBInspectable public dynamic var buttonDiameter: CGFloat = 56 {
+    @IBInspectable public dynamic var buttonDiameter: CGFloat = 56 {
         didSet {
             invalidateIntrinsicContentSize()
         }
@@ -143,7 +143,7 @@ import UIKit
     /// The size of an action item in relation to the floating action button.
     /// Default is `0.75`.
     ///
-    @objc @IBInspectable public dynamic var itemSizeRatio: CGFloat = 0.75
+    @IBInspectable public dynamic var itemSizeRatio: CGFloat = 0.75
 
     /// The opening style of the floating action button itself.
     /// Default is `JJButtonAnimationConfiguration.rotation()`
@@ -167,7 +167,7 @@ import UIKit
     ///
     /// Default is `true`.
     ///
-    @objc @IBInspectable public var handleSingleActionDirectly: Bool = true {
+    @IBInspectable public var handleSingleActionDirectly: Bool = true {
         didSet {
             configureButtonImage()
         }
@@ -180,7 +180,7 @@ import UIKit
     ///
     /// - SeeAlso: `close`
     ///
-    @objc @IBInspectable public var closeAutomatically: Bool = true
+    @IBInspectable public var closeAutomatically: Bool = true
 
     /// The current state of the floating action button.
     /// Possible values are
@@ -246,7 +246,7 @@ import UIKit
     ///
     /// - SeeAlso: init?(coder: NSCoder)
     ///
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -276,7 +276,7 @@ import UIKit
         addItem(title: nil, image: image, action: action)
     }
 
-    internal lazy var itemContainerView: UIView = {
+    lazy var itemContainerView: UIView = {
         let view = UIView()
         view.isUserInteractionEnabled = true
         view.backgroundColor = .clear
@@ -284,9 +284,9 @@ import UIKit
         return view
     }()
 
-    internal var currentButtonAnimationConfiguration: JJButtonAnimationConfiguration?
-    internal var currentItemAnimationConfiguration: JJItemAnimationConfiguration?
-    internal var openItems: [JJActionItem] = []
+    var currentButtonAnimationConfiguration: JJButtonAnimationConfiguration?
+    var currentItemAnimationConfiguration: JJItemAnimationConfiguration?
+    var openItems: [JJActionItem] = []
 
     fileprivate var defaultItemConfiguration: ((JJActionItem) -> Void)?
     fileprivate var itemsWithSetup: Set<JJActionItem> = []
@@ -394,13 +394,13 @@ import UIKit
 extension JJFloatingActionButton {
     /// A Boolean value indicating whether the action button draws a highlight.
     ///
-    open override var isHighlighted: Bool {
+    override open var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
         set {
             super.isHighlighted = newValue
             circleView.isHighlighted = newValue
-        }
-        get {
-            return super.isHighlighted
         }
     }
 }
@@ -410,20 +410,20 @@ extension JJFloatingActionButton {
 extension JJFloatingActionButton {
     /// The natural size for the floating action button.
     ///
-    open override var intrinsicContentSize: CGSize {
+    override open var intrinsicContentSize: CGSize {
         return CGSize(width: buttonDiameter, height: buttonDiameter)
     }
 
     /// Updates constraints for the view.
     ///
-    open override func updateConstraints() {
+    override open func updateConstraints() {
         updateDynamicConstraints()
         super.updateConstraints()
     }
 
     /// Tells the view that its superview changed.
     ///
-    public override func didMoveToSuperview() {
+    override public func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview == nil {
             close(animated: false)
@@ -434,7 +434,7 @@ extension JJFloatingActionButton {
 
 // MARK: - Setup
 
-fileprivate extension JJFloatingActionButton {
+private extension JJFloatingActionButton {
     func setup() {
         backgroundColor = .clear
         clipsToBounds = false
@@ -531,7 +531,7 @@ fileprivate extension JJFloatingActionButton {
 
 // MARK: - Helper
 
-internal extension JJFloatingActionButton {
+extension JJFloatingActionButton {
     var currentButtonImage: UIImage? {
         if isSingleActionButton, let image = enabledItems.first?.imageView.image {
             return image
@@ -551,7 +551,7 @@ internal extension JJFloatingActionButton {
 
 // MARK: - Actions
 
-fileprivate extension JJFloatingActionButton {
+private extension JJFloatingActionButton {
     @objc func buttonWasTapped() {
         switch buttonState {
         case .open, .opening:

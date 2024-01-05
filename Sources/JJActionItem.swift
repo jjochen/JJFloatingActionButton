@@ -45,7 +45,7 @@ import UIKit
     ///
     /// - SeeAlso: `circleView`
     ///
-    @objc @IBInspectable public dynamic var buttonColor: UIColor {
+    @IBInspectable public dynamic var buttonColor: UIColor {
         get {
             return circleView.color
         }
@@ -59,7 +59,7 @@ import UIKit
     ///
     /// - SeeAlso: `circleView`
     ///
-    @objc @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
+    @IBInspectable public dynamic var highlightedButtonColor: UIColor? {
         get {
             return circleView.highlightedColor
         }
@@ -73,7 +73,7 @@ import UIKit
     ///
     /// - SeeAlso: `imageView`
     ///
-    @objc @IBInspectable public dynamic var buttonImage: UIImage? {
+    @IBInspectable public dynamic var buttonImage: UIImage? {
         get {
             return imageView.image
         }
@@ -89,7 +89,7 @@ import UIKit
     ///
     /// - SeeAlso: `imageView`
     ///
-    @objc @IBInspectable public dynamic var buttonImageColor: UIColor {
+    @IBInspectable public dynamic var buttonImageColor: UIColor {
         get {
             return imageView.tintColor
         }
@@ -167,7 +167,7 @@ import UIKit
         }
     }
 
-    internal override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -191,14 +191,14 @@ import UIKit
 extension JJActionItem {
     /// Tells the view that its superview changed.
     ///
-    open override func didMoveToSuperview() {
+    override open func didMoveToSuperview() {
         // reset tintAdjustmentMode
         imageView.tintColorDidChange()
     }
 
     /// Updates constraints for the view.
     ///
-    open override func updateConstraints() {
+    override open func updateConstraints() {
         updateDynamicConstraints()
         super.updateConstraints()
     }
@@ -209,20 +209,20 @@ extension JJActionItem {
 extension JJActionItem {
     /// A Boolean value indicating whether the action item draws a highlight.
     ///
-    open override var isHighlighted: Bool {
+    override open var isHighlighted: Bool {
+        get {
+            return super.isHighlighted
+        }
         set {
             super.isHighlighted = newValue
             circleView.isHighlighted = newValue
-        }
-        get {
-            return super.isHighlighted
         }
     }
 }
 
 // MARK: - Private Methods
 
-fileprivate extension JJActionItem {
+private extension JJActionItem {
     func setup() {
         backgroundColor = .clear
         isUserInteractionEnabled = true

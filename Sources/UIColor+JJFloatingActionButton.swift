@@ -24,7 +24,7 @@
 
 import UIKit
 
-internal extension UIColor {
+extension UIColor {
     var highlighted: UIColor {
         var hue = CGFloat(0)
         var saturation = CGFloat(0)

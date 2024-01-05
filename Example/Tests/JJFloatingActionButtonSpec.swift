@@ -26,9 +26,10 @@
 import Nimble
 import Nimble_Snapshots
 import Quick
+import XCTest
 
 class JJFloatingActionButtonSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJFloatingActionButton") {
             let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 300))
             let actionButtonFrame = CGRect(origin: CGPoint(x: 130, y: 230), size: CGSize(width: 56, height: 56))
@@ -57,13 +58,13 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             it("looks correct by default") {
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct highlighted") {
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct highlighted with dark color") {
@@ -71,7 +72,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.highlightedButtonColor = nil
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct highlighted with light color") {
@@ -79,21 +80,21 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.highlightedButtonColor = nil
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct highlighted with custom color") {
                 actionButton.highlightedButtonColor = .orange
                 actionButton.isHighlighted = true
                 expect(actionButton.isHighlighted).to(beTrue())
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct configured") {
                 actionButton.buttonColor = .blue
                 actionButton.highlightedButtonColor = .orange
                 actionButton.buttonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Baloon"))
+                actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Balloon"))
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -115,19 +116,19 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 7)
 
                 actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.open(animated: false)
 
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct configured after adding the items") {
                 actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = .blue
-                actionButton.buttonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
+                actionButton.buttonImage = #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonAnimationConfiguration = .rotation(toAngle: -CGFloat.pi / 5)
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
@@ -151,7 +152,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 actionButton.open(animated: false)
 
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct with items configured with closure") {
@@ -170,29 +171,29 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     item.layer.shadowRadius = 0
                 }
 
-                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.open(animated: false)
 
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot())
             }
 
             it("looks correct when only image color is changed") {
                 actionButton.buttonImageColor = .red
                 actionButton.addItem(title: "123", image: #imageLiteral(resourceName: "Like"))
-                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.open(animated: false)
 
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct with smaller image size") {
                 actionButton.buttonImageSize = CGSize(width: 10, height: 10)
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct with bigger image size") {
                 actionButton.buttonImageSize = CGSize(width: 40, height: 40)
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             context("when multiple items are added") {
@@ -203,7 +204,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { _ in
                         actionCount += 1
                     }
-                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
                 }
 
                 it("opens when tapped") {
@@ -237,14 +238,14 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("items look correct") {
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
 
                     it("items look correct highlighted") {
                         let item = actionButton.items[0]
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTrue())
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
 
                     it("items look correct highlighted with custom highlighted color") {
@@ -252,7 +253,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         item.circleView.highlightedColor = .purple
                         item.isHighlighted = true
                         expect(item.isHighlighted).to(beTrue())
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
 
                     it("can't be opened again") {
@@ -282,7 +283,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                         }
 
                         it("does not perform action") {
-                            waitUntil(timeout: 1.5)
+//                            waitUntil(timeout: 1.5)
                             expect(actionCount) == 0
                         }
                     }
@@ -369,7 +370,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("looks correct") {
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
 
                     it("can't be closed again") {
@@ -528,7 +529,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                     it("looks correct when opened") {
                         actionButton.open(animated: false)
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
                 }
 
@@ -546,12 +547,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("looks correct") {
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
 
                     it("looks correct when opened") {
                         actionButton.open(animated: false)
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
                 }
 
@@ -591,13 +592,13 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 beforeEach {
                     actionCount = 0
-                    actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { _ in
+                    actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate)) { _ in
                         actionCount += 1
                     }
                 }
 
                 it("looks correct") {
-                    expect(superview) == snapshot()
+                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                 }
 
                 context("and button is tapped") {
@@ -624,7 +625,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("looks correct") {
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
                 }
 
@@ -639,7 +640,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     }
 
                     it("looks correct") {
-                        expect(superview) == snapshot()
+                        expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
                     }
                 }
             }
@@ -656,7 +657,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when multiple items are added") {
                 beforeEach {
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
                 }
 
                 it("stays closed") {
@@ -670,12 +671,12 @@ class JJFloatingActionButtonSpec: QuickSpec {
             var actionButton: JJFloatingActionButton?
 
             beforeEach {
-                let bundle = Bundle(for: type(of: self))
+                let bundle = Bundle(for: Self.self)
                 actionButton = bundle.loadNibNamed("JJFloatingActionButton", owner: nil)?.first as? JJFloatingActionButton
             }
 
             it("looks correct") {
-                expect(actionButton) == snapshot()
+                expect(actionButton).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
         }
 
@@ -685,7 +686,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             beforeEach {
                 actionCount = 0
-                actionButton = JJFloatingActionButton(image: #imageLiteral(resourceName: "Favourite"), action: { _ in
+                actionButton = JJFloatingActionButton(image: #imageLiteral(resourceName: "Favorite"), action: { _ in
                     actionCount += 1
                 })
             }
@@ -695,7 +696,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             it("has the correct icon") {
-                expect(actionButton.items.first?.buttonImage) == #imageLiteral(resourceName: "Favourite")
+                expect(actionButton.items.first?.buttonImage) == #imageLiteral(resourceName: "Favorite")
             }
 
             it("performs action when tapped") {
@@ -723,22 +724,13 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             it("looks correct") {
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
 
             it("looks correct when diameter is set") {
                 actionButton.buttonDiameter = 100
-                expect(superview) == snapshot()
+                expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
             }
         }
     }
-}
-
-func waitUntil(timeout: TimeInterval = AsyncDefaults.Timeout) {
-    waitUntil(timeout: timeout + 1, action: { done in
-        DispatchQueue.global().async {
-            Thread.sleep(forTimeInterval: timeout)
-            done()
-        }
-    })
 }

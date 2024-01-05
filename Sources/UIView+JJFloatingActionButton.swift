@@ -24,7 +24,7 @@
 
 import UIKit
 
-internal extension UIView {
+extension UIView {
     class func animate(duration: TimeInterval,
                        delay: TimeInterval = 0,
                        usingSpringWithDamping dampingRatio: CGFloat,

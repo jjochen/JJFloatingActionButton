@@ -42,7 +42,7 @@ begin
 
   desc 'Run tests'
   task :test do
-    xcodebuild_test "platform=iOS Simulator,name=iPhone X"
+    xcodebuild_test "platform=iOS Simulator,name=iPhone 15 Pro Max,OS=17.2"
   end
 
   desc 'Run tests for DESTINATION env'
@@ -51,12 +51,24 @@ begin
     xcodebuild_test ENV['DESTINATION']
   end
 
+  desc 'Copy snapshot artifacts'
+    task :copy_snapshots do
+      sh 'rm -rf /tmp/snapshots'
+      simulator_directory = `xcrun simctl get_app_container booted org.cocoapods.demo.JJFloatingActionButton-Example data`.strip
+      unless simulator_directory.empty?
+        puts "Copying snapshots from #{simulator_directory}"
+        sh "cp -R #{simulator_directory}/tmp /tmp/snapshots"
+      else 
+        puts "No simulator directory found"
+      end
+    end
+
   desc 'Print debug info'
   task :print_debug_info do
     title 'Debug info'
     sh 'xcodebuild -version'
     sh 'xcodebuild -showsdks'
-    sh 'instruments -s devices'
+    sh 'xcrun xctrace list devices'
   end
 
   desc 'Lint swift'
@@ -170,12 +182,12 @@ begin
   task :release_next_version, :type do |task, args|
     release_next_version args.type
   end
-  
+
   desc 'Release version'
   task :release_version, :version do |task, args|
     release_version args.version
   end
-  
+
   desc 'Delete GitHub release tag of type'
   task :delete_github_release_trigger_tag, :type do |task, args|
     delete_github_release_trigger_tag args.type
@@ -190,12 +202,12 @@ begin
   desc 'Create release on github'
   task :create_github_release do
     version = version_from_podspec
-    
+
     unless is_release_commit_for_version version
       puts "Not a release commit."
       next
     end
-    
+
     title "Creating release on github"
     repo = "jjochen/JJFloatingActionButton"
     body = changelog_for_version version
@@ -208,7 +220,7 @@ begin
 
     puts "repo: #{repo}"
     puts "version: #{version}"
-    puts "body: \n#{body}" 
+    puts "body: \n#{body}"
 
     client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
     release = client.create_release repo, version, options
@@ -525,7 +537,7 @@ def open_pull_request(version)
 
   puts "repo: #{repo}"
   puts "base: #{base}"
-  puts "head: #{release_branch}" 
+  puts "head: #{release_branch}"
 
   client = Octokit::Client.new :access_token => ENV['JJ_GITHUB_TOKEN']
 

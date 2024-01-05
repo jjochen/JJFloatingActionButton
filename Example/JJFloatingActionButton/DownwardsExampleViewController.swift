@@ -25,7 +25,7 @@
 import JJFloatingActionButton
 import UIKit
 
-internal class DownwardsExampleViewController: UIViewController {
+class DownwardsExampleViewController: UIViewController {
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
@@ -43,27 +43,23 @@ internal class DownwardsExampleViewController: UIViewController {
         }
         actionButton.itemAnimationConfiguration = configuration
 
-        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favorite")) { item in
+            self.showAlert(for: item)
         }
 
         actionButton.addItem(title: "Like", image: #imageLiteral(resourceName: "Like")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
-        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Balloon")) { item in
+            self.showAlert(for: item)
         }
 
         view.addSubview(actionButton)
 
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-            actionButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        } else {
-            actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-            actionButton.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 16).isActive = true
-        }
+
+        actionButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        actionButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
     }
 }

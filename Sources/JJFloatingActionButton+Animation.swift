@@ -116,7 +116,7 @@ import UIKit
     }
 }
 
-internal extension JJFloatingActionButton {
+extension JJFloatingActionButton {
     func removeRelatedViewsFromSuperview() {
         if overlayView.superview != nil {
             overlayView.removeFromSuperview()
@@ -130,7 +130,7 @@ internal extension JJFloatingActionButton {
 
 // MARK: - Animation State
 
-fileprivate extension JJFloatingActionButton {
+private extension JJFloatingActionButton {
     func storeAnimationState() {
         openItems = enabledItems
         currentItemAnimationConfiguration = itemAnimationConfiguration
@@ -146,7 +146,7 @@ fileprivate extension JJFloatingActionButton {
 
 // MARK: - Overlay Animation
 
-fileprivate extension JJFloatingActionButton {
+private extension JJFloatingActionButton {
     func addOverlayView(to superview: UIView) {
         overlayView.isEnabled = true
         superview.insertSubview(overlayView, belowSubview: self)
@@ -188,7 +188,7 @@ fileprivate extension JJFloatingActionButton {
 
 // MARK: - Button Animation
 
-fileprivate extension JJFloatingActionButton {
+private extension JJFloatingActionButton {
     func openButton(withConfiguration configuration: JJButtonAnimationConfiguration,
                     animated: Bool,
                     group: DispatchGroup) {
@@ -256,7 +256,7 @@ fileprivate extension JJFloatingActionButton {
 
 // MARK: - Items Animation
 
-fileprivate extension JJFloatingActionButton {
+private extension JJFloatingActionButton {
     func addItems(to superview: UIView) {
         precondition(currentItemAnimationConfiguration != nil)
         let configuration = currentItemAnimationConfiguration!

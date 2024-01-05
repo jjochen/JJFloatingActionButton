@@ -25,7 +25,7 @@
 import JJFloatingActionButton
 import UIKit
 
-internal class SingleItemExampleViewController: UIViewController {
+class SingleItemExampleViewController: UIViewController {
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
@@ -33,8 +33,8 @@ internal class SingleItemExampleViewController: UIViewController {
 
         actionButton.buttonColor = .red
 
-        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favorite")) { item in
+            self.showAlert(for: item)
         }
 
         actionButton.display(inViewController: self)

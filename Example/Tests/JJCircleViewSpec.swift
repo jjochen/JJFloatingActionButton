@@ -26,15 +26,16 @@
 import Nimble
 import Nimble_Snapshots
 import Quick
+import XCTest
 
 class JJCircleViewSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJCircleView") {
             var circleView: JJCircleView?
 
             context("loaded from xib") {
                 beforeEach {
-                    let bundle = Bundle(for: type(of: self))
+                    let bundle = Bundle(for: Self.self)
                     circleView = bundle.loadNibNamed("JJCircleView", owner: nil, options: nil)?.first as? JJCircleView
                 }
 
@@ -43,7 +44,7 @@ class JJCircleViewSpec: QuickSpec {
                 }
 
                 it("looks correct") {
-                    expect(circleView) == snapshot()
+                    expect(circleView).to(haveValidSnapshot())
                 }
             }
 
@@ -57,7 +58,7 @@ class JJCircleViewSpec: QuickSpec {
                 }
 
                 it("looks correct") {
-                    expect(circleView) == snapshot()
+                    expect(circleView).to(haveValidSnapshot())
                 }
             }
         }

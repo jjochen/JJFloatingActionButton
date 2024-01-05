@@ -27,9 +27,10 @@ import Foundation
 import Nimble
 import Nimble_Snapshots
 import Quick
+import XCTest
 
 class JJActionItemAppearanceSpec: QuickSpec {
-    override func spec() {
+    override class func spec() {
         describe("JJActionItem") {
             var item: JJActionItem!
 

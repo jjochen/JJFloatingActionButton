@@ -25,7 +25,7 @@
 import JJFloatingActionButton
 import UIKit
 
-internal class CircularExampleViewController: UIViewController {
+class CircularExampleViewController: UIViewController {
     fileprivate let actionButton = JJFloatingActionButton()
 
     override func viewDidLoad() {
@@ -36,20 +36,20 @@ internal class CircularExampleViewController: UIViewController {
         actionButton.buttonAnimationConfiguration.opening.duration = 0.8
         actionButton.buttonAnimationConfiguration.closing.duration = 0.6
 
-        actionButton.addItem(image: #imageLiteral(resourceName: "Baloon")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(image: #imageLiteral(resourceName: "Balloon")) { item in
+            self.showAlert(for: item)
         }
 
         actionButton.addItem(image: #imageLiteral(resourceName: "Like")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
         actionButton.addItem(image: #imageLiteral(resourceName: "Owl")) { item in
-            Helper.showAlert(for: item)
+            self.showAlert(for: item)
         }
 
-        actionButton.addItem(image: #imageLiteral(resourceName: "Favourite")) { item in
-            Helper.showAlert(for: item)
+        actionButton.addItem(image: #imageLiteral(resourceName: "Favorite")) { item in
+            self.showAlert(for: item)
         }
 
         actionButton.display(inViewController: self)
