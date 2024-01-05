@@ -49,14 +49,27 @@ begin
   task :test_destination do
     Rake::Task[:print_debug_info].invoke
     xcodebuild_test ENV['DESTINATION']
+    Rake::Task[:copy_snapshots].invoke
   end
+
+  desc 'Copy snapshot artifacts'
+    task :copy_snapshots do
+      sh 'rm -rf /tmp/snapshots'
+      simulator_directory = `xcrun simctl get_app_container booted org.cocoapods.demo.JJFloatingActionButton-Example data`.strip
+      unless simulator_directory.empty?
+        puts "Copying snapshots from #{simulator_directory}"
+        sh "cp -R #{simulator_directory}/tmp /tmp/snapshots"
+      else 
+        puts "No simulator directory found"
+      end
+    end
 
   desc 'Print debug info'
   task :print_debug_info do
     title 'Debug info'
     sh 'xcodebuild -version'
     sh 'xcodebuild -showsdks'
-    sh ' xcrun xctrace list devices'
+    sh 'xcrun xctrace list devices'
   end
 
   desc 'Lint swift'
