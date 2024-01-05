@@ -94,7 +94,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.buttonColor = .blue
                 actionButton.highlightedButtonColor = .orange
                 actionButton.buttonImage = #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)
-                actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Baloon"))
+                actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "Balloon"))
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
                 actionButton.shadowOffset = CGSize(width: -5, height: -5)
@@ -116,7 +116,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 actionButton.itemAnimationConfiguration = .popUp(withInterItemSpacing: 7)
 
                 actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.open(animated: false)
 
@@ -125,10 +125,10 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             it("looks correct configured after adding the items") {
                 actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
 
                 actionButton.buttonColor = .blue
-                actionButton.buttonImage = #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)
+                actionButton.buttonImage = #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate)
                 actionButton.buttonAnimationConfiguration = .rotation(toAngle: -CGFloat.pi / 5)
                 actionButton.buttonImageColor = .red
                 actionButton.shadowColor = .orange
@@ -171,7 +171,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     item.layer.shadowRadius = 0
                 }
 
-                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.open(animated: false)
 
                 expect(superview).to(haveValidSnapshot())
@@ -180,7 +180,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             it("looks correct when only image color is changed") {
                 actionButton.buttonImageColor = .red
                 actionButton.addItem(title: "123", image: #imageLiteral(resourceName: "Like"))
-                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.addItem(title: "456", image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.open(animated: false)
 
                 expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
@@ -204,7 +204,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate)) { _ in
                         actionCount += 1
                     }
-                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
                 }
 
                 it("opens when tapped") {
@@ -592,7 +592,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
                 beforeEach {
                     actionCount = 0
-                    actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate)) { _ in
+                    actionButton.addItem(title: "item", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate)) { _ in
                         actionCount += 1
                     }
                 }
@@ -657,7 +657,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             context("when multiple items are added") {
                 beforeEach {
                     actionButton.addItem(title: "item 1", image: #imageLiteral(resourceName: "Like").withRenderingMode(.alwaysTemplate))
-                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Baloon").withRenderingMode(.alwaysTemplate))
+                    actionButton.addItem(title: "item 2", image: #imageLiteral(resourceName: "Balloon").withRenderingMode(.alwaysTemplate))
                 }
 
                 it("stays closed") {
@@ -686,7 +686,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
 
             beforeEach {
                 actionCount = 0
-                actionButton = JJFloatingActionButton(image: #imageLiteral(resourceName: "Favourite"), action: { _ in
+                actionButton = JJFloatingActionButton(image: #imageLiteral(resourceName: "Favorite"), action: { _ in
                     actionCount += 1
                 })
             }
@@ -696,7 +696,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
             }
 
             it("has the correct icon") {
-                expect(actionButton.items.first?.buttonImage) == #imageLiteral(resourceName: "Favourite")
+                expect(actionButton.items.first?.buttonImage) == #imageLiteral(resourceName: "Favorite")
             }
 
             it("performs action when tapped") {

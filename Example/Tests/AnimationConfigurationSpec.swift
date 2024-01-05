@@ -48,7 +48,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 superview.addSubview(actionButton)
 
                 actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                 setNimbleTolerance(0.003)
@@ -109,7 +109,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                 it("it looks correct with 3 items") {
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                     actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                     actionButton.open(animated: false)
@@ -119,7 +119,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                 it("it looks correct with 2 items") {
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
 
                     actionButton.open(animated: false)
 
@@ -141,7 +141,7 @@ class AnimationConfigurationSpec: QuickSpec {
                     }
 
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                     actionButton.addItem(title: "title", image: #imageLiteral(resourceName: "Owl"))
 
                     actionButton.open(animated: false)
@@ -151,7 +151,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                 it("it looks correct when opened and closed") {
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                     actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                     actionButton.open(animated: false)
@@ -237,7 +237,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 superview.addSubview(actionButton)
 
                 actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                 setNimbleTolerance(0.002)
@@ -256,7 +256,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                 it("it looks correct with 3 items") {
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                     actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                     actionButton.open(animated: false)
@@ -266,7 +266,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                 it("it looks correct with 2 items") {
                     actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
-                    actionButton.addItem(image: #imageLiteral(resourceName: "Baloon"))
+                    actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
 
                     actionButton.open(animated: false)
 
@@ -335,13 +335,13 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     let item1 = actionButton.addItem(title: "leading", image: #imageLiteral(resourceName: "Like"))
                     item1.titlePosition = .leading
-                    let item2 = actionButton.addItem(title: "trailing", image: #imageLiteral(resourceName: "Baloon"))
+                    let item2 = actionButton.addItem(title: "trailing", image: #imageLiteral(resourceName: "Balloon"))
                     item2.titlePosition = .trailing
                     let item3 = actionButton.addItem(title: "right", image: #imageLiteral(resourceName: "Like"))
                     item3.titlePosition = .right
-                    let item4 = actionButton.addItem(title: "left", image: #imageLiteral(resourceName: "Baloon"))
+                    let item4 = actionButton.addItem(title: "left", image: #imageLiteral(resourceName: "Balloon"))
                     item4.titlePosition = .left
-                    let item5 = actionButton.addItem(title: "hidden", image: #imageLiteral(resourceName: "Baloon"))
+                    let item5 = actionButton.addItem(title: "hidden", image: #imageLiteral(resourceName: "Balloon"))
                     item5.titlePosition = .hidden
                 }
 

@@ -83,7 +83,7 @@ class ConfigurationExampleViewController: UIViewController {
     }
 
     fileprivate func addItems() {
-        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
+        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Balloon")) { item in
             self.showAlert(for: item)
         }
 
@@ -102,7 +102,7 @@ class ConfigurationExampleViewController: UIViewController {
 
         let heartItem = actionButton.addItem()
         heartItem.titleLabel.text = "Heart"
-        heartItem.imageView.image = #imageLiteral(resourceName: "Favourite")
+        heartItem.imageView.image = #imageLiteral(resourceName: "Favorite")
         heartItem.buttonColor = .clear
         heartItem.buttonImageColor = .red
         heartItem.imageSize = CGSize(width: 30, height: 30)

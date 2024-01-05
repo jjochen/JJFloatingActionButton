@@ -33,7 +33,7 @@ class SingleItemExampleViewController: UIViewController {
 
         actionButton.buttonColor = .red
 
-        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
+        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favorite")) { item in
             self.showAlert(for: item)
         }
 

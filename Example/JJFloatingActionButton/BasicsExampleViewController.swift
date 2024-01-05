@@ -31,7 +31,7 @@ class BasicsExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favourite")) { item in
+        actionButton.addItem(title: "Heart", image: #imageLiteral(resourceName: "Favorite")) { item in
             self.showAlert(for: item)
         }
 
@@ -39,7 +39,7 @@ class BasicsExampleViewController: UIViewController {
             self.showAlert(for: item)
         }
 
-        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Baloon")) { item in
+        actionButton.addItem(title: "Balloon", image: #imageLiteral(resourceName: "Balloon")) { item in
             self.showAlert(for: item)
         }
 

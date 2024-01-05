@@ -147,7 +147,7 @@ actionButton.configureDefaultItem { item in
     item.layer.shadowRadius = CGFloat(2)
 }
 
-actionButton.addItem(title: "Balloon", image: UIImage(named: "Baloon")) { item in
+actionButton.addItem(title: "Balloon", image: UIImage(named: "Balloon")) { item in
     // Do something
 }
 
