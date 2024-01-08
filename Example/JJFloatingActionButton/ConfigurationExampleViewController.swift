@@ -56,7 +56,24 @@ class ConfigurationExampleViewController: UIViewController {
         actionButton.buttonImageSize = CGSize(width: 30, height: 30)
 
         actionButton.buttonAnimationConfiguration = .transition(toImage: #imageLiteral(resourceName: "X"))
-        actionButton.itemAnimationConfiguration = .slideIn(withInterItemSpacing: 14, firstItemSpacing: 28)
+
+        let itemAnimationConfiguration = JJItemAnimationConfiguration()
+        itemAnimationConfiguration.itemLayout = JJItemLayout { items, actionButton in
+            var previousItem: JJActionItem?
+            for item in items {
+                let previousView = previousItem?.circleView ?? actionButton.circleView
+                item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -5).isActive = true
+                item.leftAnchor.constraint(equalTo: previousView.rightAnchor, constant: -2).isActive = true
+                previousItem = item
+
+            }
+        }
+
+        itemAnimationConfiguration.closedState = JJItemPreparation { item, _, _, _ in
+            item.transform = CGAffineTransform(scaleX: 5, y: 0)
+            item.alpha = 0
+        }
+        actionButton.itemAnimationConfiguration = itemAnimationConfiguration
 
         actionButton.layer.shadowColor = UIColor.black.cgColor
         actionButton.layer.shadowOffset = CGSize(width: 0, height: 1)
