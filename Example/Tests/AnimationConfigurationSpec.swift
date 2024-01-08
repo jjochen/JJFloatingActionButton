@@ -366,5 +366,42 @@ class AnimationConfigurationSpec: QuickSpec {
                 }
             }
         }
+
+        describe("JJFloatingActionButton in center") {
+            var actionButton: JJFloatingActionButton!
+            var superview: UIView!
+
+            beforeEach {
+                let superviewFrame = CGRect(origin: .zero, size: CGSize(width: 300, height: 400))
+                let actionButtonFrame = CGRect(origin: CGPoint(x: 132, y: 330), size: CGSize(width: 56, height: 56))
+
+                superview = UIView(frame: superviewFrame)
+                superview.backgroundColor = .white
+
+                actionButton = JJFloatingActionButton(frame: actionButtonFrame)
+                superview.addSubview(actionButton)
+
+                actionButton.addItem(image: #imageLiteral(resourceName: "Like"))
+                actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
+                actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
+
+                setNimbleTolerance(0.002)
+            }
+
+            context("when using circular pop up style with custom angles") {
+                beforeEach {
+                    actionButton.itemAnimationConfiguration = .circularPopUp(withRadius: 80,
+                                                                             angleForItem: { index, numberOfItems, actionButton in
+                        return CGFloat.pi + CGFloat(index) * CGFloat.pi / (CGFloat(numberOfItems) - 1)
+                    })
+                }
+
+                it("it looks correct") {
+                    actionButton.open(animated: false)
+
+                    expect(superview).to(haveValidSnapshot())
+                }
+            }
+        }
     }
 }
