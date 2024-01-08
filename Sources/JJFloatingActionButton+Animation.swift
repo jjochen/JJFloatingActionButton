@@ -288,8 +288,7 @@ private extension JJFloatingActionButton {
 
         let numberOfItems = openItems.count
         var delay: TimeInterval = 0.0
-        var index = 0
-        for item in openItems {
+        for (index, item) in openItems.enumerated() {
             configuration.closedState.prepare(item, index, numberOfItems, self)
             let animation: () -> Void = {
                 configuration.openState.prepare(item, index, numberOfItems, self)
@@ -303,7 +302,6 @@ private extension JJFloatingActionButton {
                            animated: animated)
 
             delay += configuration.opening.interItemDelay
-            index += 1
         }
     }
 

@@ -65,7 +65,6 @@ class ConfigurationExampleViewController: UIViewController {
                 item.bottomAnchor.constraint(equalTo: previousView.topAnchor, constant: -5).isActive = true
                 item.leftAnchor.constraint(equalTo: previousView.rightAnchor, constant: -2).isActive = true
                 previousItem = item
-
             }
         }
 

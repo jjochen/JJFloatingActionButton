@@ -251,9 +251,10 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    static func circularPopUp(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    static func circularPopUp(withRadius radius: CGFloat = 100,
+                              angleForItem _: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = .circular(withRadius: radius)
+        configuration.itemLayout = .circular(withRadius: radius, angleForItem: angleForItem)
         configuration.closedState = .scale()
         configuration.opening.interItemDelay = 0.05
         configuration.closing.interItemDelay = 0.05
@@ -268,10 +269,11 @@ import UIKit
     ///
     /// - Returns: An item animation configuration object.
     ///
-    static func circularSlideIn(withRadius radius: CGFloat = 100) -> JJItemAnimationConfiguration {
+    static func circularSlideIn(withRadius radius: CGFloat = 100,
+                                angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
-        configuration.itemLayout = .circular(withRadius: radius)
-        configuration.closedState = .circularOffset(distance: radius * 0.75)
+        configuration.itemLayout = .circular(withRadius: radius, angleForItem: angleForItem)
+        configuration.closedState = .circularOffset(distance: radius * 0.75, angleForItem: angleForItem)
         return configuration
     }
 }
@@ -325,19 +327,17 @@ import UIKit
     ///
     /// - Returns: An item layout object.
     ///
-    @objc public static func circular(withRadius radius: CGFloat = 100) -> JJItemLayout {
+    @objc public static func circular(withRadius radius: CGFloat = 100,
+                                      angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             let numberOfItems = items.count
-            var index: Int = 0
-            for item in items {
-                let angle = JJItemAnimationConfiguration.angleForItem(at: index, numberOfItems: numberOfItems, actionButton: actionButton)
+            for (index, item) in items.enumerated() {
+                let angle = angleForItem(index, numberOfItems, actionButton)
                 let horizontalDistance = radius * cos(angle)
                 let verticalDistance = radius * sin(angle)
 
                 item.circleView.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor, constant: horizontalDistance).isActive = true
                 item.circleView.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor, constant: verticalDistance).isActive = true
-
-                index += 1
             }
         }
     }
@@ -443,11 +443,10 @@ import UIKit
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc public static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4) -> JJItemPreparation {
+    @objc public static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4,
+                                            angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemPreparation {
         return JJItemPreparation { item, index, numberOfItems, actionButton in
-            let itemAngle = JJItemAnimationConfiguration.angleForItem(at: index,
-                                                                      numberOfItems: numberOfItems,
-                                                                      actionButton: actionButton)
+            let itemAngle = angleForItem(index, numberOfItems, actionButton)
             let transitionAngle = itemAngle + CGFloat.pi
             let translationX = distance * cos(transitionAngle)
             let translationY = distance * sin(transitionAngle)
@@ -459,8 +458,10 @@ import UIKit
 
 // MARK: - Helper
 
-extension JJItemAnimationConfiguration {
-    static func angleForItem(at index: Int, numberOfItems: Int, actionButton: JJFloatingActionButton) -> CGFloat {
+public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButton: JJFloatingActionButton) -> CGFloat
+
+public extension JJItemAnimationConfiguration {
+    @objc static func angleForItem(at index: Int, numberOfItems: Int, actionButton: JJFloatingActionButton) -> CGFloat {
         precondition(numberOfItems > 0)
         precondition(index >= 0)
         precondition(index < numberOfItems)
