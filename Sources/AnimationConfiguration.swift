@@ -78,6 +78,18 @@ import UIKit
 
 // MARK: - JJButtonAnimationConfiguration
 
+///
+/// A typealias representing a closure that calculates the angle for each item in a floating action button.
+///
+/// - Parameters:
+///     - index: The index of the item.
+///     - numberOfItems: The total number of items.
+///     - actionButton: The floating action button.
+///
+/// - Returns: The angle in radians for the specified item.
+///
+public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButton: JJFloatingActionButton) -> CGFloat
+
 /// Button animation configuration
 ///
 @objc public class JJButtonAnimationConfiguration: NSObject {
@@ -248,11 +260,13 @@ import UIKit
     ///   - `closedState = .scale()`
     ///
     /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    /// - Parameter angleForItem: A closure that calculates the angle for each item in a floating action button.
+    ///                           Default is `JJItemAnimationConfiguration.angleForItem`.
     ///
     /// - Returns: An item animation configuration object.
     ///
     static func circularPopUp(withRadius radius: CGFloat = 100,
-                              angleForItem _: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemAnimationConfiguration {
+                              angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius, angleForItem: angleForItem)
         configuration.closedState = .scale()
@@ -266,6 +280,8 @@ import UIKit
     ///   - `closedState = .circularOffset()`
     ///
     /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    /// - Parameter angleForItem: A closure that calculates the angle for each item in a floating action button.
+    ///                           Default is `JJItemAnimationConfiguration.angleForItem`.
     ///
     /// - Returns: An item animation configuration object.
     ///
@@ -324,6 +340,8 @@ import UIKit
     /// Returns an item layout object that places the items in a circle around the action button with given radius.
     ///
     /// - Parameter radius: The distance between the center of an item and the center of the button itself.
+    /// - Parameter angleForItem: A closure that calculates the angle for each item in a floating action button.
+    ///                           Default is `JJItemAnimationConfiguration.angleForItem`.
     ///
     /// - Returns: An item layout object.
     ///
@@ -438,12 +456,15 @@ import UIKit
     /// - Parameter distance: The value in points by which the item is offsetted
     ///                       towards the action button.
     /// - Parameter scale: The factor by which the item is scaled
+    /// - Parameter angleForItem: A closure that calculates the angle for each item in a floating action button.
+    ///                           Default is `JJItemAnimationConfiguration.angleForItem`. 
     ///
     /// - Remark: The item is offsetted towards the action button.
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc public static func circularOffset(distance: CGFloat = 50, scale: CGFloat = 0.4,
+    @objc public static func circularOffset(distance: CGFloat = 50, 
+                                            scale: CGFloat = 0.4,
                                             angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemPreparation {
         return JJItemPreparation { item, index, numberOfItems, actionButton in
             let itemAngle = angleForItem(index, numberOfItems, actionButton)
@@ -458,9 +479,16 @@ import UIKit
 
 // MARK: - Helper
 
-public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButton: JJFloatingActionButton) -> CGFloat
-
 public extension JJItemAnimationConfiguration {
+    /// Calculates the angle for the item at the specified index in the floating action button.
+    ///
+    /// - Parameters:
+    ///   - index: The index of the item.
+    ///   - numberOfItems: The total number of items in the floating action button.
+    ///   - actionButton: The floating action button.
+    ///
+    /// - Returns: The angle in radians for the item at the specified index.
+    ///
     @objc static func angleForItem(at index: Int, numberOfItems: Int, actionButton: JJFloatingActionButton) -> CGFloat {
         precondition(numberOfItems > 0)
         precondition(index >= 0)
