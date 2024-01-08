@@ -51,7 +51,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
-                setNimbleTolerance(0.003)
+                setNimbleTolerance(0.01)
             }
 
             it("is on the right side of the screen") {
@@ -71,7 +71,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 it("it looks correct") {
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
 
@@ -84,7 +84,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 it("it looks correct") {
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
 
@@ -96,7 +96,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                 it("it looks correct") {
                     actionButton.open(animated: false)
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
 
@@ -114,7 +114,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with 2 items") {
@@ -123,7 +123,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with 1 item") {
@@ -132,7 +132,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("looks correct when item have background color") {
@@ -146,7 +146,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct when opened and closed") {
@@ -157,7 +157,7 @@ class AnimationConfigurationSpec: QuickSpec {
                     actionButton.open(animated: false)
                     actionButton.close(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
 
@@ -170,7 +170,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 it("it looks correct") {
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
 
@@ -190,7 +190,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with horizontal offset") {
@@ -199,7 +199,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with items offsetted") {
@@ -208,7 +208,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with circular offset items") {
@@ -217,7 +217,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
         }
@@ -240,7 +240,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
-                setNimbleTolerance(0.002)
+                setNimbleTolerance(0.01)
             }
 
             it("is on the left side of the screen") {
@@ -261,7 +261,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with 2 items") {
@@ -270,7 +270,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with 1 item") {
@@ -279,7 +279,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
 
@@ -299,7 +299,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with items offsetted") {
@@ -308,7 +308,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
                 it("it looks correct with circular offset items") {
@@ -317,7 +317,7 @@ class AnimationConfigurationSpec: QuickSpec {
 
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
             }
 
@@ -348,11 +348,10 @@ class AnimationConfigurationSpec: QuickSpec {
                 it("looks correct") {
                     actionButton.open(animated: false)
 
-                    expect(superview).to(haveValidSnapshot(pixelTolerance: 0.01))
+                    expect(superview).to(haveValidSnapshot())
                 }
 
-                // disabled for now. Fails on older operating systems. ToDo!
-                xit("looks correct with slide in configuration") {
+                it("looks correct with slide in configuration") {
                     let configuration = JJItemAnimationConfiguration()
                     configuration.openState = JJItemPreparation { item, _, _, _ in
                         item.alpha = 1
@@ -385,7 +384,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 actionButton.addItem(image: #imageLiteral(resourceName: "Balloon"))
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
-                setNimbleTolerance(0.002)
+                setNimbleTolerance(0.01)
             }
 
             context("when using circular pop up style with custom angles") {
