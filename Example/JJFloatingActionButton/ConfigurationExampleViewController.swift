@@ -32,6 +32,7 @@ class ConfigurationExampleViewController: UIViewController {
         super.viewDidLoad()
 
         configureActionButton()
+        addItems()
 
         view.addSubview(actionButton)
 
@@ -94,8 +95,6 @@ class ConfigurationExampleViewController: UIViewController {
             item.layer.shadowOpacity = Float(0.4)
             item.layer.shadowRadius = CGFloat(2)
         }
-
-        addItems()
     }
 
     fileprivate func addItems() {
