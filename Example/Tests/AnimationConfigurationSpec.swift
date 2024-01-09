@@ -29,7 +29,6 @@ import Quick
 import XCTest
 
 class AnimationConfigurationSpec: QuickSpec {
-    let pixelTolerance = 0.5
     override class func spec() {
         describe("JJFloatingActionButton") {
             var actionButton: JJFloatingActionButton!
@@ -345,8 +344,6 @@ class AnimationConfigurationSpec: QuickSpec {
                     item4.titlePosition = .left
                     let item5 = actionButton.addItem(title: "hidden", image: #imageLiteral(resourceName: "Balloon"))
                     item5.titlePosition = .hidden
-
-                    setNimblePixelTolerance(0.01)
                 }
 
                 it("looks correct") {
