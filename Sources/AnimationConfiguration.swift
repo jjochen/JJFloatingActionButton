@@ -266,7 +266,8 @@ public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButt
     /// - Returns: An item animation configuration object.
     ///
     static func circularPopUp(withRadius radius: CGFloat = 100,
-                              angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemAnimationConfiguration {
+                              angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem)
+        -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius, angleForItem: angleForItem)
         configuration.closedState = .scale()
@@ -286,7 +287,8 @@ public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButt
     /// - Returns: An item animation configuration object.
     ///
     static func circularSlideIn(withRadius radius: CGFloat = 100,
-                                angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemAnimationConfiguration {
+                                angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem)
+        -> JJItemAnimationConfiguration {
         let configuration = JJItemAnimationConfiguration()
         configuration.itemLayout = .circular(withRadius: radius, angleForItem: angleForItem)
         configuration.closedState = .circularOffset(distance: radius * 0.75, angleForItem: angleForItem)
@@ -346,7 +348,8 @@ public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButt
     /// - Returns: An item layout object.
     ///
     @objc public static func circular(withRadius radius: CGFloat = 100,
-                                      angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemLayout {
+                                      angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem)
+        -> JJItemLayout {
         return JJItemLayout { items, actionButton in
             let numberOfItems = items.count
             for (index, item) in items.enumerated() {
@@ -465,7 +468,8 @@ public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButt
     ///
     @objc public static func circularOffset(distance: CGFloat = 50,
                                             scale: CGFloat = 0.4,
-                                            angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemPreparation {
+                                            angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem)
+        -> JJItemPreparation {
         return JJItemPreparation { item, index, numberOfItems, actionButton in
             let itemAngle = angleForItem(index, numberOfItems, actionButton)
             let transitionAngle = itemAngle + CGFloat.pi
