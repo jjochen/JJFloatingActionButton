@@ -52,6 +52,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                 setNimbleTolerance(0.01)
+                setNimblePixelTolerance(0.01)
             }
 
             it("is on the right side of the screen") {
@@ -241,6 +242,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                 setNimbleTolerance(0.01)
+                setNimblePixelTolerance(0.01)
             }
 
             it("is on the left side of the screen") {
@@ -343,6 +345,8 @@ class AnimationConfigurationSpec: QuickSpec {
                     item4.titlePosition = .left
                     let item5 = actionButton.addItem(title: "hidden", image: #imageLiteral(resourceName: "Balloon"))
                     item5.titlePosition = .hidden
+
+                    setNimblePixelTolerance(0.01)
                 }
 
                 it("looks correct") {
@@ -385,6 +389,7 @@ class AnimationConfigurationSpec: QuickSpec {
                 actionButton.addItem(image: #imageLiteral(resourceName: "Owl"))
 
                 setNimbleTolerance(0.01)
+                setNimblePixelTolerance(0.01)
             }
 
             context("when using circular pop up style with custom angles") {

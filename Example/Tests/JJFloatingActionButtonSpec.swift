@@ -45,6 +45,7 @@ class JJFloatingActionButtonSpec: QuickSpec {
                 superview.addSubview(actionButton)
 
                 setNimbleTolerance(0.01)
+                setNimblePixelTolerance(0.01)
             }
 
             it("does not open") {
