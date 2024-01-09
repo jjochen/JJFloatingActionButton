@@ -392,9 +392,9 @@ class AnimationConfigurationSpec: QuickSpec {
             context("when using circular pop up style with custom angles") {
                 beforeEach {
                     actionButton.itemAnimationConfiguration = .circularPopUp(withRadius: 80,
-                                                                             angleForItem: { index, numberOfItems, actionButton in
-                        return CGFloat.pi + CGFloat(index) * CGFloat.pi / (CGFloat(numberOfItems) - 1)
-                    })
+                                                                             angleForItem: { index, numberOfItems, _ in
+                                                                                 CGFloat.pi + CGFloat(index) * CGFloat.pi / (CGFloat(numberOfItems) - 1)
+                                                                             })
                 }
 
                 it("it looks correct") {

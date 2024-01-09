@@ -457,13 +457,13 @@ public typealias JJItemAngle = (_ index: Int, _ numberOfItems: Int, _ actionButt
     ///                       towards the action button.
     /// - Parameter scale: The factor by which the item is scaled
     /// - Parameter angleForItem: A closure that calculates the angle for each item in a floating action button.
-    ///                           Default is `JJItemAnimationConfiguration.angleForItem`. 
+    ///                           Default is `JJItemAnimationConfiguration.angleForItem`.
     ///
     /// - Remark: The item is offsetted towards the action button.
     ///
     /// - Returns: An item preparation object.
     ///
-    @objc public static func circularOffset(distance: CGFloat = 50, 
+    @objc public static func circularOffset(distance: CGFloat = 50,
                                             scale: CGFloat = 0.4,
                                             angleForItem: @escaping JJItemAngle = JJItemAnimationConfiguration.angleForItem) -> JJItemPreparation {
         return JJItemPreparation { item, index, numberOfItems, actionButton in
