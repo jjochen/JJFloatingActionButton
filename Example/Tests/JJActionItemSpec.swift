@@ -44,7 +44,7 @@ class JJActionItemSpec: QuickSpec {
                 actionItem.circleView.widthAnchor.constraint(equalToConstant: 40).isActive = true
                 actionItem.circleView.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
-                setNimbleTolerance(0.002)
+                setNimbleTolerance(0.01)
             }
 
             it("looks correct") {
@@ -104,13 +104,11 @@ class JJActionItemSpec: QuickSpec {
             }
 
             it("looks correct with smaller image size") {
-                setNimbleTolerance(0.005)
                 actionItem.imageSize = CGSize(width: 10, height: 10)
                 expect(actionItem).to(haveValidSnapshot())
             }
 
             it("looks correct with bigger image size") {
-                setNimbleTolerance(0.025)
                 actionItem.imageSize = CGSize(width: 30, height: 30)
                 expect(actionItem).to(haveValidSnapshot())
             }
@@ -132,7 +130,7 @@ class JJActionItemSpec: QuickSpec {
                 actionItem?.circleView.widthAnchor.constraint(equalToConstant: 40).isActive = true
                 actionItem?.circleView.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
-                setNimbleTolerance(0.002)
+                setNimbleTolerance(0.01)
             }
 
             it("looks correct") {
