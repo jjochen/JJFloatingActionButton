@@ -20,21 +20,21 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          JJFloatingActionButton Docs
+          JJFloatingActionButton 3.0.0 Docs
         </a>
          (100% documented)
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="dash-feed://https%3A%2F%2Fjjochen%2Egithub%2Eio%2FJJFloatingActionButton%2Fdocsets%2FJJFloatingActionButton%2Exml">
-            <img class="header-icon" src="img/dash.png"/>
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fjjochen.github.io%2FJJFloatingActionButton%2Fdocsets%2FJJFloatingActionButton.xml">
+            <img class="header-icon" src="img/dash.png" alt="Dash"/>
             Install in Dash
           </a>
         </p>
@@ -42,7 +42,7 @@
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">JJFloatingActionButton Reference</a>
-      <img class="carat" src="img/carat.png" />
+      <img class="carat" src="img/carat.png" alt=""/>
       JJFloatingActionButton  Reference
     </p>
 
@@ -100,6 +100,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Typealiases.html#/s:22JJFloatingActionButton11JJItemAnglea">JJItemAngle</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -107,21 +115,22 @@
         <section class="section">
           <div class="section-content top-matter">
             
-            <h1 id='jjfloatingactionbutton' class='heading'>JJFloatingActionButton</h1>
+            <!-- markdownlint-disable MD033 -->
+<h1 id='jjfloatingactionbutton' class='heading'>JJFloatingActionButton</h1>
 
 <p>Floating Action Button for iOS</p>
 
 <hr>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" alt="Swift 5.0" /> 
-  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a> 
-  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License" /></a> 
-  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform" /></a> 
-  <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status" /></a> 
-  <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov" /></a> 
-  <a href="https://codeclimate.com/github/jjochen/JJFloatingActionButton"><img src="https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg" alt="Code Climate" /></a> 
-  <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation" /></a> 
+  <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" alt="Swift 5.0" />
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/v/JJFloatingActionButton.svg?style=flat" alt="Version" /></a>
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/l/JJFloatingActionButton.svg?style=flat" alt="License" /></a>
+  <a href="https://cocoapods.org/pods/JJFloatingActionButton"><img src="https://img.shields.io/cocoapods/p/JJFloatingActionButton.svg?style=flat" alt="Platform" /></a>
+  <a href="https://circleci.com/gh/jjochen/JJFloatingActionButton"><img src="https://circleci.com/gh/jjochen/JJFloatingActionButton.svg?style=shield" alt="Build Status" /></a>
+  <a href="https://codecov.io/gh/jjochen/JJFloatingActionButton"><img src="https://codecov.io/gh/jjochen/JJFloatingActionButton/branch/master/graph/badge.svg" alt="codecov" /></a>
+  <a href="https://codeclimate.com/github/jjochen/JJFloatingActionButton"><img src="https://img.shields.io/codeclimate/maintainability/jjochen/JJFloatingActionButton.svg" alt="Code Climate" /></a>
+  <a href="https://jjochen.github.io/JJFloatingActionButton"><img src="https://jjochen.github.io/JJFloatingActionButton/badge.svg" alt="Documentation" /></a>
   <a href="https://github.com/jjochen/JJFloatingActionButton/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome" /></a>
 </p>
 
@@ -144,31 +153,31 @@
 <h2 id='a-name-preview-a-preview' class='heading'><a name="preview"></a>Preview</h2>
 
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonBasics.gif" width='250' alt="Preview Basics"> 
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonBasics.gif" width='250' alt="Preview Basics">
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonConfiguration.gif" width='250' alt="Preview Configuration">
 </p>
 
 <p align="center">
-  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircular.gif" width='250' alt="Preview Circular"> 
+  <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonCircular.gif" width='250' alt="Preview Circular">
   <img src="https://github.com/jjochen/JJFloatingActionButton/raw/master/Images/JJFloatingActionButtonSingleItem.gif" width='250' alt="Preview Single Item">
 </p>
 <h2 id='a-name-requirements-a-requirements' class='heading'><a name="requirements"></a>Requirements</h2>
 
 <ul>
-<li>iOS 9.0+</li>
-<li>Xcode 10.2+</li>
+<li>iOS 13.0+</li>
+<li>Xcode 14+</li>
 <li>Swift 5.0</li>
 </ul>
 <h2 id='a-name-installation-a-installation' class='heading'><a name="installation"></a>Installation</h2>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
 <p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
+<pre class="highlight shell"><code>gem install cocoapods
 </code></pre>
 
 <p>To integrate JJFloatingActionButton into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
-<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
-<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'9.0'</span>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://cdn.cocoapods.org/'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'13.0'</span>
 <span class="n">use_frameworks!</span>
 
 <span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
@@ -177,7 +186,7 @@
 </code></pre>
 
 <p>Then, run the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+<pre class="highlight shell"><code>pod install
 </code></pre>
 <h3 id='manually' class='heading'>Manually</h3>
 
@@ -263,7 +272,7 @@
 <h3 id='example' class='heading'>Example</h3>
 
 <p>To run the example project, just run the following command:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>pod try JJFloatingActionButton
+<pre class="highlight shell"><code>pod try JJFloatingActionButton
 </code></pre>
 <h3 id='resources' class='heading'>Resources</h3>
 
@@ -284,9 +293,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-04-21)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2024 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external noopener">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2024-01-10)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>

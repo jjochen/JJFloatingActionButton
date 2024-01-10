@@ -21,21 +21,21 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          JJFloatingActionButton Docs
+          JJFloatingActionButton 3.0.0 Docs
         </a>
          (100% documented)
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="../search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="dash-feed://https%3A%2F%2Fjjochen%2Egithub%2Eio%2FJJFloatingActionButton%2Fdocsets%2FJJFloatingActionButton%2Exml">
-            <img class="header-icon" src="../img/dash.png"/>
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fjjochen.github.io%2FJJFloatingActionButton%2Fdocsets%2FJJFloatingActionButton.xml">
+            <img class="header-icon" src="../img/dash.png" alt="Dash"/>
             Install in Dash
           </a>
         </p>
@@ -43,7 +43,7 @@
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">JJFloatingActionButton Reference</a>
-      <img class="carat" src="../img/carat.png" />
+      <img class="carat" src="../img/carat.png" alt=""/>
       JJItemLayout Class Reference
     </p>
 
@@ -101,6 +101,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:22JJFloatingActionButton11JJItemAnglea">JJItemAngle</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -110,6 +118,7 @@
             <h1>JJItemLayout</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">JJItemLayout</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
@@ -272,9 +281,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemLayout(cm)circularWithRadius:"></a>
-                    <a name="//apple_ref/swift/Method/circular(withRadius:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemLayout(cm)circularWithRadius:">circular(withRadius:<wbr>)</a>
+                    <a name="/c:@M@JJFloatingActionButton@objc(cs)JJItemLayout(cm)circularWithRadius:angleForItem:"></a>
+                    <a name="//apple_ref/swift/Method/circular(withRadius:angleForItem:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@JJFloatingActionButton@objc(cs)JJItemLayout(cm)circularWithRadius:angleForItem:">circular(withRadius:<wbr>angleForItem:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -290,7 +299,9 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">circular</span><span class="p">(</span><span class="n">withRadius</span> <span class="nv">radius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemLayout</span></code></pre>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">circular</span><span class="p">(</span><span class="n">withRadius</span> <span class="nv">radius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                            <span class="nv">angleForItem</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:22JJFloatingActionButton11JJItemAnglea">JJItemAngle</a></span> <span class="o">=</span> <span class="kt"><a href="../Classes/JJItemAnimationConfiguration.html">JJItemAnimationConfiguration</a></span><span class="o">.</span><span class="n">angleForItem</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="kt">JJItemLayout</span></code></pre>
 
                         </div>
                       </div>
@@ -307,6 +318,19 @@
                               <td>
                                 <div>
                                   <p>The distance between the center of an item and the center of the button itself.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>angleForItem</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that calculates the angle for each item in a floating action button.
+                      Default is <code>JJItemAnimationConfiguration.angleForItem</code>.</p>
                                 </div>
                               </td>
                             </tr>
@@ -328,9 +352,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-04-21)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2024 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external noopener">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2024-01-10)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Enumerations  Reference</title>
+    <title>Type Aliases  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Section/Enumerations" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Section/Type Aliases" class="dashAnchor"></a>
 
-    <a title="Enumerations  Reference"></a>
+    <a title="Type Aliases  Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="index.html">JJFloatingActionButton Reference</a>
       <img class="carat" src="img/carat.png" alt=""/>
-      Enumerations  Reference
+      Type Aliases  Reference
     </p>
 
     <div class="content-wrapper">
@@ -115,8 +115,8 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>Enumerations</h1>
-            <p>The following enumerations are available globally.</p>
+            <h1>Type Aliases</h1>
+            <p>The following type aliases are available globally.</p>
 
           </div>
         </section>
@@ -124,13 +124,22 @@
         <section class="section">
           <div class="section-content">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/JJButtonAnimationConfiguration"></a>
+                <a name="//apple_ref/swift/Section/JJButtonAnimationConfiguration" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/JJButtonAnimationConfiguration"></a>
+                  <h3 class="section-name"><span>JJButtonAnimationConfiguration</span>
+</h3>
+                </div>
+              </div>
               <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition"></a>
-                    <a name="//apple_ref/swift/Enum/JJActionItemTitlePosition" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJActionItemTitlePosition">JJActionItemTitlePosition</a>
+                    <a name="/s:22JJFloatingActionButton11JJItemAnglea"></a>
+                    <a name="//apple_ref/swift/Alias/JJItemAngle" class="dashAnchor"></a>
+                    <a class="token" href="#/s:22JJFloatingActionButton11JJItemAnglea">JJItemAngle</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -138,47 +147,63 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Action item title position.</p>
+                        <p>A typealias representing a closure that calculates the angle for each item in a floating action button.</p>
 
-                        <a href="Enums/JJActionItemTitlePosition.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JJActionItemTitlePosition</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">JJItemAngle</span> <span class="o">=</span> <span class="p">(</span><span class="n">_</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">numberOfItems</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">actionButton</span><span class="p">:</span> <span class="kt"><a href="Classes/JJFloatingActionButton.html">JJFloatingActionButton</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@JJFloatingActionButton@E@JJFloatingActionButtonState"></a>
-                    <a name="//apple_ref/swift/Enum/JJFloatingActionButtonState" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@JJFloatingActionButton@E@JJFloatingActionButtonState">JJFloatingActionButtonState</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Button state.</p>
-
-                        <a href="Enums/JJFloatingActionButtonState.html" class="slightly-smaller">See more</a>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numberOfItems</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total number of items.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>actionButton</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The floating action button.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JJFloatingActionButtonState</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The angle in radians for the specified item.</p>
                       </div>
                     </section>
                   </div>
