@@ -3,21 +3,11 @@
 ## [3.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/3.0.0) (2024-01-10)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.5.0...3.0.0)
 
-**Implemented enhancements:**
-
-- Close automatically [\#282](https://github.com/jjochen/JJFloatingActionButton/issues/282)
-- Pop two lines of buttons on both horizontal and vertical directions. [\#281](https://github.com/jjochen/JJFloatingActionButton/issues/281)
-- Adding Badge to Floating Action Button [\#272](https://github.com/jjochen/JJFloatingActionButton/issues/272)
-
 **Fixed bugs:**
 
-- Button image not appearing on button [\#284](https://github.com/jjochen/JJFloatingActionButton/issues/284)
+- Designable's Error [\#278](https://github.com/jjochen/JJFloatingActionButton/issues/278)
 - Circular configuration is not customisable angles are hardcoded [\#276](https://github.com/jjochen/JJFloatingActionButton/issues/276)
 - Action button items are not shown when added to custom button on center tab. [\#265](https://github.com/jjochen/JJFloatingActionButton/issues/265)
-
-**Closed issues:**
-
-- Multiple Action not working [\#270](https://github.com/jjochen/JJFloatingActionButton/issues/270)
 
 **Merged pull requests:**
 
