@@ -1,5 +1,31 @@
 # Change Log
 
+## [3.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/3.0.0) (2024-01-10)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.5.0...3.0.0)
+
+**Implemented enhancements:**
+
+- Close automatically [\#282](https://github.com/jjochen/JJFloatingActionButton/issues/282)
+- Pop two lines of buttons on both horizontal and vertical directions. [\#281](https://github.com/jjochen/JJFloatingActionButton/issues/281)
+- Adding Badge to Floating Action Button [\#272](https://github.com/jjochen/JJFloatingActionButton/issues/272)
+
+**Fixed bugs:**
+
+- Button image not appearing on button [\#284](https://github.com/jjochen/JJFloatingActionButton/issues/284)
+- Circular configuration is not customisable angles are hardcoded [\#276](https://github.com/jjochen/JJFloatingActionButton/issues/276)
+- Action button items are not shown when added to custom button on center tab. [\#265](https://github.com/jjochen/JJFloatingActionButton/issues/265)
+
+**Closed issues:**
+
+- Multiple Action not working [\#270](https://github.com/jjochen/JJFloatingActionButton/issues/270)
+
+**Merged pull requests:**
+
+- Fix linter issues in example [\#289](https://github.com/jjochen/JJFloatingActionButton/pull/289)
+- Make angle configurable for circular style [\#288](https://github.com/jjochen/JJFloatingActionButton/pull/288)
+- Add example for custom layout/animation [\#287](https://github.com/jjochen/JJFloatingActionButton/pull/287)
+- Update dependencies/toolchain [\#286](https://github.com/jjochen/JJFloatingActionButton/pull/286)
+
 ## [2.5.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.5.0) (2020-04-21)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.4.0...2.5.0)
 
@@ -14,12 +40,12 @@
 
 **Merged pull requests:**
 
+- Less restricted filter for release commit messages [\#253](https://github.com/jjochen/JJFloatingActionButton/pull/253)
 - Create issue templates [\#263](https://github.com/jjochen/JJFloatingActionButton/pull/263)
-- Separate spacing between action button and first action item  [\#262](https://github.com/jjochen/JJFloatingActionButton/pull/262) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Separate spacing between action button and first action item  [\#262](https://github.com/jjochen/JJFloatingActionButton/pull/262)
 - Update dependencies [\#261](https://github.com/jjochen/JJFloatingActionButton/pull/261)
 - Use `bundle config` to set path for bundler [\#260](https://github.com/jjochen/JJFloatingActionButton/pull/260)
-- Fix access to functions in AnimationConfiguration [\#259](https://github.com/jjochen/JJFloatingActionButton/pull/259) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
-- Less restricted filter for release commit messages [\#253](https://github.com/jjochen/JJFloatingActionButton/pull/253)
+- Fix access to functions in AnimationConfiguration [\#259](https://github.com/jjochen/JJFloatingActionButton/pull/259)
 
 ## [2.4.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.4.0) (2020-03-20)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.3.0...2.4.0)
@@ -50,8 +76,8 @@
 **Merged pull requests:**
 
 - Improve deployment [\#241](https://github.com/jjochen/JJFloatingActionButton/pull/241)
-- Add convenience methods to remove action items from the button [\#240](https://github.com/jjochen/JJFloatingActionButton/pull/240) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
-- Remove related views when button is removed from superview [\#238](https://github.com/jjochen/JJFloatingActionButton/pull/238) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Add convenience methods to remove action items from the button [\#240](https://github.com/jjochen/JJFloatingActionButton/pull/240)
+- Remove related views when button is removed from superview [\#238](https://github.com/jjochen/JJFloatingActionButton/pull/238)
 
 ## [2.2.0](https://github.com/jjochen/JJFloatingActionButton/tree/2.2.0) (2020-03-01)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.1.0...2.2.0)
@@ -67,10 +93,10 @@
 **Merged pull requests:**
 
 - Fix changelog generation [\#235](https://github.com/jjochen/JJFloatingActionButton/pull/235)
-- Prevent item selection during closing animation [\#234](https://github.com/jjochen/JJFloatingActionButton/pull/234) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
-- Allow item selection during opening animation [\#233](https://github.com/jjochen/JJFloatingActionButton/pull/233) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Prevent item selection during closing animation [\#234](https://github.com/jjochen/JJFloatingActionButton/pull/234)
+- Allow item selection during opening animation [\#233](https://github.com/jjochen/JJFloatingActionButton/pull/233)
 - Fix typos [\#232](https://github.com/jjochen/JJFloatingActionButton/pull/232)
-- Make automatic closing of action button configurable [\#231](https://github.com/jjochen/JJFloatingActionButton/pull/231) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Make automatic closing of action button configurable [\#231](https://github.com/jjochen/JJFloatingActionButton/pull/231)
 - Update dependencies [\#230](https://github.com/jjochen/JJFloatingActionButton/pull/230)
 - Some improvements to test suite [\#229](https://github.com/jjochen/JJFloatingActionButton/pull/229)
 - Support for Swift Package Manager [\#228](https://github.com/jjochen/JJFloatingActionButton/pull/228)
@@ -86,8 +112,8 @@
 
 - Support dark mode in example project [\#217](https://github.com/jjochen/JJFloatingActionButton/pull/217)
 - Update configuration example in README and example project [\#215](https://github.com/jjochen/JJFloatingActionButton/pull/215)
-- Make image sizes configurable [\#213](https://github.com/jjochen/JJFloatingActionButton/pull/213) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
-- Fix an issue where special action item configuration would not work  [\#212](https://github.com/jjochen/JJFloatingActionButton/pull/212) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Make image sizes configurable [\#213](https://github.com/jjochen/JJFloatingActionButton/pull/213)
+- Fix an issue where special action item configuration would not work  [\#212](https://github.com/jjochen/JJFloatingActionButton/pull/212)
 - Update dependencies [\#210](https://github.com/jjochen/JJFloatingActionButton/pull/210)
 - Get ready for Xcode 11/iOS 13 [\#209](https://github.com/jjochen/JJFloatingActionButton/pull/209)
 
@@ -100,7 +126,7 @@
 
 **Merged pull requests:**
 
-- Migrate to Swift 5 [\#198](https://github.com/jjochen/JJFloatingActionButton/pull/198) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Migrate to Swift 5 [\#198](https://github.com/jjochen/JJFloatingActionButton/pull/198)
 
 ## [1.2.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.2.0) (2019-02-08)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/1.1.0...1.2.0)
@@ -116,9 +142,9 @@
 **Merged pull requests:**
 
 - Add swiftformat configuration file [\#194](https://github.com/jjochen/JJFloatingActionButton/pull/194)
-- Prevent images to change button/item size [\#193](https://github.com/jjochen/JJFloatingActionButton/pull/193) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)] [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Prevent images to change button/item size [\#193](https://github.com/jjochen/JJFloatingActionButton/pull/193)
 - Update project dependencies [\#189](https://github.com/jjochen/JJFloatingActionButton/pull/189)
-- Make default button size configurable [\#188](https://github.com/jjochen/JJFloatingActionButton/pull/188) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Make default button size configurable [\#188](https://github.com/jjochen/JJFloatingActionButton/pull/188)
 - Add license title to LICENSE file [\#187](https://github.com/jjochen/JJFloatingActionButton/pull/187)
 - Upgrade circleci config to version 2.1 [\#185](https://github.com/jjochen/JJFloatingActionButton/pull/185)
 
@@ -131,7 +157,7 @@
 
 **Merged pull requests:**
 
-- Add convenience initializer for floating action button with single item [\#178](https://github.com/jjochen/JJFloatingActionButton/pull/178) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Add convenience initializer for floating action button with single item [\#178](https://github.com/jjochen/JJFloatingActionButton/pull/178)
 - Disable redundant\_objc\_attribute rule in swiftlint configuration [\#177](https://github.com/jjochen/JJFloatingActionButton/pull/177)
 
 ## [1.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/1.0.0) (2018-11-29)
@@ -149,10 +175,10 @@
 
 - Update dependencies [\#173](https://github.com/jjochen/JJFloatingActionButton/pull/173)
 - Update README [\#172](https://github.com/jjochen/JJFloatingActionButton/pull/172)
-- Fix item layout in circular pop up style [\#171](https://github.com/jjochen/JJFloatingActionButton/pull/171) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
-- Add convenience method to action item that calls it's action [\#169](https://github.com/jjochen/JJFloatingActionButton/pull/169) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Fix item layout in circular pop up style [\#171](https://github.com/jjochen/JJFloatingActionButton/pull/171)
+- Add convenience method to action item that calls it's action [\#169](https://github.com/jjochen/JJFloatingActionButton/pull/169)
 - Update tests for iOS 12.1 and new devices [\#163](https://github.com/jjochen/JJFloatingActionButton/pull/163)
-- Migrate to swift 4.2 [\#161](https://github.com/jjochen/JJFloatingActionButton/pull/161) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Migrate to swift 4.2 [\#161](https://github.com/jjochen/JJFloatingActionButton/pull/161)
 
 ## [0.10.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.10.0) (2018-09-17)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.2...0.10.0)
@@ -164,7 +190,7 @@
 **Merged pull requests:**
 
 - Update dependencies [\#156](https://github.com/jjochen/JJFloatingActionButton/pull/156)
-- Make title spacing configurable [\#155](https://github.com/jjochen/JJFloatingActionButton/pull/155) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Make title spacing configurable [\#155](https://github.com/jjochen/JJFloatingActionButton/pull/155)
 - Add example for downward animation [\#153](https://github.com/jjochen/JJFloatingActionButton/pull/153)
 - Add example on how to change size of action button [\#152](https://github.com/jjochen/JJFloatingActionButton/pull/152)
 - Update dependencies and circleci configuration [\#148](https://github.com/jjochen/JJFloatingActionButton/pull/148)
@@ -179,7 +205,7 @@
 **Merged pull requests:**
 
 - Fix circle ci checks [\#146](https://github.com/jjochen/JJFloatingActionButton/pull/146)
-- Separate bottom and trailing inset in layout category [\#145](https://github.com/jjochen/JJFloatingActionButton/pull/145) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Separate bottom and trailing inset in layout category [\#145](https://github.com/jjochen/JJFloatingActionButton/pull/145)
 
 ## [0.9.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.9.1) (2018-03-01)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.9.0...0.9.1)
@@ -199,12 +225,12 @@
 **Merged pull requests:**
 
 - Add App Icon to example project [\#136](https://github.com/jjochen/JJFloatingActionButton/pull/136)
-- Improve configurability of animations [\#134](https://github.com/jjochen/JJFloatingActionButton/pull/134) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)] [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Improve configurability of animations [\#134](https://github.com/jjochen/JJFloatingActionButton/pull/134)
 - Add codeclimate configuration [\#133](https://github.com/jjochen/JJFloatingActionButton/pull/133)
 - Configure swift version in pod spec [\#131](https://github.com/jjochen/JJFloatingActionButton/pull/131)
--  Make position of action item title configurable [\#130](https://github.com/jjochen/JJFloatingActionButton/pull/130) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+-  Make position of action item title configurable [\#130](https://github.com/jjochen/JJFloatingActionButton/pull/130)
 - Update dependencies [\#129](https://github.com/jjochen/JJFloatingActionButton/pull/129)
-- Revert default color for item title and item circle to white [\#126](https://github.com/jjochen/JJFloatingActionButton/pull/126) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Revert default color for item title and item circle to white [\#126](https://github.com/jjochen/JJFloatingActionButton/pull/126)
 
 ## [0.8.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.8.0) (2018-01-22)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.7.2...0.8.0)
@@ -218,10 +244,10 @@
 
 **Merged pull requests:**
 
-- Define default item configuration on item directly [\#121](https://github.com/jjochen/JJFloatingActionButton/pull/121) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)] [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)] [[removed](https://github.com/jjochen/JJFloatingActionButton/labels/removed)]
+- Define default item configuration on item directly [\#121](https://github.com/jjochen/JJFloatingActionButton/pull/121)
 - Split preview gif and update readme [\#120](https://github.com/jjochen/JJFloatingActionButton/pull/120)
-- Add circular opening style [\#119](https://github.com/jjochen/JJFloatingActionButton/pull/119) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)] [[removed](https://github.com/jjochen/JJFloatingActionButton/labels/removed)]
-- Improve image drawing [\#116](https://github.com/jjochen/JJFloatingActionButton/pull/116) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Add circular opening style [\#119](https://github.com/jjochen/JJFloatingActionButton/pull/119)
+- Improve image drawing [\#116](https://github.com/jjochen/JJFloatingActionButton/pull/116)
 - Update dependencies \(jazzy, xcpretty\) [\#115](https://github.com/jjochen/JJFloatingActionButton/pull/115)
 
 ## [0.7.2](https://github.com/jjochen/JJFloatingActionButton/tree/0.7.2) (2018-01-11)
@@ -233,7 +259,7 @@
 
 **Merged pull requests:**
 
-- Rename placement methods to fix objc issues [\#112](https://github.com/jjochen/JJFloatingActionButton/pull/112) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Rename placement methods to fix objc issues [\#112](https://github.com/jjochen/JJFloatingActionButton/pull/112)
 - Create release pull requests with octokit.rb [\#110](https://github.com/jjochen/JJFloatingActionButton/pull/110)
 
 ## [0.7.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.7.1) (2018-01-09)
@@ -245,7 +271,7 @@
 
 **Merged pull requests:**
 
-- Rename methods for placing button in view or view controller [\#107](https://github.com/jjochen/JJFloatingActionButton/pull/107) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Rename methods for placing button in view or view controller [\#107](https://github.com/jjochen/JJFloatingActionButton/pull/107)
 - Improve example [\#106](https://github.com/jjochen/JJFloatingActionButton/pull/106)
 - Add task for updating releases on GitHub [\#104](https://github.com/jjochen/JJFloatingActionButton/pull/104)
 - Add rake task for creating releases on GitHub [\#103](https://github.com/jjochen/JJFloatingActionButton/pull/103)
@@ -273,12 +299,12 @@
 - Add documentation and improve tests for button placement [\#97](https://github.com/jjochen/JJFloatingActionButton/pull/97)
 - User Xcode 9.1 on CircleCI [\#96](https://github.com/jjochen/JJFloatingActionButton/pull/96)
 - Improve labels in change log [\#93](https://github.com/jjochen/JJFloatingActionButton/pull/93)
-- Extension for placing action button in view or view controller [\#92](https://github.com/jjochen/JJFloatingActionButton/pull/92) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Extension for placing action button in view or view controller [\#92](https://github.com/jjochen/JJFloatingActionButton/pull/92)
 - Use xcpretty in CI builds [\#91](https://github.com/jjochen/JJFloatingActionButton/pull/91)
-- Better support for UIAppearance [\#90](https://github.com/jjochen/JJFloatingActionButton/pull/90) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Better support for UIAppearance [\#90](https://github.com/jjochen/JJFloatingActionButton/pull/90)
 - Add delegate calls to example [\#89](https://github.com/jjochen/JJFloatingActionButton/pull/89)
 - Handle tasks with rake [\#88](https://github.com/jjochen/JJFloatingActionButton/pull/88)
-- Handle action directly when item is tapped [\#86](https://github.com/jjochen/JJFloatingActionButton/pull/86) [[changed](https://github.com/jjochen/JJFloatingActionButton/labels/changed)]
+- Handle action directly when item is tapped [\#86](https://github.com/jjochen/JJFloatingActionButton/pull/86)
 - Add tests for delegate calls [\#85](https://github.com/jjochen/JJFloatingActionButton/pull/85)
 
 ## [0.6.4](https://github.com/jjochen/JJFloatingActionButton/tree/0.6.4) (2018-01-03)
@@ -336,13 +362,13 @@
 - Improve Readme [\#68](https://github.com/jjochen/JJFloatingActionButton/pull/68)
 - Improve documentation [\#67](https://github.com/jjochen/JJFloatingActionButton/pull/67)
 - Investigate swift package manager support [\#66](https://github.com/jjochen/JJFloatingActionButton/pull/66)
-- Draw assets \(remove assets bundle\) [\#65](https://github.com/jjochen/JJFloatingActionButton/pull/65) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
-- Expose overlay view as read only property [\#64](https://github.com/jjochen/JJFloatingActionButton/pull/64) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
-- RTL language support [\#58](https://github.com/jjochen/JJFloatingActionButton/pull/58) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Draw assets \(remove assets bundle\) [\#65](https://github.com/jjochen/JJFloatingActionButton/pull/65)
+- Expose overlay view as read only property [\#64](https://github.com/jjochen/JJFloatingActionButton/pull/64)
+- RTL language support [\#58](https://github.com/jjochen/JJFloatingActionButton/pull/58)
 - Add documentation for github pages [\#54](https://github.com/jjochen/JJFloatingActionButton/pull/54)
 - Improve release script [\#53](https://github.com/jjochen/JJFloatingActionButton/pull/53)
-- Handle hidden items [\#52](https://github.com/jjochen/JJFloatingActionButton/pull/52) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
-- Handle open/close animations in separate classes [\#51](https://github.com/jjochen/JJFloatingActionButton/pull/51) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Handle hidden items [\#52](https://github.com/jjochen/JJFloatingActionButton/pull/52)
+- Handle open/close animations in separate classes [\#51](https://github.com/jjochen/JJFloatingActionButton/pull/51)
 - Continuous integration improvements  [\#50](https://github.com/jjochen/JJFloatingActionButton/pull/50)
 
 ## [0.5.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.5.0) (2017-12-15)
@@ -357,8 +383,8 @@
 **Merged pull requests:**
 
 - Add documentation [\#47](https://github.com/jjochen/JJFloatingActionButton/pull/47)
-- Add image transition when button opens/closes [\#46](https://github.com/jjochen/JJFloatingActionButton/pull/46) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
-- Make single action handling configurable [\#44](https://github.com/jjochen/JJFloatingActionButton/pull/44) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Add image transition when button opens/closes [\#46](https://github.com/jjochen/JJFloatingActionButton/pull/46)
+- Make single action handling configurable [\#44](https://github.com/jjochen/JJFloatingActionButton/pull/44)
 - Add swiftlint to CircleCi workflow [\#43](https://github.com/jjochen/JJFloatingActionButton/pull/43)
 
 ## [0.4.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.4.0) (2017-12-08)
@@ -373,11 +399,11 @@
 **Merged pull requests:**
 
 - Move tests to CircleCi [\#40](https://github.com/jjochen/JJFloatingActionButton/pull/40)
-- Animate open image changes [\#37](https://github.com/jjochen/JJFloatingActionButton/pull/37) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Animate open image changes [\#37](https://github.com/jjochen/JJFloatingActionButton/pull/37)
 - Add swiftlint configuration [\#34](https://github.com/jjochen/JJFloatingActionButton/pull/34)
-- Make IBDesignable [\#32](https://github.com/jjochen/JJFloatingActionButton/pull/32) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Make IBDesignable [\#32](https://github.com/jjochen/JJFloatingActionButton/pull/32)
 - Test improvements [\#31](https://github.com/jjochen/JJFloatingActionButton/pull/31)
-- Refactoring [\#29](https://github.com/jjochen/JJFloatingActionButton/pull/29) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Refactoring [\#29](https://github.com/jjochen/JJFloatingActionButton/pull/29)
 - Remove UITests [\#26](https://github.com/jjochen/JJFloatingActionButton/pull/26)
 
 ## [0.3.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.3.1) (2017-11-30)
@@ -389,7 +415,7 @@
 
 **Merged pull requests:**
 
-- Hotfix: wrong item position during first opening animation [\#24](https://github.com/jjochen/JJFloatingActionButton/pull/24) [[fixed](https://github.com/jjochen/JJFloatingActionButton/labels/fixed)]
+- Hotfix: wrong item position during first opening animation [\#24](https://github.com/jjochen/JJFloatingActionButton/pull/24)
 
 ## [0.3.0](https://github.com/jjochen/JJFloatingActionButton/tree/0.3.0) (2017-11-26)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.2.1...0.3.0)
@@ -400,9 +426,9 @@
 
 **Merged pull requests:**
 
-- Add optional open button image [\#21](https://github.com/jjochen/JJFloatingActionButton/pull/21) [[added](https://github.com/jjochen/JJFloatingActionButton/labels/added)]
+- Add optional open button image [\#21](https://github.com/jjochen/JJFloatingActionButton/pull/21)
 - Improve preview in readme [\#20](https://github.com/jjochen/JJFloatingActionButton/pull/20)
-- Handle touches with UIControl [\#19](https://github.com/jjochen/JJFloatingActionButton/pull/19) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
+- Handle touches with UIControl [\#19](https://github.com/jjochen/JJFloatingActionButton/pull/19)
 - Improve test coverage [\#16](https://github.com/jjochen/JJFloatingActionButton/pull/16)
 
 ## [0.2.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.2.1) (2017-11-25)
@@ -438,8 +464,8 @@
 
 **Merged pull requests:**
 
-- Cleanup [\#6](https://github.com/jjochen/JJFloatingActionButton/pull/6) [[updated](https://github.com/jjochen/JJFloatingActionButton/labels/updated)]
-- Remove SnapKit dependency [\#5](https://github.com/jjochen/JJFloatingActionButton/pull/5) [[removed](https://github.com/jjochen/JJFloatingActionButton/labels/removed)]
+- Cleanup [\#6](https://github.com/jjochen/JJFloatingActionButton/pull/6)
+- Remove SnapKit dependency [\#5](https://github.com/jjochen/JJFloatingActionButton/pull/5)
 
 ## [0.1.1](https://github.com/jjochen/JJFloatingActionButton/tree/0.1.1) (2017-11-06)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/0.1.0...0.1.1)

@@ -21,21 +21,21 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="../index.html">
-          JJFloatingActionButton Docs
+          JJFloatingActionButton 3.0.0 Docs
         </a>
          (100% documented)
       </p>
     
-      <p class="header-col--secondary">
+      <div class="header-col--secondary">
         <form role="search" action="../search.json">
           <input type="text" placeholder="Search documentation" data-typeahead>
         </form>
-      </p>
+      </div>
     
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="dash-feed://https%3A%2F%2Fjjochen%2Egithub%2Eio%2FJJFloatingActionButton%2Fdocsets%2FJJFloatingActionButton%2Exml">
-            <img class="header-icon" src="../img/dash.png"/>
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fjjochen.github.io%2FJJFloatingActionButton%2Fdocsets%2FJJFloatingActionButton.xml">
+            <img class="header-icon" src="../img/dash.png" alt="Dash"/>
             Install in Dash
           </a>
         </p>
@@ -43,7 +43,7 @@
 
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">JJFloatingActionButton Reference</a>
-      <img class="carat" src="../img/carat.png" />
+      <img class="carat" src="../img/carat.png" alt=""/>
       JJItemAnimationConfiguration Class Reference
     </p>
 
@@ -101,6 +101,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:22JJFloatingActionButton11JJItemAnglea">JJItemAngle</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -110,6 +118,7 @@
             <h1>JJItemAnimationConfiguration</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">JJItemAnimationConfiguration</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
@@ -291,7 +300,7 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                 <a name="//apple_ref/swift/Section/JJItemAnimationConfiguration" class="dashAnchor"></a>
                 <div class="section-name-container">
                   <a class="section-name-link" href="#/JJItemAnimationConfiguration"></a>
-                  <h3 class="section-name"><p>JJItemAnimationConfiguration</p>
+                  <h3 class="section-name"><span>JJItemAnimationConfiguration</span>
 </h3>
                 </div>
               </div>
@@ -321,8 +330,7 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">static</span> <span class="kd">func</span> <span class="nf">popUp</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">popUp</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
                   <span class="nv">firstItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
 
                         </div>
@@ -392,8 +400,7 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">static</span> <span class="kd">func</span> <span class="nf">slideIn</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">slideIn</span><span class="p">(</span><span class="n">withInterItemSpacing</span> <span class="nv">interItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
                     <span class="nv">firstItemSpacing</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
 
                         </div>
@@ -441,9 +448,9 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularPopUpWithRadius:"></a>
-                    <a name="//apple_ref/swift/Method/circularPopUp(withRadius:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularPopUpWithRadius:">circularPopUp(withRadius:<wbr>)</a>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularPopUpWithRadius:angleForItem:"></a>
+                    <a name="//apple_ref/swift/Method/circularPopUp(withRadius:angleForItem:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularPopUpWithRadius:angleForItem:">circularPopUp(withRadius:<wbr>angleForItem:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -463,8 +470,9 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">static</span> <span class="kd">func</span> <span class="nf">circularPopUp</span><span class="p">(</span><span class="n">withRadius</span> <span class="nv">radius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">circularPopUp</span><span class="p">(</span><span class="n">withRadius</span> <span class="nv">radius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                          <span class="nv">angleForItem</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:22JJFloatingActionButton11JJItemAnglea">JJItemAngle</a></span> <span class="o">=</span> <span class="kt">JJItemAnimationConfiguration</span><span class="o">.</span><span class="n">angleForItem</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
 
                         </div>
                       </div>
@@ -484,6 +492,19 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>angleForItem</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that calculates the angle for each item in a floating action button.
+                  Default is <code>JJItemAnimationConfiguration.angleForItem</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -497,9 +518,9 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularSlideInWithRadius:"></a>
-                    <a name="//apple_ref/swift/Method/circularSlideIn(withRadius:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularSlideInWithRadius:">circularSlideIn(withRadius:<wbr>)</a>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularSlideInWithRadius:angleForItem:"></a>
+                    <a name="//apple_ref/swift/Method/circularSlideIn(withRadius:angleForItem:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)circularSlideInWithRadius:angleForItem:">circularSlideIn(withRadius:<wbr>angleForItem:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -519,8 +540,9 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">static</span> <span class="kd">func</span> <span class="nf">circularSlideIn</span><span class="p">(</span><span class="n">withRadius</span> <span class="nv">radius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">circularSlideIn</span><span class="p">(</span><span class="n">withRadius</span> <span class="nv">radius</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                            <span class="nv">angleForItem</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:22JJFloatingActionButton11JJItemAnglea">JJItemAngle</a></span> <span class="o">=</span> <span class="kt">JJItemAnimationConfiguration</span><span class="o">.</span><span class="n">angleForItem</span><span class="p">)</span>
+    <span class="o">-&gt;</span> <span class="kt">JJItemAnimationConfiguration</span></code></pre>
 
                         </div>
                       </div>
@@ -540,6 +562,19 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                                 </div>
                               </td>
                             </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>angleForItem</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure that calculates the angle for each item in a floating action button.
+                  Default is <code>JJItemAnimationConfiguration.angleForItem</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -552,15 +587,102 @@ Default is <code>item.transform = .identity</code> and <code>item.alpha = 1</cod
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Helper"></a>
+                <a name="//apple_ref/swift/Section/Helper" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Helper"></a>
+                  <h3 class="section-name"><span>Helper</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)angleForItemAt:numberOfItems:actionButton:"></a>
+                    <a name="//apple_ref/swift/Method/angleForItem(at:numberOfItems:actionButton:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@JJFloatingActionButton@objc(cs)JJItemAnimationConfiguration(cm)angleForItemAt:numberOfItems:actionButton:">angleForItem(at:<wbr>numberOfItems:<wbr>actionButton:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the angle for the item at the specified index in the floating action button.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">angleForItem</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">numberOfItems</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">actionButton</span><span class="p">:</span> <span class="kt"><a href="../Classes/JJFloatingActionButton.html">JJFloatingActionButton</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index of the item.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numberOfItems</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The total number of items in the floating action button.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>actionButton</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The floating action button.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The angle in radians for the item at the specified index.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2020-04-21)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2024 <a class="link" href="https://github.com/jjochen/" target="_blank" rel="external noopener">Jochen Pfeiffer</a>. All rights reserved. (Last updated: 2024-01-10)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
-</div>
 </html>
