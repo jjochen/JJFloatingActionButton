@@ -1,13 +1,29 @@
 # Change Log
 
+## [3.0.1](https://github.com/jjochen/JJFloatingActionButton/tree/3.0.1) (2024-04-30)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/patch-release...3.0.1)
+
+**Fixed bugs:**
+
+- Cannot find type 'UIWindow' in scope - missing UIKit import [\#292](https://github.com/jjochen/JJFloatingActionButton/issues/292)
+
+## [patch-release](https://github.com/jjochen/JJFloatingActionButton/tree/patch-release) (2024-04-30)
+[Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/3.0.0...patch-release)
+
+**Merged pull requests:**
+
+- Use Xcode 15.3 on CircleCi [\#294](https://github.com/jjochen/JJFloatingActionButton/pull/294)
+- Add missing UIKit import to UIWindow extension [\#293](https://github.com/jjochen/JJFloatingActionButton/pull/293)
+
 ## [3.0.0](https://github.com/jjochen/JJFloatingActionButton/tree/3.0.0) (2024-01-10)
 [Full Changelog](https://github.com/jjochen/JJFloatingActionButton/compare/2.5.0...3.0.0)
 
 **Fixed bugs:**
 
 - Designable's Error [\#278](https://github.com/jjochen/JJFloatingActionButton/issues/278)
-- Circular configuration is not customisable angles are hardcoded [\#276](https://github.com/jjochen/JJFloatingActionButton/issues/276)
 - Action button items are not shown when added to custom button on center tab. [\#265](https://github.com/jjochen/JJFloatingActionButton/issues/265)
+- 'JJFloatingActionButtonDelegate' is not a member type of class 'JJFloatingActionButton.JJFloatingActionButton' [\#285](https://github.com/jjochen/JJFloatingActionButton/issues/285)
+- Circular configuration is not customisable angles are hardcoded [\#276](https://github.com/jjochen/JJFloatingActionButton/issues/276)
 
 **Merged pull requests:**
 
