@@ -8,10 +8,10 @@ executors:
     parameters:
       xcode:
         type: string
-        default: '15.1.0'
+        default: '15.3.0'
       os:
         type: string
-        default: '17.2'
+        default: '17.4'
       device:
         type: string
         default: iPhone 15 Pro Max
@@ -55,11 +55,11 @@ commands:
 # System steps
 
   setup-homebrew:
-    description: Bundle homebrew packages
+    description: Install homebrew packages
     steps:
       - run:
           name: Run brew bundle
-          command: brew bundle
+          command: brew bundle || (brew update && brew bundle)
 
   switch-ruby:
     description: Switch to ruby 3.1.4
@@ -287,8 +287,8 @@ jobs:
   build-and-test-ios17-iphone15promax:
     executor:
       name: default
-      xcode: '15.1.0'
-      os: '17.2'
+      xcode: '15.3.0'
+      os: '17.4'
       device: iPhone 15 Pro Max
     steps:
       - checkout
